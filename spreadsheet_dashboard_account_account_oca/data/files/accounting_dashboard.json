@@ -3056,10 +3056,7 @@
     }
   },
   "revisionId": "START_REVISION",
-  "chartOdooMenusReferences": {
-    "cb548cd5-6798-46c9-ade5-3b497efbfc4a": "account_accountant.menu_accounting",
-    "151b0f60-aa89-457e-9456-9807ab779be6": "account_accountant.menu_accounting"
-  },
+  "chartOdooMenusReferences": {},
   "odooVersion": 3,
   "pivots": {},
   "pivotNextId": 1,
