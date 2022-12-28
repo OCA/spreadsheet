@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="spreadsheet_oca.ActionSpreadsheetOca" owl="1">
+        <div class="o_spreadsheet_oca_container">
+        <SpreadsheetControlPanel record="record" />
+        <SpreadsheetRenderer
+                record="record"
+                res_id="spreadsheetId"
+                model="model"
+                importData="importData"
+            />
+        </div>
+    </t>
+
+    <t t-name="spreadsheet_oca.SpreadsheetRenderer" owl="1">
+        <Spreadsheet model="spreadsheet_model" />
+    </t>
+    <t t-name="spreadsheet_oca.SpreadsheetName" owl="1">
+        <input
+            type="text"
+            class="o_spreadsheet_oca_name"
+            title="Change name"
+            t-ref="spreadsheetName"
+            t-att-value="state.name"
+            t-on-change="_onNameChanged"
+        />
+        <i class="fa fa-exclamation-triangle text-danger" t-if="! state.name" />
+        <span
+            class="text-danger o_spreadsheet_oca_name_warning"
+            t-if="! state.name"
+        > name is required</span>
+    </t>
+
+    <t t-name="spreadsheet_oca.Breadcrumbs.Small" owl="1">
+        <ol class="breadcrumb">
+            <t t-if="breadcrumbs.length > 1">
+                <t t-set="breadcrumb" t-value="breadcrumbs[breadcrumbs.length - 2]" />
+                <li
+                    class="breadcrumb-item o_back_button btn btn-secondary"
+                    t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
+                />
+            </t>
+            <li t-if="breadcrumbs.length > 0" class="breadcrumb-item active">
+                <SpreadsheetName
+                    name="props.record.name"
+                    isReadonly="false"
+                    onChanged="onSpreadsheetNameChanged"
+                />
+            </li>
+        </ol>
+    </t>
+
+
+    <t t-name="spreadsheet_oca.Breadcrumbs" owl="1">
+        <ol class="breadcrumb">
+            <t t-foreach="breadcrumbs" t-as="breadcrumb" t-key="breadcrumb.jsId">
+                <t
+                    t-set="isPenultimate"
+                    t-value="breadcrumb_index === breadcrumbs.length - 2"
+                />
+                <li
+                    t-if="!breadcrumb_last"
+                    class="breadcrumb-item"
+                    t-att-data-hotkey="isPenultimate and 'b'"
+                    t-att-class="{ o_back_button: isPenultimate}"
+                    t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
+                >
+                    <a href="#">
+                        <t t-if="breadcrumb.name" t-esc="breadcrumb.name" />
+                        <em t-else="" class="text-warning">Unnamed</em>
+                    </a>
+                </li>
+
+                <li t-else="" class="breadcrumb-item active d-flex align-items-center">
+                    <SpreadsheetName
+                        name="props.record.name"
+                        isReadonly="false"
+                        onChanged="onSpreadsheetNameChanged"
+                    />
+                </li>
+            </t>
+        </ol>
+    </t>
+
+    <t t-name="spreadsheet_oca.SpreadsheetControlPanel" owl="1">
+        <div class="o_control_panel" t-ref="root">
+            <div t-if="display['top']" class="o_cp_top">
+                <div class="o_cp_top_left d-flex flex-grow-1 align-items-center">
+                    <t t-if="display['top-left']">
+                        <t t-slot="control-panel-breadcrumb">
+                            <t t-if="env.isSmall">
+                                <t
+                                    t-call="spreadsheet_oca.Breadcrumbs.Small"
+                                    t-if="!env.config.noBreadcrumbs"
+                                />
+                            </t>
+                            <t t-else="">
+                                <t
+                                    t-call="spreadsheet_oca.Breadcrumbs"
+                                    t-if="!env.config.noBreadcrumbs"
+                                />
+                            </t>
+                        </t>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>
