@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 CreuBlanca
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_search_view">
+        <field name="name">spreadsheet.spreadsheet.search (in spreadsheet_oca)</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field name="arch" type="xml">
+            <search>
+
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_tree_view">
+        <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <button
+                    name="open_spreadsheet"
+                    type="object"
+                    string="Edit"
+                    icon="fa-pencil"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_form_view">
+        <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field name="arch" type="xml">
+            <form>
+                <header />
+                <sheet>
+                    <div name="button_box" id="button_box" class="oe_button_box">
+                        <button
+                            name="open_spreadsheet"
+                            type="object"
+                            string="Edit"
+                            icon="fa-pencil"
+                        />
+                    </div>
+                    <h1>
+                        <field name="name" placeholder="Name" />
+                    </h1>
+                    <group>
+                        <field name="owner_id" />
+                        <field name="contributor_ids" widget="many2many_tags" />
+                        <field name="reader_ids" widget="many2many_tags" />
+                        <field name="data" filename="filename" />
+                        <field name="filename" invisible="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="spreadsheet_spreadsheet_act_window">
+        <field name="name">Spreadsheets</field>
+        <field name="res_model">spreadsheet.spreadsheet</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="spreadsheet_spreadsheet_menu">
+        <field name="name">Spreadsheets</field>
+        <field name="action" ref="spreadsheet_spreadsheet_act_window" />
+        <field name="web_icon">spreadsheet_oca,static/description/icon.svg</field>
+        <field name="groups_id" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="sequence" eval="16" />
+    </record>
+
+</odoo>
