@@ -1,0 +1,23 @@
+.o_spreadsheet_oca_container {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    .o_spreadsheet_oca_name {
+        border: none;
+        padding: 0px 5px 0px 2px;
+        color: $breadcrumb-active-color;
+        border-color: var(--o-input-border-color);
+        &:focus {
+            border: $input-border-width solid var(--o-input-border-color);
+            border-width: 0 0 $input-border-width 0;
+            @include print-variable(o-input-border-color, $o-brand-primary);
+            @include print-variable(o-caret-color, $o-brand-primary);
+        }
+    }
+    .o_spreadsheet_oca_name_warning {
+        font-size: 0.8em;
+    }
+}
