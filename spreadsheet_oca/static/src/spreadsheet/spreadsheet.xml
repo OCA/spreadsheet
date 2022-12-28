@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-inherit="web.PivotView.Buttons" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[hasclass('o_pivot_download')]" position="after">
+            <button
+                class="btn btn-secondary fa fa-table"
+                t-on-click="onSpreadsheetButtonClicked"
+                data-tooltip="Add to spreadsheet"
+                aria-label="Download xlsx"
+                t-attf-disabled="{{noDataDisplayed ? 'disabled' : false}}"
+            />
+
+        </xpath>
+    </t>
+
+</templates>
