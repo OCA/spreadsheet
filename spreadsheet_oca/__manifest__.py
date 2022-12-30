@@ -16,10 +16,14 @@
     ],
     "assets": {
         "web.assets_backend": [
-            ("include", "spreadsheet.o_spreadsheet"),
-            "spreadsheet/static/src/assets_backend/**/*",
-            "spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml",
-            "spreadsheet_oca/static/src/spreadsheet/spreadsheet_view.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
+        ],
+        "spreadsheet.o_spreadsheet": [
+            "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.scss",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_controlpanel.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_action.esm.js",
         ],
     },
 }

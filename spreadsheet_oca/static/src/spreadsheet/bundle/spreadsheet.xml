@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
 
+    <t t-name="spreadsheet_oca.ActionSpreadsheetOca" owl="1">
+        <div class="o_spreadsheet_oca_container">
+        <SpreadsheetControlPanel record="record" />
+        <SpreadsheetRenderer record="record" />
+        </div>
+    </t>
+
     <t t-name="spreadsheet_oca.SpreadsheetRenderer" owl="1">
-        <!--<Field name="field.name" record="props.record" type="field.widget" readonly="false" fieldInfo="props.archInfo.fieldNodes[field.name]"/>-->
         <Spreadsheet model="spreadsheet_model" />
     </t>
     <t t-name="spreadsheet_oca.SpreadsheetName" owl="1">
@@ -26,7 +32,7 @@
             </t>
             <li t-if="breadcrumbs.length > 0" class="breadcrumb-item active">
                 <SpreadsheetName
-                    name="breadcrumb[-1].name"
+                    name="props.record.name"
                     isReadonly="false"
                     onChanged="onSpreadsheetNameChanged"
                 />
@@ -57,7 +63,7 @@
 
                 <li t-else="" class="breadcrumb-item active d-flex align-items-center">
                     <SpreadsheetName
-                        name="breadcrumb.name"
+                        name="props.record.name"
                         isReadonly="false"
                         onChanged="onSpreadsheetNameChanged"
                     />

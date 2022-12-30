@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
-import json
 
 from odoo import api, fields, models
 
@@ -13,34 +12,24 @@ class SpreadsheetSpreadsheet(models.Model):
 
     name = fields.Char()
     data = fields.Binary()
-    raw = fields.Serialized(compute="_compute_raw", inverse="_inverse_raw")
+    raw = fields.Binary(compute="_compute_raw", inverse="_inverse_raw")
 
     @api.depends("data")
     def _compute_raw(self):
         for dashboard in self:
             if dashboard.data:
-                dashboard.raw = json.loads(
-                    base64.decodebytes(dashboard.data).decode("UTF-8")
-                )
+                dashboard.raw = base64.decodebytes(dashboard.data).decode("UTF-8")
             else:
-                dashboard.raw = {}
+                dashboard.raw = "{}"
 
     def _inverse_raw(self):
         for record in self:
-            record.data = base64.encodebytes(json.dumps(record.raw).encode("UTF-8"))
+            record.data = base64.encodebytes(record.raw)
 
-
-class IrActionsActWindowView(models.Model):
-    _inherit = "ir.actions.act_window.view"
-    view_mode = fields.Selection(
-        selection_add=[("spreadsheet", "Spreadsheet")],
-        ondelete={"spreadsheet": "cascade"},
-    )
-
-
-class View(models.Model):
-    _inherit = "ir.ui.view"
-    type = fields.Selection(
-        selection_add=[("spreadsheet", "Spreadsheet")],
-        ondelete={"spreadsheet": "cascade"},
-    )
+    def open_spreadsheet(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.client",
+            "tag": "action_spreadsheet_oca",
+            "params": {"spreadsheet_id": self.id, "model": self._name},
+        }
