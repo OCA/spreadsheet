@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 CreuBlanca
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="spreadsheet_dashboard_tree_view">
+        <field
+            name="name"
+        >spreadsheet.dashboard.tree (in spreadsheet_dashboard_oca)</field>
+        <field name="model">spreadsheet.dashboard</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_dashboard.spreadsheet_dashboard_view_list"
+        />
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">1</attribute>
+            </tree>
+            <tree position="inside">
+                <field
+                    name="data"
+                    groups="base.group_no_one"
+                    widget="binary"
+                    filename="name"
+                />
+                <button
+                    name="open_spreadsheet"
+                    type="object"
+                    string="Edit"
+                    icon="fa-pencil"
+                    groups="base.group_system"
+                />
+            </tree>
+        </field>
+    </record>
+
+</odoo>
