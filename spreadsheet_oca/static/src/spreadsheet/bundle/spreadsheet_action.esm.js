@@ -35,11 +35,11 @@ export class ActionSpreadsheetOca extends Component {
             saveRecord: this.saveRecord.bind(this),
         });
     }
-    saveRecord(data) {
+    async saveRecord(data) {
         if (this.spreadsheetId) {
             this.orm.call(this.model, "write", [this.spreadsheetId, data]);
         } else {
-            this.spreadsheetId = this.orm.call(this.model, "create", [data])[0];
+            this.spreadsheetId = await this.orm.call(this.model, "create", [data]);
             this.router.pushState({spreadsheet_id: this.spreadsheetId});
         }
     }
