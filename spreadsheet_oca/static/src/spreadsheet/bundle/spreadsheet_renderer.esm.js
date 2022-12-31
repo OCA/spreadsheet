@@ -6,8 +6,8 @@ import {Field} from "@web/views/fields/field";
 import {loadSpreadsheetDependencies} from "@spreadsheet/helpers/helpers";
 import {migrate} from "@spreadsheet/o_spreadsheet/migration";
 import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
-
 import {useService} from "@web/core/utils/hooks";
+import {useSetupAction} from "@web/webclient/actions/action_hook";
 
 const {Spreadsheet, Model} = spreadsheet;
 const {useSubEnv, onWillStart} = owl;
@@ -27,6 +27,9 @@ export class SpreadsheetRenderer extends Component {
             await loadSpreadsheetDependencies();
             await dataSources.waitForAllLoaded();
             // Await waitForDataLoaded(this.spreadsheet_model);
+        });
+        useSetupAction({
+            beforeLeave: () => this.onSpreadsheetSaved(),
         });
         dataSources.addEventListener("data-source-updated", () => {
             const sheetId = this.spreadsheet_model.getters.getActiveSheetId();
