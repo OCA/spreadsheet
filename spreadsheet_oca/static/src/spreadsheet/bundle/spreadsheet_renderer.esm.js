@@ -90,6 +90,7 @@ export class SpreadsheetRenderer extends Component {
     onSpreadsheetSaved() {
         const data = this.spreadsheet_model.exportData();
         this.env.saveRecord({raw: JSON.stringify(data)});
+        this.spreadsheet_model.leaveSession();
     }
 }
 
