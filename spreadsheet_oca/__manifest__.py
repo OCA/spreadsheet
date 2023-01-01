@@ -16,10 +16,10 @@
     ],
     "assets": {
         "web.assets_backend": [
+            "spreadsheet_oca/static/src/spreadsheet/spreadsheet.scss",
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
         ],
         "spreadsheet.o_spreadsheet": [
-            "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.scss",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_controlpanel.esm.js",

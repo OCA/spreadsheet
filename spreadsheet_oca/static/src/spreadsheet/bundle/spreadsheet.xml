@@ -14,6 +14,7 @@
     <t t-name="spreadsheet_oca.SpreadsheetName" owl="1">
         <input
             type="text"
+            class="o_spreadsheet_oca_name"
             title="Change name"
             t-ref="spreadsheetName"
             t-att-value="state.name"
