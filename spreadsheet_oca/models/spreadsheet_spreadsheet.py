@@ -8,9 +8,9 @@ from odoo import api, fields, models
 
 class SpreadsheetSpreadsheet(models.Model):
     _name = "spreadsheet.spreadsheet"
+    _inherit = "spreadsheet.abstract"
     _description = "Spreadsheet"
 
-    name = fields.Char()
     data = fields.Binary()
     raw = fields.Binary(compute="_compute_raw", inverse="_inverse_raw")
 
@@ -25,18 +25,3 @@ class SpreadsheetSpreadsheet(models.Model):
     def _inverse_raw(self):
         for record in self:
             record.data = base64.encodebytes(record.raw)
-
-    def open_spreadsheet(self):
-        self.ensure_one()
-        return {
-            "type": "ir.actions.client",
-            "tag": "action_spreadsheet_oca",
-            "params": {"spreadsheet_id": self.id, "model": self._name},
-        }
-
-    def send_spreadsheet_message(self, message):
-        self.ensure_one()
-        channel = "spreadsheet_oca;%s;%s" % (self._name, self.id)
-        message.update({"res_model": self._name, "res_id": self.id})
-        self.env["bus.bus"]._sendone(channel, "spreadsheet_oca", message)
-        return True
