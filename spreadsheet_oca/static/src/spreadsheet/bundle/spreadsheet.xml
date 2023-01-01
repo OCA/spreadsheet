@@ -4,7 +4,7 @@
     <t t-name="spreadsheet_oca.ActionSpreadsheetOca" owl="1">
         <div class="o_spreadsheet_oca_container">
         <SpreadsheetControlPanel record="record" />
-        <SpreadsheetRenderer record="record" />
+        <SpreadsheetRenderer record="record" res_id="spreadsheetId" model="model" />
         </div>
     </t>
 

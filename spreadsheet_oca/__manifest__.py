@@ -9,7 +9,7 @@
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
-    "depends": ["spreadsheet", "base_sparse_field"],
+    "depends": ["spreadsheet", "base_sparse_field", "bus"],
     "data": [
         "security/ir.model.access.csv",
         "views/spreadsheet_spreadsheet.xml",

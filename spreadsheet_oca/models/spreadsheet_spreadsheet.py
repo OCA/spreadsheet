@@ -33,3 +33,10 @@ class SpreadsheetSpreadsheet(models.Model):
             "tag": "action_spreadsheet_oca",
             "params": {"spreadsheet_id": self.id, "model": self._name},
         }
+
+    def send_spreadsheet_message(self, message):
+        self.ensure_one()
+        channel = "spreadsheet_oca;%s;%s" % (self._name, self.id)
+        message.update({"res_model": self._name, "res_id": self.id})
+        self.env["bus.bus"]._sendone(channel, "spreadsheet_oca", message)
+        return True
