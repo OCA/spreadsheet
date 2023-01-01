@@ -13,11 +13,14 @@
             ref="spreadsheet_dashboard.spreadsheet_dashboard_view_list"
         />
         <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">1</attribute>
+            </tree>
             <tree position="inside">
                 <button
                     name="open_spreadsheet"
                     type="object"
-                    string="Open"
+                    string="Edit"
                     icon="fa-pencil"
                 />
             </tree>
