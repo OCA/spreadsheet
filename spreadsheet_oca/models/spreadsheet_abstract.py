@@ -12,6 +12,16 @@ class SpreadsheetAbstract(models.AbstractModel):
     name = fields.Char()
     raw = fields.Binary()
 
+    def get_spreadsheet_data(self):
+        self.ensure_one()
+        return {
+            "name": self.name,
+            "raw": self.raw,
+            "mode": "normal"
+            if self.check_access_rights("write", False)
+            else "readonly",
+        }
+
     def open_spreadsheet(self):
         self.ensure_one()
         return {

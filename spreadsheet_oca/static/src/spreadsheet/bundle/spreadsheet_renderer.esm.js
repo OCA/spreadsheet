@@ -70,6 +70,7 @@ export class SpreadsheetRenderer extends Component {
                 id: uuidGenerator.uuidv4(),
                 name: this.user.name,
             },
+            mode: this.props.record.mode,
             dataSources,
         });
         useSubEnv({

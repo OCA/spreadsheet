@@ -23,13 +23,12 @@ export class ActionSpreadsheetOca extends Component {
             });
         });
         onWillStart(async () => {
-            var record = await this.orm.call(
+            this.record = await this.orm.call(
                 this.model,
-                "read",
-                [[this.spreadsheetId], ["name", "raw"]],
+                "get_spreadsheet_data",
+                [[this.spreadsheetId]],
                 {context: {bin_size: false}}
             );
-            this.record = record[0];
         });
         useSubEnv({
             saveRecord: this.saveRecord.bind(this),
