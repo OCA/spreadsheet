@@ -7,18 +7,11 @@ from odoo import fields, models
 
 
 class SpreadsheetDashboard(models.Model):
-    _inherit = "spreadsheet.dashboard"
+    _name = "spreadsheet.dashboard"
+    _inherit = ["spreadsheet.dashboard", "spreadsheet.abstract"]
 
     raw = fields.Binary(inverse="_inverse_raw")
 
     def _inverse_raw(self):
         for record in self:
             record.data = base64.encodebytes(record.raw)
-
-    def open_spreadsheet(self):
-        self.ensure_one()
-        return {
-            "type": "ir.actions.client",
-            "tag": "action_spreadsheet_oca",
-            "params": {"spreadsheet_id": self.id, "model": self._name},
-        }
