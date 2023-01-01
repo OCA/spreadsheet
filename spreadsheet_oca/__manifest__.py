@@ -17,7 +17,6 @@
     "assets": {
         "web.assets_backend": [
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
-            "spreadsheet_oca/static/src/spreadsheet/spreadsheet_list.esm.js",
         ],
         "spreadsheet.o_spreadsheet": [
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.scss",

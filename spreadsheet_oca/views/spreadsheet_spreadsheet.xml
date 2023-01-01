@@ -17,16 +17,45 @@
         <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
         <field name="model">spreadsheet.spreadsheet</field>
         <field name="arch" type="xml">
-            <tree js_class="spreadsheet_list">
+            <tree>
                 <field name="name" />
+                <button
+                    name="open_spreadsheet"
+                    type="object"
+                    string="Edit"
+                    icon="fa-pencil"
+                />
             </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_form_view">
+        <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field name="arch" type="xml">
+            <form>
+                <header />
+                <sheet>
+                    <div name="button_box" id="button_box" class="oe_button_box">
+                        <button
+                            name="open_spreadsheet"
+                            type="object"
+                            string="Edit"
+                            icon="fa-pencil"
+                        />
+                    </div>
+                    <h1>
+                        <field name="name" placeholder="Name" />
+                    </h1>
+                </sheet>
+            </form>
         </field>
     </record>
 
     <record model="ir.actions.act_window" id="spreadsheet_spreadsheet_act_window">
         <field name="name">Spreadsheet</field>
         <field name="res_model">spreadsheet.spreadsheet</field>
-        <field name="view_mode">tree</field>
+        <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
         <field name="context">{}</field>
     </record>
