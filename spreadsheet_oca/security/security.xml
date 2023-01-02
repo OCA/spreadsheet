@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 CreuBlanca
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.rule" id="spreadsheet_owner_rule">
+        <field name="name">Spreadsheet Owner</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        <field name="domain_force">[('owner_id','=', user.id)]</field>
+    </record>
+    <record model="ir.rule" id="spreadsheet_contributor_rule">
+        <field name="name">Spreadsheet Owner</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        <field name="domain_force">[('contributor_ids','=', user.id)]</field>
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+    <record model="ir.rule" id="spreadsheet_reader_rule">
+        <field name="name">Spreadsheet Reader</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+        <field name="domain_force">[('reader_ids','=', user.id)]</field>
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+</odoo>

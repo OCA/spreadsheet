@@ -47,6 +47,11 @@
                     <h1>
                         <field name="name" placeholder="Name" />
                     </h1>
+                    <group>
+                        <field name="owner_id" />
+                        <field name="contributor_ids" widget="many2many_tags" />
+                        <field name="reader_ids" widget="many2many_tags" />
+                    </group>
                 </sheet>
             </form>
         </field>

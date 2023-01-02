@@ -13,6 +13,21 @@ class SpreadsheetSpreadsheet(models.Model):
 
     data = fields.Binary()
     raw = fields.Binary(compute="_compute_raw", inverse="_inverse_raw")
+    owner_id = fields.Many2one(
+        "res.users", required=True, default=lambda r: r.env.user.id
+    )
+    contributor_ids = fields.Many2many(
+        "res.users",
+        relation="spreadsheet_contributor",
+        column1="spreadsheet_id",
+        column2="user_id",
+    )
+    reader_ids = fields.Many2many(
+        "res.users",
+        relation="spreadsheet_reader",
+        column1="spreadsheet_id",
+        column2="user_id",
+    )
 
     @api.depends("data")
     def _compute_raw(self):

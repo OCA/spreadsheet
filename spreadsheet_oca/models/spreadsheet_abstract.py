@@ -3,6 +3,7 @@
 
 
 from odoo import fields, models
+from odoo.exceptions import AccessError
 
 
 class SpreadsheetAbstract(models.AbstractModel):
@@ -14,12 +15,16 @@ class SpreadsheetAbstract(models.AbstractModel):
 
     def get_spreadsheet_data(self):
         self.ensure_one()
+        mode = "normal"
+        try:
+            self.check_access_rights("write")
+            self.check_access_rule("write")
+        except AccessError:
+            mode = "readonly"
         return {
             "name": self.name,
             "raw": self.raw,
-            "mode": "normal"
-            if self.check_access_rights("write", False)
-            else "readonly",
+            "mode": mode,
         }
 
     def open_spreadsheet(self):

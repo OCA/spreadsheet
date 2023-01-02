@@ -12,6 +12,7 @@
     "depends": ["spreadsheet", "base_sparse_field", "bus"],
     "data": [
         "security/ir.model.access.csv",
+        "security/security.xml",
         "views/spreadsheet_spreadsheet.xml",
     ],
     "assets": {
