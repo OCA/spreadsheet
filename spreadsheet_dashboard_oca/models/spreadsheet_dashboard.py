@@ -2,16 +2,29 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
+import json
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class SpreadsheetDashboard(models.Model):
     _name = "spreadsheet.dashboard"
     _inherit = ["spreadsheet.dashboard", "spreadsheet.abstract"]
 
-    raw = fields.Binary(inverse="_inverse_raw")
+    spreadsheet_raw = fields.Serialized(inverse="_inverse_spreadsheet_raw")
 
-    def _inverse_raw(self):
+    @api.depends("data")
+    def _compute_spreadsheet_raw(self):
+        for dashboard in self:
+            if dashboard.data:
+                dashboard.spreadsheet_raw = json.loads(
+                    base64.decodebytes(dashboard.data).decode("UTF-8")
+                )
+            else:
+                dashboard.spreadsheet_raw = {}
+
+    def _inverse_spreadsheet_raw(self):
         for record in self:
-            record.data = base64.encodebytes(record.raw)
+            record.data = base64.encodebytes(
+                json.dumps(record.spreadsheet_raw).encode("UTF-8")
+            )
