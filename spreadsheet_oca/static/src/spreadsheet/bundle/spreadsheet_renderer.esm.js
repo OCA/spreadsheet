@@ -79,6 +79,7 @@ export class SpreadsheetRenderer extends Component {
         onWillStart(async () => {
             await loadSpreadsheetDependencies();
             await dataSources.waitForAllLoaded();
+            await this.env.importData(this.spreadsheet_model);
         });
         useSetupAction({
             beforeLeave: () => this.onSpreadsheetSaved(),
@@ -104,4 +105,5 @@ SpreadsheetRenderer.props = {
     record: Object,
     res_id: {type: Number, optional: true},
     model: String,
+    importData: {type: Function, optional: true},
 };
