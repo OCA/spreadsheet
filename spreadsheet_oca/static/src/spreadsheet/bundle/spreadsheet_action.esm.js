@@ -35,6 +35,9 @@ export class ActionSpreadsheetOca extends Component {
         });
     }
     async saveRecord(data) {
+        if (this.record.mode === "readonly") {
+            return;
+        }
         if (this.spreadsheetId) {
             this.orm.call(this.model, "write", [this.spreadsheetId, data]);
         } else {

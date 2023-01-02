@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
+import json
 
 from odoo import api, fields, models
 
@@ -12,7 +13,9 @@ class SpreadsheetSpreadsheet(models.Model):
     _description = "Spreadsheet"
 
     data = fields.Binary()
-    raw = fields.Binary(compute="_compute_raw", inverse="_inverse_raw")
+    spreadsheet_raw = fields.Serialized(
+        compute="_compute_spreadsheet_raw", inverse="_inverse_spreadsheet_raw"
+    )
     owner_id = fields.Many2one(
         "res.users", required=True, default=lambda r: r.env.user.id
     )
@@ -30,13 +33,17 @@ class SpreadsheetSpreadsheet(models.Model):
     )
 
     @api.depends("data")
-    def _compute_raw(self):
+    def _compute_spreadsheet_raw(self):
         for dashboard in self:
             if dashboard.data:
-                dashboard.raw = base64.decodebytes(dashboard.data).decode("UTF-8")
+                dashboard.spreadsheet_raw = json.loads(
+                    base64.decodebytes(dashboard.data).decode("UTF-8")
+                )
             else:
-                dashboard.raw = "{}"
+                dashboard.spreadsheet_raw = {}
 
-    def _inverse_raw(self):
+    def _inverse_spreadsheet_raw(self):
         for record in self:
-            record.data = base64.encodebytes(record.raw)
+            record.data = base64.encodebytes(
+                json.dumps(record.spreadsheet_raw).encode("UTF-8")
+            )

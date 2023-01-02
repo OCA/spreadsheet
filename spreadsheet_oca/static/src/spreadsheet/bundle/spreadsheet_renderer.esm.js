@@ -58,7 +58,7 @@ export class SpreadsheetRenderer extends Component {
         this.bus_service = useService("bus_service");
         this.user = useService("user");
         const dataSources = new DataSources(this.orm);
-        this.spreadsheet_model = new Model(migrate(JSON.parse(this.props.record.raw)), {
+        this.spreadsheet_model = new Model(migrate(this.props.record.spreadsheet_raw), {
             evalContext: {env: this.env, orm: this.orm},
             transportService: new SpreadsheetTransportService(
                 this.orm,
@@ -90,7 +90,7 @@ export class SpreadsheetRenderer extends Component {
     }
     onSpreadsheetSaved() {
         const data = this.spreadsheet_model.exportData();
-        this.env.saveRecord({raw: JSON.stringify(data)});
+        this.env.saveRecord({spreadsheet_raw: data});
         this.spreadsheet_model.leaveSession();
     }
 }

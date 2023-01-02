@@ -11,7 +11,7 @@ class SpreadsheetAbstract(models.AbstractModel):
     _description = "Spreadsheet abstract for inheritance"
 
     name = fields.Char()
-    raw = fields.Binary()
+    spreadsheet_raw = fields.Serialized()
 
     def get_spreadsheet_data(self):
         self.ensure_one()
@@ -23,7 +23,7 @@ class SpreadsheetAbstract(models.AbstractModel):
             mode = "readonly"
         return {
             "name": self.name,
-            "raw": self.raw,
+            "spreadsheet_raw": self.spreadsheet_raw,
             "mode": mode,
         }
 
