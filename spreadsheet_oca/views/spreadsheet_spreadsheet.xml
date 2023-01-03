@@ -61,7 +61,7 @@
     </record>
 
     <record model="ir.actions.act_window" id="spreadsheet_spreadsheet_act_window">
-        <field name="name">Spreadsheet</field>
+        <field name="name">Spreadsheets</field>
         <field name="res_model">spreadsheet.spreadsheet</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[]</field>
@@ -69,7 +69,7 @@
     </record>
 
     <record model="ir.ui.menu" id="spreadsheet_spreadsheet_menu">
-        <field name="name">Spreadsheet</field>
+        <field name="name">Spreadsheets</field>
         <field name="action" ref="spreadsheet_spreadsheet_act_window" />
         <field name="sequence" eval="16" />
     </record>
