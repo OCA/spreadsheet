@@ -54,7 +54,6 @@
                         <field name="data" filename="filename" />
                         <field name="filename" invisible="1" />
                     </group>
-                    <field name="spreadsheet_revision_ids" />
                 </sheet>
             </form>
         </field>
