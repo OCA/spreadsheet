@@ -4,7 +4,7 @@
 import base64
 import json
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 
 class SpreadsheetSpreadsheet(models.Model):
@@ -13,6 +13,7 @@ class SpreadsheetSpreadsheet(models.Model):
     _description = "Spreadsheet"
 
     data = fields.Binary()
+    filename = fields.Char(compute="_compute_filename")
     spreadsheet_raw = fields.Serialized(
         compute="_compute_spreadsheet_raw", inverse="_inverse_spreadsheet_raw"
     )
@@ -31,6 +32,11 @@ class SpreadsheetSpreadsheet(models.Model):
         column1="spreadsheet_id",
         column2="user_id",
     )
+
+    @api.depends("name")
+    def _compute_filename(self):
+        for record in self:
+            record.filename = "%s.json" % (self.name or _("Unnamed"))
 
     @api.depends("data")
     def _compute_spreadsheet_raw(self):

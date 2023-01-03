@@ -58,21 +58,25 @@ export class SpreadsheetRenderer extends Component {
         this.bus_service = useService("bus_service");
         this.user = useService("user");
         const dataSources = new DataSources(this.orm);
-        this.spreadsheet_model = new Model(migrate(this.props.record.spreadsheet_raw), {
-            evalContext: {env: this.env, orm: this.orm},
-            transportService: new SpreadsheetTransportService(
-                this.orm,
-                this.bus_service,
-                this.props.model,
-                this.props.res_id
-            ),
-            client: {
-                id: uuidGenerator.uuidv4(),
-                name: this.user.name,
+        this.spreadsheet_model = new Model(
+            migrate(this.props.record.spreadsheet_raw),
+            {
+                evalContext: {env: this.env, orm: this.orm},
+                transportService: new SpreadsheetTransportService(
+                    this.orm,
+                    this.bus_service,
+                    this.props.model,
+                    this.props.res_id
+                ),
+                client: {
+                    id: uuidGenerator.uuidv4(),
+                    name: this.user.name,
+                },
+                mode: this.props.record.mode,
+                dataSources,
             },
-            mode: this.props.record.mode,
-            dataSources,
-        });
+            this.props.record.revisions
+        );
         useSubEnv({
             saveSpreadsheet: this.onSpreadsheetSaved.bind(this),
         });
