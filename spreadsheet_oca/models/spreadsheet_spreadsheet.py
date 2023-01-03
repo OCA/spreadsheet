@@ -25,12 +25,14 @@ class SpreadsheetSpreadsheet(models.Model):
         relation="spreadsheet_contributor",
         column1="spreadsheet_id",
         column2="user_id",
+        string="Contributors",
     )
     reader_ids = fields.Many2many(
         "res.users",
         relation="spreadsheet_reader",
         column1="spreadsheet_id",
         column2="user_id",
+        string="Readers",
     )
 
     @api.depends("name")
