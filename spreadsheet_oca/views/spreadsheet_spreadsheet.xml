@@ -71,6 +71,7 @@
     <record model="ir.ui.menu" id="spreadsheet_spreadsheet_menu">
         <field name="name">Spreadsheets</field>
         <field name="action" ref="spreadsheet_spreadsheet_act_window" />
+        <field name="web_icon">spreadsheet_oca,static/description/icon.svg</field>
         <field name="sequence" eval="16" />
     </record>
 
