@@ -9,7 +9,7 @@
         <field name="domain_force">[('owner_id','=', user.id)]</field>
     </record>
     <record model="ir.rule" id="spreadsheet_contributor_rule">
-        <field name="name">Spreadsheet Owner</field>
+        <field name="name">Spreadsheet Contributor</field>
         <field name="model_id" ref="model_spreadsheet_spreadsheet" />
         <field name="groups" eval="[(4, ref('base.group_user'))]" />
         <field name="domain_force">[('contributor_ids','=', user.id)]</field>
