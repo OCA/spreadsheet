@@ -17,4 +17,7 @@
             @include print-variable(o-caret-color, $o-brand-primary);
         }
     }
+    .o_spreadsheet_oca_name_warning {
+        font-size: 0.8em;
+    }
 }

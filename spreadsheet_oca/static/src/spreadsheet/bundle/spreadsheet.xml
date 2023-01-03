@@ -25,6 +25,11 @@
             t-att-value="state.name"
             t-on-change="_onNameChanged"
         />
+        <i class="fa fa-exclamation-triangle text-danger" t-if="! state.name" />
+        <span
+            class="text-danger o_spreadsheet_oca_name_warning"
+            t-if="! state.name"
+        > name is required</span>
     </t>
 
     <t t-name="spreadsheet_oca.Breadcrumbs.Small" owl="1">

@@ -22,7 +22,9 @@ export class SpreadsheetName extends Component {
         });
     }
     _onNameChanged(ev) {
-        this.env.saveRecord({name: ev.target.value});
+        if (ev.target.value) {
+            this.env.saveRecord({name: ev.target.value});
+        }
         this.state.name = ev.target.value;
     }
 }

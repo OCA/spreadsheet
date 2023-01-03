@@ -11,7 +11,7 @@ class SpreadsheetAbstract(models.AbstractModel):
     _name = "spreadsheet.abstract"
     _description = "Spreadsheet abstract for inheritance"
 
-    name = fields.Char()
+    name = fields.Char(required=True)
     spreadsheet_raw = fields.Serialized()
     spreadsheet_revision_ids = fields.One2many(
         "spreadsheet.oca.revision",
