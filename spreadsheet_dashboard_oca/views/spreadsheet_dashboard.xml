@@ -17,6 +17,12 @@
                 <attribute name="create">1</attribute>
             </tree>
             <tree position="inside">
+                <field
+                    name="data"
+                    groups="base.group_no_one"
+                    widget="binary"
+                    filename="name"
+                />
                 <button
                     name="open_spreadsheet"
                     type="object"

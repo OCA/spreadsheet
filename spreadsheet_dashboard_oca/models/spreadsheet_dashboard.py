@@ -11,7 +11,9 @@ class SpreadsheetDashboard(models.Model):
     _name = "spreadsheet.dashboard"
     _inherit = ["spreadsheet.dashboard", "spreadsheet.abstract"]
 
-    spreadsheet_raw = fields.Serialized(inverse="_inverse_spreadsheet_raw")
+    spreadsheet_raw = fields.Serialized(
+        inverse="_inverse_spreadsheet_raw", compute="_compute_spreadsheet_raw"
+    )
 
     @api.depends("data")
     def _compute_spreadsheet_raw(self):
