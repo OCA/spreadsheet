@@ -28,6 +28,7 @@
                     type="object"
                     string="Edit"
                     icon="fa-pencil"
+                    groups="base.group_system"
                 />
             </tree>
         </field>
