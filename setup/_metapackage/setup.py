@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-spreadsheet Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-spreadsheet_dashboard_oca>=16.0dev,<16.1dev',
         'odoo-addon-spreadsheet_oca>=16.0dev,<16.1dev',
     ],
     classifiers=[
