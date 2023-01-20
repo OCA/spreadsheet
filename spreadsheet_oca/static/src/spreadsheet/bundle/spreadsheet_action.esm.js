@@ -51,7 +51,20 @@ export class ActionSpreadsheetOca extends Component {
         }
     }
     async importDataPivot(spreadsheet_model) {
-        const sheetId = spreadsheet_model.getters.getActiveSheetId();
+        var sheetId = spreadsheet_model.getters.getActiveSheetId();
+        if (this.import_data.new === undefined) {
+            sheetId = uuidGenerator.uuidv4();
+            spreadsheet_model.dispatch("CREATE_SHEET", {
+                sheetId,
+                position: spreadsheet_model.getters.getSheetIds().length,
+            });
+            // We want to open the new sheet
+            const sheetIdFrom = spreadsheet_model.getters.getActiveSheetId();
+            spreadsheet_model.dispatch("ACTIVATE_SHEET", {
+                sheetIdFrom,
+                sheetIdTo: sheetId,
+            });
+        }
         const dataSourceId = uuidGenerator.uuidv4();
         const pivot_info = {
             metaData: {
