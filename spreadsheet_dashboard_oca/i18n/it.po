@@ -17,9 +17,19 @@ msgstr ""
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
+msgid "Dashboard"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
 msgid "Edit"
 msgstr "Modifica"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_spreadsheet_import
+msgid "Import data to spreadsheet"
+msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__name
@@ -40,3 +50,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_revision_ids
 msgid "Spreadsheet Revision"
 msgstr "Revisione foglio di calcolo"
+
+#. module: spreadsheet_dashboard_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard
+msgid "To dashboard"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_sheet
+msgid "To dashboard new sheet"
+msgstr ""
