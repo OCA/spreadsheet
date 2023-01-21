@@ -50,6 +50,45 @@ export class ActionSpreadsheetOca extends Component {
             this.router.pushState({spreadsheet_id: this.spreadsheetId});
         }
     }
+
+    async importDataGraph(spreadsheet_model) {
+        var sheetId = spreadsheet_model.getters.getActiveSheetId();
+        if (this.import_data.new === undefined) {
+            sheetId = uuidGenerator.uuidv4();
+            spreadsheet_model.dispatch("CREATE_SHEET", {
+                sheetId,
+                position: spreadsheet_model.getters.getSheetIds().length,
+            });
+            // We want to open the new sheet
+            const sheetIdFrom = spreadsheet_model.getters.getActiveSheetId();
+            spreadsheet_model.dispatch("ACTIVATE_SHEET", {
+                sheetIdFrom,
+                sheetIdTo: sheetId,
+            });
+        }
+        const dataSourceId = uuidGenerator.uuidv4();
+        const definition = {
+            title: this.import_data.metaData.title,
+            type: "odoo_" + this.import_data.metaData.mode,
+            background: "#FFFFFF",
+            stacked: this.import_data.metaData.stacked,
+            metaData: this.import_data.metaData,
+            searchParams: this.import_data.searchParams,
+            dataSourceId: dataSourceId,
+            legendPosition: "top",
+            verticalAxisPosition: "left",
+        };
+        console.log(definition);
+        spreadsheet_model.dispatch("CREATE_CHART", {
+            sheetId,
+            id: dataSourceId,
+            position: {
+                x: 0,
+                y: 0,
+            },
+            definition,
+        });
+    }
     async importDataPivot(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
         if (this.import_data.new === undefined) {
@@ -100,6 +139,9 @@ export class ActionSpreadsheetOca extends Component {
     async importData(spreadsheet_model) {
         if (this.import_data.mode === "pivot") {
             await this.importDataPivot(spreadsheet_model);
+        }
+        if (this.import_data.mode === "graph") {
+            await this.importDataGraph(spreadsheet_model);
         }
     }
 }
