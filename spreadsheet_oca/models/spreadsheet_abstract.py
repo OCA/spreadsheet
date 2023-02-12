@@ -53,7 +53,7 @@ class SpreadsheetAbstract(models.AbstractModel):
 
     def send_spreadsheet_message(self, message):
         self.ensure_one()
-        channel = "spreadsheet_oca;%s;%s" % (self._name, self.id)
+        channel = (self.env.cr.dbname, "spreadsheet_oca", self._name, self.id)
         message.update({"res_model": self._name, "res_id": self.id})
         if message["type"] in ["REVISION_UNDONE", "REMOTE_REVISION", "REVISION_REDONE"]:
             self.env["spreadsheet.oca.revision"].create(
