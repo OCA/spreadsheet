@@ -22,7 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [spreadsheet_dashboard_oca](spreadsheet_dashboard_oca/) | 16.0.1.0.0 |  | Use OCA Spreadsheets on dashboards configuration
-[spreadsheet_oca](spreadsheet_oca/) | 16.0.1.0.0 |  | Allow to edit spreadsheets
+[spreadsheet_oca](spreadsheet_oca/) | 16.0.1.0.1 |  | Allow to edit spreadsheets
 
 [//]: # (end addons)
 
