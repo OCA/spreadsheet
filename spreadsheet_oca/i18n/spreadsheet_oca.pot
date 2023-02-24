@@ -196,8 +196,8 @@ msgid "Type"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-python
 #. odoo-javascript
+#. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
@@ -214,4 +214,9 @@ msgstr ""
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "name is required"
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_ir_websocket
+msgid "websocket message handling"
 msgstr ""
