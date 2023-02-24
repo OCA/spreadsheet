@@ -215,3 +215,8 @@ msgstr ""
 #, python-format
 msgid "name is required"
 msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_ir_websocket
+msgid "websocket message handling"
+msgstr ""
