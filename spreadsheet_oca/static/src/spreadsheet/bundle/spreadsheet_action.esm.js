@@ -53,7 +53,8 @@ export class ActionSpreadsheetOca extends Component {
 
     async importDataGraph(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
-        if (this.import_data.new === undefined) {
+        var y = 0;
+        if (this.import_data.new === undefined && this.import_data.new_sheet) {
             sheetId = uuidGenerator.uuidv4();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
@@ -65,6 +66,8 @@ export class ActionSpreadsheetOca extends Component {
                 sheetIdFrom,
                 sheetIdTo: sheetId,
             });
+        } else if (this.import_data.new === undefined) {
+            // TODO: Add a way to detect the last row total height
         }
         const dataSourceId = uuidGenerator.uuidv4();
         const definition = {
@@ -78,20 +81,20 @@ export class ActionSpreadsheetOca extends Component {
             legendPosition: "top",
             verticalAxisPosition: "left",
         };
-        console.log(definition);
         spreadsheet_model.dispatch("CREATE_CHART", {
             sheetId,
             id: dataSourceId,
             position: {
                 x: 0,
-                y: 0,
+                y: y,
             },
             definition,
         });
     }
     async importDataPivot(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
-        if (this.import_data.new === undefined) {
+        var row = 0;
+        if (this.import_data.new === undefined && this.import_data.new_sheet) {
             sheetId = uuidGenerator.uuidv4();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
@@ -103,6 +106,27 @@ export class ActionSpreadsheetOca extends Component {
                 sheetIdFrom,
                 sheetIdTo: sheetId,
             });
+        } else if (this.import_data.new === undefined) {
+            row = spreadsheet_model.getters.getNumberRows(sheetId);
+            var maxcols = spreadsheet_model.getters.getNumberCols(sheetId);
+            var filled = false;
+            while (row >= 0) {
+                for (var col = maxcols; col >= 0; col--) {
+                    if (
+                        spreadsheet_model.getters.getCell(sheetId, col, row) !==
+                            undefined &&
+                        !spreadsheet_model.getters.getCell(sheetId, col, row).isEmpty()
+                    ) {
+                        filled = true;
+                        break;
+                    }
+                }
+                if (filled) {
+                    break;
+                }
+                row -= 1;
+            }
+            row += 1;
         }
         const dataSourceId = uuidGenerator.uuidv4();
         const pivot_info = {
@@ -129,7 +153,7 @@ export class ActionSpreadsheetOca extends Component {
         spreadsheet_model.dispatch("INSERT_PIVOT", {
             sheetId,
             col: 0,
-            row: 0,
+            row: row,
             id: spreadsheet_model.getters.getNextPivotId(),
             table,
             dataSourceId,
