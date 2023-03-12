@@ -19,7 +19,7 @@
                         <field
                             name="spreadsheet_id"
                             domain="['|', ('owner_id', '=', uid), ('contributor_ids', '=', uid)]"
-                            attrs="{'invisible': [('mode', '!=', 'add')], 'required': [('mode', '=', 'add')]}"
+                            attrs="{'invisible': [('mode', 'not in', ['add', 'add_sheet'])], 'required': [('mode', 'in', ['add', 'add_sheet'])]}"
                             options="{'no_create': True}"
                         />
                     </group>
