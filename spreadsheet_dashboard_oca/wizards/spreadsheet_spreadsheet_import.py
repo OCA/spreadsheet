@@ -10,9 +10,10 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
 
     dashboard_id = fields.Many2one("spreadsheet.dashboard")
 
-    def _insert_pivot_dashboard(self):
+    def _insert_pivot_dashboard(self, new_sheet=False):
         import_data = self.import_data
         import_data["name"] = self.name
+        import_data["new_sheet"] = new_sheet
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
@@ -22,3 +23,6 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
                 "import_data": import_data,
             },
         }
+
+    def _insert_pivot_dashboard_sheet(self):
+        return self._insert_pivot_dashboard(True)
