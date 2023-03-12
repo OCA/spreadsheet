@@ -46,9 +46,10 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
             },
         }
 
-    def _insert_pivot_add(self):
+    def _insert_pivot_add(self, new_sheet=False):
         import_data = self.import_data
         import_data["name"] = self.name
+        import_data["new_sheet"] = new_sheet
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
@@ -58,3 +59,6 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
                 "import_data": import_data,
             },
         }
+
+    def _insert_pivot_add_sheet(self):
+        return self._insert_pivot_add(True)
