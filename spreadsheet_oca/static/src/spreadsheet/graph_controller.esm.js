@@ -1,11 +1,11 @@
 /** @odoo-module **/
-import {PivotController} from "@web/views/pivot/pivot_controller";
+import {GraphController} from "@web/views/graph/graph_controller";
 
 import {patch} from "web.utils";
 
 patch(
-    PivotController.prototype,
-    "spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js",
+    GraphController.prototype,
+    "spreadsheet_oca/static/src/spreadsheet/graph_controller.esm.js",
     {
         onSpreadsheetButtonClicked() {
             this.actionService.doAction(
@@ -14,7 +14,7 @@ patch(
                     additionalContext: {
                         default_name: this.model.metaData.title,
                         default_import_data: {
-                            mode: "pivot",
+                            mode: "graph",
                             metaData: JSON.parse(JSON.stringify(this.model.metaData)),
                             searchParams: JSON.parse(
                                 JSON.stringify(this.model.searchParams)

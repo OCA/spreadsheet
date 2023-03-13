@@ -14,6 +14,8 @@
         "security/security.xml",
         "security/ir.model.access.csv",
         "views/spreadsheet_spreadsheet.xml",
+        "data/spreadsheet_spreadsheet_import_mode.xml",
+        "wizards/spreadsheet_spreadsheet_import.xml",
     ],
     "assets": {
         "web.assets_backend": [
@@ -21,6 +23,7 @@
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml",
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/graph_controller.esm.js",
         ],
         "spreadsheet.o_spreadsheet": [
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml",
