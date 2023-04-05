@@ -61,10 +61,10 @@ class SpreadsheetAbstract(models.AbstractModel):
                     "model": self._name,
                     "res_id": self.id,
                     "type": message["type"],
-                    "client_id": message["clientId"],
+                    "client_id": message.get("clientId"),
                     "next_revision_id": message["nextRevisionId"],
                     "server_revision_id": message["serverRevisionId"],
-                    "commands": json.dumps(message["commands"]),
+                    "commands": json.dumps(message.get("commands", [])),
                 }
             )
         self.env["bus.bus"]._sendone(channel, "spreadsheet_oca", message)
