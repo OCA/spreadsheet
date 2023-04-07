@@ -5,7 +5,7 @@
     "name": "Spreadsheet Oca",
     "summary": """
         Allow to edit spreadsheets""",
-    "version": "16.0.1.1.0",
+    "version": "16.0.1.1.1",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
@@ -27,6 +27,7 @@
         ],
         "spreadsheet.o_spreadsheet": [
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_controlpanel.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_action.esm.js",

@@ -20,4 +20,28 @@
     .o_spreadsheet_oca_name_warning {
         font-size: 0.8em;
     }
+    .o_spreadsheet_oca_filter {
+        padding: 16px;
+        .spreadsheet_oca_filter_label {
+            font-weight: bold;
+        }
+        .spreadsheet_oca_filter_value {
+            display: flex;
+            .o_field_widget {
+                width: 100%;
+                .o_field_tags {
+                    width: 100%;
+                }
+            }
+            .o_field_selector {
+                width: 100%;
+            }
+            .spreadsheet_oca_filter_value_edit {
+                width: 15px;
+                margin-left: 1rem;
+                padding: 0;
+                cursor: pointer;
+            }
+        }
+    }
 }
