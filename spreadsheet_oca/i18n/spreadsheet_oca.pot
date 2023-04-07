@@ -14,8 +14,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Add date"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Add relation"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add_sheet
 msgid "Add sheet to spreadsheet"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Add text"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -28,7 +49,32 @@ msgid "Add to spreadsheet"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "After next"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Automatically filter on the current period"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Before Previous"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
+#, python-format
 msgid "Cancel"
 msgstr ""
 
@@ -53,6 +99,13 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
 msgid "Commands"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Confirm"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -87,6 +140,13 @@ msgid "Data"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Default value"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__display_name
@@ -102,7 +162,7 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_controlpanel.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #, python-format
 msgid "File"
 msgstr ""
@@ -110,6 +170,13 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__filename
 msgid "Filename"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Filters"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -143,6 +210,13 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_import
 msgid "Import data to spreadsheet"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Label"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -185,12 +259,26 @@ msgid "Model"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Month"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__name
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Name"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Next"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -209,8 +297,43 @@ msgid "Owner"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Previous"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Quarter"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
 msgid "Readers"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Related model"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Relative Period"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Remove"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -220,7 +343,8 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_controlpanel.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Save"
 msgstr ""
@@ -271,6 +395,13 @@ msgid "Spreadsheets"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Time range"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
 msgid "Type"
 msgstr ""
@@ -287,6 +418,13 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:res.groups,name:spreadsheet_oca.group_user
 msgid "User"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Year"
 msgstr ""
 
 #. module: spreadsheet_oca
