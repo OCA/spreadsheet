@@ -12,9 +12,183 @@
             />
         </div>
     </t>
+    <t t-name="spreadsheet_oca.FilterPanel" owl="1">
+        <div
+            t-foreach="env.model.getters.getGlobalFilters()"
+            t-as="filter"
+            t-key="filter.id"
+            class="o_spreadsheet_oca_filter"
+        >
+            <div class="spreadsheet_oca_filter_label">
+                <span t-esc="filter.label" />
+            </div>
+            <div class="spreadsheet_oca_filter_value">
+                <FilterValue filter="filter" model="env.model" />
+                <i
+                    class="fa fa-cog btn btn-link text-muted spreadsheet_oca_filter_value_edit"
+                    t-on-click="() =&gt; this.onEditFilter(filter)"
+                />
+            </div>
+        </div>
+        <div class="o-sidePanelButtons">
+            <button
+                t-on-click="() => this.onAddFilter('date')"
+                class="btn"
+            >Add date</button>
+            <button
+                t-on-click="() => this.onAddFilter('relation')"
+                class="btn"
+            >Add relation</button>
+            <button
+                t-on-click="() => this.onAddFilter('text')"
+                class="btn"
+            >Add text</button>
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.EditFilterPanel" owl="1">
+        <div class="o_spreadsheet_oca_filter">
+            <div class="spreadsheet_oca_filter_label">
+                <span>Label</span>
+            </div>
+            <div class="spreadsheet_oca_filter_value">
+                <input type="text" t-model="state.label" class="o_input" />
+            </div>
+        </div>
+        <div class="o_spreadsheet_oca_filter" t-if="state.type == 'date'">
+            <div class="spreadsheet_oca_filter_label">Time range</div>
+            <div class="spreadsheet_oca_filter_value">
+                <select
+                    t-model="state.rangeType"
+                    t-on-change="onDateRangeChange"
+                    class="o_input"
+                >
+                    <t t-foreach="dateRangeTypes" t-as="range" t-key="range.type">
+                        <option
+                            t-att-selected="state.rangeType === range.type ? 1 : 0"
+                            t-att-value="range.type"
+                        >
+                            <t t-esc="range.description" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </div>
+        <div class="o_spreadsheet_oca_filter" t-if="state.type !== 'relation'">
+            <div class="spreadsheet_oca_filter_label">Default value</div>
+            <div
+                t-if="state.type === 'date' and state.rangeType !== 'relative'"
+                class="spreadsheet_oca_filter_value"
+            >
+                <input
+                    type="checkbox"
+                    class="me-2"
+                    id="default_to_current_period"
+                    t-att-checked="state.defaultsToCurrentPeriod"
+                />
+                <label
+                    for="default_to_current_period"
+                > Automatically filter on the current period </label>
+            </div>
+            <div
+                t-if="state.type === 'date'and state.rangeType === 'relative'"
+                class="spreadsheet_oca_filter_value"
+            >
+                <select t-model="state.defaultValue" class="o_input">
+                    <option value="" />
+                    <t
+                        t-foreach="relativeDateRangeTypes"
+                        t-as="range"
+                        t-key="range.type"
+                    >
+                        <option
+                            t-att-selected="range.type === state.defaultValue ? 1 : 0"
+                            t-att-value="range.type"
+                        >
+                            <t t-esc="range.description" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+            <input
+                t-if="state.type === 'text'"
+                type="text"
+                class="o_input o_global_filter_default_value"
+                t-model="state.defaultValue"
+            />
+        </div>
 
+        <div class="o_spreadsheet_oca_filter" t-if="state.type === 'relation'">
+            <div class="spreadsheet_oca_filter_label">Related model</div>
+            <div class="spreadsheet_oca_filter_value">
+                <ModelSelector
+                    value="state.modelName.label"
+                    models="models"
+                    onModelSelected.bind="onModelSelected"
+                />
+            </div>
+        </div>
+        <div
+            class="o_spreadsheet_oca_filter"
+            t-foreach="Object.values(state.objects)"
+            t-as="object"
+            t-key="object.id"
+            t-if="object.model"
+        >
+            <div class="spreadsheet_oca_filter_label">
+                <span t-esc="object.name" /> - <span t-esc="object.tag" />
+            </div>
+            <div class="spreadsheet_oca_filter_value">
+                <ModelFieldSelector
+                    fieldName="object.fieldMatch.chain || ''"
+                    resModel="object.model"
+                    readonly="false"
+                    isDebugMode="!!env.debug"
+                    update="(name) => this.onFieldMatchUpdate(object, name)"
+                />
+            </div>
+
+            <div class="spreadsheet_oca_filter_value" t-if="state.type === 'date'">
+                <select
+                    t-model="object.fieldMatch.offset"
+                    t-on-change="(ev) => this.onChangeFieldMatchOffset(object, ev)"
+                    class="o_input"
+                >
+                    <t t-foreach="dateOffset" t-as="offset" t-key="offset.value">
+                        <option
+                            t-att-selected="offset.value === object.fieldMatch.offset ? 1 : 0"
+                            t-att-value="offset.value"
+                        >
+                            <t t-esc="offset.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </div>
+        <div class="o-sidePanelButtons">
+            <button t-on-click="onRemove" class="btn btn-danger">Remove</button>
+            <button t-on-click="onCancel" class="btn btn-warning">Cancel</button>
+            <button t-on-click="onSave" class="btn btn-primary">Save</button>
+        </div>
+    </t>
     <t t-name="spreadsheet_oca.SpreadsheetRenderer" owl="1">
         <Spreadsheet model="spreadsheet_model" />
+        <Dialog
+            title="state.dialogTitle"
+            onClosed.bind="closeDialog"
+            t-if="state.dialogDisplayed"
+        >
+            <input type="text" class="form-control" t-model="state.dialogContent" />
+            <t t-set-slot="buttons">
+                <button
+                    class="btn btn-primary"
+                    t-on-click="confirmDialog"
+                >Confirm</button>
+                <button
+                    class="btn btn-secondary"
+                    t-on-click="closeDialog"
+                >Cancel</button>
+            </t>
+        </Dialog>
     </t>
     <t t-name="spreadsheet_oca.SpreadsheetName" owl="1">
         <input
