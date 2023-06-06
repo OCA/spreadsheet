@@ -91,7 +91,6 @@ export class EditFilterPanel extends Component {
                 ModelFields.push(fields);
             }
         }
-        console.log(this.state.objects);
         this.models = [
             ...new Set(
                 ModelFields.map((field_items) => Object.values(field_items))
@@ -162,7 +161,7 @@ export class EditFilterPanel extends Component {
         this.env.openSidePanel("FilterPanel", {});
     }
     onFieldMatchUpdate(object, name) {
-        this.state.objects[object.id].fieldMatch.chain = name.chain;
+        this.state.objects[object.id].fieldMatch.chain = name;
     }
 }
 
