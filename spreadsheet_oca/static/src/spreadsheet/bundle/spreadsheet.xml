@@ -143,6 +143,7 @@
                     resModel="object.model"
                     readonly="false"
                     isDebugMode="!!env.debug"
+                    t-on-change="() => this.onChangeFieldSelector(ev)"
                     update="(name) => this.onFieldMatchUpdate(object, name)"
                 />
             </div>
