@@ -1,5 +1,6 @@
 /** @odoo-module **/
 
+import ListDataSource from "@spreadsheet/list/list_data_source";
 import PivotDataSource from "@spreadsheet/pivot/pivot_data_source";
 import {SpreadsheetControlPanel} from "./spreadsheet_controlpanel.esm";
 import {SpreadsheetRenderer} from "./spreadsheet_renderer.esm";
@@ -91,7 +92,7 @@ export class ActionSpreadsheetOca extends Component {
             definition,
         });
     }
-    async importDataPivot(spreadsheet_model) {
+    importCreateOrReuseSheet(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
         var row = 0;
         if (this.import_data.new === undefined && this.import_data.new_sheet) {
@@ -128,6 +129,48 @@ export class ActionSpreadsheetOca extends Component {
             }
             row += 1;
         }
+        return {sheetId, row};
+    }
+    async importDataList(spreadsheet_model) {
+        var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
+        const dataSourceId = uuidGenerator.uuidv4();
+        var list_info = {
+            metaData: {
+                resModel: this.import_data.metaData.model,
+                columns: this.import_data.metaData.columns.map((column) => column.name),
+                fields: this.import_data.metaData.fields,
+            },
+            searchParams: {
+                domain: this.import_data.metaData.domain,
+                context: this.import_data.metaData.context,
+                orderBy: this.import_data.metaData.orderBy,
+            },
+            name: this.import_data.metaData.name,
+        };
+        const dataSource = spreadsheet_model.config.dataSources.add(
+            dataSourceId,
+            ListDataSource,
+            list_info
+        );
+        await dataSource.load();
+        spreadsheet_model.dispatch("INSERT_ODOO_LIST", {
+            sheetId,
+            col: 0,
+            row: row,
+            id: spreadsheet_model.getters.getNextListId(),
+            dataSourceId,
+            definition: list_info,
+            linesNumber: this.import_data.metaData.threshold,
+            columns: this.import_data.metaData.columns,
+        });
+        const columns = [];
+        for (let col = 0; col < this.import_data.metaData.columns.length; col++) {
+            columns.push(col);
+        }
+        spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {sheetId, cols: columns});
+    }
+    async importDataPivot(spreadsheet_model) {
+        var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
         const dataSourceId = uuidGenerator.uuidv4();
         const pivot_info = {
             metaData: {
@@ -166,6 +209,9 @@ export class ActionSpreadsheetOca extends Component {
         }
         if (this.import_data.mode === "graph") {
             await this.importDataGraph(spreadsheet_model);
+        }
+        if (this.import_data.mode === "list") {
+            await this.importDataList(spreadsheet_model);
         }
     }
 }
