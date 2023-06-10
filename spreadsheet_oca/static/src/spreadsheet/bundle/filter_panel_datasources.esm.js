@@ -27,7 +27,19 @@ topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
             separator: index === env.model.getters.getPivotIds().length - 1,
         })
     );
-    return children.concat([
+    const lists = env.model.getters.getListIds().map((listId, index) => {
+        return createFullMenuItem(`data_source_list_${listId}`, {
+            name: env.model.getters.getListDisplayName(listId),
+            sequence: 1010,
+            action: (child_env) => {
+                child_env.model.dispatch("SELECT_ODOO_LIST", {listId: listId});
+                child_env.openSidePanel("ListPanel", {});
+            },
+            icon: "fa fa-list",
+            separator: index === env.model.getters.getListIds().length - 1,
+        });
+    });
+    return children.concat(lists).concat([
         createFullMenuItem(`refresh_all_data`, {
             name: _t("Refresh all data"),
             sequence: 110,
@@ -118,6 +130,73 @@ PivotPanel.components = {
 };
 
 sidePanelRegistry.add("PivotPanel", {
-    title: "Pivot table",
+    title: "Pivot table information",
     Body: PivotPanel,
+});
+
+export class ListPanelDisplay extends Component {
+    setup() {
+        this.dialog = useService("dialog");
+        onWillStart(this.modelData.bind(this));
+        onWillUpdateProps(this.modelData.bind(this));
+    }
+    async modelData() {
+        this.ListDataSource = await this.env.model.getters.getAsyncListDataSource(
+            this.props.listId
+        );
+        this.modelLabel = await this.ListDataSource.getModelLabel();
+    }
+    get domain() {
+        return new Domain(this.props.listDefinition.domain).toString();
+    }
+    get lastUpdate() {
+        const lastUpdate = this.ListDataSource.lastUpdate;
+        if (lastUpdate) {
+            return time_to_str(new Date(lastUpdate));
+        }
+        return _t("not updated");
+    }
+    editDomain() {
+        this.dialog.add(DomainSelectorDialog, {
+            resModel: this.props.listDefinition.model,
+            initialValue: this.domain,
+            readonly: false,
+            isDebugMode: Boolean(this.env.debug),
+            onSelected: this.onSelectDomain.bind(this),
+        });
+    }
+    onSelectDomain(domain) {
+        this.env.model.dispatch("UPDATE_ODOO_LIST_DOMAIN", {
+            listId: this.props.listId,
+            domain: new Domain(domain).toList(),
+        });
+    }
+}
+
+ListPanelDisplay.template = "spreadsheet_oca.ListPanelDisplay";
+ListPanelDisplay.components = {
+    DomainSelector,
+};
+ListPanelDisplay.properties = {
+    listId: String,
+    listDefinition: Object,
+};
+
+export class ListPanel extends Component {
+    get listId() {
+        return this.env.model.getters.getSelectedListId();
+    }
+    get listDefinition() {
+        return this.env.model.getters.getListDefinition(this.listId);
+    }
+}
+
+ListPanel.template = "spreadsheet_oca.ListPanel";
+ListPanel.components = {
+    ListPanelDisplay,
+};
+
+sidePanelRegistry.add("ListPanel", {
+    title: "List information",
+    Body: ListPanel,
 });
