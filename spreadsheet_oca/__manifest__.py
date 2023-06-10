@@ -24,6 +24,8 @@
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/graph_controller.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/list_controller.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/list_renderer.esm.js",
         ],
         "spreadsheet.o_spreadsheet": [
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml",

@@ -14,6 +14,21 @@
         </xpath>
     </t>
 
+    <t t-inherit="web.ListView.Buttons" t-inherit-mode="extension" owl="1">
+        <xpath expr="//button[hasclass('o_list_export_xlsx')]/.." position="after">
+                <t t-if="!env.isSmall">
+                    <button
+                    type="button"
+                    class="btn btn-secondary fa fa-table o_list_export_spreadsheet"
+                    data-tooltip="Add to spreadsheet"
+                    aria-label="Add to spreadesheet"
+                    t-on-click="(ev) => this.onSpreadsheetButtonClicked(ev)"
+                />
+                </t>
+        </xpath>
+    </t>
+
+
     <t t-inherit="web.GraphView.Buttons" t-inherit-mode="extension" owl="1">
         <xpath expr="//button[hasclass('fa-pie-chart')]" position="after">
             <button
