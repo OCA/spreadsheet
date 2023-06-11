@@ -104,6 +104,21 @@ export class PivotPanelDisplay extends Component {
             domain: new Domain(domain).toList(),
         });
     }
+    async insertPivot() {
+        const datasourceModel = await this.env.model.getters
+            .getPivotDataSource(this.props.pivotId)
+            .copyModelWithOriginalDomain();
+        const tableStructure = datasourceModel.getTableStructure().export();
+        const selectedZone = this.env.model.getters.getSelectedZone();
+        this.env.model.dispatch("RE_INSERT_PIVOT", {
+            id: this.props.pivotId,
+            col: selectedZone.left,
+            row: selectedZone.top,
+            sheetId: this.env.model.getters.getActiveSheetId(),
+            table: tableStructure,
+        });
+        this.env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
+    }
 }
 
 PivotPanelDisplay.template = "spreadsheet_oca.PivotPanelDisplay";
