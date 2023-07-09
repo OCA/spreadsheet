@@ -86,12 +86,12 @@ export class EditFilterPanel extends Component {
                         objectClass.getFieldMatching(objectId, this.props.filter.id) ||
                         {},
                     fields: fields,
+                    type: objectType,
                     model: objectClass.getModel(objectId),
                 };
                 ModelFields.push(fields);
             }
         }
-        console.log(this.state.objects);
         this.models = [
             ...new Set(
                 ModelFields.map((field_items) => Object.values(field_items))
@@ -133,7 +133,6 @@ export class EditFilterPanel extends Component {
             ? "EDIT_GLOBAL_FILTER"
             : "ADD_GLOBAL_FILTER";
         this.env.openSidePanel("FilterPanel", {});
-
         var filter = {
             id: this.props.filter.id || uuidGenerator.uuidv4(),
             type: this.state.type,
@@ -146,7 +145,7 @@ export class EditFilterPanel extends Component {
         var filterMatching = {};
         Object.values(this.state.objects).forEach((object) => {
             filterMatching[object.type] = filterMatching[object.type] || {};
-            filterMatching[object.type][object.id] = {...object.fieldMatch};
+            filterMatching[object.type][object.objectId] = {...object.fieldMatch};
         });
         this.env.model.dispatch(action, {id: filter.id, filter, ...filterMatching});
 
@@ -162,7 +161,7 @@ export class EditFilterPanel extends Component {
         this.env.openSidePanel("FilterPanel", {});
     }
     onFieldMatchUpdate(object, name) {
-        this.state.objects[object.id].fieldMatch.chain = name.chain;
+        this.state.objects[object.id].fieldMatch.chain = name;
     }
 }
 

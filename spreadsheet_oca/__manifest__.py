@@ -24,10 +24,13 @@
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/graph_controller.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/list_controller.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/list_renderer.esm.js",
         ],
         "spreadsheet.o_spreadsheet": [
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml",
             "spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_controlpanel.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_action.esm.js",

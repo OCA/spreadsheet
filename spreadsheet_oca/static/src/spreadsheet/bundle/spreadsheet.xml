@@ -12,6 +12,110 @@
             />
         </div>
     </t>
+    <t t-name="spreadsheet_oca.PivotPanel" owl="1">
+        <PivotPanelDisplay pivotId="pivotId" pivotDefinition="pivotDefinition" />
+    </t>
+    <t t-name="spreadsheet_oca.PivotPanelDisplay" owl="1">
+        <div class="o_spreadsheet_oca_datasource_panel">
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >Pivot name</div>
+                <span t-esc="env.model.getters.getPivotDisplayName(props.pivotId)" />
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
+                <div><t t-esc="modelLabel" /> (<t
+                        t-esc="props.pivotDefinition.model"
+                    />)</div>
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div class="o_spreadsheet_oca_datasource_panel_field_title">Domain</div>
+                <DomainSelector
+                    resModel="props.pivotDefinition.model"
+                    value="domain"
+                    t-key="'pivot_' + props.pivotId"
+                />
+                <div class="btn btn-link" t-on-click="editDomain">
+                    Edit domain
+                </div>
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >Dimensions</div>
+                <t t-foreach="pivotDimensions" t-as="dimension" t-key="dimension">
+                    <div t-esc="dimension" />
+                </t>
+            </div>
+            <div
+                class="o_spreadsheet_oca_datasource_panel_field"
+                t-if="props.pivotDefinition.sortedColumn"
+            >
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >Sorting</div>
+                <div t-esc="sortInformation" />
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >Measures</div>
+                <t
+                    t-foreach="props.pivotDefinition.measures"
+                    t-as="measure"
+                    t-key="measure"
+                >
+                    <div t-esc="measure" />
+                </t>
+            </div>
+            <div class="o_spreadsheet_oca_pivot_panel_info">
+                Last updated at <t t-esc="lastUpdate" />
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <button
+                    t-on-click="insertPivot"
+                    class="btn btn-info"
+                >Insert pivot</button>
+            </div>
+        </div>
+
+    </t>
+
+    <t t-name="spreadsheet_oca.ListPanel" owl="1">
+        <ListPanelDisplay listId="listId" listDefinition="listDefinition" />
+    </t>
+    <t t-name="spreadsheet_oca.ListPanelDisplay" owl="1">
+        <div class="o_spreadsheet_oca_datasource_panel">
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >List name</div>
+                <span t-esc="env.model.getters.getListDisplayName(props.listId)" />
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
+                <div><t t-esc="modelLabel" /> (<t
+                        t-esc="props.listDefinition.model"
+                    />)</div>
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div class="o_spreadsheet_oca_datasource_panel_field_title">Domain</div>
+                <DomainSelector
+                    resModel="props.listDefinition.model"
+                    value="domain"
+                    t-key="'list_' + props.listId"
+                />
+                <div class="btn btn-link" t-on-click="editDomain">
+                    Edit domain
+                </div>
+            </div>
+            <div class="o_spreadsheet_oca_pivot_panel_info">
+                Last updated at <t t-esc="lastUpdate" />
+            </div>
+        </div>
+
+    </t>
     <t t-name="spreadsheet_oca.FilterPanel" owl="1">
         <div
             t-foreach="env.model.getters.getGlobalFilters()"
@@ -143,6 +247,7 @@
                     resModel="object.model"
                     readonly="false"
                     isDebugMode="!!env.debug"
+                    t-on-change="() => this.onChangeFieldSelector(ev)"
                     update="(name) => this.onFieldMatchUpdate(object, name)"
                 />
             </div>
