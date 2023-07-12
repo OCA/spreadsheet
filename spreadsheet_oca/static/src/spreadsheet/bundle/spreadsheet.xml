@@ -386,4 +386,40 @@
             </div>
         </div>
     </t>
+    <t t-name="spreadsheet_oca.OdooPanel" owl="1">
+        <div class="o-section">
+            <div class="o-section-title">Link to Odoo menu</div>
+            <div class="o-section-value">
+                <Many2OneField
+                    value="menuId"
+                    relation="'ir.ui.menu'"
+                    record="record"
+                    update.bind="updateMenu"
+                    canOpen="false"
+                />
+            </div>
+        </div>
+    </t>
+    <t
+        t-name="spreadsheet_oca.OdooStackablePanel"
+        t-inherit="spreadsheet_oca.OdooPanel"
+        t-inherit-mode="primary"
+        owl="1"
+    >
+        <xpath expr="div[hasclass('o-section')]" position="before">
+            <div class="o-section">
+                <label>
+                    <div class="o_checkbox">
+                        <input
+                            type="checkbox"
+                            name="stacked"
+                            t-att-checked="props.definition.stacked"
+                            t-on-change="onChangeStacked"
+                        />
+                        Stacked
+                    </div>
+                </label>
+            </div>
+        </xpath>
+    </t>
 </templates>
