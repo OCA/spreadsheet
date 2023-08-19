@@ -18,13 +18,13 @@ export class OdooPanel extends Component {
         if (menu) {
             return [menu.id, menu.name];
         }
-        return undefined;
+        return false;
     }
     updateMenu(menuId) {
         if (!menuId) {
             this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
                 chartId: this.props.figureId,
-                odooMenuId: undefined,
+                odooMenuId: false,
             });
             return;
         }
