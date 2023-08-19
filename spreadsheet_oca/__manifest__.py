@@ -35,6 +35,8 @@
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_controlpanel.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_action.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panel.esm.js",
         ],
     },
 }
