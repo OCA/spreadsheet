@@ -422,4 +422,105 @@
             </div>
         </xpath>
     </t>
+    <t
+        t-inherit="spreadsheet.o-spreadsheet-BarConfigPanel"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//div" position="inside">
+            <div class="o-section">
+                <div class="o-section-title">Link to Odoo menu</div>
+                <div class="o-section-value">
+                    <Many2OneField
+                        value="menuId"
+                        relation="'ir.ui.menu'"
+                        record="record"
+                        update.bind="updateMenu"
+                        canOpen="false"
+                    />
+                </div>
+            </div>
+        </xpath>
+    </t>
+    <t
+        t-inherit="spreadsheet.o-spreadsheet-LineConfigPanel"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//div" position="inside">
+            <div class="o-section">
+                <div class="o-section-title">Link to Odoo menu</div>
+                <div class="o-section-value">
+                    <Many2OneField
+                        value="menuId"
+                        relation="'ir.ui.menu'"
+                        record="record"
+                        update.bind="updateMenu"
+                        canOpen="false"
+                    />
+                </div>
+            </div>
+        </xpath>
+    </t>
+    <t
+        t-inherit="spreadsheet.o-spreadsheet-LineBarPieConfigPanel"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//div" position="inside">
+            <div class="o-section">
+                <div class="o-section-title">Link to Odoo menu</div>
+                <div class="o-section-value">
+                    <Many2OneField
+                        value="menuId"
+                        relation="'ir.ui.menu'"
+                        record="record"
+                        update.bind="updateMenu"
+                        canOpen="false"
+                    />
+                </div>
+            </div>
+        </xpath>
+    </t>
+    <t
+        t-inherit="spreadsheet.o-spreadsheet-GaugeChartConfigPanel"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//div" position="inside">
+            <div class="o-section">
+                <div class="o-section-title">Link to Odoo menu</div>
+                <div class="o-section-value">
+                    <Many2OneField
+                        value="menuId"
+                        relation="'ir.ui.menu'"
+                        record="record"
+                        update.bind="updateMenu"
+                        canOpen="false"
+                    />
+                </div>
+            </div>
+        </xpath>
+    </t>
+    <t
+        t-inherit="spreadsheet.o-spreadsheet-ScorecardChartConfigPanel"
+        t-inherit-mode="extension"
+        owl="1"
+    >
+        <xpath expr="//div" position="inside">
+            <div class="o-section">
+                <div class="o-section-title">Link to Odoo menu</div>
+                <div class="o-section-value">
+                    <Many2OneField
+                        value="menuId"
+                        relation="'ir.ui.menu'"
+                        record="record"
+                        update.bind="updateMenu"
+                        canOpen="false"
+                    />
+                </div>
+            </div>
+        </xpath>
+    </t>
+
 </templates>
