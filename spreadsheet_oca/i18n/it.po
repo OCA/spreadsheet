@@ -52,7 +52,6 @@ msgstr "Aggiungi al foglio di lavoro"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
 #, python-format
 msgid "Add to spreadsheet"
@@ -81,7 +80,6 @@ msgstr "Prima del precedente"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
 #, python-format
@@ -174,7 +172,6 @@ msgstr "Nome visualizzato"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Domain"
 msgstr "Dominio"
@@ -187,7 +184,6 @@ msgstr "Modifica"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Edit domain"
@@ -286,18 +282,12 @@ msgstr "Ultimo aggiornamento il"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Last updated at"
 msgstr "Ultimo aggiornamento il"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Link to Odoo menu"
@@ -329,7 +319,6 @@ msgstr "Modo"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
 #, python-format
@@ -513,8 +502,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: spreadsheet_oca
-#. odoo-python
 #. odoo-javascript
+#. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
@@ -556,7 +545,6 @@ msgstr "è richiesto il nome"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #, python-format
 msgid "not updated"
