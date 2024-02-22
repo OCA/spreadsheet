@@ -3,7 +3,7 @@
 
 import json
 
-from odoo import fields, models
+from odoo import api, fields, models
 from odoo.exceptions import AccessError
 
 
@@ -31,13 +31,11 @@ class SpreadsheetAbstract(models.AbstractModel):
             "name": self.name,
             "spreadsheet_raw": self.spreadsheet_raw,
             "revisions": [
-                {
-                    "type": revision.type,
-                    "clientId": revision.client_id,
-                    "nextRevisionId": revision.next_revision_id,
-                    "serverRevisionId": revision.server_revision_id,
-                    "commands": json.loads(revision.commands),
-                }
+                dict(
+                    json.loads(revision.commands),
+                    nextRevisionId=revision.next_revision_id,
+                    serverRevisionId=revision.server_revision_id,
+                )
                 for revision in self.spreadsheet_revision_ids
             ],
             "mode": mode,
@@ -64,11 +62,22 @@ class SpreadsheetAbstract(models.AbstractModel):
                     "client_id": message.get("clientId"),
                     "next_revision_id": message["nextRevisionId"],
                     "server_revision_id": message["serverRevisionId"],
-                    "commands": json.dumps(message.get("commands", [])),
+                    "commands": json.dumps(
+                        self._build_spreadsheet_revision_commands_data(message)
+                    ),
                 }
             )
         self.env["bus.bus"]._sendone(channel, "spreadsheet_oca", message)
         return True
+
+    @api.model
+    def _build_spreadsheet_revision_commands_data(self, message):
+        """Prepare spreadsheet revision commands data from the message"""
+        commands = dict(message)
+        commands.pop("serverRevisionId", None)
+        commands.pop("nextRevisionId", None)
+        commands.pop("clientId", None)
+        return commands
 
     def write(self, vals):
         if "spreadsheet_raw" in vals:
