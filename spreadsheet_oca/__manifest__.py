@@ -17,6 +17,7 @@
         "data/spreadsheet_spreadsheet_import_mode.xml",
         "wizards/spreadsheet_spreadsheet_import.xml",
     ],
+    "demo": ["demo/spreadsheet_spreadsheet.xml"],
     "assets": {
         "web.assets_backend": [
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet.scss",
