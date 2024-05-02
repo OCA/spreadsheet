@@ -225,7 +225,7 @@
             <div class="spreadsheet_oca_filter_label">Related model</div>
             <div class="spreadsheet_oca_filter_value">
                 <ModelSelector
-                    value="state.modelName.label"
+                    value="state.modelName.label or ''"
                     models="models"
                     onModelSelected.bind="onModelSelected"
                 />
