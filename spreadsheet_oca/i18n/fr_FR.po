@@ -500,8 +500,8 @@ msgid "Type"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-javascript
 #. odoo-python
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
