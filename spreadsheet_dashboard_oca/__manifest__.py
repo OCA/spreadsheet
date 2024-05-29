@@ -5,7 +5,7 @@
     "name": "Spreadsheet Dashboard Oca",
     "summary": """
         Use OCA Spreadsheets on dashboards configuration""",
-    "version": "16.0.1.1.0",
+    "version": "16.0.1.1.1",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
@@ -15,6 +15,7 @@
     ],
     "data": [
         "wizards/spreadsheet_spreadsheet_import.xml",
+        "views/spreadsheet_dashboard_group_views.xml",
         "views/spreadsheet_dashboard.xml",
         "data/spreadsheet_spreadsheet_import_mode.xml",
     ],
