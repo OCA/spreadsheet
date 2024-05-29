@@ -15,6 +15,7 @@
     ],
     "data": [
         "wizards/spreadsheet_spreadsheet_import.xml",
+        "views/spreadsheet_dashboard_group_views.xml",
         "views/spreadsheet_dashboard.xml",
         "data/spreadsheet_spreadsheet_import_mode.xml",
     ],

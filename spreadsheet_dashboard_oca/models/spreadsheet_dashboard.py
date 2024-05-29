@@ -11,9 +11,11 @@ class SpreadsheetDashboard(models.Model):
     _name = "spreadsheet.dashboard"
     _inherit = ["spreadsheet.dashboard", "spreadsheet.abstract"]
 
+    active = fields.Boolean(default=True)
     spreadsheet_raw = fields.Serialized(
         inverse="_inverse_spreadsheet_raw", compute="_compute_spreadsheet_raw"
     )
+    can_edit = fields.Boolean(compute="_compute_can_edit")
 
     @api.depends("data")
     def _compute_spreadsheet_raw(self):
@@ -30,3 +32,13 @@ class SpreadsheetDashboard(models.Model):
             record.data = base64.encodebytes(
                 json.dumps(record.spreadsheet_raw).encode("UTF-8")
             )
+
+    def _compute_can_edit(self):
+        """We can edit if the record doesn't have XML-ID, or the XML-ID is noupdate=1"""
+        self.can_edit = True
+        for record in self.filtered("id"):
+            imd = self.env["ir.model.data"].search(
+                [("model", "=", record._name), ("res_id", "=", record.id)]
+            )
+            if imd and imd.module != "__export__":
+                record.can_edit = imd.noupdate
