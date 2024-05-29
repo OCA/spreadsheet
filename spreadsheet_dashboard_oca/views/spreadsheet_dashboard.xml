@@ -15,13 +15,25 @@
         <field name="arch" type="xml">
             <tree position="attributes">
                 <attribute name="create">1</attribute>
+                <attribute name="decoration-muted">not active</attribute>
             </tree>
             <tree position="inside">
+                <field name="can_edit" invisible="1" />
                 <field
                     name="data"
                     groups="base.group_no_one"
                     widget="binary"
                     filename="name"
+                />
+                <!-- Put the button 2 times for having the edit button explicitly disabled for discoverability -->
+                <button
+                    name="open_spreadsheet"
+                    type="object"
+                    string="Edit"
+                    icon="fa-pencil"
+                    disabled="1"
+                    groups="base.group_system"
+                    attrs="{'invisible': [('can_edit', '=', True)]}"
                 />
                 <button
                     name="open_spreadsheet"
@@ -29,7 +41,16 @@
                     string="Edit"
                     icon="fa-pencil"
                     groups="base.group_system"
+                    attrs="{'invisible': [('can_edit', '=', False)]}"
                 />
+                <button
+                    name="copy"
+                    type="object"
+                    string="Copy"
+                    icon="fa-copy"
+                    groups="base.group_system"
+                />
+                <field name="active" widget="boolean_toggle" />
             </tree>
         </field>
     </record>
