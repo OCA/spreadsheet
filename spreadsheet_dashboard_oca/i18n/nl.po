@@ -17,6 +17,21 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__active
+msgid "Active"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__can_edit
+msgid "Can Edit"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
+msgid "Copy"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
 msgid "Dashboard"
 msgstr ""
