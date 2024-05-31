@@ -87,6 +87,7 @@ export class SpreadsheetRenderer extends Component {
         useSubEnv({
             saveSpreadsheet: this.onSpreadsheetSaved.bind(this),
             editText: this.editText.bind(this),
+            askConfirmation: this.askConfirmation.bind(this),
         });
         onWillStart(async () => {
             await loadSpreadsheetDependencies();
@@ -105,6 +106,7 @@ export class SpreadsheetRenderer extends Component {
         this.state.dialogDisplayed = false;
         this.state.dialogTitle = "Spreadsheet";
         this.state.dialogContent = undefined;
+        this.state.dialogHideInputBox = false;
     }
     onSpreadsheetSaved() {
         const data = this.spreadsheet_model.exportData();
@@ -117,6 +119,15 @@ export class SpreadsheetRenderer extends Component {
         this.state.dialogDisplayed = true;
         this.confirmDialog = () => {
             callback(this.state.dialogContent);
+            this.closeDialog();
+        };
+    }
+    askConfirmation(content, confirm) {
+        this.state.dialogContent = content;
+        this.state.dialogDisplayed = true;
+        this.state.dialogHideInputBox = true;
+        this.confirmDialog = () => {
+            confirm();
             this.closeDialog();
         };
     }
