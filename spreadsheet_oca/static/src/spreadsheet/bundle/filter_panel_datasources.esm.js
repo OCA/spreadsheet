@@ -119,6 +119,15 @@ export class PivotPanelDisplay extends Component {
         });
         this.env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
     }
+    deletePivot() {
+        this.env.askConfirmation(
+            _t("Are you sure you want to delete this pivot ?"),
+            () => {
+                this.env.model.dispatch("REMOVE_PIVOT", {pivotId: this.props.pivotId});
+                this.env.openSidePanel("FilterPanel", {});
+            }
+        );
+    }
 }
 
 PivotPanelDisplay.template = "spreadsheet_oca.PivotPanelDisplay";
@@ -185,6 +194,17 @@ export class ListPanelDisplay extends Component {
             listId: this.props.listId,
             domain: new Domain(domain).toList(),
         });
+    }
+    deleteList() {
+        this.env.askConfirmation(
+            _t("Are you sure you want to delete this list ?"),
+            () => {
+                this.env.model.dispatch("REMOVE_ODOO_LIST", {
+                    listId: this.props.listId,
+                });
+                this.env.openSidePanel("FilterPanel", {});
+            }
+        );
     }
 }
 

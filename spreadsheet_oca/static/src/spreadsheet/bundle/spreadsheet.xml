@@ -72,11 +72,12 @@
             <div class="o_spreadsheet_oca_pivot_panel_info">
                 Last updated at <t t-esc="lastUpdate" />
             </div>
-            <div class="o_spreadsheet_oca_datasource_panel_field">
+            <div class="o-SidePanelButtons">
                 <button
                     t-on-click="insertPivot"
                     class="btn btn-info"
                 >Insert pivot</button>
+                <button t-on-click="deletePivot" class="btn btn-danger">Delete</button>
             </div>
         </div>
 
@@ -112,6 +113,9 @@
             </div>
             <div class="o_spreadsheet_oca_pivot_panel_info">
                 Last updated at <t t-esc="lastUpdate" />
+            </div>
+            <div class="o-SidePanelButtons">
+                <button t-on-click="deleteList" class="btn btn-danger">Delete</button>
             </div>
         </div>
 
