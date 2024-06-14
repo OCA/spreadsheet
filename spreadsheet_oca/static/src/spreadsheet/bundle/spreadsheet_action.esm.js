@@ -172,10 +172,16 @@ export class ActionSpreadsheetOca extends Component {
     async importDataPivot(spreadsheet_model) {
         var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
         const dataSourceId = uuidGenerator.uuidv4();
+        const colGroupBys = this.import_data.metaData.colGroupBys.concat(
+            this.import_data.metaData.expandedColGroupBys
+        );
+        const rowGroupBys = this.import_data.metaData.rowGroupBys.concat(
+            this.import_data.metaData.expandedRowGroupBys
+        );
         const pivot_info = {
             metaData: {
-                colGroupBys: this.import_data.metaData.colGroupBys,
-                rowGroupBys: this.import_data.metaData.rowGroupBys,
+                colGroupBys,
+                rowGroupBys,
                 activeMeasures: this.import_data.metaData.activeMeasures,
                 resModel: this.import_data.metaData.resModel,
             },
