@@ -3,14 +3,14 @@
 
     <t t-inherit="web.PivotView.Buttons" t-inherit-mode="extension" owl="1">
         <xpath expr="//button[hasclass('o_pivot_download')]" position="after">
-            <button
-                class="btn btn-secondary fa fa-table"
-                t-on-click="onSpreadsheetButtonClicked"
-                data-tooltip="Add to spreadsheet"
-                aria-label="Add to spreadsheet"
-                t-attf-disabled="{{noDataDisplayed ? 'disabled' : false}}"
-            />
-
+            <div t-att-data-tooltip="getSpreadsheetInsertionTooltip()">
+                <button
+                    class="btn btn-secondary fa fa-table"
+                    t-on-click="onSpreadsheetButtonClicked"
+                    aria-label="Add to spreadsheet"
+                    t-att-disabled="disableSpreadsheetInsertion()"
+                />
+            </div>
         </xpath>
     </t>
 
