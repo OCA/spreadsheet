@@ -51,6 +51,7 @@ msgstr "Aggiungi al foglio di calcolo"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
 #, python-format
@@ -108,6 +109,13 @@ msgstr "Codice"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
 msgid "Commands"
 msgstr "Comandi"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#, python-format
+msgid "Comparisons in pivot are not supprted"
+msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -175,6 +183,13 @@ msgstr "Nome visualizzato"
 #, python-format
 msgid "Domain"
 msgstr "Dominio"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#, python-format
+msgid "Duplicated groupbys in pivot are not supprted"
+msgstr ""
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
