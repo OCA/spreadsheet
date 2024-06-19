@@ -208,6 +208,11 @@ export class ActionSpreadsheetOca extends Component {
             dataSourceId,
             definition: pivot_info,
         });
+        const columns = [];
+        for (let col = 0; col < table.cols[table.cols.length - 1].length; col++) {
+            columns.push(col);
+        }
+        spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {sheetId, cols: columns});
     }
     async importData(spreadsheet_model) {
         if (this.import_data.mode === "pivot") {
