@@ -49,6 +49,7 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
 #, python-format
@@ -105,6 +106,13 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
 msgid "Commands"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#, python-format
+msgid "Comparisons in pivot are not supprted"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -172,6 +180,13 @@ msgstr ""
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Domain"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#, python-format
+msgid "Duplicated groupbys in pivot are not supprted"
 msgstr ""
 
 #. module: spreadsheet_oca
