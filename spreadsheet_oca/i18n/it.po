@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-04-23 15:35+0000\n"
-"Last-Translator: Riccardo Bellanova <bellanova@webmonks.it>\n"
+"PO-Revision-Date: 2024-06-24 14:35+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -115,7 +115,7 @@ msgstr "Comandi"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #, python-format
 msgid "Comparisons in pivot are not supprted"
-msgstr ""
+msgstr "Le comparazioni nella vista pivot non sono supportate"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -189,7 +189,7 @@ msgstr "Dominio"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #, python-format
 msgid "Duplicated groupbys in pivot are not supprted"
-msgstr ""
+msgstr "Nelle viste pivot Non sono supportati i raggruppamenti duplicati"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
