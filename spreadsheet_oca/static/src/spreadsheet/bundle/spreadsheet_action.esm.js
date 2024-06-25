@@ -186,6 +186,7 @@ export class ActionSpreadsheetOca extends Component {
                 resModel: this.import_data.metaData.resModel,
             },
             searchParams: this.import_data.searchParams,
+            name: this.import_data.metaData.title,
         };
         const dataSource = spreadsheet_model.config.dataSources.add(
             dataSourceId,
