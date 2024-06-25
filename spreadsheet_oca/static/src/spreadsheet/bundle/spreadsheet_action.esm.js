@@ -188,7 +188,7 @@ export class ActionSpreadsheetOca extends Component {
                 sortedColumn: this.import_data.metaData.sortedColumn,
             },
             searchParams: this.import_data.searchParams,
-            name: this.import_data.name,
+            name: this.import_data.metaData.title,
         };
         const dataSource = spreadsheet_model.config.dataSources.add(
             dataSourceId,
