@@ -184,6 +184,7 @@ export class ActionSpreadsheetOca extends Component {
                 rowGroupBys,
                 activeMeasures: this.import_data.metaData.activeMeasures,
                 resModel: this.import_data.metaData.resModel,
+                sortedColumn: this.import_data.metaData.sortedColumn,
             },
             searchParams: this.import_data.searchParams,
         };
