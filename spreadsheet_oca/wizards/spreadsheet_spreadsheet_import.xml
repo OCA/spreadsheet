@@ -12,8 +12,12 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name" />
                         <field name="mode_id" widget="selection_badge" />
+                        <field
+                            name="name"
+                            attrs="{'invisible': [('mode', '!=', 'new')], 'required': [('mode', '=', 'new')]}"
+                        />
+                        <field name="name_data" required="1" />
                         <field name="mode" invisible="1" />
                         <field name="import_data" invisible="1" />
                         <field
