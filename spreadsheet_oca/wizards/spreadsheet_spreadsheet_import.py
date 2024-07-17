@@ -13,7 +13,8 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
     def _default_mode_id(self):
         return self.env["spreadsheet.spreadsheet.import.mode"].search([], limit=1).id
 
-    name = fields.Char(required=True)
+    name = fields.Char()
+    name_data = fields.Char()
     mode_id = fields.Many2one(
         "spreadsheet.spreadsheet.import.mode",
         required=True,
@@ -35,6 +36,7 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
             self._create_spreadsheet_vals()
         )
         import_data = self.import_data
+        import_data["name"] = self.name_data
         import_data["new"] = 1
         return {
             "type": "ir.actions.client",
@@ -48,7 +50,7 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
 
     def _insert_pivot_add(self, new_sheet=False):
         import_data = self.import_data
-        import_data["name"] = self.name
+        import_data["name"] = self.name_data
         import_data["new_sheet"] = new_sheet
         return {
             "type": "ir.actions.client",
