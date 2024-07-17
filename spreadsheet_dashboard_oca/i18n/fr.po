@@ -35,6 +35,11 @@ msgid "Dashboard"
 msgstr ""
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_group_id
+msgid "Dashboard Group"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
 msgid "Edit"
 msgstr ""
@@ -50,6 +55,18 @@ msgid "Name"
 msgstr ""
 
 #. module: spreadsheet_dashboard_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_new_spreadsheet
+msgid "New dashboard"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
+#, python-format
+msgid "Search operation not supported"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_dashboard
 msgid "Spreadsheet Dashboard"
 msgstr ""
@@ -62,6 +79,13 @@ msgstr ""
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_revision_ids
 msgid "Spreadsheet Revision"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
+#, python-format
+msgid "The value has to be a boolean"
 msgstr ""
 
 #. module: spreadsheet_dashboard_oca

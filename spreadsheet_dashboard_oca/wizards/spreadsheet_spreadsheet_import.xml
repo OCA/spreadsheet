@@ -13,10 +13,34 @@
             ref="spreadsheet_oca.spreadsheet_spreadsheet_import_form_view"
         />
         <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute
+                    name="attrs"
+                    operation="attrs_domain_add"
+                    key="invisible"
+                    join_operator="AND"
+                >
+                    [['mode', '!=', 'dashboard_spreadsheet']]
+                </attribute>
+                <attribute
+                    name="attrs"
+                    operation="attrs_domain_add"
+                    key="required"
+                    join_operator="OR"
+                >
+                    [['mode', '=', 'dashboard_spreadsheet']]
+                </attribute>
+            </field>
             <field name="spreadsheet_id" position="after">
                 <field
                     name="dashboard_id"
-                    attrs="{'invisible': [('mode', '!=', 'dashboard')], 'required': [('mode', '=', 'dashboard')]}"
+                    attrs="{'invisible': [('mode', 'not in', ['dashboard', 'dashboard_sheet'])], 'required': [('mode', 'in', ['dashboard', 'dashboard_sheet'])]}"
+                    domain="[('can_edit', '=', True)]"
+                    options="{'no_create': True}"
+                />
+                <field
+                    name="dashboard_group_id"
+                    attrs="{'invisible': [('mode', '!=', 'dashboard_spreadsheet')], 'required': [('mode', '=', 'dashboard_spreadsheet')]}"
                     options="{'no_create': True}"
                 />
             </field>
