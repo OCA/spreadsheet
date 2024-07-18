@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-18 13:04+0000\n"
-"PO-Revision-Date: 2024-07-18 15:06+0200\n"
+"POT-Creation-Date: 2024-07-18 13:08+0000\n"
+"PO-Revision-Date: 2024-07-18 15:09+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -192,6 +192,13 @@ msgstr "Nombre a mostrar"
 #, python-format
 msgid "Domain"
 msgstr "Dominio"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Download XLSX"
+msgstr "Descargar XLSX"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
