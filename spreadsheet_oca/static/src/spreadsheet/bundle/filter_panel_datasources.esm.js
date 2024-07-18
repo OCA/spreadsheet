@@ -8,6 +8,8 @@ import {_t} from "web.core";
 import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
 import {time_to_str} from "web.time";
 import {useService} from "@web/core/utils/hooks";
+import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
+import {makeDynamicRows} from "../utils/dynamic_row_generator.esm";
 
 const {sidePanelRegistry, topbarMenuRegistry} = spreadsheet.registries;
 const {createFullMenuItem} = spreadsheet.helpers;
@@ -116,6 +118,51 @@ export class PivotPanelDisplay extends Component {
             row: selectedZone.top,
             sheetId: this.env.model.getters.getActiveSheetId(),
             table: tableStructure,
+        });
+        this.env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
+    }
+
+    async insertDynamicPivot() {
+        const datasourceModel = await this.env.model.getters
+            .getPivotDataSource(this.props.pivotId)
+            .copyModelWithOriginalDomain();
+        var {cols, rows, measures} = datasourceModel.getTableStructure().export();
+        const number_of_rows = await new Promise((resolve) => {
+            this.dialog.add(
+                FormViewDialog,
+                {
+                    title: this.env._t("Select the quantity of rows"),
+                    resModel: "spreadsheet.select.row.number",
+                    onRecordSaved: async (record) => {
+                        resolve(record.data.number_of_rows);
+                    },
+                },
+                {onClose: () => resolve(false)}
+            );
+        });
+        if (!number_of_rows) {
+            return;
+        }
+        const indentations = rows.map((r) => r.indent);
+        const max_indentation = Math.max(...indentations);
+        rows = makeDynamicRows(
+            this.props.pivotDefinition.rowGroupBys,
+            number_of_rows,
+            1,
+            max_indentation
+        );
+        const table = {
+            cols,
+            rows,
+            measures,
+        };
+        const selectedZone = this.env.model.getters.getSelectedZone();
+        this.env.model.dispatch("RE_INSERT_PIVOT", {
+            id: this.props.pivotId,
+            col: selectedZone.left,
+            row: selectedZone.top,
+            sheetId: this.env.model.getters.getActiveSheetId(),
+            table,
         });
         this.env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
     }

@@ -7,6 +7,7 @@ import {SpreadsheetRenderer} from "./spreadsheet_renderer.esm";
 import {registry} from "@web/core/registry";
 import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
 import {useService} from "@web/core/utils/hooks";
+import {makeDynamicRows} from "../utils/dynamic_row_generator.esm";
 
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
 const actionRegistry = registry.category("actions");
@@ -195,7 +196,17 @@ export class ActionSpreadsheetOca extends Component {
             pivot_info
         );
         await dataSource.load();
-        const {cols, rows, measures} = dataSource.getTableStructure().export();
+        var {cols, rows, measures} = dataSource.getTableStructure().export();
+        if (this.import_data.dyn_number_of_rows) {
+            const indentations = rows.map((r) => r.indent);
+            const max_indentation = Math.max(...indentations);
+            rows = makeDynamicRows(
+                rowGroupBys,
+                this.import_data.dyn_number_of_rows,
+                1,
+                max_indentation
+            );
+        }
         const table = {
             cols,
             rows,
