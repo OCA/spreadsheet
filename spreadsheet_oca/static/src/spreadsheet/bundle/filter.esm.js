@@ -26,6 +26,11 @@ topbarMenuRegistry.addChild("save", ["file"], {
     sequence: 10,
     action: (env) => env.saveSpreadsheet(),
 });
+topbarMenuRegistry.addChild("download", ["file"], {
+    name: _t("Download XLSX"),
+    sequence: 20,
+    action: (env) => env.downloadAsXLXS(),
+});
 
 const {sidePanelRegistry} = spreadsheet.registries;
 
