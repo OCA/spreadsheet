@@ -17,7 +17,7 @@
                             name="name"
                             attrs="{'invisible': [('mode', '!=', 'new')], 'required': [('mode', '=', 'new')]}"
                         />
-                        <field name="name_data" required="1" />
+                        <field name="datasource_name" required="1" />
                         <field name="mode" invisible="1" />
                         <field name="import_data" invisible="1" />
                         <field
@@ -25,6 +25,11 @@
                             domain="['|', ('owner_id', '=', uid), ('contributor_ids', '=', uid)]"
                             attrs="{'invisible': [('mode', 'not in', ['add', 'add_sheet'])], 'required': [('mode', 'in', ['add', 'add_sheet'])]}"
                             options="{'no_create': True}"
+                        />
+                        <field name="dynamic" />
+                        <field
+                            name="number_of_rows"
+                            attrs="{'invisible': [('dynamic', '=', False)], 'required': [('dynamic', '=', True)]}"
                         />
                     </group>
                 </sheet>
