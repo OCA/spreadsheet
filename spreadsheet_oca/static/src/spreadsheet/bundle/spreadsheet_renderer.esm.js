@@ -9,6 +9,7 @@ import {migrate} from "@spreadsheet/o_spreadsheet/migration";
 import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
 import {useService} from "@web/core/utils/hooks";
 import {useSetupAction} from "@web/webclient/actions/action_hook";
+import {waitForDataLoaded} from "@spreadsheet/actions/spreadsheet_download_action";
 
 const {Spreadsheet, Model} = spreadsheet;
 const {useSubEnv, useState, onWillStart} = owl;
@@ -58,6 +59,8 @@ export class SpreadsheetRenderer extends Component {
         this.orm = useService("orm");
         this.bus_service = useService("bus_service");
         this.user = useService("user");
+        this.ui = useService("ui");
+        this.action = useService("action");
         const dataSources = new DataSources(this.orm);
         this.state = useState({
             dialogDisplayed: false,
@@ -88,6 +91,7 @@ export class SpreadsheetRenderer extends Component {
             saveSpreadsheet: this.onSpreadsheetSaved.bind(this),
             editText: this.editText.bind(this),
             askConfirmation: this.askConfirmation.bind(this),
+            downloadAsXLXS: this.downloadAsXLXS.bind(this),
         });
         onWillStart(async () => {
             await loadSpreadsheetDependencies();
@@ -130,6 +134,19 @@ export class SpreadsheetRenderer extends Component {
             confirm();
             this.closeDialog();
         };
+    }
+    async downloadAsXLXS() {
+        this.ui.block();
+        await waitForDataLoaded(this.spreadsheet_model);
+        await this.action.doAction({
+            type: "ir.actions.client",
+            tag: "action_download_spreadsheet",
+            params: {
+                name: this.props.record.name,
+                xlsxData: this.spreadsheet_model.exportXLSX(),
+            },
+        });
+        this.ui.unblock();
     }
 }
 
