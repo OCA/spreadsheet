@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-06-19 11:45+0000\n"
-"PO-Revision-Date: 2024-06-19 14:07+0200\n"
+"POT-Creation-Date: 2024-07-18 13:04+0000\n"
+"PO-Revision-Date: 2024-07-18 15:06+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -137,6 +137,7 @@ msgstr "Crear hoja de cálculo"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_uid
@@ -145,6 +146,7 @@ msgstr "Creado por"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_date
@@ -155,6 +157,11 @@ msgstr "Creado el"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__data
 msgid "Data"
 msgstr "Datos"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
+msgid "Datasource Name"
+msgstr "Nombre de datos"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -172,6 +179,7 @@ msgstr "Dimensiones"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__display_name
@@ -191,6 +199,11 @@ msgstr "Dominio"
 #, python-format
 msgid "Duplicated groupbys in pivot are not supprted"
 msgstr "Las agrupaciones duplicadas en la vista pivot no están soportadas"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid "Dynamic"
+msgstr "Dinámico"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
@@ -231,6 +244,7 @@ msgstr "Agrupado por"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__id
@@ -261,6 +275,13 @@ msgstr "Importar datos a hoja de cálculo"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
+msgid "Insert dynamic pivot"
+msgstr "Insertar pivot dinámica"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
 msgid "Insert pivot"
 msgstr "Insertar pivot"
 
@@ -273,6 +294,7 @@ msgstr "Etiqueta"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision____last_update
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number____last_update
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet____last_update
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import____last_update
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode____last_update
@@ -281,6 +303,7 @@ msgstr "Última modificación el"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_uid
@@ -289,6 +312,7 @@ msgstr "Última modificación por"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_date
@@ -370,6 +394,12 @@ msgid "Next Revision"
 msgstr "Siguiente revisión"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
+msgid "Number Of Rows"
+msgstr "Número de filas"
+
+#. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
 msgid "OK"
 msgstr "Vale"
@@ -447,6 +477,18 @@ msgid "Save"
 msgstr "Guardar"
 
 #. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
+msgid "Select number of rows to duplicate row"
+msgstr "Seleccione el número de filas a duplicar"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+#, python-format
+msgid "Select the quantity of rows"
+msgstr "Seleccione la cantidad de filas"
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__sequence
 msgid "Sequence"
 msgstr "Secuencia"
@@ -506,6 +548,15 @@ msgid "Stacked"
 msgstr "Apilados"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid ""
+"This field allows you to generate tables that are updated with the filters "
+"set in the spreadsheets."
+msgstr ""
+"Este campo permite generar tablas que se actualizan con los filtros "
+"establecidos en las hojas de cálculo."
+
+#. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
@@ -518,8 +569,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: spreadsheet_oca
-#. odoo-python
 #. odoo-javascript
+#. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
