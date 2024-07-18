@@ -15,6 +15,7 @@
         "security/ir.model.access.csv",
         "views/spreadsheet_spreadsheet.xml",
         "data/spreadsheet_spreadsheet_import_mode.xml",
+        "wizards/spreadsheet_select_row_number.xml",
         "wizards/spreadsheet_spreadsheet_import.xml",
     ],
     "demo": ["demo/spreadsheet_spreadsheet.xml"],
@@ -38,6 +39,7 @@
             "spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panel.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/utils/dynamic_row_generator.esm.js",
         ],
     },
 }

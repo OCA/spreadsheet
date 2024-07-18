@@ -77,6 +77,10 @@
                     t-on-click="insertPivot"
                     class="btn btn-info"
                 >Insert pivot</button>
+                <button
+                    t-on-click="insertDynamicPivot"
+                    class="btn btn-success"
+                >Insert dynamic pivot</button>
             </div>
         </div>
 
