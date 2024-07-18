@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="spreadsheet_select_row_number_form_view">
+        <field name="name">spreadsheet.select.row.number.form</field>
+        <field name="model">spreadsheet.select.row.number</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="number_of_rows" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
