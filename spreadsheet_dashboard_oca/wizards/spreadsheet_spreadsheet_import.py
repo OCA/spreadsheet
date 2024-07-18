@@ -12,7 +12,7 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
 
     def _insert_pivot_dashboard(self, new_sheet=False):
         import_data = self.import_data
-        import_data["name"] = self.name_data
+        import_data["name"] = self.datasource_name
         import_data["new_sheet"] = new_sheet
         return {
             "type": "ir.actions.client",
