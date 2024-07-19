@@ -13,6 +13,7 @@ patch(
                 {
                     additionalContext: {
                         default_name: this.model.metaData.title,
+                        default_datasource_name: this.model.metaData.title,
                         default_import_data: {
                             mode: "graph",
                             metaData: JSON.parse(JSON.stringify(this.model.metaData)),
