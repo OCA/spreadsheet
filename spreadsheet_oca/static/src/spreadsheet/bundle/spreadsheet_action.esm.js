@@ -73,7 +73,7 @@ export class ActionSpreadsheetOca extends Component {
         }
         const dataSourceId = uuidGenerator.uuidv4();
         const definition = {
-            title: this.import_data.metaData.title,
+            title: this.import_data.name,
             type: "odoo_" + this.import_data.metaData.mode,
             background: "#FFFFFF",
             stacked: this.import_data.metaData.stacked,
@@ -146,7 +146,7 @@ export class ActionSpreadsheetOca extends Component {
                 context: this.import_data.metaData.context,
                 orderBy: this.import_data.metaData.orderBy,
             },
-            name: this.import_data.metaData.name,
+            name: this.import_data.name,
         };
         const dataSource = spreadsheet_model.config.dataSources.add(
             dataSourceId,
@@ -161,7 +161,7 @@ export class ActionSpreadsheetOca extends Component {
             id: spreadsheet_model.getters.getNextListId(),
             dataSourceId,
             definition: list_info,
-            linesNumber: this.import_data.metaData.threshold,
+            linesNumber: this.import_data.dyn_number_of_rows,
             columns: this.import_data.metaData.columns,
         });
         const columns = [];
