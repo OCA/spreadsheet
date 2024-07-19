@@ -23,6 +23,8 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
     mode = fields.Char(related="mode_id.code")
     import_data = fields.Serialized()
     spreadsheet_id = fields.Many2one("spreadsheet.spreadsheet")
+    can_be_dynamic = fields.Boolean()
+    is_tree = fields.Boolean()
     dynamic = fields.Boolean(
         help="This field allows you to generate tables that are updated with the "
         "filters set in the spreadsheets."

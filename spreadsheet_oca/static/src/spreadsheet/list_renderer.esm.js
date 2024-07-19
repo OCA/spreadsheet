@@ -25,6 +25,11 @@ patch(
                 {
                     additionalContext: {
                         default_name: this.env.config.getDisplayName(),
+                        default_datasource_name: this.env.config.getDisplayName(),
+                        default_can_be_dynamic: true,
+                        default_dynamic: true,
+                        default_is_tree: true,
+                        default_number_of_rows: Math.min(model.count, model.limit),
                         default_import_data: {
                             mode: "list",
                             metaData: {
@@ -38,7 +43,6 @@ patch(
                                 columns: this.getSpreadsheetColumns(),
                                 fields: model.fields,
                                 name: this.env.config.getDisplayName(),
-                                threshold: Math.min(model.count, model.limit),
                             },
                         },
                     },
