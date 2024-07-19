@@ -49,6 +49,7 @@ patch(
                     additionalContext: {
                         default_name: this.model.metaData.title,
                         default_datasource_name: this.model.metaData.title,
+                        default_can_be_dynamic: true,
                         default_import_data: {
                             mode: "pivot",
                             metaData: JSON.parse(JSON.stringify(this.model.metaData)),
