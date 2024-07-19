@@ -18,4 +18,13 @@
         <field name="sequence" eval="21" />
         <field name="group_ids" eval="[(4, ref('base.group_system'))]" />
     </record>
+    <record
+        id="spreadsheet_import_mode_dashboard_new_spreadsheet"
+        model="spreadsheet.spreadsheet.import.mode"
+    >
+        <field name="code">dashboard_spreadsheet</field>
+        <field name="name">New dashboard</field>
+        <field name="sequence" eval="19" />
+        <field name="group_ids" eval="[(4, ref('base.group_system'))]" />
+    </record>
 </odoo>
