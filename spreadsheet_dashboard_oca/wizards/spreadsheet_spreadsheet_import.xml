@@ -16,7 +16,7 @@
             <field name="spreadsheet_id" position="after">
                 <field
                     name="dashboard_id"
-                    attrs="{'invisible': [('mode', '!=', 'dashboard')], 'required': [('mode', '=', 'dashboard')]}"
+                    attrs="{'invisible': [('mode', 'not in', ('dashboard', 'dashboard_sheet'))], 'required': [('mode', 'in', ('dashboard', 'dashboard_sheet'))]}"
                     options="{'no_create': True}"
                 />
             </field>
