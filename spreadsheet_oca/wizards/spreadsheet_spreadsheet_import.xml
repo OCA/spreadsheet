@@ -12,8 +12,12 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name" />
                         <field name="mode_id" widget="selection_badge" />
+                        <field
+                            name="name"
+                            attrs="{'invisible': [('mode', '!=', 'new')], 'required': [('mode', '=', 'new')]}"
+                        />
+                        <field name="datasource_name" required="1" />
                         <field name="mode" invisible="1" />
                         <field name="import_data" invisible="1" />
                         <field
@@ -21,6 +25,17 @@
                             domain="['|', ('owner_id', '=', uid), ('contributor_ids', '=', uid)]"
                             attrs="{'invisible': [('mode', 'not in', ['add', 'add_sheet'])], 'required': [('mode', 'in', ['add', 'add_sheet'])]}"
                             options="{'no_create': True}"
+                        />
+                        <field name="can_be_dynamic" invisible="1" />
+                        <field name="is_tree" invisible="1" />
+                        <field
+                            name="dynamic"
+                            force_save="1"
+                            attrs="{'invisible': [('can_be_dynamic', '=', False)], 'readonly': [('is_tree', '=', True)]}"
+                        />
+                        <field
+                            name="number_of_rows"
+                            attrs="{'invisible': [('dynamic', '=', False)], 'required': [('dynamic', '=', True)]}"
                         />
                     </group>
                 </sheet>

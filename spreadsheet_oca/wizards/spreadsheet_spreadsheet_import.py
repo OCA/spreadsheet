@@ -13,7 +13,8 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
     def _default_mode_id(self):
         return self.env["spreadsheet.spreadsheet.import.mode"].search([], limit=1).id
 
-    name = fields.Char(required=True)
+    name = fields.Char()
+    datasource_name = fields.Char()
     mode_id = fields.Many2one(
         "spreadsheet.spreadsheet.import.mode",
         required=True,
@@ -22,6 +23,13 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
     mode = fields.Char(related="mode_id.code")
     import_data = fields.Serialized()
     spreadsheet_id = fields.Many2one("spreadsheet.spreadsheet")
+    can_be_dynamic = fields.Boolean()
+    is_tree = fields.Boolean()
+    dynamic = fields.Boolean(
+        help="This field allows you to generate tables that are updated with the "
+        "filters set in the spreadsheets."
+    )
+    number_of_rows = fields.Integer()
 
     def insert_pivot(self):
         self.ensure_one()
@@ -35,7 +43,10 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
             self._create_spreadsheet_vals()
         )
         import_data = self.import_data
+        import_data["name"] = self.datasource_name
         import_data["new"] = 1
+        if self.dynamic:
+            import_data["dyn_number_of_rows"] = self.number_of_rows
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
@@ -48,8 +59,10 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
 
     def _insert_pivot_add(self, new_sheet=False):
         import_data = self.import_data
-        import_data["name"] = self.name
+        import_data["name"] = self.datasource_name
         import_data["new_sheet"] = new_sheet
+        if self.dynamic:
+            import_data["dyn_number_of_rows"] = self.number_of_rows
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
