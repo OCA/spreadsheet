@@ -80,6 +80,11 @@ msgid "Before Previous"
 msgstr "Vóór Vorige"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
+msgid "Can Be Dynamic"
+msgstr ""
+
+#. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
@@ -136,6 +141,7 @@ msgstr "Spreadsheet maken"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_uid
@@ -144,6 +150,7 @@ msgstr "Gemaakt door"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_date
@@ -154,6 +161,11 @@ msgstr "Gemaakt op"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__data
 msgid "Data"
 msgstr "Gegevens"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
+msgid "Datasource Name"
+msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -171,6 +183,7 @@ msgstr "Dimensies"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__display_name
@@ -186,9 +199,21 @@ msgstr "Domein"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Download XLSX"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #, python-format
 msgid "Duplicated groupbys in pivot are not supprted"
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid "Dynamic"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -230,6 +255,7 @@ msgstr "Groep"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__id
@@ -260,8 +286,20 @@ msgstr "Gegevens importeren naar spreadsheet"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
+msgid "Insert dynamic pivot"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
 msgid "Insert pivot"
 msgstr "Draaipunt invoegen"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__is_tree
+msgid "Is Tree"
+msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -272,6 +310,7 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision____last_update
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number____last_update
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet____last_update
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import____last_update
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode____last_update
@@ -280,6 +319,7 @@ msgstr "Laatst aangepast op"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_uid
@@ -288,6 +328,7 @@ msgstr "Laatst aangepast door"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_date
@@ -369,6 +410,12 @@ msgid "Next Revision"
 msgstr "Volgende revisie"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
+msgid "Number Of Rows"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
 msgid "OK"
 msgstr ""
@@ -446,6 +493,18 @@ msgid "Save"
 msgstr "Opslaan"
 
 #. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
+msgid "Select number of rows to duplicate row"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+#, python-format
+msgid "Select the quantity of rows"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__sequence
 msgid "Sequence"
 msgstr ""
@@ -505,6 +564,13 @@ msgid "Stacked"
 msgstr "Gestapeld"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid ""
+"This field allows you to generate tables that are updated with the filters "
+"set in the spreadsheets."
+msgstr ""
+
+#. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
@@ -517,8 +583,8 @@ msgid "Type"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-python
 #. odoo-javascript
+#. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
