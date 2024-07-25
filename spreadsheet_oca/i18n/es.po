@@ -81,6 +81,11 @@ msgid "Before Previous"
 msgstr "Antes del anterior"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
+msgid "Can Be Dynamic"
+msgstr ""
+
+#. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
@@ -291,6 +296,11 @@ msgstr "Insertar pivot dinámica"
 #, python-format
 msgid "Insert pivot"
 msgstr "Insertar pivot"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__is_tree
+msgid "Is Tree"
+msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
