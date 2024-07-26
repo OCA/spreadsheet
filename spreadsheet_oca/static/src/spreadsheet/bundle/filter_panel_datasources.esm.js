@@ -4,9 +4,9 @@ import { Component, onWillStart, onWillUpdateProps } from "@odoo/owl";
 import { Domain } from "@web/core/domain";
 import { DomainSelector } from "@web/core/domain_selector/domain_selector";
 import { DomainSelectorDialog } from "@web/core/domain_selector_dialog/domain_selector_dialog";
-import { _t } from "web.core";
-import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
-import { time_to_str } from "web.time";
+import { _t } from "@web/core/l10n/translation";
+import * as spreadsheet from "@odoo/o-spreadsheet";
+import { formatDateTime } from "@web/core/l10n/dates";
 import { useService } from "@web/core/utils/hooks";
 import { FormViewDialog } from "@web/views/view_dialogs/form_view_dialog";
 import { makeDynamicRows } from "../utils/dynamic_row_generator.esm";
@@ -87,7 +87,7 @@ export class PivotPanelDisplay extends Component {
   get lastUpdate() {
     const lastUpdate = this.PivotDataSource.lastUpdate;
     if (lastUpdate) {
-      return time_to_str(new Date(lastUpdate));
+      return formatDateTime(new Date(lastUpdate), { format: "HH:mm:ss" });
     }
     return _t("not updated");
   }
@@ -214,7 +214,7 @@ export class ListPanelDisplay extends Component {
   get lastUpdate() {
     const lastUpdate = this.ListDataSource.lastUpdate;
     if (lastUpdate) {
-      return time_to_str(new Date(lastUpdate));
+      return formatDateTime(new Date(lastUpdate), { format: "HH:mm:ss" });
     }
     return _t("not updated");
   }

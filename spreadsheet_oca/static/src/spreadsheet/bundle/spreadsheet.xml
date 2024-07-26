@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
 
-    <t t-name="spreadsheet_oca.ActionSpreadsheetOca" owl="1">
+    <t t-name="spreadsheet_oca.ActionSpreadsheetOca">
         <div class="o_spreadsheet_oca_container">
-        <SpreadsheetControlPanel record="record" />
+        <!-- <SpreadsheetControlPanel record="record" /> -->
         <SpreadsheetRenderer
         record="record"
         res_id="spreadsheetId"
@@ -12,28 +12,28 @@
       />
         </div>
     </t>
-    <t t-name="spreadsheet_oca.PivotPanel" owl="1">
+    <t t-name="spreadsheet_oca.PivotPanel">
         <PivotPanelDisplay
       pivotId="pivotId"
       pivotDefinition="pivotDefinition"
     />
     </t>
-    <t t-name="spreadsheet_oca.PivotPanelDisplay" owl="1">
+    <t t-name="spreadsheet_oca.PivotPanelDisplay">
         <div class="o_spreadsheet_oca_datasource_panel">
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >Pivot name</div>
                 <span
-          t-esc="env.model.getters.getPivotDisplayName(props.pivotId)"
+          t-out="env.model.getters.getPivotDisplayName(props.pivotId)"
         />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >Model</div>
-                <div><t t-esc="modelLabel" /> (<t
-            t-esc="props.pivotDefinition.model"
+                <div><t t-out="modelLabel" /> (<t
+            t-out="props.pivotDefinition.model"
           />)</div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
@@ -58,7 +58,7 @@
           t-as="dimension"
           t-key="dimension"
         >
-                    <div t-esc="dimension" />
+                    <div t-out="dimension" />
                 </t>
             </div>
             <div
@@ -68,7 +68,7 @@
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >Sorting</div>
-                <div t-esc="sortInformation" />
+                <div t-out="sortInformation" />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
@@ -79,11 +79,11 @@
           t-as="measure"
           t-key="measure"
         >
-                    <div t-esc="measure" />
+                    <div t-out="measure" />
                 </t>
             </div>
             <div class="o_spreadsheet_oca_pivot_panel_info">
-                Last updated at <t t-esc="lastUpdate" />
+                Last updated at <t t-out="lastUpdate" />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <button
@@ -99,25 +99,25 @@
 
     </t>
 
-    <t t-name="spreadsheet_oca.ListPanel" owl="1">
+    <t t-name="spreadsheet_oca.ListPanel">
         <ListPanelDisplay listId="listId" listDefinition="listDefinition" />
     </t>
-    <t t-name="spreadsheet_oca.ListPanelDisplay" owl="1">
+    <t t-name="spreadsheet_oca.ListPanelDisplay">
         <div class="o_spreadsheet_oca_datasource_panel">
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >List name</div>
                 <span
-          t-esc="env.model.getters.getListDisplayName(props.listId)"
+          t-out="env.model.getters.getListDisplayName(props.listId)"
         />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >Model</div>
-                <div><t t-esc="modelLabel" /> (<t
-            t-esc="props.listDefinition.model"
+                <div><t t-out="modelLabel" /> (<t
+            t-out="props.listDefinition.model"
           />)</div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
@@ -134,12 +134,12 @@
                 </div>
             </div>
             <div class="o_spreadsheet_oca_pivot_panel_info">
-                Last updated at <t t-esc="lastUpdate" />
+                Last updated at <t t-out="lastUpdate" />
             </div>
         </div>
 
     </t>
-    <t t-name="spreadsheet_oca.FilterPanel" owl="1">
+    <t t-name="spreadsheet_oca.FilterPanel">
         <div
       t-foreach="env.model.getters.getGlobalFilters()"
       t-as="filter"
@@ -147,7 +147,7 @@
       class="o_spreadsheet_oca_filter"
     >
             <div class="spreadsheet_oca_filter_label">
-                <span t-esc="filter.label" />
+                <span t-out="filter.label" />
             </div>
             <div class="spreadsheet_oca_filter_value">
                 <FilterValue filter="filter" model="env.model" />
@@ -172,7 +172,7 @@
       >Add text</button>
         </div>
     </t>
-    <t t-name="spreadsheet_oca.EditFilterPanel" owl="1">
+    <t t-name="spreadsheet_oca.EditFilterPanel">
         <div class="o_spreadsheet_oca_filter">
             <div class="spreadsheet_oca_filter_label">
                 <span>Label</span>
@@ -198,7 +198,7 @@
               t-att-selected="state.rangeType === range.type ? 1 : 0"
               t-att-value="range.type"
             >
-                            <t t-esc="range.description" />
+                            <t t-out="range.description" />
                         </option>
                     </t>
                 </select>
@@ -235,7 +235,7 @@
               t-att-selected="range.type === state.defaultValue ? 1 : 0"
               t-att-value="range.type"
             >
-                            <t t-esc="range.description" />
+                            <t t-out="range.description" />
                         </option>
                     </t>
                 </select>
@@ -266,7 +266,7 @@
       t-if="object.model"
     >
             <div class="spreadsheet_oca_filter_label">
-                <span t-esc="object.name" /> - <span t-esc="object.tag" />
+                <span t-out="object.name" /> - <span t-out="object.tag" />
             </div>
             <div class="spreadsheet_oca_filter_value">
                 <ModelFieldSelector
@@ -297,7 +297,7 @@
               t-att-selected="offset.value === object.fieldMatch.offset ? 1 : 0"
               t-att-value="offset.value"
             >
-                            <t t-esc="offset.name" />
+                            <t t-out="offset.name" />
                         </option>
                     </t>
                 </select>
@@ -312,14 +312,14 @@
             <button t-on-click="onSave" class="btn btn-primary">Save</button>
         </div>
     </t>
-    <t t-name="spreadsheet_oca.SpreadsheetRenderer" owl="1">
+    <t t-name="spreadsheet_oca.SpreadsheetRenderer">
         <Spreadsheet model="spreadsheet_model" />
         <Dialog
       title="state.dialogTitle"
       onClosed.bind="closeDialog"
       t-if="state.dialogDisplayed"
     >
-            <span t-if="state.dialogHideInputBox" t-esc="state.dialogContent" />
+            <span t-if="state.dialogHideInputBox" t-out="state.dialogContent" />
             <input
         t-else=""
         type="text"
@@ -338,7 +338,7 @@
             </t>
         </Dialog>
     </t>
-    <t t-name="spreadsheet_oca.SpreadsheetName" owl="1">
+    <t t-name="spreadsheet_oca.SpreadsheetName">
         <input
       type="text"
       class="o_spreadsheet_oca_name"
@@ -354,7 +354,7 @@
     > name is required</span>
     </t>
 
-    <t t-name="spreadsheet_oca.Breadcrumbs.Small" owl="1">
+    <t t-name="spreadsheet_oca.Breadcrumbs.Small">
         <ol class="breadcrumb">
             <t t-if="breadcrumbs.length > 1">
                 <t
@@ -377,7 +377,7 @@
     </t>
 
 
-    <t t-name="spreadsheet_oca.Breadcrumbs" owl="1">
+    <t t-name="spreadsheet_oca.Breadcrumbs">
         <ol class="breadcrumb">
             <t
         t-foreach="breadcrumbs"
@@ -396,7 +396,7 @@
           t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
         >
                     <a href="#">
-                        <t t-if="breadcrumb.name" t-esc="breadcrumb.name" />
+                        <t t-if="breadcrumb.name" t-out="breadcrumb.name" />
                         <em t-else="" class="text-warning">Unnamed</em>
                     </a>
                 </li>
@@ -415,7 +415,7 @@
         </ol>
     </t>
 
-    <t t-name="spreadsheet_oca.SpreadsheetControlPanel" owl="1">
+    <t t-name="spreadsheet_oca.SpreadsheetControlPanel">
         <div class="o_control_panel" t-ref="root">
             <div t-if="display['top']" class="o_cp_top">
                 <div
@@ -441,7 +441,7 @@
             </div>
         </div>
     </t>
-    <t t-name="spreadsheet_oca.OdooPanel" owl="1">
+    <t t-name="spreadsheet_oca.OdooPanel">
         <div class="o-section">
             <div class="o-section-title">Link to Odoo menu</div>
             <div class="o-section-value">
@@ -459,7 +459,6 @@
     t-name="spreadsheet_oca.OdooStackablePanel"
     t-inherit="spreadsheet_oca.OdooPanel"
     t-inherit-mode="primary"
-    owl="1"
   >
         <xpath expr="div[hasclass('o-section')]" position="before">
             <div class="o-section">
@@ -480,7 +479,6 @@
     <t
     t-inherit="spreadsheet.o-spreadsheet-BarConfigPanel"
     t-inherit-mode="extension"
-    owl="1"
   >
         <xpath expr="//div" position="inside">
             <div class="o-section">
@@ -500,7 +498,6 @@
     <t
     t-inherit="spreadsheet.o-spreadsheet-LineConfigPanel"
     t-inherit-mode="extension"
-    owl="1"
   >
         <xpath expr="//div" position="inside">
             <div class="o-section">
@@ -520,7 +517,6 @@
     <t
     t-inherit="spreadsheet.o-spreadsheet-LineBarPieConfigPanel"
     t-inherit-mode="extension"
-    owl="1"
   >
         <xpath expr="//div" position="inside">
             <div class="o-section">
@@ -540,7 +536,6 @@
     <t
     t-inherit="spreadsheet.o-spreadsheet-GaugeChartConfigPanel"
     t-inherit-mode="extension"
-    owl="1"
   >
         <xpath expr="//div" position="inside">
             <div class="o-section">
@@ -560,7 +555,6 @@
     <t
     t-inherit="spreadsheet.o-spreadsheet-ScorecardChartConfigPanel"
     t-inherit-mode="extension"
-    owl="1"
   >
         <xpath expr="//div" position="inside">
             <div class="o-section">

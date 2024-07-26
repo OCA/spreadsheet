@@ -2,7 +2,7 @@
 
 import { Domain } from "@web/core/domain";
 import { Many2OneField } from "@web/views/fields/many2one/many2one_field";
-import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
+import * as spreadsheet from "@odoo/o-spreadsheet";
 import { useService } from "@web/core/utils/hooks";
 
 const { chartSidePanelComponentRegistry } = spreadsheet.registries;

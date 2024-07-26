@@ -5,7 +5,7 @@ import PivotDataSource from "@spreadsheet/pivot/pivot_data_source";
 import { SpreadsheetControlPanel } from "./spreadsheet_controlpanel.esm";
 import { SpreadsheetRenderer } from "./spreadsheet_renderer.esm";
 import { registry } from "@web/core/registry";
-import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
+import * as spreadsheet from "@odoo/o-spreadsheet";
 import { useService } from "@web/core/utils/hooks";
 import { makeDynamicRows } from "../utils/dynamic_row_generator.esm";
 
@@ -248,7 +248,7 @@ export class ActionSpreadsheetOca extends Component {
 ActionSpreadsheetOca.template = "spreadsheet_oca.ActionSpreadsheetOca";
 ActionSpreadsheetOca.components = {
   SpreadsheetRenderer,
-  SpreadsheetControlPanel,
+  // SpreadsheetControlPanel,
 };
 actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {
   force: true,

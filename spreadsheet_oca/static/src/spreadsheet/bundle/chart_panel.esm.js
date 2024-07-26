@@ -1,7 +1,7 @@
 /** @odoo-module */
 
 import { patch } from "@web/core/utils/patch";
-import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
+import * as spreadsheet from "@odoo/o-spreadsheet";
 const { chartRegistry } = spreadsheet.registries;
 
 const { ChartPanel } = spreadsheet.components;
@@ -9,7 +9,7 @@ export function isOdooKey(code) {
   return code.startsWith("odoo_");
 }
 
-patch(ChartPanel.prototype, "spreadsheet_oca.ChartPanel", {
+patch(ChartPanel.prototype, {
   get chartTypes() {
     return this.filterChartTypes(isOdooKey(this.getChartDefinition().type));
   },

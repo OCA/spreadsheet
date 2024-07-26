@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
 
-    <t t-inherit="web.PivotView.Buttons" t-inherit-mode="extension" owl="1">
+    <t t-inherit="web.PivotView.Buttons" t-inherit-mode="extension">
         <xpath expr="//button[hasclass('o_pivot_download')]" position="after">
             <div t-att-data-tooltip="getSpreadsheetInsertionTooltip()">
                 <button
@@ -14,9 +14,9 @@
         </xpath>
     </t>
 
-    <t t-inherit="web.ListView.Buttons" t-inherit-mode="extension" owl="1">
+    <t t-inherit="web.ListView.Buttons" t-inherit-mode="extension">
         <xpath
-      expr="//button[hasclass('o_list_export_xlsx')]/.."
+      expr="//button[hasclass('o_list_button_discard')]/.."
       position="after"
     >
                 <t t-if="!env.isSmall">
@@ -32,7 +32,7 @@
     </t>
 
 
-    <t t-inherit="web.GraphView.Buttons" t-inherit-mode="extension" owl="1">
+    <t t-inherit="web.GraphView.Buttons" t-inherit-mode="extension">
         <xpath expr="//button[hasclass('fa-pie-chart')]" position="after">
             <button
         class="btn btn-secondary fa fa-table"

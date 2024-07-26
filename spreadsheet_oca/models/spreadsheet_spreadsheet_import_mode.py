@@ -7,7 +7,7 @@ from odoo import fields, models
 class SpreadsheetSpreadsheetImportMode(models.Model):
     _name = "spreadsheet.spreadsheet.import.mode"
     _description = "Import Mode"
-    _order = "sequence asc"
+    _order = "sequence asc, id"
     _rec_name = "name"
 
     sequence = fields.Integer(default=20)
