@@ -5,8 +5,8 @@
 
     <record model="ir.ui.view" id="spreadsheet_spreadsheet_import_form_view">
         <field
-            name="name"
-        >spreadsheet.spreadsheet.import.form (in spreadsheet_oca)</field>
+      name="name"
+    >spreadsheet.spreadsheet.import.form (in spreadsheet_oca)</field>
         <field name="model">spreadsheet.spreadsheet.import</field>
         <field name="arch" type="xml">
             <form>
@@ -14,48 +14,52 @@
                     <group>
                         <field name="mode_id" widget="selection_badge" />
                         <field
-                            name="name"
-                            attrs="{'invisible': [('mode', '!=', 'new')], 'required': [('mode', '=', 'new')]}"
-                        />
+              name="name"
+              attrs="{'invisible': [('mode', '!=', 'new')], 'required': [('mode', '=', 'new')]}"
+            />
                         <field name="datasource_name" required="1" />
                         <field name="mode" invisible="1" />
                         <field name="import_data" invisible="1" />
                         <field
-                            name="spreadsheet_id"
-                            domain="['|', ('owner_id', '=', uid), ('contributor_ids', '=', uid)]"
-                            attrs="{'invisible': [('mode', 'not in', ['add', 'add_sheet'])], 'required': [('mode', 'in', ['add', 'add_sheet'])]}"
-                            options="{'no_create': True}"
-                        />
+              name="spreadsheet_id"
+              domain="['|', ('owner_id', '=', uid), ('contributor_ids', '=', uid)]"
+              attrs="{'invisible': [('mode', 'not in', ['add', 'add_sheet'])], 'required': [('mode', 'in', ['add', 'add_sheet'])]}"
+              options="{'no_create': True}"
+            />
                         <field name="can_be_dynamic" invisible="1" />
                         <field name="is_tree" invisible="1" />
                         <field
-                            name="dynamic"
-                            force_save="1"
-                            attrs="{'invisible': [('can_be_dynamic', '=', False)], 'readonly': [('is_tree', '=', True)]}"
-                        />
+              name="dynamic"
+              force_save="1"
+              attrs="{'invisible': [('can_be_dynamic', '=', False)], 'readonly': [('is_tree', '=', True)]}"
+            />
                         <field
-                            name="number_of_rows"
-                            attrs="{'invisible': [('dynamic', '=', False)], 'required': [('dynamic', '=', True)]}"
-                        />
+              name="number_of_rows"
+              attrs="{'invisible': [('dynamic', '=', False)], 'required': [('dynamic', '=', True)]}"
+            />
                     </group>
                 </sheet>
                 <footer>
                     <button
-                        name="insert_pivot"
-                        string="OK"
-                        class="btn-primary"
-                        type="object"
-                    />
-                    <button string="Cancel" class="btn-default" special="cancel" />
+            name="insert_pivot"
+            string="OK"
+            class="btn-primary"
+            type="object"
+          />
+                    <button
+            string="Cancel"
+            class="btn-default"
+            special="cancel"
+          />
                 </footer>
             </form>
         </field>
     </record>
 
     <record
-        model="ir.actions.act_window"
-        id="spreadsheet_spreadsheet_import_act_window"
-    >
+    model="ir.actions.act_window"
+    id="spreadsheet_spreadsheet_import_act_window"
+  >
         <field name="name">Import Pivot</field>
         <field name="res_model">spreadsheet.spreadsheet.import</field>
         <field name="view_mode">form</field>

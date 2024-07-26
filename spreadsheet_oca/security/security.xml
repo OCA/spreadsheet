@@ -16,9 +16,9 @@
         <field name="category_id" ref="module_category_spreedsheet" />
         <field name="implied_ids" eval="[(4, ref('group_user'))]" />
         <field
-            name="users"
-            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
-        />
+      name="users"
+      eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+    />
     </record>
     <record model="ir.rule" id="spreadsheet_owner_rule">
         <field name="name">Spreadsheet Owner</field>
@@ -46,12 +46,20 @@
     <record model="ir.rule" id="spreadsheet_manager_rule">
         <field name="name">Spreadsheet Manager</field>
         <field name="model_id" ref="model_spreadsheet_spreadsheet" />
-        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field
+      name="groups"
+      eval="[(4, ref('spreadsheet_oca.group_manager'))]"
+    />
         <field name="domain_force">[(1,'=', 1)]</field>
     </record>
     <record model="ir.rule" id="spreadsheet_import_mode_rule">
         <field name="name">Spreadsheet Import mode</field>
-        <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
-        <field name="domain_force">[('group_ids','in', user.groups_id.ids)]</field>
+        <field
+      name="model_id"
+      ref="model_spreadsheet_spreadsheet_import_mode"
+    />
+        <field
+      name="domain_force"
+    >[('group_ids','in', user.groups_id.ids)]</field>
     </record>
 </odoo>

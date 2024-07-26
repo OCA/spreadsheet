@@ -5,7 +5,6 @@ from odoo import api, fields, models
 
 
 class SpreadsheetSpreadsheetImport(models.TransientModel):
-
     _name = "spreadsheet.spreadsheet.import"
     _description = "Import data to spreadsheet"
 

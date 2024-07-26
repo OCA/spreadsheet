@@ -5,67 +5,80 @@
         <div class="o_spreadsheet_oca_container">
         <SpreadsheetControlPanel record="record" />
         <SpreadsheetRenderer
-                record="record"
-                res_id="spreadsheetId"
-                model="model"
-                importData="importData"
-            />
+        record="record"
+        res_id="spreadsheetId"
+        model="model"
+        importData="importData"
+      />
         </div>
     </t>
     <t t-name="spreadsheet_oca.PivotPanel" owl="1">
-        <PivotPanelDisplay pivotId="pivotId" pivotDefinition="pivotDefinition" />
+        <PivotPanelDisplay
+      pivotId="pivotId"
+      pivotDefinition="pivotDefinition"
+    />
     </t>
     <t t-name="spreadsheet_oca.PivotPanelDisplay" owl="1">
         <div class="o_spreadsheet_oca_datasource_panel">
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
-                    class="o_spreadsheet_oca_datasource_panel_field_title"
-                >Pivot name</div>
-                <span t-esc="env.model.getters.getPivotDisplayName(props.pivotId)" />
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Pivot name</div>
+                <span
+          t-esc="env.model.getters.getPivotDisplayName(props.pivotId)"
+        />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Model</div>
                 <div><t t-esc="modelLabel" /> (<t
-                        t-esc="props.pivotDefinition.model"
-                    />)</div>
+            t-esc="props.pivotDefinition.model"
+          />)</div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Domain</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Domain</div>
                 <DomainSelector
-                    resModel="props.pivotDefinition.model"
-                    value="domain"
-                    t-key="'pivot_' + props.pivotId"
-                />
+          resModel="props.pivotDefinition.model"
+          value="domain"
+          t-key="'pivot_' + props.pivotId"
+        />
                 <div class="btn btn-link" t-on-click="editDomain">
                     Edit domain
                 </div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
-                    class="o_spreadsheet_oca_datasource_panel_field_title"
-                >Dimensions</div>
-                <t t-foreach="pivotDimensions" t-as="dimension" t-key="dimension">
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Dimensions</div>
+                <t
+          t-foreach="pivotDimensions"
+          t-as="dimension"
+          t-key="dimension"
+        >
                     <div t-esc="dimension" />
                 </t>
             </div>
             <div
-                class="o_spreadsheet_oca_datasource_panel_field"
-                t-if="props.pivotDefinition.sortedColumn"
-            >
+        class="o_spreadsheet_oca_datasource_panel_field"
+        t-if="props.pivotDefinition.sortedColumn"
+      >
                 <div
-                    class="o_spreadsheet_oca_datasource_panel_field_title"
-                >Sorting</div>
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Sorting</div>
                 <div t-esc="sortInformation" />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
-                    class="o_spreadsheet_oca_datasource_panel_field_title"
-                >Measures</div>
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Measures</div>
                 <t
-                    t-foreach="props.pivotDefinition.measures"
-                    t-as="measure"
-                    t-key="measure"
-                >
+          t-foreach="props.pivotDefinition.measures"
+          t-as="measure"
+          t-key="measure"
+        >
                     <div t-esc="measure" />
                 </t>
             </div>
@@ -74,13 +87,13 @@
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <button
-                    t-on-click="insertPivot"
-                    class="btn btn-info"
-                >Insert pivot</button>
+          t-on-click="insertPivot"
+          class="btn btn-info"
+        >Insert pivot</button>
                 <button
-                    t-on-click="insertDynamicPivot"
-                    class="btn btn-success"
-                >Insert dynamic pivot</button>
+          t-on-click="insertDynamicPivot"
+          class="btn btn-success"
+        >Insert dynamic pivot</button>
             </div>
         </div>
 
@@ -93,23 +106,29 @@
         <div class="o_spreadsheet_oca_datasource_panel">
             <div class="o_spreadsheet_oca_datasource_panel_field">
                 <div
-                    class="o_spreadsheet_oca_datasource_panel_field_title"
-                >List name</div>
-                <span t-esc="env.model.getters.getListDisplayName(props.listId)" />
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >List name</div>
+                <span
+          t-esc="env.model.getters.getListDisplayName(props.listId)"
+        />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Model</div>
                 <div><t t-esc="modelLabel" /> (<t
-                        t-esc="props.listDefinition.model"
-                    />)</div>
+            t-esc="props.listDefinition.model"
+          />)</div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Domain</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Domain</div>
                 <DomainSelector
-                    resModel="props.listDefinition.model"
-                    value="domain"
-                    t-key="'list_' + props.listId"
-                />
+          resModel="props.listDefinition.model"
+          value="domain"
+          t-key="'list_' + props.listId"
+        />
                 <div class="btn btn-link" t-on-click="editDomain">
                     Edit domain
                 </div>
@@ -122,35 +141,35 @@
     </t>
     <t t-name="spreadsheet_oca.FilterPanel" owl="1">
         <div
-            t-foreach="env.model.getters.getGlobalFilters()"
-            t-as="filter"
-            t-key="filter.id"
-            class="o_spreadsheet_oca_filter"
-        >
+      t-foreach="env.model.getters.getGlobalFilters()"
+      t-as="filter"
+      t-key="filter.id"
+      class="o_spreadsheet_oca_filter"
+    >
             <div class="spreadsheet_oca_filter_label">
                 <span t-esc="filter.label" />
             </div>
             <div class="spreadsheet_oca_filter_value">
                 <FilterValue filter="filter" model="env.model" />
                 <i
-                    class="fa fa-cog btn btn-link text-muted spreadsheet_oca_filter_value_edit"
-                    t-on-click="() =&gt; this.onEditFilter(filter)"
-                />
+          class="fa fa-cog btn btn-link text-muted spreadsheet_oca_filter_value_edit"
+          t-on-click="() =&gt; this.onEditFilter(filter)"
+        />
             </div>
         </div>
         <div class="o-sidePanelButtons">
             <button
-                t-on-click="() => this.onAddFilter('date')"
-                class="btn"
-            >Add date</button>
+        t-on-click="() => this.onAddFilter('date')"
+        class="btn"
+      >Add date</button>
             <button
-                t-on-click="() => this.onAddFilter('relation')"
-                class="btn"
-            >Add relation</button>
+        t-on-click="() => this.onAddFilter('relation')"
+        class="btn"
+      >Add relation</button>
             <button
-                t-on-click="() => this.onAddFilter('text')"
-                class="btn"
-            >Add text</button>
+        t-on-click="() => this.onAddFilter('text')"
+        class="btn"
+      >Add text</button>
         </div>
     </t>
     <t t-name="spreadsheet_oca.EditFilterPanel" owl="1">
@@ -166,15 +185,19 @@
             <div class="spreadsheet_oca_filter_label">Time range</div>
             <div class="spreadsheet_oca_filter_value">
                 <select
-                    t-model="state.rangeType"
-                    t-on-change="onDateRangeChange"
-                    class="o_input"
-                >
-                    <t t-foreach="dateRangeTypes" t-as="range" t-key="range.type">
+          t-model="state.rangeType"
+          t-on-change="onDateRangeChange"
+          class="o_input"
+        >
+                    <t
+            t-foreach="dateRangeTypes"
+            t-as="range"
+            t-key="range.type"
+          >
                         <option
-                            t-att-selected="state.rangeType === range.type ? 1 : 0"
-                            t-att-value="range.type"
-                        >
+              t-att-selected="state.rangeType === range.type ? 1 : 0"
+              t-att-value="range.type"
+            >
                             <t t-esc="range.description" />
                         </option>
                     </t>
@@ -184,89 +207,96 @@
         <div class="o_spreadsheet_oca_filter" t-if="state.type !== 'relation'">
             <div class="spreadsheet_oca_filter_label">Default value</div>
             <div
-                t-if="state.type === 'date' and state.rangeType !== 'relative'"
-                class="spreadsheet_oca_filter_value"
-            >
+        t-if="state.type === 'date' and state.rangeType !== 'relative'"
+        class="spreadsheet_oca_filter_value"
+      >
                 <input
-                    type="checkbox"
-                    class="me-2"
-                    id="default_to_current_period"
-                    t-att-checked="state.defaultsToCurrentPeriod"
-                />
+          type="checkbox"
+          class="me-2"
+          id="default_to_current_period"
+          t-att-checked="state.defaultsToCurrentPeriod"
+        />
                 <label
-                    for="default_to_current_period"
-                > Automatically filter on the current period </label>
+          for="default_to_current_period"
+        > Automatically filter on the current period </label>
             </div>
             <div
-                t-if="state.type === 'date'and state.rangeType === 'relative'"
-                class="spreadsheet_oca_filter_value"
-            >
+        t-if="state.type === 'date'and state.rangeType === 'relative'"
+        class="spreadsheet_oca_filter_value"
+      >
                 <select t-model="state.defaultValue" class="o_input">
                     <option value="" />
                     <t
-                        t-foreach="relativeDateRangeTypes"
-                        t-as="range"
-                        t-key="range.type"
-                    >
+            t-foreach="relativeDateRangeTypes"
+            t-as="range"
+            t-key="range.type"
+          >
                         <option
-                            t-att-selected="range.type === state.defaultValue ? 1 : 0"
-                            t-att-value="range.type"
-                        >
+              t-att-selected="range.type === state.defaultValue ? 1 : 0"
+              t-att-value="range.type"
+            >
                             <t t-esc="range.description" />
                         </option>
                     </t>
                 </select>
             </div>
             <input
-                t-if="state.type === 'text'"
-                type="text"
-                class="o_input o_global_filter_default_value"
-                t-model="state.defaultValue"
-            />
+        t-if="state.type === 'text'"
+        type="text"
+        class="o_input o_global_filter_default_value"
+        t-model="state.defaultValue"
+      />
         </div>
 
         <div class="o_spreadsheet_oca_filter" t-if="state.type === 'relation'">
             <div class="spreadsheet_oca_filter_label">Related model</div>
             <div class="spreadsheet_oca_filter_value">
                 <ModelSelector
-                    value="state.modelName.label or ''"
-                    models="models"
-                    onModelSelected.bind="onModelSelected"
-                />
+          value="state.modelName.label or ''"
+          models="models"
+          onModelSelected.bind="onModelSelected"
+        />
             </div>
         </div>
         <div
-            class="o_spreadsheet_oca_filter"
-            t-foreach="Object.values(state.objects)"
-            t-as="object"
-            t-key="object.id"
-            t-if="object.model"
-        >
+      class="o_spreadsheet_oca_filter"
+      t-foreach="Object.values(state.objects)"
+      t-as="object"
+      t-key="object.id"
+      t-if="object.model"
+    >
             <div class="spreadsheet_oca_filter_label">
                 <span t-esc="object.name" /> - <span t-esc="object.tag" />
             </div>
             <div class="spreadsheet_oca_filter_value">
                 <ModelFieldSelector
-                    fieldName="object.fieldMatch.chain || ''"
-                    resModel="object.model"
-                    readonly="false"
-                    isDebugMode="!!env.debug"
-                    t-on-change="() => this.onChangeFieldSelector(ev)"
-                    update="(name) => this.onFieldMatchUpdate(object, name)"
-                />
+          fieldName="object.fieldMatch.chain || ''"
+          resModel="object.model"
+          readonly="false"
+          isDebugMode="!!env.debug"
+          t-on-change="() => this.onChangeFieldSelector(ev)"
+          update="(name) => this.onFieldMatchUpdate(object, name)"
+        />
             </div>
 
-            <div class="spreadsheet_oca_filter_value" t-if="state.type === 'date'">
+            <div
+        class="spreadsheet_oca_filter_value"
+        t-if="state.type === 'date'"
+      >
                 <select
-                    t-model="object.fieldMatch.offset"
-                    t-on-change="(ev) => this.onChangeFieldMatchOffset(object, ev)"
-                    class="o_input"
-                >
-                    <t t-foreach="dateOffset" t-as="offset" t-key="offset.value">
+          t-model="object.fieldMatch.offset"
+          t-on-change="(ev) => this.onChangeFieldMatchOffset(object, ev)"
+          class="o_input"
+        >
+                    <t
+            t-foreach="dateOffset"
+            t-as="offset"
+            t-key="offset.value"
+          >
                         <option
-                            t-att-selected="offset.value === object.fieldMatch.offset ? 1 : 0"
-                            t-att-value="offset.value"
-                        >
+              t-att-selected="offset.value === object.fieldMatch.offset ? 1 : 0"
+              t-att-value="offset.value"
+            >
                             <t t-esc="offset.name" />
                         </option>
                     </t>
@@ -275,67 +305,73 @@
         </div>
         <div class="o-sidePanelButtons">
             <button t-on-click="onRemove" class="btn btn-danger">Remove</button>
-            <button t-on-click="onCancel" class="btn btn-warning">Cancel</button>
+            <button
+        t-on-click="onCancel"
+        class="btn btn-warning"
+      >Cancel</button>
             <button t-on-click="onSave" class="btn btn-primary">Save</button>
         </div>
     </t>
     <t t-name="spreadsheet_oca.SpreadsheetRenderer" owl="1">
         <Spreadsheet model="spreadsheet_model" />
         <Dialog
-            title="state.dialogTitle"
-            onClosed.bind="closeDialog"
-            t-if="state.dialogDisplayed"
-        >
+      title="state.dialogTitle"
+      onClosed.bind="closeDialog"
+      t-if="state.dialogDisplayed"
+    >
             <span t-if="state.dialogHideInputBox" t-esc="state.dialogContent" />
             <input
-                t-else=""
-                type="text"
-                class="form-control"
-                t-model="state.dialogContent"
-            />
+        t-else=""
+        type="text"
+        class="form-control"
+        t-model="state.dialogContent"
+      />
             <t t-set-slot="buttons">
                 <button
-                    class="btn btn-primary"
-                    t-on-click="confirmDialog"
-                >Confirm</button>
+          class="btn btn-primary"
+          t-on-click="confirmDialog"
+        >Confirm</button>
                 <button
-                    class="btn btn-secondary"
-                    t-on-click="closeDialog"
-                >Cancel</button>
+          class="btn btn-secondary"
+          t-on-click="closeDialog"
+        >Cancel</button>
             </t>
         </Dialog>
     </t>
     <t t-name="spreadsheet_oca.SpreadsheetName" owl="1">
         <input
-            type="text"
-            class="o_spreadsheet_oca_name"
-            title="Change name"
-            t-ref="spreadsheetName"
-            t-att-value="state.name"
-            t-on-change="_onNameChanged"
-        />
+      type="text"
+      class="o_spreadsheet_oca_name"
+      title="Change name"
+      t-ref="spreadsheetName"
+      t-att-value="state.name"
+      t-on-change="_onNameChanged"
+    />
         <i class="fa fa-exclamation-triangle text-danger" t-if="! state.name" />
         <span
-            class="text-danger o_spreadsheet_oca_name_warning"
-            t-if="! state.name"
-        > name is required</span>
+      class="text-danger o_spreadsheet_oca_name_warning"
+      t-if="! state.name"
+    > name is required</span>
     </t>
 
     <t t-name="spreadsheet_oca.Breadcrumbs.Small" owl="1">
         <ol class="breadcrumb">
             <t t-if="breadcrumbs.length > 1">
-                <t t-set="breadcrumb" t-value="breadcrumbs[breadcrumbs.length - 2]" />
+                <t
+          t-set="breadcrumb"
+          t-value="breadcrumbs[breadcrumbs.length - 2]"
+        />
                 <li
-                    class="breadcrumb-item o_back_button btn btn-secondary"
-                    t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
-                />
+          class="breadcrumb-item o_back_button btn btn-secondary"
+          t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
+        />
             </t>
             <li t-if="breadcrumbs.length > 0" class="breadcrumb-item active">
                 <SpreadsheetName
-                    name="props.record.name"
-                    isReadonly="false"
-                    onChanged="onSpreadsheetNameChanged"
-                />
+          name="props.record.name"
+          isReadonly="false"
+          onChanged="onSpreadsheetNameChanged"
+        />
             </li>
         </ol>
     </t>
@@ -343,30 +379,37 @@
 
     <t t-name="spreadsheet_oca.Breadcrumbs" owl="1">
         <ol class="breadcrumb">
-            <t t-foreach="breadcrumbs" t-as="breadcrumb" t-key="breadcrumb.jsId">
+            <t
+        t-foreach="breadcrumbs"
+        t-as="breadcrumb"
+        t-key="breadcrumb.jsId"
+      >
                 <t
-                    t-set="isPenultimate"
-                    t-value="breadcrumb_index === breadcrumbs.length - 2"
-                />
+          t-set="isPenultimate"
+          t-value="breadcrumb_index === breadcrumbs.length - 2"
+        />
                 <li
-                    t-if="!breadcrumb_last"
-                    class="breadcrumb-item"
-                    t-att-data-hotkey="isPenultimate and 'b'"
-                    t-att-class="{ o_back_button: isPenultimate}"
-                    t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
-                >
+          t-if="!breadcrumb_last"
+          class="breadcrumb-item"
+          t-att-data-hotkey="isPenultimate and 'b'"
+          t-att-class="{ o_back_button: isPenultimate}"
+          t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
+        >
                     <a href="#">
                         <t t-if="breadcrumb.name" t-esc="breadcrumb.name" />
                         <em t-else="" class="text-warning">Unnamed</em>
                     </a>
                 </li>
 
-                <li t-else="" class="breadcrumb-item active d-flex align-items-center">
+                <li
+          t-else=""
+          class="breadcrumb-item active d-flex align-items-center"
+        >
                     <SpreadsheetName
-                        name="props.record.name"
-                        isReadonly="false"
-                        onChanged="onSpreadsheetNameChanged"
-                    />
+            name="props.record.name"
+            isReadonly="false"
+            onChanged="onSpreadsheetNameChanged"
+          />
                 </li>
             </t>
         </ol>
@@ -375,20 +418,22 @@
     <t t-name="spreadsheet_oca.SpreadsheetControlPanel" owl="1">
         <div class="o_control_panel" t-ref="root">
             <div t-if="display['top']" class="o_cp_top">
-                <div class="o_cp_top_left d-flex flex-grow-1 align-items-center">
+                <div
+          class="o_cp_top_left d-flex flex-grow-1 align-items-center"
+        >
                     <t t-if="display['top-left']">
                         <t t-slot="control-panel-breadcrumb">
                             <t t-if="env.isSmall">
                                 <t
-                                    t-call="spreadsheet_oca.Breadcrumbs.Small"
-                                    t-if="!env.config.noBreadcrumbs"
-                                />
+                  t-call="spreadsheet_oca.Breadcrumbs.Small"
+                  t-if="!env.config.noBreadcrumbs"
+                />
                             </t>
                             <t t-else="">
                                 <t
-                                    t-call="spreadsheet_oca.Breadcrumbs"
-                                    t-if="!env.config.noBreadcrumbs"
-                                />
+                  t-call="spreadsheet_oca.Breadcrumbs"
+                  t-if="!env.config.noBreadcrumbs"
+                />
                             </t>
                         </t>
                     </t>
@@ -401,31 +446,31 @@
             <div class="o-section-title">Link to Odoo menu</div>
             <div class="o-section-value">
                 <Many2OneField
-                    value="menuId"
-                    relation="'ir.ui.menu'"
-                    record="record"
-                    update.bind="updateMenu"
-                    canOpen="false"
-                />
+          value="menuId"
+          relation="'ir.ui.menu'"
+          record="record"
+          update.bind="updateMenu"
+          canOpen="false"
+        />
             </div>
         </div>
     </t>
     <t
-        t-name="spreadsheet_oca.OdooStackablePanel"
-        t-inherit="spreadsheet_oca.OdooPanel"
-        t-inherit-mode="primary"
-        owl="1"
-    >
+    t-name="spreadsheet_oca.OdooStackablePanel"
+    t-inherit="spreadsheet_oca.OdooPanel"
+    t-inherit-mode="primary"
+    owl="1"
+  >
         <xpath expr="div[hasclass('o-section')]" position="before">
             <div class="o-section">
                 <label>
                     <div class="o_checkbox">
                         <input
-                            type="checkbox"
-                            name="stacked"
-                            t-att-checked="props.definition.stacked"
-                            t-on-change="onChangeStacked"
-                        />
+              type="checkbox"
+              name="stacked"
+              t-att-checked="props.definition.stacked"
+              t-on-change="onChangeStacked"
+            />
                         Stacked
                     </div>
                 </label>
@@ -433,101 +478,101 @@
         </xpath>
     </t>
     <t
-        t-inherit="spreadsheet.o-spreadsheet-BarConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    t-inherit="spreadsheet.o-spreadsheet-BarConfigPanel"
+    t-inherit-mode="extension"
+    owl="1"
+  >
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
                 <div class="o-section-value">
                     <Many2OneField
-                        value="menuId"
-                        relation="'ir.ui.menu'"
-                        record="record"
-                        update.bind="updateMenu"
-                        canOpen="false"
-                    />
+            value="menuId"
+            relation="'ir.ui.menu'"
+            record="record"
+            update.bind="updateMenu"
+            canOpen="false"
+          />
                 </div>
             </div>
         </xpath>
     </t>
     <t
-        t-inherit="spreadsheet.o-spreadsheet-LineConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    t-inherit="spreadsheet.o-spreadsheet-LineConfigPanel"
+    t-inherit-mode="extension"
+    owl="1"
+  >
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
                 <div class="o-section-value">
                     <Many2OneField
-                        value="menuId"
-                        relation="'ir.ui.menu'"
-                        record="record"
-                        update.bind="updateMenu"
-                        canOpen="false"
-                    />
+            value="menuId"
+            relation="'ir.ui.menu'"
+            record="record"
+            update.bind="updateMenu"
+            canOpen="false"
+          />
                 </div>
             </div>
         </xpath>
     </t>
     <t
-        t-inherit="spreadsheet.o-spreadsheet-LineBarPieConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    t-inherit="spreadsheet.o-spreadsheet-LineBarPieConfigPanel"
+    t-inherit-mode="extension"
+    owl="1"
+  >
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
                 <div class="o-section-value">
                     <Many2OneField
-                        value="menuId"
-                        relation="'ir.ui.menu'"
-                        record="record"
-                        update.bind="updateMenu"
-                        canOpen="false"
-                    />
+            value="menuId"
+            relation="'ir.ui.menu'"
+            record="record"
+            update.bind="updateMenu"
+            canOpen="false"
+          />
                 </div>
             </div>
         </xpath>
     </t>
     <t
-        t-inherit="spreadsheet.o-spreadsheet-GaugeChartConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    t-inherit="spreadsheet.o-spreadsheet-GaugeChartConfigPanel"
+    t-inherit-mode="extension"
+    owl="1"
+  >
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
                 <div class="o-section-value">
                     <Many2OneField
-                        value="menuId"
-                        relation="'ir.ui.menu'"
-                        record="record"
-                        update.bind="updateMenu"
-                        canOpen="false"
-                    />
+            value="menuId"
+            relation="'ir.ui.menu'"
+            record="record"
+            update.bind="updateMenu"
+            canOpen="false"
+          />
                 </div>
             </div>
         </xpath>
     </t>
     <t
-        t-inherit="spreadsheet.o-spreadsheet-ScorecardChartConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    t-inherit="spreadsheet.o-spreadsheet-ScorecardChartConfigPanel"
+    t-inherit-mode="extension"
+    owl="1"
+  >
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
                 <div class="o-section-value">
                     <Many2OneField
-                        value="menuId"
-                        relation="'ir.ui.menu'"
-                        record="record"
-                        update.bind="updateMenu"
-                        canOpen="false"
-                    />
+            value="menuId"
+            relation="'ir.ui.menu'"
+            record="record"
+            update.bind="updateMenu"
+            canOpen="false"
+          />
                 </div>
             </div>
         </xpath>

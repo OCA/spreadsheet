@@ -4,7 +4,9 @@
 <odoo>
 
     <record model="ir.ui.view" id="spreadsheet_spreadsheet_search_view">
-        <field name="name">spreadsheet.spreadsheet.search (in spreadsheet_oca)</field>
+        <field
+      name="name"
+    >spreadsheet.spreadsheet.search (in spreadsheet_oca)</field>
         <field name="model">spreadsheet.spreadsheet</field>
         <field name="arch" type="xml">
             <search>
@@ -14,35 +16,43 @@
     </record>
 
     <record model="ir.ui.view" id="spreadsheet_spreadsheet_tree_view">
-        <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
+        <field
+      name="name"
+    >spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
         <field name="model">spreadsheet.spreadsheet</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
                 <button
-                    name="open_spreadsheet"
-                    type="object"
-                    string="Edit"
-                    icon="fa-pencil"
-                />
+          name="open_spreadsheet"
+          type="object"
+          string="Edit"
+          icon="fa-pencil"
+        />
             </tree>
         </field>
     </record>
 
     <record model="ir.ui.view" id="spreadsheet_spreadsheet_form_view">
-        <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
+        <field
+      name="name"
+    >spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
         <field name="model">spreadsheet.spreadsheet</field>
         <field name="arch" type="xml">
             <form>
                 <header />
                 <sheet>
-                    <div name="button_box" id="button_box" class="oe_button_box">
+                    <div
+            name="button_box"
+            id="button_box"
+            class="oe_button_box"
+          >
                         <button
-                            name="open_spreadsheet"
-                            type="object"
-                            string="Edit"
-                            icon="fa-pencil"
-                        />
+              name="open_spreadsheet"
+              type="object"
+              string="Edit"
+              icon="fa-pencil"
+            />
                     </div>
                     <h1>
                         <field name="name" placeholder="Name" />
@@ -59,7 +69,10 @@
         </field>
     </record>
 
-    <record model="ir.actions.act_window" id="spreadsheet_spreadsheet_act_window">
+    <record
+    model="ir.actions.act_window"
+    id="spreadsheet_spreadsheet_act_window"
+  >
         <field name="name">Spreadsheets</field>
         <field name="res_model">spreadsheet.spreadsheet</field>
         <field name="view_mode">tree,form</field>
@@ -70,8 +83,13 @@
     <record model="ir.ui.menu" id="spreadsheet_spreadsheet_menu">
         <field name="name">Spreadsheets</field>
         <field name="action" ref="spreadsheet_spreadsheet_act_window" />
-        <field name="web_icon">spreadsheet_oca,static/description/icon.svg</field>
-        <field name="groups_id" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field
+      name="web_icon"
+    >spreadsheet_oca,static/description/icon.svg</field>
+        <field
+      name="groups_id"
+      eval="[(4, ref('spreadsheet_oca.group_user'))]"
+    />
         <field name="sequence" eval="16" />
     </record>
 

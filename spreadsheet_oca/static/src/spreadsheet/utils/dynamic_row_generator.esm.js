@@ -36,27 +36,27 @@
  * @returns {Array}
  */
 export function makeDynamicRows(
-    fields,
-    number_of_rows,
-    indent,
-    max_indentation,
-    parent_indexes = []
+  fields,
+  number_of_rows,
+  indent,
+  max_indentation,
+  parent_indexes = []
 ) {
-    var rows = [];
-    for (var index = 1; index <= number_of_rows; index++) {
-        rows.push({
-            fields: fields.slice(0, indent).map((f) => "#" + f),
-            indent,
-            values: [...parent_indexes, index],
-        });
-        if (indent < max_indentation) {
-            rows = rows.concat(
-                makeDynamicRows(fields, number_of_rows, indent + 1, max_indentation, [
-                    ...parent_indexes,
-                    index,
-                ])
-            );
-        }
+  var rows = [];
+  for (var index = 1; index <= number_of_rows; index++) {
+    rows.push({
+      fields: fields.slice(0, indent).map((f) => "#" + f),
+      indent,
+      values: [...parent_indexes, index],
+    });
+    if (indent < max_indentation) {
+      rows = rows.concat(
+        makeDynamicRows(fields, number_of_rows, indent + 1, max_indentation, [
+          ...parent_indexes,
+          index,
+        ])
+      );
     }
-    return rows;
+  }
+  return rows;
 }

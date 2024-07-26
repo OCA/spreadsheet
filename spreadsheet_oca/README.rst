@@ -17,20 +17,22 @@ Spreadsheet Oca
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fspreadsheet-lightgray.png?logo=github
-    :target: https://github.com/OCA/spreadsheet/tree/16.0/spreadsheet_oca
+    :target: https://github.com/OCA/spreadsheet/tree/17.0/spreadsheet_oca
     :alt: OCA/spreadsheet
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/spreadsheet-16-0/spreadsheet-16-0-spreadsheet_oca
+    :target: https://translation.odoo-community.org/projects/spreadsheet-17-0/spreadsheet-17-0-spreadsheet_oca
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/spreadsheet&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/spreadsheet&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module adds a functionality for adding and editing Spreadsheets using Odoo CE.
+This module adds a functionality for adding and editing Spreadsheets
+using Odoo CE.
 
-It is an alternative to the proprietary module ``spreadsheet_edition`` of Odoo Enterprise Edition.
+It is an alternative to the proprietary module ``spreadsheet_edition``
+of Odoo Enterprise Edition.
 
 **Table of contents**
 
@@ -41,82 +43,102 @@ Usage
 =====
 
 **Create a new spreadsheet**
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+----------------------------
 
-* Go to 'Spreadsheet' menu
-* Click on 'Create'
-* Put a name, then click on the "Edit" button
+-  Go to 'Spreadsheet' menu
+-  Click on 'Create'
+-  Put a name, then click on the "Edit" button
 
-.. figure:: https://raw.githubusercontent.com/OCA/spreadsheet/16.0/spreadsheet_oca/static/description/spreadsheet_create.png
+|image1|
 
-* At this point you switch to spreadsheet editing mode.
-  The editor is named ``o-spreadsheet`` and looks like another common spreadsheet web editors.
-  (OnlyOffice, Ethercalc, Google Sheets (non-free)).
+-  At this point you switch to spreadsheet editing mode. The editor is
+   named ``o-spreadsheet`` and looks like another common spreadsheet web
+   editors. (OnlyOffice, Ethercalc, Google Sheets (non-free)).
 
-.. figure:: https://raw.githubusercontent.com/OCA/spreadsheet/16.0/spreadsheet_oca/static/description/spreadsheet_edit.png
+|image2|
 
-* You can use common functions ``SUM()``, ``AVERAGE()``, etc. in the cells.
-  For a complete list of functions and their syntax,
-  Refer to the documentation https://github.com/odoo/o-spreadsheet/
-  or go to https://odoo.github.io/o-spreadsheet/ and click on "Insert > Function".
+-  You can use common functions ``SUM()``, ``AVERAGE()``, etc. in the
+   cells. For a complete list of functions and their syntax, Refer to
+   the documentation https://github.com/odoo/o-spreadsheet/ or go to
+   https://odoo.github.io/o-spreadsheet/ and click on "Insert >
+   Function".
 
-.. figure:: https://raw.githubusercontent.com/OCA/spreadsheet/16.0/spreadsheet_oca/static/description/o-spreadsheet.png
+|image3|
 
-* Note: Business Odoo module can add "business functions".
-  This is currently the case for the accounting module, which adds the following features:
+-  Note: Business Odoo module can add "business functions". This is
+   currently the case for the accounting module, which adds the
+   following features:
 
-    * ``ODOO.CREDIT(account_codes, date_range)``: Get the total credit for the specified account(s) and period.
-    * ``ODOO.DEBIT(account_codes, date_range)``: Get the total debit for the specified account(s) and period.
-    * ``ODOO.BALANCE(account_codes, date_range)``: Get the total balance for the specified account(s) and period.
-    * ``ODOO.FISCALYEAR.START(day)``: Returns the starting date of the fiscal year encompassing the provided date.
-    * ``ODOO.FISCALYEAR.END(day)``: Returns the ending date of the fiscal year encompassing the provided date.
-    * ``ODOO.ACCOUNT.GROUP(type)``: Returns the account ids of a given group where type should be a value of the ``account_type`` field of ``account.account`` model.
-      (``income``, ``asset_receivable``, etc.)
+      -  ``ODOO.CREDIT(account_codes, date_range)``: Get the total
+         credit for the specified account(s) and period.
+      -  ``ODOO.DEBIT(account_codes, date_range)``: Get the total debit
+         for the specified account(s) and period.
+      -  ``ODOO.BALANCE(account_codes, date_range)``: Get the total
+         balance for the specified account(s) and period.
+      -  ``ODOO.FISCALYEAR.START(day)``: Returns the starting date of
+         the fiscal year encompassing the provided date.
+      -  ``ODOO.FISCALYEAR.END(day)``: Returns the ending date of the
+         fiscal year encompassing the provided date.
+      -  ``ODOO.ACCOUNT.GROUP(type)``: Returns the account ids of a
+         given group where type should be a value of the
+         ``account_type`` field of ``account.account`` model.
+         (``income``, ``asset_receivable``, etc.)
 
 **Create a new dynamic spreadsheet from pivot**
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* Go to any pivot
-* Press on insert button
-* Select the dynamic option and set a number of rows
+-----------------------------------------------
 
-A new table that will be updated with the actual or filtered values will be added.
+-  Go to any pivot
+-  Press on insert button
+-  Select the dynamic option and set a number of rows
 
-* Note: When a pivot has multiple levels of aggrupations in the rows, the number of rows 
-  selected will be transfered to each level.
+A new table that will be updated with the actual or filtered values will
+be added.
 
-  Example:
-  number of groups -> 2
-  number of rows -> 3
-  
-  * val1
-    * subval1.1
-    * subval1.2
-    * subval1.3
-  * val2
-    * subval2.1
-    * subval2.2
-    * subval2.3
-  * val3
-    * subval3.1
-    * subval3.2
-    * subval3.3
-  
-Here is a visual exaple of use:
-.. figure:: https://raw.githubusercontent.com/OCA/spreadsheet/16.0/spreadsheet_oca/static/description/spreadsheet_dynamic_table.gif
+-  Note: When a pivot has multiple levels of aggrupations in the rows,
+   the number of rows selected will be transfered to each level.
+
+   Example: number of groups -> 2 number of rows -> 3
+
+   -  val1
+
+      -  subval1.1
+      -  subval1.2
+      -  subval1.3
+
+   -  val2
+
+      -  subval2.1
+      -  subval2.2
+      -  subval2.3
+
+   -  val3
+
+      -  subval3.1
+      -  subval3.2
+      -  subval3.3
+
+https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/Hhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/vhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/xhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/phttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ohttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ghttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/
+https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/../static/description/spreadsheet_dynamic_table.gif
+
+.. |image1| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_create.png
+.. |image2| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_edit.png
+.. |image3| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/o-spreadsheet.png
 
 Development
 ===========
 
-If you want to develop custom business functions, you can add others, based on the file
+If you want to develop custom business functions, you can add others,
+based on the file
 https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js
 
 Known issues / Roadmap
 ======================
 
 Adding new lines on pivot tables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+--------------------------------
 
-When we add a pivot table, the number of rows is predefined according to the current data.
+When we add a pivot table, the number of rows is predefined according to
+the current data.
 
 In order to add new rows, we need to reinsert the pivot table.
 
@@ -126,7 +148,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/spreadsheet/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/spreadsheet/issues/new?body=module:%20spreadsheet_oca%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/spreadsheet/issues/new?body=module:%20spreadsheet_oca%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -134,20 +156,20 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * CreuBlanca
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Enric Tobella
-* `Tecnativa <https://www.tecnativa.com>`_:
+-  Enric Tobella
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  * Carlos Roca
+   -  Carlos Roca
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -159,6 +181,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/spreadsheet <https://github.com/OCA/spreadsheet/tree/16.0/spreadsheet_oca>`_ project on GitHub.
+This module is part of the `OCA/spreadsheet <https://github.com/OCA/spreadsheet/tree/17.0/spreadsheet_oca>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
