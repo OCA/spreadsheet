@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-06-24 14:35+0000\n"
+"PO-Revision-Date: 2024-07-29 15:58+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -82,7 +82,7 @@ msgstr "Prima del precedente"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
 msgid "Can Be Dynamic"
-msgstr ""
+msgstr "Può essere dinamico"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -165,7 +165,7 @@ msgstr "Dati"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
 msgid "Datasource Name"
-msgstr ""
+msgstr "Nome origine dati"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -202,7 +202,7 @@ msgstr "Dominio"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #, python-format
 msgid "Download XLSX"
-msgstr ""
+msgstr "Scarica XLSX"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -214,7 +214,7 @@ msgstr "Nelle viste pivot Non sono supportati i raggruppamenti duplicati"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
 msgid "Dynamic"
-msgstr ""
+msgstr "Dinamico"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
@@ -287,7 +287,7 @@ msgstr "Importa dati nel foglio di calcolo"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Insert dynamic pivot"
-msgstr ""
+msgstr "Inserisci pivot dinamico"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -299,7 +299,7 @@ msgstr "Inserisci pivot"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__is_tree
 msgid "Is Tree"
-msgstr ""
+msgstr "È albero"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -413,7 +413,7 @@ msgstr "Revisione successiva"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
 msgid "Number Of Rows"
-msgstr ""
+msgstr "Numero di righe"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
@@ -495,14 +495,14 @@ msgstr "Salva"
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
 msgid "Select number of rows to duplicate row"
-msgstr ""
+msgstr "Selezionare il numero di righe per duplicare la riga"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #, python-format
 msgid "Select the quantity of rows"
-msgstr ""
+msgstr "Selezionare la quantità di righe"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__sequence
@@ -569,6 +569,8 @@ msgid ""
 "This field allows you to generate tables that are updated with the filters "
 "set in the spreadsheets."
 msgstr ""
+"Questo campo consente di generare tabelle che sono aggiornate con i filtri "
+"impostati nel foglio di lavoro."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
