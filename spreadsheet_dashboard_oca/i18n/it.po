@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-05-30 13:34+0000\n"
+"PO-Revision-Date: 2024-07-29 15:58+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__active
@@ -39,7 +39,7 @@ msgstr "Bacheca"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_group_id
 msgid "Dashboard Group"
-msgstr ""
+msgstr "Gruppo cruscotto"
 
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
@@ -59,14 +59,14 @@ msgstr "Nome"
 #. module: spreadsheet_dashboard_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_new_spreadsheet
 msgid "New dashboard"
-msgstr ""
+msgstr "Nuovo cruscotto"
 
 #. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
 #, python-format
 msgid "Search operation not supported"
-msgstr ""
+msgstr "Cerca operazioni non supportate"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_dashboard
@@ -88,7 +88,7 @@ msgstr "Revisione foglio di calcolo"
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
 #, python-format
 msgid "The value has to be a boolean"
-msgstr ""
+msgstr "Il valore deve essere booleano"
 
 #. module: spreadsheet_dashboard_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard
