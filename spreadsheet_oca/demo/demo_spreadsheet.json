@@ -1,0 +1,54 @@
+{
+  "version": 12.5,
+  "sheets": [
+    {
+      "id": "Sheet1",
+      "name": "Demo Sheet 1",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {},
+      "merges": [],
+      "cells": {
+        "A1": { "style": 1, "content": "First Value", "border": 1 },
+        "A2": { "format": 1, "content": "30.55", "border": 1 },
+        "B1": { "style": 1, "content": "Second Value", "border": 1 },
+        "B2": { "format": 1, "content": "50", "border": 1 },
+        "C1": { "style": 1, "content": "Total", "border": 1 },
+        "C2": { "format": 1, "content": "=sum(A2:B2)", "border": 1 },
+        "A3": { "border": 2 },
+        "B3": { "border": 2 },
+        "C3": { "border": 2 },
+        "D1": { "border": 3 },
+        "D2": { "border": 3 }
+      },
+      "conditionalFormats": [],
+      "figures": [],
+      "filterTables": [],
+      "areGridLinesVisible": true,
+      "isVisible": true
+    }
+  ],
+  "entities": {},
+  "styles": { "1": { "bold": true, "align": "center" } },
+  "formats": { "1": "[$$]#,##0.00" },
+  "borders": {
+    "1": {
+      "top": ["thin", "#000"],
+      "bottom": ["thin", "#000"],
+      "left": ["thin", "#000"],
+      "right": ["thin", "#000"]
+    },
+    "2": { "top": ["thin", "#000"] },
+    "3": { "left": ["thin", "#000"] }
+  },
+  "revisionId": "START_REVISION",
+  "uniqueFigureIds": true,
+  "odooVersion": 5,
+  "globalFilters": [],
+  "pivots": {},
+  "pivotNextId": 1,
+  "lists": {},
+  "listNextId": 1,
+  "chartOdooMenusReferences": {}
+}
