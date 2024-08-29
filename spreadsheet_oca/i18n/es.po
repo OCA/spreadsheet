@@ -45,13 +45,6 @@ msgstr "Añadir texto"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
-#, python-format
-msgid "Add to spreadesheet"
-msgstr "Añadir a hoja de cálculo"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
