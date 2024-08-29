@@ -46,6 +46,7 @@ msgstr ""
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
 #, python-format
 msgid "Add to spreadsheet"
