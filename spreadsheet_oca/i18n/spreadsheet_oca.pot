@@ -41,13 +41,6 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
-#, python-format
-msgid "Add to spreadesheet"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
