@@ -21,7 +21,7 @@
                     type="button"
                     class="btn btn-secondary fa fa-table o_list_export_spreadsheet"
                     data-tooltip="Add to spreadsheet"
-                    aria-label="Add to spreadesheet"
+                    aria-label="Add to spreadsheet"
                     t-on-click="(ev) => this.onSpreadsheetButtonClicked(ev)"
                 />
                 </t>
