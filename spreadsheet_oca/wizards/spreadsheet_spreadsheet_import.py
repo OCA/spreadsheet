@@ -26,10 +26,17 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
     can_be_dynamic = fields.Boolean()
     is_tree = fields.Boolean()
     dynamic = fields.Boolean(
-        help="This field allows you to generate tables that are updated with the "
-        "filters set in the spreadsheets."
+        "Dynamic Rows",
+        help="This field allows you to generate tables that its rows are updated with"
+        " the filters set in the spreadsheets.",
+    )
+    dynamic_cols = fields.Boolean(
+        "Dynamic Columns",
+        help="This field allows you to generate tables that its cols are updated with"
+        " the filters set in the spreadsheets.",
     )
     number_of_rows = fields.Integer()
+    number_of_cols = fields.Integer("Number of Columns")
 
     def insert_pivot(self):
         self.ensure_one()
@@ -47,6 +54,8 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
         import_data["new"] = 1
         if self.dynamic:
             import_data["dyn_number_of_rows"] = self.number_of_rows
+        if self.dynamic_cols:
+            import_data["dyn_number_of_cols"] = self.number_of_cols
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
@@ -63,6 +72,8 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
         import_data["new_sheet"] = new_sheet
         if self.dynamic:
             import_data["dyn_number_of_rows"] = self.number_of_rows
+        if self.dynamic_cols:
+            import_data["dyn_number_of_cols"] = self.number_of_cols
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
