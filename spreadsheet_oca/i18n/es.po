@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-18 13:08+0000\n"
-"PO-Revision-Date: 2024-07-18 15:09+0200\n"
+"POT-Creation-Date: 2024-09-03 11:51+0000\n"
+"PO-Revision-Date: 2024-09-03 13:54+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -206,9 +206,20 @@ msgid "Duplicated groupbys in pivot are not supprted"
 msgstr "Las agrupaciones duplicadas en la vista pivot no están soportadas"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_cols
+msgid "Dynamic Cols"
+msgstr "Columnas Dinámicas"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
+msgid "Dynamic Columns"
+msgstr "Columnas Dinámicas"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
-msgid "Dynamic"
-msgstr "Dinámico"
+msgid "Dynamic Rows"
+msgstr "Filas Dinámicas"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
@@ -404,10 +415,20 @@ msgid "Next Revision"
 msgstr "Siguiente revisión"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_cols
+msgid "Number Of Cols"
+msgstr "Número de columnas"
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
 msgid "Number Of Rows"
 msgstr "Número de filas"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_cols
+msgid "Number of Columns"
+msgstr "Número de columnas"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
@@ -558,13 +579,22 @@ msgid "Stacked"
 msgstr "Apilados"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
+msgid ""
+"This field allows you to generate tables that its cols are updated with the "
+"filters set in the spreadsheets."
+msgstr ""
+"Este campo permite generar tablas en las que se actualizan sus columnas con "
+"los filtros establecidos en las hojas de cálculo."
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
 msgid ""
-"This field allows you to generate tables that are updated with the filters "
-"set in the spreadsheets."
+"This field allows you to generate tables that its rows are updated with the "
+"filters set in the spreadsheets."
 msgstr ""
-"Este campo permite generar tablas que se actualizan con los filtros "
-"establecidos en las hojas de cálculo."
+"Este campo permite generar tablas en las que se actualizan sus filas con "
+"los filtros establecidos en las hojas de cálculo."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
