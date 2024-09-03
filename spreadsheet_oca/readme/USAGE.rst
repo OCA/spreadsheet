@@ -35,12 +35,12 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * Go to any pivot
 * Press on insert button
-* Select the dynamic option and set a number of rows
+* Select the dynamic rows or dynamic columns option and set a number of rows/columns
 
 A new table that will be updated with the actual or filtered values will be added.
 
-* Note: When a pivot has multiple levels of aggrupations in the rows, the number of rows 
-  selected will be transfered to each level.
+* Note: When a pivot has multiple levels of aggrupations in the rows or the columns, 
+  the number of rows/columns selected will be transfered to each level.
 
   Example:
   number of groups -> 2
