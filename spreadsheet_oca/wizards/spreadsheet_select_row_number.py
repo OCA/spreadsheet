@@ -8,4 +8,7 @@ class SpreadsheetSelectRowNumber(models.TransientModel):
     _name = "spreadsheet.select.row.number"
     _description = "Select number of rows to duplicate row"
 
+    dynamic_rows = fields.Boolean()
     number_of_rows = fields.Integer()
+    dynamic_cols = fields.Boolean()
+    number_of_cols = fields.Integer()

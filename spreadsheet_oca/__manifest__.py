@@ -39,7 +39,8 @@
             "spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panel.esm.js",
-            "spreadsheet_oca/static/src/spreadsheet/utils/dynamic_row_generator.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/utils/dynamic_generators.esm.js",
+            "spreadsheet_oca/static/src/pivot/pivot_table.esm.js",
         ],
     },
 }

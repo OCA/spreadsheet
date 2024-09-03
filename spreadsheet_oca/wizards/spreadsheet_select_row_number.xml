@@ -8,7 +8,16 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="number_of_rows" />
+                        <field name="dynamic_rows" />
+                        <field
+                            name="number_of_rows"
+                            attrs="{'invisible': [('dynamic_rows', '=', False)]}"
+                        />
+                        <field name="dynamic_cols" />
+                        <field
+                            name="number_of_cols"
+                            attrs="{'invisible': [('dynamic_cols', '=', False)]}"
+                        />
                     </group>
                 </sheet>
             </form>
