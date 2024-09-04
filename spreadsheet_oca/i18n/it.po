@@ -205,9 +205,20 @@ msgid "Duplicated groupbys in pivot are not supprted"
 msgstr "Nelle viste pivot Non sono supportati i raggruppamenti duplicati"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_cols
+msgid "Dynamic Cols"
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
+msgid "Dynamic Columns"
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
-msgid "Dynamic"
-msgstr "Dinamico"
+msgid "Dynamic Rows"
+msgstr ""
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
@@ -403,10 +414,20 @@ msgid "Next Revision"
 msgstr "Revisione successiva"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_cols
+msgid "Number Of Cols"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
 msgid "Number Of Rows"
 msgstr "Numero di righe"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_cols
+msgid "Number of Columns"
+msgstr ""
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
@@ -557,13 +578,18 @@ msgid "Stacked"
 msgstr "In coda"
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
+msgid ""
+"This field allows you to generate tables that its cols are updated with the "
+"filters set in the spreadsheets."
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
 msgid ""
-"This field allows you to generate tables that are updated with the filters "
-"set in the spreadsheets."
+"This field allows you to generate tables that its rows are updated with the "
+"filters set in the spreadsheets."
 msgstr ""
-"Questo campo consente di generare tabelle che sono aggiornate con i filtri "
-"impostati nel foglio di lavoro."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -630,3 +656,13 @@ msgstr "non aggiornato"
 #: model:ir.model,name:spreadsheet_oca.model_ir_websocket
 msgid "websocket message handling"
 msgstr "gestione messaggio websocket"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamico"
+
+#~ msgid ""
+#~ "This field allows you to generate tables that are updated with the "
+#~ "filters set in the spreadsheets."
+#~ msgstr ""
+#~ "Questo campo consente di generare tabelle che sono aggiornate con i "
+#~ "filtri impostati nel foglio di lavoro."
