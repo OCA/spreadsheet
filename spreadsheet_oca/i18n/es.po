@@ -593,8 +593,8 @@ msgid ""
 "This field allows you to generate tables that its rows are updated with the "
 "filters set in the spreadsheets."
 msgstr ""
-"Este campo permite generar tablas en las que se actualizan sus filas con "
-"los filtros establecidos en las hojas de cálculo."
+"Este campo permite generar tablas en las que se actualizan sus filas con los "
+"filtros establecidos en las hojas de cálculo."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
