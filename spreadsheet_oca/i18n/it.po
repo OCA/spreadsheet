@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-07-29 15:58+0000\n"
+"PO-Revision-Date: 2024-09-04 10:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -207,18 +207,18 @@ msgstr "Nelle viste pivot Non sono supportati i raggruppamenti duplicati"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_cols
 msgid "Dynamic Cols"
-msgstr ""
+msgstr "Colonne dinamiche"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
 msgid "Dynamic Columns"
-msgstr ""
+msgstr "Colonne dinamiche"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
 msgid "Dynamic Rows"
-msgstr ""
+msgstr "Righe dinamiche"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
@@ -416,7 +416,7 @@ msgstr "Revisione successiva"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_cols
 msgid "Number Of Cols"
-msgstr ""
+msgstr "Numero di colonne"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
@@ -427,7 +427,7 @@ msgstr "Numero di righe"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_cols
 msgid "Number of Columns"
-msgstr ""
+msgstr "Numero di colonne"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
@@ -583,6 +583,8 @@ msgid ""
 "This field allows you to generate tables that its cols are updated with the "
 "filters set in the spreadsheets."
 msgstr ""
+"Questo campo consente di generare tabelle le cui colonne sono aggiornate con "
+"i filtri impostati nei fogli di lavoro."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
@@ -590,6 +592,8 @@ msgid ""
 "This field allows you to generate tables that its rows are updated with the "
 "filters set in the spreadsheets."
 msgstr ""
+"Questo campo consente di generare tabelle le cui righe sono aggiornate con i "
+"filtri impostati nei fogli di lavoro."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
