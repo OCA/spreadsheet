@@ -37,6 +37,15 @@
                             name="number_of_rows"
                             attrs="{'invisible': [('dynamic', '=', False)], 'required': [('dynamic', '=', True)]}"
                         />
+                        <field
+                            name="dynamic_cols"
+                            force_save="1"
+                            attrs="{'invisible': ['|', ('can_be_dynamic', '=', False), ('is_tree', '=', True)]}"
+                        />
+                        <field
+                            name="number_of_cols"
+                            attrs="{'invisible': [('dynamic_cols', '=', False)], 'required': [('dynamic_cols', '=', True)]}"
+                        />
                     </group>
                 </sheet>
                 <footer>

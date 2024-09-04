@@ -26,6 +26,8 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
         import_data["new"] = 1
         if self.dynamic:
             import_data["dyn_number_of_rows"] = self.number_of_rows
+        if self.dynamic_cols:
+            import_data["dyn_number_of_cols"] = self.number_of_cols
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
@@ -42,6 +44,8 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
         import_data["new_sheet"] = new_sheet
         if self.dynamic:
             import_data["dyn_number_of_rows"] = self.number_of_rows
+        if self.dynamic_cols:
+            import_data["dyn_number_of_cols"] = self.number_of_cols
         return {
             "type": "ir.actions.client",
             "tag": "action_spreadsheet_oca",
