@@ -22,12 +22,26 @@
     "assets": {
         "web.assets_backend": [
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet.scss",
-            "spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml",
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/graph_controller.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/list_controller.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/list_renderer.esm.js",
+            (
+                "after",
+                "web/static/src/views/graph/graph_controller.xml",
+                "spreadsheet_oca/static/src/spreadsheet/graph_controller.xml",
+            ),
+            (
+                "after",
+                "web/static/src/views/list/list_controller.xml",
+                "spreadsheet_oca/static/src/spreadsheet/list_controller.xml",
+            ),
+            (
+                "after",
+                "web/static/src/views/pivot/pivot_controller.xml",
+                "spreadsheet_oca/static/src/spreadsheet/pivot_controller.xml",
+            ),
         ],
         "spreadsheet.o_spreadsheet": [
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml",
