@@ -23,7 +23,9 @@ patch(
                     .concat(this.model.metaData.expandedRowGroupBys)
                     .map((el) => el.split(":")[0])
             );
-            return Boolean(colGroupBys.intersection(rowGroupBys).size);
+            return Boolean(
+                new Set([...colGroupBys].filter((item) => rowGroupBys.has(item))).size
+            );
         },
         disableSpreadsheetInsertion() {
             return (
