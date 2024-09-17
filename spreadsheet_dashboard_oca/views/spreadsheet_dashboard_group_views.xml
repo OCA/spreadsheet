@@ -3,9 +3,9 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record
-        model="ir.actions.act_window"
-        id="spreadsheet_dashboard.spreadsheet_dashboard_action_configuration_dashboards"
-    >
+    model="ir.actions.act_window"
+    id="spreadsheet_dashboard.spreadsheet_dashboard_action_configuration_dashboards"
+  >
         <field name="context">{'active_test': False}</field>
     </record>
 </odoo>
