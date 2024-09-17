@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class SpreadsheetSpreadsheetImport(models.TransientModel):
-
     _inherit = "spreadsheet.spreadsheet.import"
 
     dashboard_id = fields.Many2one("spreadsheet.dashboard")
