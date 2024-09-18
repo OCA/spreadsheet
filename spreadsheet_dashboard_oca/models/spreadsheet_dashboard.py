@@ -12,6 +12,7 @@ class SpreadsheetDashboard(models.Model):
     _name = "spreadsheet.dashboard"
     _inherit = ["spreadsheet.dashboard", "spreadsheet.abstract"]
 
+    data = fields.Binary()
     active = fields.Boolean(default=True)
     spreadsheet_raw = fields.Serialized(
         inverse="_inverse_spreadsheet_raw", compute="_compute_spreadsheet_raw"
