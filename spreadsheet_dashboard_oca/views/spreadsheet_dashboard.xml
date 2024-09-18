@@ -18,7 +18,7 @@
                 <attribute name="decoration-muted">not active</attribute>
             </tree>
             <tree position="inside">
-                <field name="can_edit" invisible="1" />
+                <field name="can_edit" column_invisible="True" />
                 <field
           name="data"
           groups="base.group_no_one"
@@ -33,7 +33,7 @@
           icon="fa-pencil"
           disabled="1"
           groups="base.group_system"
-          attrs="{'invisible': [('can_edit', '=', True)]}"
+          invisible="can_edit"
         />
                 <button
           name="open_spreadsheet"
@@ -41,7 +41,7 @@
           string="Edit"
           icon="fa-pencil"
           groups="base.group_system"
-          attrs="{'invisible': [('can_edit', '=', False)]}"
+          invisible="not can_edit"
         />
                 <button
           name="copy"
