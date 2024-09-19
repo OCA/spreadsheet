@@ -27,6 +27,7 @@
                             options="{'no_create': True}"
                         />
                         <field name="can_be_dynamic" invisible="1" />
+                        <field name="can_have_dynamic_cols" invisible="1" />
                         <field name="is_tree" invisible="1" />
                         <field
                             name="dynamic"
@@ -40,7 +41,7 @@
                         <field
                             name="dynamic_cols"
                             force_save="1"
-                            attrs="{'invisible': ['|', ('can_be_dynamic', '=', False), ('is_tree', '=', True)]}"
+                            attrs="{'invisible': ['|', ('can_have_dynamic_cols', '=', False), ('is_tree', '=', True)]}"
                         />
                         <field
                             name="number_of_cols"
