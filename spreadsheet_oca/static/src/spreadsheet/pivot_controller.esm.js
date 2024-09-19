@@ -25,6 +25,14 @@ patch(
             );
             return Boolean(colGroupBys.intersection(rowGroupBys).size);
         },
+        containsColGroupBys() {
+            const colGroupBys = new Set(
+                this.model.metaData.colGroupBys
+                    .concat(this.model.metaData.expandedColGroupBys)
+                    .map((el) => el.split(":")[0])
+            );
+            return Boolean(colGroupBys.size);
+        },
         disableSpreadsheetInsertion() {
             return (
                 !this.model.hasData() ||
@@ -50,6 +58,7 @@ patch(
                         default_name: this.model.metaData.title,
                         default_datasource_name: this.model.metaData.title,
                         default_can_be_dynamic: true,
+                        default_can_have_dynamic_cols: this.containsColGroupBys(),
                         default_import_data: {
                             mode: "pivot",
                             metaData: JSON.parse(JSON.stringify(this.model.metaData)),
