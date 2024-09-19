@@ -44,12 +44,17 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
+#, python-format
+msgid "Add to spreadesheet"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/graph_controller.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/spreadsheet.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
 #, python-format
 msgid "Add to spreadsheet"
@@ -83,7 +88,6 @@ msgstr "Peut être dynamique"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
 #, python-format
@@ -191,7 +195,6 @@ msgstr "Nom"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Domain"
 msgstr "Domaine"
@@ -234,7 +237,6 @@ msgstr "Edition"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Edit domain"
@@ -349,18 +351,12 @@ msgstr "Dernière mise à jour le"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Last updated at"
 msgstr "Dernière mise à jour à"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Link to Odoo menu"
@@ -392,7 +388,6 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
 #, python-format
@@ -665,7 +660,6 @@ msgstr "Le nom est requis"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #, python-format
 msgid "not updated"
