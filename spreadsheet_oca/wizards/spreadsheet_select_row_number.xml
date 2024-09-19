@@ -13,7 +13,11 @@
                             name="number_of_rows"
                             attrs="{'invisible': [('dynamic_rows', '=', False)]}"
                         />
-                        <field name="dynamic_cols" />
+                        <field name="can_have_dynamic_cols" invisible="1" />
+                        <field
+                            name="dynamic_cols"
+                            attrs="{'invisible': [('can_have_dynamic_cols', '=', False)]}"
+                        />
                         <field
                             name="number_of_cols"
                             attrs="{'invisible': [('dynamic_cols', '=', False)]}"
