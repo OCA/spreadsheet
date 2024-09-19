@@ -85,6 +85,12 @@ msgid "Can Be Dynamic"
 msgstr ""
 
 #. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__can_have_dynamic_cols
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_have_dynamic_cols
+msgid "Can Have Dynamic Cols"
+msgstr ""
+
+#. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
