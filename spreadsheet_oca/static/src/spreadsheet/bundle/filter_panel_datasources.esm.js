@@ -134,6 +134,11 @@ export class PivotPanelDisplay extends Component {
                     {
                         title: this.env._t("Select the quantity of rows"),
                         resModel: "spreadsheet.select.row.number",
+                        context: {
+                            default_can_have_dynamic_cols: Boolean(
+                                cols[0][0].fields.length
+                            ),
+                        },
                         onRecordSaved: async (record) => {
                             resolve({
                                 dynamic_rows: record.data.dynamic_rows,

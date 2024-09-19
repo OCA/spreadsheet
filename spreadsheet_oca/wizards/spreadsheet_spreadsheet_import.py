@@ -24,6 +24,7 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
     import_data = fields.Serialized()
     spreadsheet_id = fields.Many2one("spreadsheet.spreadsheet")
     can_be_dynamic = fields.Boolean()
+    can_have_dynamic_cols = fields.Boolean()
     is_tree = fields.Boolean()
     dynamic = fields.Boolean(
         "Dynamic Rows",
