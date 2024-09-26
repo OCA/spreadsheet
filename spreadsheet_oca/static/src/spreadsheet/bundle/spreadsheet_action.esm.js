@@ -52,7 +52,25 @@ export class ActionSpreadsheetOca extends Component {
             this.router.pushState({spreadsheet_id: this.spreadsheetId});
         }
     }
-
+    /**
+     * Clean SearchParams of conflictive keys.
+     *
+     * 1. Removed from context pivot conflictive keys.
+     * 2. Removed from context graph conflictive keys.
+     *
+     * @returns {Object}       Formated searchParams.
+     */
+    cleanSearchParams() {
+        const searchParams = this.import_data.searchParams;
+        const context = {};
+        for (var key of Object.keys(searchParams.context)) {
+            if (key.startsWith("pivot_") || key.startsWith("graph_")) {
+                continue;
+            }
+            context[key] = searchParams.context[key];
+        }
+        return {...searchParams, context};
+    }
     async importDataGraph(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
         var y = 0;
@@ -78,7 +96,7 @@ export class ActionSpreadsheetOca extends Component {
             background: "#FFFFFF",
             stacked: this.import_data.metaData.stacked,
             metaData: this.import_data.metaData,
-            searchParams: this.import_data.searchParams,
+            searchParams: this.cleanSearchParams(),
             dataSourceId: dataSourceId,
             legendPosition: "top",
             verticalAxisPosition: "left",
@@ -187,7 +205,7 @@ export class ActionSpreadsheetOca extends Component {
                 resModel: this.import_data.metaData.resModel,
                 sortedColumn: this.import_data.metaData.sortedColumn,
             },
-            searchParams: this.import_data.searchParams,
+            searchParams: this.cleanSearchParams(),
             name: this.import_data.name,
         };
         const dataSource = spreadsheet_model.config.dataSources.add(
