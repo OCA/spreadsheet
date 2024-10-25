@@ -51,7 +51,11 @@
                         <field name="owner_id" />
                         <field name="contributor_ids" widget="many2many_tags" />
                         <field name="reader_ids" widget="many2many_tags" />
-                        <field name="data" filename="filename" />
+                        <field
+                            name="data"
+                            filename="filename"
+                            groups="base.group_no_one"
+                        />
                         <field name="filename" invisible="1" />
                     </group>
                 </sheet>
