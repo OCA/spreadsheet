@@ -3,6 +3,8 @@
 
 import base64
 import json
+import zipfile
+from io import BytesIO
 
 from odoo import _, api, fields, models
 
@@ -55,3 +57,37 @@ class SpreadsheetSpreadsheet(models.Model):
             record.data = base64.encodebytes(
                 json.dumps(record.spreadsheet_raw).encode("UTF-8")
             )
+
+    def create_document_from_attachment(self, attachment_ids):
+        attachments = self.env["ir.attachment"].browse(attachment_ids)
+        spreadsheets = self.env["spreadsheet.spreadsheet"]
+        for attachment in attachments:
+            extracted = {}
+            with zipfile.ZipFile(
+                BytesIO(base64.b64decode(attachment.datas)), "r"
+            ) as xlsx:
+                # List and filter for XML and REL files
+                xml_files = [
+                    f
+                    for f in xlsx.namelist()
+                    if f.endswith(".xml") or f.endswith(".rels")
+                ]
+                # Extract each file
+                for xml_file in xml_files:
+                    # Read the XML file into memory
+                    with xlsx.open(xml_file) as file:
+                        extracted[xml_file] = file.read().decode("UTF8")
+                spreadsheets |= self.create(
+                    {
+                        "spreadsheet_raw": extracted,
+                        "name": attachment.name,
+                    }
+                )
+        attachments.unlink()
+        if len(spreadsheets) == 1:
+            return spreadsheets.get_formview_action()
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "spreadsheet_oca.spreadsheet_spreadsheet_act_window"
+        )
+        action["domain"] = [("id", "in", spreadsheets.ids)]
+        return action
