@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="spreadsheet_oca.SpreadsheetFileUploader" owl="1">
+        <div
+            t-att-class="props.record and props.record.data ? 'oe_kanban_color_' + props.record.data.color : ''"
+        >
+            <FileUploader
+                acceptedFileExtensions="props.acceptedFileExtensions"
+                fileUploadClass="'spreadsheet_file_uploader'"
+                multiUpload="true"
+                onUploaded.bind="onFileUploaded"
+                onUploadComplete.bind="onUploadComplete"
+            >
+                <t t-set-slot="toggler">
+                    <t
+                        t-if="props.togglerTemplate"
+                        t-call="{{ props.togglerTemplate }}"
+                    />
+                    <t t-else="" t-slot="default" />
+                </t>
+                <t t-slot="extra" />
+            </FileUploader>
+        </div>
+    </t>
+    <t
+        t-name="spreadsheet_oca.ListView.Buttons"
+        t-inherit="web.ListView.Buttons"
+        t-inherit-mode="primary"
+        owl="1"
+    >
+        <xpath expr="//*[@class='btn btn-primary o_list_button_add']" position="after">
+            <SpreadsheetFileUploader>
+                <t t-set-slot="default">
+                    <button
+                        type="button"
+                        class="btn btn-secondary o_button_upload_bill"
+                    >
+                        Upload XLSX
+                    </button>
+                </t>
+            </SpreadsheetFileUploader>
+        </xpath>
+    </t>
+</templates>
