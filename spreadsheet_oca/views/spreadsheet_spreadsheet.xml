@@ -17,7 +17,7 @@
         <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
         <field name="model">spreadsheet.spreadsheet</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree js_class="spreadsheet_tree">
                 <field name="name" />
                 <button
                     name="open_spreadsheet"
