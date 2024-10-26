@@ -21,6 +21,8 @@
     "demo": ["demo/spreadsheet_spreadsheet.xml"],
     "assets": {
         "web.assets_backend": [
+            "spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml",
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet.scss",
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js",
