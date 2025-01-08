@@ -43,7 +43,8 @@ class IrWebsocket(models.AbstractModel):
                             model_name, "read", raise_exception=False
                         ):
                             continue
-                        # If user don't have access to the model, we don't even try to read
+                        # If user don't have access to the model, we don't even try to
+                        # read
 
                         document = self.env[model_name].search(
                             [("id", "=", res_id)], limit=1
