@@ -1,14 +1,14 @@
 /** @odoo-module **/
 
+import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Component, onWillStart, onWillUpdateProps} from "@odoo/owl";
 import {makeDynamicCols, makeDynamicRows} from "../utils/dynamic_generators.esm";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
 import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
-import {_t} from "web.core";
-import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
-import {time_to_str} from "web.time";
+import {_t} from "@web/core/l10n/translation";
+import {formatDate} from "@web/core/l10n/dates";
 import {useService} from "@web/core/utils/hooks";
 
 const {sidePanelRegistry, topbarMenuRegistry} = spreadsheet.registries;
@@ -87,7 +87,7 @@ export class PivotPanelDisplay extends Component {
   get lastUpdate() {
     const lastUpdate = this.PivotDataSource.lastUpdate;
     if (lastUpdate) {
-      return time_to_str(new Date(lastUpdate));
+      return formatDate(new Date(lastUpdate));
     }
     return _t("not updated");
   }
@@ -232,7 +232,7 @@ export class ListPanelDisplay extends Component {
   get lastUpdate() {
     const lastUpdate = this.ListDataSource.lastUpdate;
     if (lastUpdate) {
-      return time_to_str(new Date(lastUpdate));
+      return formatDate(new Date(lastUpdate));
     }
     return _t("not updated");
   }

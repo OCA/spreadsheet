@@ -1,9 +1,9 @@
 /** @odoo-module */
 
+import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Domain} from "@web/core/domain";
 import {Many2OneField} from "@web/views/fields/many2one/many2one_field";
 import {patch} from "@web/core/utils/patch";
-import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
 import {useService} from "@web/core/utils/hooks";
 
 const {LineBarPieConfigPanel, ScorecardChartConfigPanel, GaugeChartConfigPanel} =
@@ -51,31 +51,19 @@ const menuChartProps = {
   },
 };
 
-patch(
-  LineBarPieConfigPanel.prototype,
-  "spreadsheet_oca.LineBarPieConfigPanel",
-  menuChartProps
-);
+patch(LineBarPieConfigPanel.prototype, menuChartProps);
 LineBarPieConfigPanel.components = {
   ...LineBarPieConfigPanel.components,
   Many2OneField,
 };
 
-patch(
-  ScorecardChartConfigPanel.prototype,
-  "spreadsheet_oca.ScorecardChartConfigPanel",
-  menuChartProps
-);
+patch(ScorecardChartConfigPanel.prototype, menuChartProps);
 ScorecardChartConfigPanel.components = {
   ...ScorecardChartConfigPanel.components,
   Many2OneField,
 };
 
-patch(
-  GaugeChartConfigPanel.prototype,
-  "spreadsheet_oca.GaugeChartConfigPanel",
-  menuChartProps
-);
+patch(GaugeChartConfigPanel.prototype, menuChartProps);
 GaugeChartConfigPanel.components = {
   ...GaugeChartConfigPanel.components,
   Many2OneField,
