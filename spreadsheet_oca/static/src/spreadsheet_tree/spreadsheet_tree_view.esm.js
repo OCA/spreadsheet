@@ -74,7 +74,7 @@ SpreadsheetListController.components = {
 export const SpreadsheetListView = {
   ...listView,
   Controller: SpreadsheetListController,
-  buttonTemplate: "spreadsheet_oca.ListView.Buttons",
+  buttonTemplate: "spreadsheet_oca.ListView",
 };
 
 registry.category("views").add("spreadsheet_tree", SpreadsheetListView);
