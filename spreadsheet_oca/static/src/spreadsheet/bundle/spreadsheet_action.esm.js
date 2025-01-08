@@ -1,12 +1,12 @@
 /** @odoo-module **/
 
+import * as spreadsheet from "@odoo/o-spreadsheet";
 import {makeDynamicCols, makeDynamicRows} from "../utils/dynamic_generators.esm";
-import ListDataSource from "@spreadsheet/list/list_data_source";
-import PivotDataSource from "@spreadsheet/pivot/pivot_data_source";
+import {ListDataSource} from "@spreadsheet/list/list_data_source";
+import {PivotDataSource} from "@spreadsheet/pivot/pivot_data_source";
 import {SpreadsheetControlPanel} from "./spreadsheet_controlpanel.esm";
 import {SpreadsheetRenderer} from "./spreadsheet_renderer.esm";
 import {registry} from "@web/core/registry";
-import spreadsheet from "@spreadsheet/o_spreadsheet/o_spreadsheet_extended";
 import {useService} from "@web/core/utils/hooks";
 
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
