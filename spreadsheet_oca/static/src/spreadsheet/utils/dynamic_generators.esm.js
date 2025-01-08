@@ -36,89 +36,89 @@
  * @returns {Array}
  */
 export function makeDynamicRows(
-    fields,
-    number_of_rows,
-    indent,
-    max_indentation,
-    parent_indexes = []
+  fields,
+  number_of_rows,
+  indent,
+  max_indentation,
+  parent_indexes = []
 ) {
-    var rows = [];
-    for (var index = 1; index <= number_of_rows; index++) {
-        rows.push({
-            fields: fields.slice(0, indent).map((f) => "#" + f),
-            indent,
-            values: [...parent_indexes, index],
-        });
-        if (indent < max_indentation) {
-            rows = rows.concat(
-                makeDynamicRows(fields, number_of_rows, indent + 1, max_indentation, [
-                    ...parent_indexes,
-                    index,
-                ])
-            );
-        }
+  var rows = [];
+  for (var index = 1; index <= number_of_rows; index++) {
+    rows.push({
+      fields: fields.slice(0, indent).map((f) => "#" + f),
+      indent,
+      values: [...parent_indexes, index],
+    });
+    if (indent < max_indentation) {
+      rows = rows.concat(
+        makeDynamicRows(fields, number_of_rows, indent + 1, max_indentation, [
+          ...parent_indexes,
+          index,
+        ])
+      );
     }
-    return rows;
+  }
+  return rows;
 }
 
 function _incrementArray(arr, base) {
-    let carry = 1;
-    for (let i = arr.length - 1; i >= 0; i--) {
-        const sum = arr[i] + carry;
-        arr[i] = sum % base ? sum % base : 1;
-        carry = Math.floor(sum / base);
-        if (carry === 0) break;
-    }
+  let carry = 1;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    const sum = arr[i] + carry;
+    arr[i] = sum % base ? sum % base : 1;
+    carry = Math.floor(sum / base);
+    if (carry === 0) break;
+  }
 
-    return arr;
+  return arr;
 }
 
 function _getColLevelInfo(fields, number_of_cols, width) {
-    const col_info = [];
-    var values = Array.from({length: fields.length}, () => 1);
-    for (var f = Math.pow(number_of_cols, fields.length - 1) - 1; f >= 0; f--) {
-        for (var c = 1; c <= number_of_cols; c++) {
-            col_info.push({
-                fields,
-                values,
-                width,
-            });
-            values = _incrementArray([...values], number_of_cols + 1);
-        }
+  const col_info = [];
+  var values = Array.from({length: fields.length}, () => 1);
+  for (var f = Math.pow(number_of_cols, fields.length - 1) - 1; f >= 0; f--) {
+    for (var c = 1; c <= number_of_cols; c++) {
+      col_info.push({
+        fields,
+        values,
+        width,
+      });
+      values = _incrementArray([...values], number_of_cols + 1);
     }
-    return col_info;
+  }
+  return col_info;
 }
 
 /**
  *
  * @param {Array} fields
  * @param {Number} number_of_cols
- * @param {Number} indent
+ * @param {Number} measures
  * @param {Number} max_indentation
  * @param {Array} parent_indexes
  * @returns {Array}
  */
 export function makeDynamicCols(fields, number_of_cols, measures) {
-    var cols = [];
-    const max_width =
-        (Math.pow(number_of_cols, fields.length) * measures.length) / number_of_cols;
-    for (var index = 0; index < fields.length; index++) {
-        const width = max_width / Math.pow(number_of_cols, index);
-        const newFields = fields.slice(0, index + 1).map((f) => "#" + f);
-        cols.push(_getColLevelInfo(newFields, number_of_cols, width));
+  var cols = [];
+  const max_width =
+    (Math.pow(number_of_cols, fields.length) * measures.length) / number_of_cols;
+  for (var index = 0; index < fields.length; index++) {
+    const width = max_width / Math.pow(number_of_cols, index);
+    const newFields = fields.slice(0, index + 1).map((f) => "#" + f);
+    cols.push(_getColLevelInfo(newFields, number_of_cols, width));
+  }
+  const measuresCols = [];
+  const lastCols = cols[cols.length - 1];
+  for (var col of lastCols) {
+    for (var measure of measures) {
+      measuresCols.push({
+        fields: [...col.fields, "measure"],
+        values: [...col.values, measure],
+        width: 1,
+      });
     }
-    const measuresCols = [];
-    const lastCols = cols[cols.length - 1];
-    for (var col of lastCols) {
-        for (var measure of measures) {
-            measuresCols.push({
-                fields: [...col.fields, "measure"],
-                values: [...col.values, measure],
-                width: 1,
-            });
-        }
-    }
-    cols.push(measuresCols);
-    cols.push("dynamic_cols");
-    return cols;
+  }
+  cols.push(measuresCols);
+  cols.push("dynamic_cols");
+  return cols;
 }
