@@ -5,7 +5,6 @@ from odoo import fields, models
 
 
 class SpreadsheetOcaRevision(models.Model):
-
     _name = "spreadsheet.oca.revision"
     _description = "Spreadsheet Oca Revision"  # TODO
 
