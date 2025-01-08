@@ -4,7 +4,7 @@
 import {SpreadsheetPivotTable} from "@spreadsheet/pivot/pivot_table";
 import {patch} from "@web/core/utils/patch";
 
-patch(SpreadsheetPivotTable.prototype, "spreadsheet_oca.SpreadsheetPivotTable", {
+patch(SpreadsheetPivotTable.prototype, {
   get _dynamic_cols() {
     return this._cols[this._cols.length - 1] === "dynamic_cols";
   },
