@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t t-inherit="web.ListView.Buttons" t-inherit-mode="extension" owl="1">
-        <xpath expr="//button[hasclass('o_list_export_xlsx')]/.." position="after">
+        <xpath expr="//button[hasclass('o_list_button_discard')]/.." position="after">
                 <t t-if="!env.isSmall">
                     <button
           type="button"
