@@ -1,10 +1,10 @@
 /** @odoo-module **/
 
-import {PivotController} from "@web/views/pivot/pivot_controller";
+import {PivotRenderer} from "@web/views/pivot/pivot_renderer";
 import {_lt} from "@web/core/l10n/translation";
 import {patch} from "@web/core/utils/patch";
 
-patch(PivotController.prototype, {
+patch(PivotRenderer.prototype, {
   isComparingInfo() {
     return Boolean(this.model.searchParams.comparison);
   },

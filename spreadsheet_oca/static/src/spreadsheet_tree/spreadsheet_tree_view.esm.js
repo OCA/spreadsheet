@@ -1,9 +1,10 @@
 /** @odoo-module **/
+
 import {Component} from "@odoo/owl";
 import {FileUploader} from "@web/views/fields/file_handler";
 import {ListController} from "@web/views/list/list_controller";
+import {_t} from "@web/core/l10n/translation";
 import {listView} from "@web/views/list/list_view";
-
 import {registry} from "@web/core/registry";
 import {standardWidgetProps} from "@web/views/widgets/standard_widget_props";
 import {useService} from "@web/core/utils/hooks";
@@ -23,7 +24,7 @@ class SpreadsheetFileUploader extends Component {
     const att_id = await this.orm.create("ir.attachment", [att_data], {
       context: this.env.searchModel.context,
     });
-    this.attachmentIdsToProcess.push(att_id);
+    this.attachmentIdsToProcess.push(att_id[0]);
   }
   async onUploadComplete() {
     let action = {};
@@ -61,10 +62,12 @@ SpreadsheetFileUploader.props = {
   record: {type: Object, optional: true},
   togglerTemplate: {type: String, optional: true},
   slots: {type: Object, optional: true},
+  linkText: {type: String, optional: true},
 };
 SpreadsheetFileUploader.defaultProps = {
   acceptedFileExtensions:
     "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  linkText: _t("Upload a Spreadsheet"),
 };
 export class SpreadsheetListController extends ListController {}
 SpreadsheetListController.components = {
@@ -74,7 +77,7 @@ SpreadsheetListController.components = {
 export const SpreadsheetListView = {
   ...listView,
   Controller: SpreadsheetListController,
-  buttonTemplate: "spreadsheet_oca.ListView",
+  buttonTemplate: "spreadsheet_oca.ListView.Buttons",
 };
 
 registry.category("views").add("spreadsheet_tree", SpreadsheetListView);

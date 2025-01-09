@@ -1,9 +1,9 @@
 /** @odoo-module **/
-import {GraphController} from "@web/views/graph/graph_controller";
+import {GraphRenderer} from "@web/views/graph/graph_renderer";
 
 import {patch} from "@web/core/utils/patch";
 
-patch(GraphController.prototype, {
+patch(GraphRenderer.prototype, {
   onSpreadsheetButtonClicked() {
     this.actionService.doAction(
       "spreadsheet_oca.spreadsheet_spreadsheet_import_act_window",
