@@ -2,7 +2,8 @@
 
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Domain} from "@web/core/domain";
-import {Many2OneField} from "@web/views/fields/many2one/many2one_field";
+
+import {Many2XAutocomplete} from "@web/views/fields/relational_utils";
 import {patch} from "@web/core/utils/patch";
 import {useService} from "@web/core/utils/hooks";
 
@@ -11,8 +12,31 @@ const {LineBarPieConfigPanel, ScorecardChartConfigPanel, GaugeChartConfigPanel} 
 
 const menuChartProps = {
   setup() {
-    this._super.apply(this, arguments);
+    super.setup(...arguments);
     this.menus = useService("menu");
+  },
+  get menuProps() {
+    const menu = this.env.model.getters.getChartOdooMenu(this.props.figureId);
+    var result = {
+      record: this.record,
+      resModel: "ir.ui.menu",
+      update: this.updateMenu.bind(this),
+      activeActions: {},
+      getDomain: this.getDomain.bind(this),
+    };
+    if (menu) {
+      result.value = menu.name;
+      result.id = menu.id;
+    }
+    return result;
+  },
+
+  getDomain() {
+    const menus = this.menus
+      .getAll()
+      .map((menu) => menu.id)
+      .filter((menuId) => menuId !== "root");
+    return [["id", "in", menus]];
   },
   get menuId() {
     const menu = this.env.model.getters.getChartOdooMenu(this.props.figureId);
@@ -29,7 +53,8 @@ const menuChartProps = {
       });
       return;
     }
-    const menu = this.env.model.getters.getIrMenu(menuId[0]);
+    const menu = this.env.model.getters.getIrMenu(menuId[0].id);
+    console.log(menu);
     this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
       chartId: this.props.figureId,
       odooMenuId: menu.xmlid || menu.id,
@@ -54,17 +79,17 @@ const menuChartProps = {
 patch(LineBarPieConfigPanel.prototype, menuChartProps);
 LineBarPieConfigPanel.components = {
   ...LineBarPieConfigPanel.components,
-  Many2OneField,
+  Many2XAutocomplete,
 };
 
 patch(ScorecardChartConfigPanel.prototype, menuChartProps);
 ScorecardChartConfigPanel.components = {
   ...ScorecardChartConfigPanel.components,
-  Many2OneField,
+  Many2XAutocomplete,
 };
 
 patch(GaugeChartConfigPanel.prototype, menuChartProps);
 GaugeChartConfigPanel.components = {
   ...GaugeChartConfigPanel.components,
-  Many2OneField,
+  Many2XAutocomplete,
 };
