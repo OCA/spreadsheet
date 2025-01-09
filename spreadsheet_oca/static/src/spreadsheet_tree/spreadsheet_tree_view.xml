@@ -16,26 +16,25 @@
             t-if="props.togglerTemplate"
             t-call="{{ props.togglerTemplate }}"
           />
-                    <t t-else="" t-slot="default" />
+                    <t t-else="" t-slot="toggler" />
                 </t>
                 <t t-slot="extra" />
             </FileUploader>
         </div>
     </t>
     <t
-    t-name="spreadsheet_oca.ListView"
-    t-inherit="web.ListView"
+    t-name="spreadsheet_oca.ListView.Buttons"
+    t-inherit="web.ListView.Buttons"
     t-inherit-mode="primary"
-    owl="1"
   >
-        <xpath expr="//*[@class='btn btn-primary o_list_button_add']" position="after">
+        <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
             <SpreadsheetFileUploader>
-                <t t-set-slot="default">
+                <t t-set-slot="toggler">
                     <button
             type="button"
-            class="btn btn-secondary o_button_upload_bill"
+            class="btn btn-secondary o_button_upload_spreadsheet"
           >
-                        Upload XLSX
+                        Upload
                     </button>
                 </t>
             </SpreadsheetFileUploader>
