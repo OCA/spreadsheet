@@ -2,7 +2,7 @@
 
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Domain} from "@web/core/domain";
-import {Many2OneField} from "@web/views/fields/many2one/many2one_field";
+import {Many2XAutocomplete} from "@web/views/fields/relational_utils";
 import {useService} from "@web/core/utils/hooks";
 
 const {chartSidePanelComponentRegistry} = spreadsheet.registries;
@@ -12,6 +12,28 @@ const {Component} = owl;
 export class OdooPanel extends Component {
   setup() {
     this.menus = useService("menu");
+  }
+  get menuProps() {
+    const menu = this.env.model.getters.getChartOdooMenu(this.props.figureId);
+    var result = {
+      record: this.record,
+      resModel: "ir.ui.menu",
+      update: this.updateMenu.bind(this),
+      activeActions: {},
+      getDomain: this.getDomain.bind(this),
+    };
+    if (menu) {
+      result.value = menu.name;
+      result.id = menu.id;
+    }
+    return result;
+  }
+  getDomain() {
+    const menus = this.menus
+      .getAll()
+      .map((menu) => menu.id)
+      .filter((menuId) => menuId !== "root");
+    return [["id", "in", menus]];
   }
   get menuId() {
     const menu = this.env.model.getters.getChartOdooMenu(this.props.figureId);
@@ -28,7 +50,7 @@ export class OdooPanel extends Component {
       });
       return;
     }
-    const menu = this.env.model.getters.getIrMenu(menuId[0]);
+    const menu = this.env.model.getters.getIrMenu(menuId[0].id);
     this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
       chartId: this.props.figureId,
       odooMenuId: menu.xmlid || menu.id,
@@ -50,7 +72,7 @@ export class OdooPanel extends Component {
   }
 }
 OdooPanel.template = "spreadsheet_oca.OdooPanel";
-OdooPanel.components = {Many2OneField};
+OdooPanel.components = {Many2XAutocomplete};
 
 class OdooStackablePanel extends OdooPanel {
   onChangeStacked(ev) {

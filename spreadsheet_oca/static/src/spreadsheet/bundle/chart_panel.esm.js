@@ -37,7 +37,7 @@ patch(ChartPanel.prototype, {
         sheetId: this.env.model.getters.getActiveSheetId(),
       });
     } else {
-      this._super(type);
+      super.onTypeChange(type);
     }
   },
 });
