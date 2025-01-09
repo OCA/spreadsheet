@@ -17,18 +17,18 @@ topbarMenuRegistry.add("file", {name: _t("File"), sequence: 10});
 topbarMenuRegistry.addChild("filters", ["file"], {
   name: _t("Filters"),
   sequence: 70,
-  action: (env) => env.openSidePanel("FilterPanel", {}),
+  execute: (env) => env.openSidePanel("FilterPanel", {}),
 });
 topbarMenuRegistry.addChild("save", ["file"], {
   name: _t("Save"),
   // Description: "Ctrl+S", // This is not working, so removing it from the view for now...
   sequence: 10,
-  action: (env) => env.saveSpreadsheet(),
+  execute: (env) => env.saveSpreadsheet(),
 });
 topbarMenuRegistry.addChild("download", ["file"], {
   name: _t("Download XLSX"),
   sequence: 20,
-  action: (env) => env.downloadAsXLXS(),
+  execute: (env) => env.downloadAsXLXS(),
 });
 
 const {sidePanelRegistry} = spreadsheet.registries;
@@ -77,7 +77,7 @@ export class EditFilterPanel extends Component {
     }
     var ModelFields = [];
     for (var [objectType, objectClass] of Object.entries(globalFiltersFieldMatchers)) {
-      for (const objectId of objectClass.geIds()) {
+      for (const objectId of objectClass.getIds()) {
         var fields = objectClass.getFields(objectId);
         this.state.objects[objectType + "_" + objectId] = {
           id: objectType + "_" + objectId,
