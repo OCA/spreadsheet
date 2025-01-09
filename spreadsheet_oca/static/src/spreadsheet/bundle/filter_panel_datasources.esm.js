@@ -11,45 +11,45 @@ import {_t} from "@web/core/l10n/translation";
 import {formatDate} from "@web/core/l10n/dates";
 import {useService} from "@web/core/utils/hooks";
 
+const {DateTime} = luxon;
 const {sidePanelRegistry, topbarMenuRegistry} = spreadsheet.registries;
-const {createFullMenuItem} = spreadsheet.helpers;
 
 topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
-  const children = env.model.getters.getPivotIds().map((pivotId, index) =>
-    createFullMenuItem(`data_source_pivot_ ${pivotId}`, {
-      name: env.model.getters.getPivotDisplayName(pivotId),
-      sequence: 100,
-      action: (child_env) => {
-        child_env.model.dispatch("SELECT_PIVOT", {
-          pivotId: pivotId,
-        });
-        child_env.openSidePanel("PivotPanel", {});
-      },
-      icon: "fa fa-table",
-      separator: index === env.model.getters.getPivotIds().length - 1,
-    })
-  );
-  const lists = env.model.getters.getListIds().map((listId, index) => {
-    return createFullMenuItem(`data_source_list_${listId}`, {
-      name: env.model.getters.getListDisplayName(listId),
-      sequence: 1010,
-      action: (child_env) => {
-        child_env.model.dispatch("SELECT_ODOO_LIST", {listId: listId});
-        child_env.openSidePanel("ListPanel", {});
-      },
-      icon: "fa fa-list",
-      separator: index === env.model.getters.getListIds().length - 1,
-    });
-  });
+  let sequence = 100;
+  const children = env.model.getters.getPivotIds().map((pivotId, index) => ({
+    id: `data_source_pivot_ ${pivotId}`,
+    name: env.model.getters.getPivotDisplayName(pivotId),
+    sequence: sequence++,
+    execute: (child_env) => {
+      child_env.model.dispatch("SELECT_PIVOT", {
+        pivotId: pivotId,
+      });
+      child_env.openSidePanel("PivotPanel", {});
+    },
+    icon: "spreadsheet_oca.PivotIcon",
+    separator: index === env.model.getters.getPivotIds().length - 1,
+  }));
+  const lists = env.model.getters.getListIds().map((listId, index) => ({
+    id: `data_source_list_${listId}`,
+    name: env.model.getters.getListDisplayName(listId),
+    sequence: sequence++,
+    execute: (child_env) => {
+      child_env.model.dispatch("SELECT_ODOO_LIST", {listId: listId});
+      child_env.openSidePanel("ListPanel", {});
+    },
+    icon: "spreadsheet_oca.ListIcon",
+    separator: index === env.model.getters.getListIds().length - 1,
+  }));
   return children.concat(lists).concat([
-    createFullMenuItem(`refresh_all_data`, {
+    {
+      id: "refresh_all_data",
       name: _t("Refresh all data"),
       sequence: 110,
-      action: (child_env) => {
+      execute: (child_env) => {
         child_env.model.dispatch("REFRESH_ALL_DATA_SOURCES");
       },
       separator: true,
-    }),
+    },
   ]);
 });
 
@@ -87,17 +87,17 @@ export class PivotPanelDisplay extends Component {
   get lastUpdate() {
     const lastUpdate = this.PivotDataSource.lastUpdate;
     if (lastUpdate) {
-      return formatDate(new Date(lastUpdate));
+      return formatDate(DateTime.fromMillis(lastUpdate));
     }
     return _t("not updated");
   }
   editDomain() {
     this.dialog.add(DomainSelectorDialog, {
       resModel: this.props.pivotDefinition.model,
-      initialValue: this.domain,
+      domain: this.domain,
       readonly: false,
       isDebugMode: Boolean(this.env.debug),
-      onSelected: this.onSelectDomain.bind(this),
+      onConfirm: this.onSelectDomain.bind(this),
     });
   }
   onSelectDomain(domain) {
@@ -232,17 +232,17 @@ export class ListPanelDisplay extends Component {
   get lastUpdate() {
     const lastUpdate = this.ListDataSource.lastUpdate;
     if (lastUpdate) {
-      return formatDate(new Date(lastUpdate));
+      return formatDate(DateTime.fromMillis(lastUpdate));
     }
     return _t("not updated");
   }
   editDomain() {
     this.dialog.add(DomainSelectorDialog, {
       resModel: this.props.listDefinition.model,
-      initialValue: this.domain,
+      domain: this.domain,
       readonly: false,
       isDebugMode: Boolean(this.env.debug),
-      onSelected: this.onSelectDomain.bind(this),
+      onConfirm: this.onSelectDomain.bind(this),
     });
   }
   onSelectDomain(domain) {

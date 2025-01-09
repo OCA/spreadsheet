@@ -45,93 +45,95 @@ Usage
 **Create a new spreadsheet**
 ----------------------------
 
-- Go to 'Spreadsheet' menu
-- Click on 'Create'
-- Put a name, then click on the "Edit" button
+-  Go to 'Spreadsheet' menu
+-  Click on 'Create'
+-  Put a name, then click on the "Edit" button
+
+|image0|
+
+-  At this point you switch to spreadsheet editing mode. The editor is
+   named ``o-spreadsheet`` and looks like another common spreadsheet web
+   editors. (OnlyOffice, Ethercalc, Google Sheets (non-free)).
 
 |image1|
 
-- At this point you switch to spreadsheet editing mode. The editor is
-  named ``o-spreadsheet`` and looks like another common spreadsheet web
-  editors. (OnlyOffice, Ethercalc, Google Sheets (non-free)).
+-  You can use common functions ``SUM()``, ``AVERAGE()``, etc. in the
+   cells. For a complete list of functions and their syntax, Refer to
+   the documentation
+   `https://github.com/odoo/o-spreadsheet/ <https://github.com/odoo/o-spreadsheet/>`__
+   or go to
+   `https://odoo.github.io/o-spreadsheet/ <https://odoo.github.io/o-spreadsheet/>`__
+   and click on "Insert > Function".
 
 |image2|
 
-- You can use common functions ``SUM()``, ``AVERAGE()``, etc. in the
-  cells. For a complete list of functions and their syntax, Refer to the
-  documentation https://github.com/odoo/o-spreadsheet/ or go to
-  https://odoo.github.io/o-spreadsheet/ and click on "Insert >
-  Function".
+-  Note: Business Odoo module can add "business functions". This is
+   currently the case for the accounting module, which adds the
+   following features:
 
-|image3|
-
-- Note: Business Odoo module can add "business functions". This is
-  currently the case for the accounting module, which adds the following
-  features:
-
-     - ``ODOO.CREDIT(account_codes, date_range)``: Get the total credit
-       for the specified account(s) and period.
-     - ``ODOO.DEBIT(account_codes, date_range)``: Get the total debit
-       for the specified account(s) and period.
-     - ``ODOO.BALANCE(account_codes, date_range)``: Get the total
-       balance for the specified account(s) and period.
-     - ``ODOO.FISCALYEAR.START(day)``: Returns the starting date of the
-       fiscal year encompassing the provided date.
-     - ``ODOO.FISCALYEAR.END(day)``: Returns the ending date of the
-       fiscal year encompassing the provided date.
-     - ``ODOO.ACCOUNT.GROUP(type)``: Returns the account ids of a given
-       group where type should be a value of the ``account_type`` field
-       of ``account.account`` model. (``income``, ``asset_receivable``,
-       etc.)
+      -  ``ODOO.CREDIT(account_codes, date_range)``: Get the total
+         credit for the specified account(s) and period.
+      -  ``ODOO.DEBIT(account_codes, date_range)``: Get the total debit
+         for the specified account(s) and period.
+      -  ``ODOO.BALANCE(account_codes, date_range)``: Get the total
+         balance for the specified account(s) and period.
+      -  ``ODOO.FISCALYEAR.START(day)``: Returns the starting date of
+         the fiscal year encompassing the provided date.
+      -  ``ODOO.FISCALYEAR.END(day)``: Returns the ending date of the
+         fiscal year encompassing the provided date.
+      -  ``ODOO.ACCOUNT.GROUP(type)``: Returns the account ids of a
+         given group where type should be a value of the
+         ``account_type`` field of ``account.account`` model.
+         (``income``, ``asset_receivable``, etc.)
 
 **Create a new dynamic spreadsheet from pivot**
 -----------------------------------------------
 
-- Go to any pivot
-- Press on insert button
-- Select the dynamic rows or dynamic columns option and set a number of
-  rows/columns
+-  Go to any pivot
+-  Press on insert button
+-  Select the dynamic rows or dynamic columns option and set a number of
+   rows/columns
 
 A new table that will be updated with the actual or filtered values will
 be added.
 
-- Note: When a pivot has multiple levels of aggrupations in the rows or
-  the columns, the number of rows/columns selected will be transfered to
-  each level.
+-  Note: When a pivot has multiple levels of aggrupations in the rows or
+   the columns, the number of rows/columns selected will be transfered
+   to each level.
 
-  Example: number of groups -> 2 number of rows -> 3
+   Example: number of groups -> 2 number of rows -> 3
 
-  - val1
+   -  val1
 
-    - subval1.1
-    - subval1.2
-    - subval1.3
+      -  subval1.1
+      -  subval1.2
+      -  subval1.3
 
-  - val2
+   -  val2
 
-    - subval2.1
-    - subval2.2
-    - subval2.3
+      -  subval2.1
+      -  subval2.2
+      -  subval2.3
 
-  - val3
+   -  val3
 
-    - subval3.1
-    - subval3.2
-    - subval3.3
+      -  subval3.1
+      -  subval3.2
+      -  subval3.3
 
 https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/Hhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/vhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/xhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/phttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ohttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ghttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/
 https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/../static/description/spreadsheetdynamic_table.gif
 
-.. |image1| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_create.png
-.. |image2| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_edit.png
-.. |image3| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/o-spreadsheet.png
+.. |image0| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_create.png
+.. |image1| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_edit.png
+.. |image2| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/o-spreadsheet.png
 
 Development
 ===========
 
 If you want to develop custom business functions, you can add others,
 based on the file
-https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js
+`https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js <https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js>`__
 
 Known issues / Roadmap
 ======================
@@ -165,10 +167,10 @@ Authors
 Contributors
 ------------
 
-- Enric Tobella
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  Enric Tobella
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Carlos Roca
+   -  Carlos Roca
 
 Maintainers
 -----------
