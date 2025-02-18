@@ -13,7 +13,11 @@
         </div>
     </t>
     <t t-name="spreadsheet_oca.PivotPanel" owl="1">
-        <PivotPanelDisplay pivotId="pivotId" pivotDefinition="pivotDefinition" />
+        <t t-if="pivotId">
+            <PivotPanelDisplay pivotId="pivotId" pivotDefinition="pivotDefinition" />
+        </t>
+        <t t-else="1">
+        </t>
     </t>
     <t t-name="spreadsheet_oca.PivotPanelDisplay" owl="1">
         <div class="o_spreadsheet_oca_datasource_panel">
@@ -72,7 +76,7 @@
             <div class="o_spreadsheet_oca_pivot_panel_info">
                 Last updated at <t t-esc="lastUpdate" />
             </div>
-            <div class="o_spreadsheet_oca_datasource_panel_field">
+            <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
                 <button
           t-on-click="insertPivot"
           class="btn btn-info"
@@ -81,13 +85,21 @@
           t-on-click="insertDynamicPivot"
           class="btn btn-success"
         >Insert dynamic pivot</button>
+            <button
+          t-on-click="() => this.delete()"
+          class="btn btn-danger"
+        >Delete</button>
             </div>
         </div>
 
     </t>
 
     <t t-name="spreadsheet_oca.ListPanel" owl="1">
-        <ListPanelDisplay listId="listId" listDefinition="listDefinition" />
+        <t t-if="listId">
+            <ListPanelDisplay listId="listId" listDefinition="listDefinition" />
+        </t>
+        <t t-else="1">
+        </t>
     </t>
     <t t-name="spreadsheet_oca.ListPanelDisplay" owl="1">
         <div class="o_spreadsheet_oca_datasource_panel">
@@ -116,6 +128,12 @@
             </div>
             <div class="o_spreadsheet_oca_pivot_panel_info">
                 Last updated at <t t-esc="lastUpdate" />
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
+                <button
+          t-on-click="() => this.delete()"
+          class="btn btn-danger"
+        >Delete</button>
             </div>
         </div>
 
