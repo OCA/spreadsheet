@@ -39,6 +39,10 @@ class SpreadsheetAbstract(models.AbstractModel):
                 for revision in self.spreadsheet_revision_ids
             ],
             "mode": mode,
+            "default_currency": self.env[
+                "res.currency"
+            ].get_company_currency_for_spreadsheet(),
+            "user_locale": self.env["res.lang"]._get_user_spreadsheet_locale(),
         }
 
     def open_spreadsheet(self):

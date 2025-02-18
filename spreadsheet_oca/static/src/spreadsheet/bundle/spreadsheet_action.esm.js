@@ -17,7 +17,7 @@ export class ActionSpreadsheetOca extends Component {
   setup() {
     this.router = useService("router");
     this.orm = useService("orm");
-    this.noficiation = useService("notification");
+    this.notification = useService("notification");
     const params = this.props.action.params || this.props.action.context.params;
     this.spreadsheetId = params.spreadsheet_id;
     this.model = params.model || "spreadsheet.spreadsheet";
@@ -47,7 +47,7 @@ export class ActionSpreadsheetOca extends Component {
     });
   }
   notifyUser(notification) {
-    this.noficiation.add(notification.text, {
+    this.notification.add(notification.text, {
       type: notification.type,
       sticky: notification.sticky,
     });

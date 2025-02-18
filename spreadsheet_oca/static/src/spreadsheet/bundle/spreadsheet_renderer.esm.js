@@ -12,6 +12,7 @@ import {migrate} from "@spreadsheet/o_spreadsheet/migration";
 import {useService} from "@web/core/utils/hooks";
 import {useSetupAction} from "@web/webclient/actions/action_hook";
 import {waitForDataLoaded} from "@spreadsheet/helpers/model";
+import {createDefaultCurrencyFormat} from "@spreadsheet/currency/helpers";
 
 const {Spreadsheet, Model} = spreadsheet;
 const {useSubEnv, onWillStart} = owl;
@@ -54,6 +55,35 @@ class SpreadsheetTransportService {
 }
 
 export class SpreadsheetRenderer extends Component {
+  getLocales() {
+    const orm = useService("orm");
+    return async () => {
+      return orm.call("res.lang", "get_locales_for_spreadsheet", []);
+    };
+  }
+  getCurrencies() {
+    const orm = useService("orm");
+    return async () => {
+      const odooCurrencies = await orm.searchRead(
+        "res.currency",
+        [],
+        ["symbol", "full_name", "position", "name", "decimal_places"],
+        {
+          order: "active DESC, full_name ASC",
+          context: {active_test: false},
+        }
+      );
+      return odooCurrencies.map((currency) => {
+        return {
+          code: currency.name,
+          symbol: currency.symbol,
+          position: currency.position || "after",
+          name: currency.full_name || _t("Currency"),
+          decimalPlaces: currency.decimal_places || 2,
+        };
+      });
+    };
+  }
   setup() {
     this.orm = useService("orm");
     this.bus_service = this.env.services.bus_service;
@@ -63,10 +93,21 @@ export class SpreadsheetRenderer extends Component {
     this.dialog = useService("dialog");
     const dataSources = new DataSources(this.env);
     this.confirmDialog = this.closeDialog;
+    this.loadCurrencies = this.getCurrencies();
+    this.loadLocales = this.getLocales();
+    const defaultCurrency = this.props.record.default_currency;
+    const defaultCurrencyFormat = defaultCurrency
+      ? createDefaultCurrencyFormat(defaultCurrency)
+      : undefined;
     this.spreadsheet_model = new Model(
       migrate(this.props.record.spreadsheet_raw),
       {
         custom: {env: this.env, orm: this.orm, dataSources},
+        defaultCurrencyFormat,
+        external: {
+          loadCurrencies: this.loadCurrencies,
+          loadLocales: this.loadLocales,
+        },
         transportService: new SpreadsheetTransportService(
           this.orm,
           this.bus_service,
