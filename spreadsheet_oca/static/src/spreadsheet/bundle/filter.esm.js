@@ -30,6 +30,12 @@ topbarMenuRegistry.addChild("download", ["file"], {
   sequence: 20,
   execute: (env) => env.downloadAsXLXS(),
 });
+topbarMenuRegistry.addChild("settings", ["file"], {
+  name: _t("Settings"),
+  sequence: 100,
+  execute: (env) => env.openSidePanel("Settings"),
+  icon: "o-spreadsheet-Icon.COG",
+});
 
 const {sidePanelRegistry} = spreadsheet.registries;
 
