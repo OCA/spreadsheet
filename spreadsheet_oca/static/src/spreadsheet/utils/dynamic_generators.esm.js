@@ -45,7 +45,7 @@ export function makeDynamicRows(
   var rows = [];
   for (var index = 1; index <= number_of_rows; index++) {
     rows.push({
-      fields: fields.slice(0, indent).map((f) => "#" + f),
+      fields: fields,
       indent,
       values: [...parent_indexes, index],
     });
@@ -104,7 +104,7 @@ export function makeDynamicCols(fields, number_of_cols, measures) {
     (Math.pow(number_of_cols, fields.length) * measures.length) / number_of_cols;
   for (var index = 0; index < fields.length; index++) {
     const width = max_width / Math.pow(number_of_cols, index);
-    const newFields = fields.slice(0, index + 1).map((f) => "#" + f);
+    const newFields = fields;
     cols.push(_getColLevelInfo(newFields, number_of_cols, width));
   }
   const measuresCols = [];
