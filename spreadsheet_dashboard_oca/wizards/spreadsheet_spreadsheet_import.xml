@@ -35,8 +35,8 @@
         />
                 <field
           name="dashboard_group_id"
-          invisible="mode != 'dashboard_sheet'"
-          required="mode == 'dashboard_sheet'"
+          invisible="mode != 'dashboard_spreadsheet'"
+          required="mode == 'dashboard_spreadsheet'"
           options="{'no_create': True}"
         />
             </field>
