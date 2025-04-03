@@ -35,11 +35,17 @@
  * @param {Array} parent_indexes
  * @returns {Array}
  */
-export function makeDynamicRows(fields, number_of_rows, indent, max_indentation, parent_indexes = []) {
+export function makeDynamicRows(
+  fields,
+  number_of_rows,
+  indent,
+  max_indentation,
+  parent_indexes = []
+) {
   var rows = [];
   for (var index = 1; index <= number_of_rows; index++) {
     rows.push({
-      fields: fields.map(f => f.startsWith('#') ? f : `#${f}`), // Add # prefix
+      fields: fields.map((f) => (f.startsWith("#") ? f : `#${f}`)), // Add # prefix
       indent: indent,
       values: [...parent_indexes, index.toString()],
     });
@@ -66,28 +72,32 @@ export function makeDynamicRows(fields, number_of_rows, indent, max_indentation,
  */
 export function makeDynamicCols(fields, number_of_cols, measures) {
   // Default to at least one empty measure if none provided
-  const effectiveMeasures = measures?.length ? measures : [''];
+  const effectiveMeasures = measures?.length ? measures : [""];
   const groupColumns = [];
   const measureColumns = [];
-  
+
   for (let colNum = 1; colNum <= number_of_cols; colNum++) {
     // Create a group column for each field combination
     const groupColumn = {
-      fields: fields?.length ? fields.map(f => f.startsWith('#') ? f : `#${f}`) : [],
-      values: fields?.length ? Array(fields.length).fill(colNum.toString()) : [],
+      fields: fields?.length
+        ? fields.map((f) => (f.startsWith("#") ? f : `#${f}`))
+        : [],
+      values: fields?.length
+        ? Array(fields.length).fill(colNum.toString())
+        : [],
       width: 1,
-      offset: fields?.length || 1
+      offset: fields?.length || 1,
     };
     groupColumns.push(groupColumn);
 
     // Create corresponding measure columns for each group
-    effectiveMeasures.forEach(measure => {
+    effectiveMeasures.forEach((measure) => {
       if (fields?.length) {
         measureColumns.push({
-          fields: [...fields.map(f => `#${f}`), "measure"],
-          values: [...fields.map(() => colNum.toString()), measure || ''],
+          fields: [...fields.map((f) => `#${f}`), "measure"],
+          values: [...fields.map(() => colNum.toString()), measure || ""],
           width: 1,
-          offset: fields.length + 1
+          offset: fields.length + 1,
         });
       }
     });

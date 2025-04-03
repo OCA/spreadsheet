@@ -1,10 +1,10 @@
 /** @odoo-module */
 
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {patch} from "@web/core/utils/patch";
+import { patch } from "@web/core/utils/patch";
 
-const {chartRegistry} = spreadsheet.registries;
-const {ChartPanel} = spreadsheet.components;
+const { chartRegistry } = spreadsheet.registries;
+const { ChartPanel } = spreadsheet.components;
 export function isOdooKey(code) {
   return code.startsWith("odoo_");
 }
