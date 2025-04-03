@@ -1,8 +1,8 @@
 /** @odoo-module **/
 
-import {PivotRenderer} from "@web/views/pivot/pivot_renderer";
-import {_lt} from "@web/core/l10n/translation";
-import {patch} from "@web/core/utils/patch";
+import { PivotRenderer } from "@web/views/pivot/pivot_renderer";
+import { _lt } from "@web/core/l10n/translation";
+import { patch } from "@web/core/utils/patch";
 
 patch(PivotRenderer.prototype, {
   isComparingInfo() {

@@ -49,23 +49,21 @@ Usage
 -  Click on 'Create'
 -  Put a name, then click on the "Edit" button
 
-|image0|
+|image1|
 
 -  At this point you switch to spreadsheet editing mode. The editor is
    named ``o-spreadsheet`` and looks like another common spreadsheet web
    editors. (OnlyOffice, Ethercalc, Google Sheets (non-free)).
 
-|image1|
+|image2|
 
 -  You can use common functions ``SUM()``, ``AVERAGE()``, etc. in the
    cells. For a complete list of functions and their syntax, Refer to
-   the documentation
-   `https://github.com/odoo/o-spreadsheet/ <https://github.com/odoo/o-spreadsheet/>`__
-   or go to
-   `https://odoo.github.io/o-spreadsheet/ <https://odoo.github.io/o-spreadsheet/>`__
-   and click on "Insert > Function".
+   the documentation https://github.com/odoo/o-spreadsheet/ or go to
+   https://odoo.github.io/o-spreadsheet/ and click on "Insert >
+   Function".
 
-|image2|
+|image3|
 
 -  Note: Business Odoo module can add "business functions". This is
    currently the case for the accounting module, which adds the
@@ -124,16 +122,16 @@ be added.
 https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/Hhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/vhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/xhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/phttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ohttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ghttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/
 https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/../static/description/spreadsheetdynamic_table.gif
 
-.. |image0| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_create.png
-.. |image1| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_edit.png
-.. |image2| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/o-spreadsheet.png
+.. |image1| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_create.png
+.. |image2| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/spreadsheet_edit.png
+.. |image3| image:: https://raw.githubusercontent.com/OCA/spreadsheet/17.0/spreadsheet_oca/static/description/o-spreadsheet.png
 
 Development
 ===========
 
 If you want to develop custom business functions, you can add others,
 based on the file
-`https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js <https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js>`__
+https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js
 
 Known issues / Roadmap
 ======================
@@ -171,6 +169,10 @@ Contributors
 -  `Tecnativa <https://www.tecnativa.com>`__:
 
    -  Carlos Roca
+
+-  `Open User Systems <https://www.openusersystems.com>`__:
+
+   -  Chris Mann
 
 Maintainers
 -----------

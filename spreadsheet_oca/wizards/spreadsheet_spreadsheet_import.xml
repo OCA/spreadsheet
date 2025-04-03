@@ -61,7 +61,11 @@
             class="btn-primary"
             type="object"
           />
-                    <button string="Cancel" class="btn-default" special="cancel" />
+                    <button
+            string="Cancel"
+            class="btn-default"
+            special="cancel"
+          />
                 </footer>
             </form>
         </field>

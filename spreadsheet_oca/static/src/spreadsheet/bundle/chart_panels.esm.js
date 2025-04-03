@@ -1,15 +1,18 @@
 /** @odoo-module */
 
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Domain} from "@web/core/domain";
+import { Domain } from "@web/core/domain";
 
-import {Many2XAutocomplete} from "@web/views/fields/relational_utils";
-import {patch} from "@web/core/utils/patch";
-import {useService} from "@web/core/utils/hooks";
-import {_t} from "@web/core/l10n/translation";
+import { Many2XAutocomplete } from "@web/views/fields/relational_utils";
+import { patch } from "@web/core/utils/patch";
+import { useService } from "@web/core/utils/hooks";
+import { _t } from "@web/core/l10n/translation";
 
-const {LineBarPieConfigPanel, ScorecardChartConfigPanel, GaugeChartConfigPanel} =
-  spreadsheet.components;
+const {
+  LineBarPieConfigPanel,
+  ScorecardChartConfigPanel,
+  GaugeChartConfigPanel,
+} = spreadsheet.components;
 
 const menuChartProps = {
   setup() {

@@ -1,8 +1,8 @@
 /** @odoo-module **/
-import {useBus, useService} from "@web/core/utils/hooks";
-import {ListRenderer} from "@web/views/list/list_renderer";
-import {omit} from "@web/core/utils/objects";
-import {patch} from "@web/core/utils/patch";
+import { useBus, useService } from "@web/core/utils/hooks";
+import { ListRenderer } from "@web/views/list/list_renderer";
+import { omit } from "@web/core/utils/objects";
+import { patch } from "@web/core/utils/patch";
 
 patch(ListRenderer.prototype, {
   setup() {
@@ -33,7 +33,10 @@ patch(ListRenderer.prototype, {
               model: model.resModel,
               domain: model.domain,
               orderBy: model.orderBy,
-              context: omit(model.context, ...Object.keys(this.userService.context)),
+              context: omit(
+                model.context,
+                ...Object.keys(this.userService.context)
+              ),
               columns: this.getSpreadsheetColumns(),
               fields: model.fields,
               name: this.env.config.getDisplayName(),
@@ -50,6 +53,6 @@ patch(ListRenderer.prototype, {
         (col) => col.type === "field" && fields[col.name].type !== "binary"
         // We want to avoid binary fields
       )
-      .map((col) => ({name: col.name, type: fields[col.name].type}));
+      .map((col) => ({ name: col.name, type: fields[col.name].type }));
   },
 });
