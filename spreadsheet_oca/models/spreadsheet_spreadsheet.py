@@ -14,7 +14,7 @@ class SpreadsheetSpreadsheet(models.Model):
     _inherit = "spreadsheet.abstract"
     _description = "Spreadsheet"
 
-    data = fields.Binary()
+    spreadsheet_binary_data = fields.Binary()
     filename = fields.Char(compute="_compute_filename")
     spreadsheet_raw = fields.Serialized(
         compute="_compute_spreadsheet_raw", inverse="_inverse_spreadsheet_raw"
@@ -29,6 +29,13 @@ class SpreadsheetSpreadsheet(models.Model):
         column2="user_id",
         string="Contributors",
     )
+    contributor_group_ids = fields.Many2many(
+        "res.groups",
+        relation="spreadsheet_group_contributor",
+        column1="spreadsheet_id",
+        column2="group_id",
+        string="Contributors Groups",
+    )
     reader_ids = fields.Many2many(
         "res.users",
         relation="spreadsheet_reader",
@@ -36,25 +43,39 @@ class SpreadsheetSpreadsheet(models.Model):
         column2="user_id",
         string="Readers",
     )
+    reader_group_ids = fields.Many2many(
+        "res.groups",
+        relation="spreadsheet_group_reader",
+        column1="spreadsheet_id",
+        column2="group_id",
+        string="Readers Groups",
+    )
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        help="If set, the spreadsheet will be available only"
+        " if this company is in the current companies.",
+    )
 
     @api.depends("name")
     def _compute_filename(self):
         for record in self:
             record.filename = "%s.json" % (self.name or _("Unnamed"))
 
-    @api.depends("data")
+    @api.depends("spreadsheet_binary_data")
     def _compute_spreadsheet_raw(self):
         for dashboard in self:
-            if dashboard.data:
+            if dashboard.spreadsheet_binary_data:
                 dashboard.spreadsheet_raw = json.loads(
-                    base64.decodebytes(dashboard.data).decode("UTF-8")
+                    base64.decodebytes(dashboard.spreadsheet_binary_data).decode(
+                        "UTF-8"
+                    )
                 )
             else:
                 dashboard.spreadsheet_raw = {}
 
     def _inverse_spreadsheet_raw(self):
         for record in self:
-            record.data = base64.encodebytes(
+            record.spreadsheet_binary_data = base64.encodebytes(
                 json.dumps(record.spreadsheet_raw).encode("UTF-8")
             )
 
