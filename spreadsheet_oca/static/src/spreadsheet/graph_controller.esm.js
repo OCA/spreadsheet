@@ -1,7 +1,7 @@
 /** @odoo-module **/
-import {GraphRenderer} from "@web/views/graph/graph_renderer";
+import { GraphRenderer } from "@web/views/graph/graph_renderer";
 
-import {patch} from "@web/core/utils/patch";
+import { patch } from "@web/core/utils/patch";
 
 patch(GraphRenderer.prototype, {
   onSpreadsheetButtonClicked() {

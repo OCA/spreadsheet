@@ -14,7 +14,10 @@
     </t>
     <t t-name="spreadsheet_oca.PivotPanel" owl="1">
         <t t-if="pivotId">
-            <PivotPanelDisplay pivotId="pivotId" pivotDefinition="pivotDefinition" />
+            <PivotPanelDisplay
+        pivotId="pivotId"
+        pivotDefinition="pivotDefinition"
+      />
         </t>
         <t t-else="1">
         </t>
@@ -25,16 +28,22 @@
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >Pivot name</div>
-                <span t-esc="env.model.getters.getPivotDisplayName(props.pivotId)" />
+                <span
+          t-esc="env.model.getters.getPivotDisplayName(props.pivotId)"
+        />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Model</div>
                 <div><t t-esc="modelLabel" /> (<t
             t-esc="props.pivotDefinition.model"
           />)</div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Domain</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Domain</div>
                 <DomainSelector
           resModel="props.pivotDefinition.model"
           domain="domain"
@@ -48,7 +57,11 @@
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >Dimensions</div>
-                <t t-foreach="pivotDimensions" t-as="dimension" t-key="dimension">
+                <t
+          t-foreach="pivotDimensions"
+          t-as="dimension"
+          t-key="dimension"
+        >
                     <div t-esc="dimension" />
                 </t>
             </div>
@@ -76,7 +89,9 @@
             <div class="o_spreadsheet_oca_pivot_panel_info">
                 Last updated at <t t-esc="lastUpdate" />
             </div>
-            <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
+            <div
+        class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons"
+      >
                 <button
           t-on-click="insertPivot"
           class="btn btn-info"
@@ -107,16 +122,22 @@
                 <div
           class="o_spreadsheet_oca_datasource_panel_field_title"
         >List name</div>
-                <span t-esc="env.model.getters.getListDisplayName(props.listId)" />
+                <span
+          t-esc="env.model.getters.getListDisplayName(props.listId)"
+        />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Model</div>
                 <div><t t-esc="modelLabel" /> (<t
             t-esc="props.listDefinition.model"
           />)</div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field">
-                <div class="o_spreadsheet_oca_datasource_panel_field_title">Domain</div>
+                <div
+          class="o_spreadsheet_oca_datasource_panel_field_title"
+        >Domain</div>
                 <DomainSelector
           resModel="props.listDefinition.model"
           domain="domain"
@@ -129,7 +150,9 @@
             <div class="o_spreadsheet_oca_pivot_panel_info">
                 Last updated at <t t-esc="lastUpdate" />
             </div>
-            <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
+            <div
+        class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons"
+      >
                 <button
           t-on-click="() => this.delete()"
           class="btn btn-danger"
@@ -188,7 +211,11 @@
           t-on-change="onDateRangeChange"
           class="o_input"
         >
-                    <t t-foreach="dateRangeTypes" t-as="range" t-key="range.type">
+                    <t
+            t-foreach="dateRangeTypes"
+            t-as="range"
+            t-key="range.type"
+          >
                         <option
               t-att-selected="state.rangeType === range.type ? 1 : 0"
               t-att-value="range.type"
@@ -199,7 +226,10 @@
                 </select>
             </div>
         </div>
-        <div class="o_spreadsheet_oca_filter" t-if="state.type !== 'relation' and state.rangeType !== 'from_to'">
+        <div
+      class="o_spreadsheet_oca_filter"
+      t-if="state.type !== 'relation' and state.rangeType !== 'from_to'"
+    >
             <div class="spreadsheet_oca_filter_label">Default value</div>
             <div
         t-if="state.type === 'date' and state.rangeType !== 'relative'"
@@ -216,7 +246,10 @@
           for="default_to_current_period"
         > Automatically filter on the current period </label>
             </div>
-            <div class="pt-3" t-if="state.defaultValue and state.type === 'date' and state.rangeType !== 'relative'">
+            <div
+        class="pt-3"
+        t-if="state.defaultValue and state.type === 'date' and state.rangeType !== 'relative'"
+      >
                 <select t-model="state.defaultValue" class="o_input">
                     <option value="this_month">Month</option>
                     <option value="this_quarter">Quarter</option>
@@ -272,25 +305,35 @@
                 <span t-esc="object.name" /> - <span t-esc="object.tag" />
             </div>
             <div class="d-flex justify-content-between">
-                <div class="spreadsheet_oca_filter_value flex-column flex-grow-1">
+                <div
+          class="spreadsheet_oca_filter_value flex-column flex-grow-1"
+        >
                     <ModelFieldSelector
-                            path="object.fieldMatch.chain || ''"
-                            resModel="object.model"
-                            readonly="false"
-                            allowEmpty="true"
-                            isDebugMode="!!env.debug"
-                            update="(name) => this.onFieldMatchUpdate(object, name)"
-                            t-key="object_index"/>
+            path="object.fieldMatch.chain || ''"
+            resModel="object.model"
+            readonly="false"
+            allowEmpty="true"
+            isDebugMode="!!env.debug"
+            update="(name) => this.onFieldMatchUpdate(object, name)"
+            t-key="object_index"
+          />
                 </div>
             </div>
 
-            <div class="spreadsheet_oca_filter_value" t-if="state.type === 'date'">
+            <div
+        class="spreadsheet_oca_filter_value"
+        t-if="state.type === 'date'"
+      >
                 <select
           t-model="object.fieldMatch.offset"
           t-on-change="(ev) => this.onChangeFieldMatchOffset(object, ev)"
           class="o_input"
         >
-                    <t t-foreach="dateOffset" t-as="offset" t-key="offset.value">
+                    <t
+            t-foreach="dateOffset"
+            t-as="offset"
+            t-key="offset.value"
+          >
                         <option
               t-att-selected="offset.value === object.fieldMatch.offset ? 1 : 0"
               t-att-value="offset.value"
@@ -303,7 +346,10 @@
         </div>
         <div class="o-sidePanelButtons">
             <button t-on-click="onRemove" class="btn btn-danger">Remove</button>
-            <button t-on-click="onCancel" class="btn btn-warning">Cancel</button>
+            <button
+        t-on-click="onCancel"
+        class="btn btn-warning"
+      >Cancel</button>
             <button t-on-click="onSave" class="btn btn-primary">Save</button>
         </div>
     </t>
@@ -329,7 +375,10 @@
     <t t-name="spreadsheet_oca.Breadcrumbs.Small" owl="1">
         <ol class="breadcrumb">
             <t t-if="breadcrumbs.length > 1">
-                <t t-set="breadcrumb" t-value="breadcrumbs[breadcrumbs.length - 2]" />
+                <t
+          t-set="breadcrumb"
+          t-value="breadcrumbs[breadcrumbs.length - 2]"
+        />
                 <li
           class="breadcrumb-item o_back_button btn btn-secondary"
           t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
@@ -349,7 +398,10 @@
     <t t-name="spreadsheet_oca.Breadcrumbs" owl="1">
         <t t-set="currentBreadcrumbs" t-value="breadcrumbs.slice(-1)" />
         <t t-set="visiblePathBreadcrumbs" t-value="breadcrumbs.slice(-3, -1)" />
-        <t t-set="collapsedBreadcrumbs" t-value="breadcrumbs.slice(0, -3).reverse()" />
+        <t
+      t-set="collapsedBreadcrumbs"
+      t-value="breadcrumbs.slice(0, -3).reverse()"
+    />
         <t t-set="breadcrumb" t-value="currentBreadcrumbs[0] || {}" />
 
         <div
@@ -374,7 +426,9 @@
             t-if="collapsedBreadcrumbs.length"
             class="breadcrumb-item d-inline-flex min-w-0"
           >
-                        <Dropdown togglerClass="'btn btn-light btn-sm px-1 p-0'">
+                        <Dropdown
+              togglerClass="'btn btn-light btn-sm px-1 p-0'"
+            >
                             <t t-set-slot="toggler">
                                 <i class="fa fa-ellipsis-h" />
                             </t>
@@ -502,9 +556,13 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                                 <span class="visually-hidden">Toggle Dropdown</span>
+                                 <span
+                  class="visually-hidden"
+                >Toggle Dropdown</span>
                             </button>
-                            <ul class="dropdown-menu o_control_panel_collapsed_create">
+                            <ul
+                class="dropdown-menu o_control_panel_collapsed_create"
+              >
                                 <t t-slot="layout-buttons" />
                                 <t t-slot="control-panel-always-buttons" />
                             </ul>
@@ -516,7 +574,9 @@
                         </div>
                     </div>
                     <t t-if="env.config.noBreadcrumbs">
-                        <section class="o_control_panel_breadcrumbs_actions d-contents">
+                        <section
+              class="o_control_panel_breadcrumbs_actions d-contents"
+            >
                             <t t-slot="control-panel-additional-actions" />
                             <t t-slot="control-panel-status-indicator" />
                         </section>
@@ -557,7 +617,10 @@
                   t-set="activeView"
                   t-value="env.config.viewSwitcherEntries.find((view) => view.active)"
                 />
-                                <i class="oi-fw" t-att-class="activeView.icon" />
+                                <i
+                  class="oi-fw"
+                  t-att-class="activeView.icon"
+                />
                             </t>
                             <t
                 t-foreach="env.config.viewSwitcherEntries"

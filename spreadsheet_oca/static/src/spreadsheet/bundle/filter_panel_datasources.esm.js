@@ -1,18 +1,21 @@
 /** @odoo-module **/
 
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Component, onWillStart, onWillUpdateProps} from "@odoo/owl";
-import {makeDynamicCols, makeDynamicRows} from "../utils/dynamic_generators.esm";
-import {Domain} from "@web/core/domain";
-import {DomainSelector} from "@web/core/domain_selector/domain_selector";
-import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
-import {FormViewDialog} from "@web/views/view_dialogs/form_view_dialog";
-import {_t} from "@web/core/l10n/translation";
-import {formatDate} from "@web/core/l10n/dates";
-import {useService} from "@web/core/utils/hooks";
+import { Component, onWillStart, onWillUpdateProps } from "@odoo/owl";
+import {
+  makeDynamicCols,
+  makeDynamicRows,
+} from "../utils/dynamic_generators.esm";
+import { Domain } from "@web/core/domain";
+import { DomainSelector } from "@web/core/domain_selector/domain_selector";
+import { DomainSelectorDialog } from "@web/core/domain_selector_dialog/domain_selector_dialog";
+import { FormViewDialog } from "@web/views/view_dialogs/form_view_dialog";
+import { _t } from "@web/core/l10n/translation";
+import { formatDate } from "@web/core/l10n/dates";
+import { useService } from "@web/core/utils/hooks";
 
-const {DateTime} = luxon;
-const {sidePanelRegistry, topbarMenuRegistry} = spreadsheet.registries;
+const { DateTime } = luxon;
+const { sidePanelRegistry, topbarMenuRegistry } = spreadsheet.registries;
 
 topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
   let sequence = 100;
@@ -34,7 +37,7 @@ topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
     name: env.model.getters.getListDisplayName(listId),
     sequence: sequence++,
     execute: (child_env) => {
-      child_env.model.dispatch("SELECT_ODOO_LIST", {listId: listId});
+      child_env.model.dispatch("SELECT_ODOO_LIST", { listId: listId });
       child_env.openSidePanel("ListPanel", {});
     },
     icon: "spreadsheet_oca.ListIcon",
@@ -119,15 +122,15 @@ export class PivotPanelDisplay extends Component {
       sheetId: this.env.model.getters.getActiveSheetId(),
       table: tableStructure,
     });
-    this.env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
+    this.env.model.dispatch("REFRESH_PIVOT", { id: this.props.pivotId });
   }
 
   async insertDynamicPivot() {
     const datasourceModel = await this.env.model.getters
       .getPivotDataSource(this.props.pivotId)
       .copyModelWithOriginalDomain();
-    var {cols, rows, measures} = datasourceModel.getTableStructure().export();
-    const {dynamic_rows, number_of_rows, dynamic_cols, number_of_cols} =
+    var { cols, rows, measures } = datasourceModel.getTableStructure().export();
+    const { dynamic_rows, number_of_rows, dynamic_cols, number_of_cols } =
       await new Promise((resolve) => {
         this.dialog.add(
           FormViewDialog,
@@ -146,7 +149,7 @@ export class PivotPanelDisplay extends Component {
               });
             },
           },
-          {onClose: () => resolve(false)}
+          { onClose: () => resolve(false) }
         );
       });
     if (!dynamic_rows && !dynamic_cols) {
@@ -182,12 +185,17 @@ export class PivotPanelDisplay extends Component {
       sheetId: this.env.model.getters.getActiveSheetId(),
       table,
     });
-    this.env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
+    this.env.model.dispatch("REFRESH_PIVOT", { id: this.props.pivotId });
   }
   delete() {
-    this.env.askConfirmation(_t("Are you sure you want to delete this pivot?"), () => {
-      this.env.model.dispatch("REMOVE_PIVOT", {pivotId: this.props.pivotId});
-    });
+    this.env.askConfirmation(
+      _t("Are you sure you want to delete this pivot?"),
+      () => {
+        this.env.model.dispatch("REMOVE_PIVOT", {
+          pivotId: this.props.pivotId,
+        });
+      }
+    );
   }
 }
 
@@ -257,9 +265,14 @@ export class ListPanelDisplay extends Component {
     });
   }
   delete() {
-    this.env.askConfirmation(_t("Are you sure you want to delete this list?"), () => {
-      this.env.model.dispatch("REMOVE_ODOO_LIST", {listId: this.props.listId});
-    });
+    this.env.askConfirmation(
+      _t("Are you sure you want to delete this list?"),
+      () => {
+        this.env.model.dispatch("REMOVE_ODOO_LIST", {
+          listId: this.props.listId,
+        });
+      }
+    );
   }
 }
 

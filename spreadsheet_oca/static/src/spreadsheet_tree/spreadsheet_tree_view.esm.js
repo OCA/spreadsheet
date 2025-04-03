@@ -1,13 +1,13 @@
 /** @odoo-module **/
 
-import {Component} from "@odoo/owl";
-import {FileUploader} from "@web/views/fields/file_handler";
-import {ListController} from "@web/views/list/list_controller";
-import {_t} from "@web/core/l10n/translation";
-import {listView} from "@web/views/list/list_view";
-import {registry} from "@web/core/registry";
-import {standardWidgetProps} from "@web/views/widgets/standard_widget_props";
-import {useService} from "@web/core/utils/hooks";
+import { Component } from "@odoo/owl";
+import { FileUploader } from "@web/views/fields/file_handler";
+import { ListController } from "@web/views/list/list_controller";
+import { _t } from "@web/core/l10n/translation";
+import { listView } from "@web/views/list/list_view";
+import { registry } from "@web/core/registry";
+import { standardWidgetProps } from "@web/views/widgets/standard_widget_props";
+import { useService } from "@web/core/utils/hooks";
 
 class SpreadsheetFileUploader extends Component {
   setup() {
@@ -33,7 +33,7 @@ class SpreadsheetFileUploader extends Component {
         "spreadsheet.spreadsheet",
         "create_document_from_attachment",
         ["", this.attachmentIdsToProcess],
-        {context: this.env.searchModel.context}
+        { context: this.env.searchModel.context }
       );
     } finally {
       // Ensures attachments are cleared on success as well as on error
@@ -58,11 +58,11 @@ SpreadsheetFileUploader.components = {
 SpreadsheetFileUploader.template = "spreadsheet_oca.SpreadsheetFileUploader";
 SpreadsheetFileUploader.props = {
   ...standardWidgetProps,
-  acceptedFileExtensions: {type: String, optional: true},
-  record: {type: Object, optional: true},
-  togglerTemplate: {type: String, optional: true},
-  slots: {type: Object, optional: true},
-  linkText: {type: String, optional: true},
+  acceptedFileExtensions: { type: String, optional: true },
+  record: { type: Object, optional: true },
+  togglerTemplate: { type: String, optional: true },
+  slots: { type: Object, optional: true },
+  linkText: { type: String, optional: true },
 };
 SpreadsheetFileUploader.defaultProps = {
   acceptedFileExtensions:
