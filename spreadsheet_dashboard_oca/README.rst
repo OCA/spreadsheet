@@ -62,6 +62,10 @@ Contributors
 
    -  Carlos Roca
 
+-  `Open User Systems <https://www.openusersystems.com>`__:
+
+   -  Chris Mann
+
 Maintainers
 -----------
 
