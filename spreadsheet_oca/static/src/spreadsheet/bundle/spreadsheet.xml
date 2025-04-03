@@ -199,7 +199,7 @@
                 </select>
             </div>
         </div>
-        <div class="o_spreadsheet_oca_filter" t-if="state.type !== 'relation'">
+        <div class="o_spreadsheet_oca_filter" t-if="state.type !== 'relation' and state.rangeType !== 'from_to'">
             <div class="spreadsheet_oca_filter_label">Default value</div>
             <div
         t-if="state.type === 'date' and state.rangeType !== 'relative'"
@@ -209,14 +209,22 @@
           type="checkbox"
           class="me-2"
           id="default_to_current_period"
-          t-att-checked="state.defaultsToCurrentPeriod"
+          t-att-checked="state.defaultValue"
+          t-on-change="toggleDateDefaultValue"
         />
                 <label
           for="default_to_current_period"
         > Automatically filter on the current period </label>
             </div>
+            <div class="pt-3" t-if="state.defaultValue and state.type === 'date' and state.rangeType !== 'relative'">
+                <select t-model="state.defaultValue" class="o_input">
+                    <option value="this_month">Month</option>
+                    <option value="this_quarter">Quarter</option>
+                    <option value="this_year">Year</option>
+                </select>
+            </div>
             <div
-        t-if="state.type === 'date'and state.rangeType === 'relative'"
+        t-if="state.type === 'date' and state.rangeType === 'relative'"
         class="spreadsheet_oca_filter_value"
       >
                 <select t-model="state.defaultValue" class="o_input">
@@ -263,15 +271,17 @@
             <div class="spreadsheet_oca_filter_label">
                 <span t-esc="object.name" /> - <span t-esc="object.tag" />
             </div>
-            <div class="spreadsheet_oca_filter_value">
-                <ModelFieldSelector
-          fieldName="object.fieldMatch.chain || ''"
-          resModel="object.model"
-          readonly="false"
-          isDebugMode="!!env.debug"
-          t-on-change="() => this.onChangeFieldSelector(ev)"
-          update="(name) => this.onFieldMatchUpdate(object, name)"
-        />
+            <div class="d-flex justify-content-between">
+                <div class="spreadsheet_oca_filter_value flex-column flex-grow-1">
+                    <ModelFieldSelector
+                            path="object.fieldMatch.chain || ''"
+                            resModel="object.model"
+                            readonly="false"
+                            allowEmpty="true"
+                            isDebugMode="!!env.debug"
+                            update="(name) => this.onFieldMatchUpdate(object, name)"
+                            t-key="object_index"/>
+                </div>
             </div>
 
             <div class="spreadsheet_oca_filter_value" t-if="state.type === 'date'">
