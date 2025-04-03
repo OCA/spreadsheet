@@ -10,28 +10,30 @@ from odoo.exceptions import ValidationError
 
 class SpreadsheetDashboard(models.Model):
     _name = "spreadsheet.dashboard"
-    _inherit = ["spreadsheet.dashboard", "spreadsheet.abstract"]
+    _inherit = ["spreadsheet.dashboard", "spreadsheet.abstract", "spreadsheet.mixin"]
 
-    data = fields.Binary()
+    spreadsheet_binary_data = fields.Binary()
     active = fields.Boolean(default=True)
     spreadsheet_raw = fields.Serialized(
         inverse="_inverse_spreadsheet_raw", compute="_compute_spreadsheet_raw"
     )
     can_edit = fields.Boolean(compute="_compute_can_edit", search="_search_can_edit")
 
-    @api.depends("data")
+    @api.depends("spreadsheet_binary_data")
     def _compute_spreadsheet_raw(self):
         for dashboard in self:
-            if dashboard.data:
+            if dashboard.spreadsheet_binary_data:
                 dashboard.spreadsheet_raw = json.loads(
-                    base64.decodebytes(dashboard.data).decode("UTF-8")
+                    base64.decodebytes(dashboard.spreadsheet_binary_data).decode(
+                        "UTF-8"
+                    )
                 )
             else:
                 dashboard.spreadsheet_raw = {}
 
     def _inverse_spreadsheet_raw(self):
         for record in self:
-            record.data = base64.encodebytes(
+            record.spreadsheet_binary_data = base64.encodebytes(
                 json.dumps(record.spreadsheet_raw).encode("UTF-8")
             )
 
