@@ -20,7 +20,7 @@
             <tree position="inside">
                 <field name="can_edit" column_invisible="True" />
                 <field
-          name="data"
+          name="spreadsheet_binary_data"
           groups="base.group_no_one"
           widget="binary"
           filename="name"
