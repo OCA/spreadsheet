@@ -12,7 +12,7 @@
     "depends": [
         "spreadsheet_dashboard",
         "spreadsheet_oca",
-        "base_view_inheritance_extension",
+        # "base_view_inheritance_extension",
     ],
     "data": [
         "wizards/spreadsheet_spreadsheet_import.xml",
