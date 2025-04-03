@@ -10,6 +10,8 @@ from odoo.http import Controller, content_disposition, request, route
 class SpreadsheetDownloadXLSX(Controller):
     @route("/spreadsheet/xlsx", type="http", auth="user", methods=["POST"])
     def download_spreadsheet_xlsx(self, zip_name, files, **kw):
+        if hasattr(files, "read"):
+            files = files.read().decode("utf-8")
         files = json.loads(files)
         file_bytes = BytesIO()
         with ZipFile(file_bytes, "w") as zip_file:
