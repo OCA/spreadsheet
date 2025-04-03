@@ -35,58 +35,24 @@
  * @param {Array} parent_indexes
  * @returns {Array}
  */
-export function makeDynamicRows(
-  fields,
-  number_of_rows,
-  indent,
-  max_indentation,
-  parent_indexes = []
-) {
+export function makeDynamicRows(fields, number_of_rows, indent, max_indentation, parent_indexes = []) {
   var rows = [];
   for (var index = 1; index <= number_of_rows; index++) {
     rows.push({
-      fields: fields,
-      indent,
-      values: [...parent_indexes, index],
+      fields: fields.map(f => f.startsWith('#') ? f : `#${f}`), // Add # prefix
+      indent: indent,
+      values: [...parent_indexes, index.toString()],
     });
     if (indent < max_indentation) {
       rows = rows.concat(
         makeDynamicRows(fields, number_of_rows, indent + 1, max_indentation, [
           ...parent_indexes,
-          index,
+          index.toString(),
         ])
       );
     }
   }
   return rows;
-}
-
-function _incrementArray(arr, base) {
-  let carry = 1;
-  for (let i = arr.length - 1; i >= 0; i--) {
-    const sum = arr[i] + carry;
-    arr[i] = sum % base ? sum % base : 1;
-    carry = Math.floor(sum / base);
-    if (carry === 0) break;
-  }
-
-  return arr;
-}
-
-function _getColLevelInfo(fields, number_of_cols, width) {
-  const col_info = [];
-  var values = Array.from({length: fields.length}, () => 1);
-  for (var f = Math.pow(number_of_cols, fields.length - 1) - 1; f >= 0; f--) {
-    for (var c = 1; c <= number_of_cols; c++) {
-      col_info.push({
-        fields,
-        values,
-        width,
-      });
-      values = _incrementArray([...values], number_of_cols + 1);
-    }
-  }
-  return col_info;
 }
 
 /**
@@ -99,26 +65,33 @@ function _getColLevelInfo(fields, number_of_cols, width) {
  * @returns {Array}
  */
 export function makeDynamicCols(fields, number_of_cols, measures) {
-  var cols = [];
-  const max_width =
-    (Math.pow(number_of_cols, fields.length) * measures.length) / number_of_cols;
-  for (var index = 0; index < fields.length; index++) {
-    const width = max_width / Math.pow(number_of_cols, index);
-    const newFields = fields;
-    cols.push(_getColLevelInfo(newFields, number_of_cols, width));
+  // Default to at least one empty measure if none provided
+  const effectiveMeasures = measures?.length ? measures : [''];
+  const groupColumns = [];
+  const measureColumns = [];
+  
+  for (let colNum = 1; colNum <= number_of_cols; colNum++) {
+    // Create a group column for each field combination
+    const groupColumn = {
+      fields: fields?.length ? fields.map(f => f.startsWith('#') ? f : `#${f}`) : [],
+      values: fields?.length ? Array(fields.length).fill(colNum.toString()) : [],
+      width: 1,
+      offset: fields?.length || 1
+    };
+    groupColumns.push(groupColumn);
+
+    // Create corresponding measure columns for each group
+    effectiveMeasures.forEach(measure => {
+      if (fields?.length) {
+        measureColumns.push({
+          fields: [...fields.map(f => `#${f}`), "measure"],
+          values: [...fields.map(() => colNum.toString()), measure || ''],
+          width: 1,
+          offset: fields.length + 1
+        });
+      }
+    });
   }
-  const measuresCols = [];
-  const lastCols = cols[cols.length - 1];
-  for (var col of lastCols) {
-    for (var measure of measures) {
-      measuresCols.push({
-        fields: [...col.fields, "measure"],
-        values: [...col.values, measure],
-        width: 1,
-      });
-    }
-  }
-  cols.push(measuresCols);
-  cols.push("dynamic_cols");
-  return cols;
+
+  return [groupColumns, measureColumns];
 }
