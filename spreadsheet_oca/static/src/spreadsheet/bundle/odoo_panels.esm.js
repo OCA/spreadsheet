@@ -4,6 +4,7 @@ import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Domain} from "@web/core/domain";
 import {Many2XAutocomplete} from "@web/views/fields/relational_utils";
 import {useService} from "@web/core/utils/hooks";
+import {_t} from "@web/core/l10n/translation";
 
 const {chartSidePanelComponentRegistry} = spreadsheet.registries;
 const {LineBarPieDesignPanel} = spreadsheet.components;
@@ -16,7 +17,7 @@ export class OdooPanel extends Component {
   get menuProps() {
     const menu = this.env.model.getters.getChartOdooMenu(this.props.figureId);
     var result = {
-      record: this.record,
+      fieldString: _t("Menu Items"),
       resModel: "ir.ui.menu",
       update: this.updateMenu.bind(this),
       activeActions: {},
