@@ -18,17 +18,20 @@ topbarMenuRegistry.addChild("filters", ["file"], {
   name: _t("Filters"),
   sequence: 70,
   execute: (env) => env.openSidePanel("FilterPanel", {}),
+  icon: "o-spreadsheet-Icon.GLOBAL_FILTERS",
 });
 topbarMenuRegistry.addChild("save", ["file"], {
   name: _t("Save"),
   // Description: "Ctrl+S", // This is not working, so removing it from the view for now...
   sequence: 10,
   execute: (env) => env.saveSpreadsheet(),
+  icon: "o-spreadsheet-Icon.DOWNLOAD",
 });
 topbarMenuRegistry.addChild("download", ["file"], {
   name: _t("Download XLSX"),
   sequence: 20,
   execute: (env) => env.downloadAsXLXS(),
+  icon: "o-spreadsheet-Icon.EXPORT_XLSX",
 });
 topbarMenuRegistry.addChild("settings", ["file"], {
   name: _t("Settings"),
@@ -66,7 +69,6 @@ export class EditFilterPanel extends Component {
       label: this.props.filter.label,
       type: this.props.filter.type,
       defaultValue: this.props.filter.defaultValue,
-      defaultsToCurrentPeriod: this.props.filter.defaultsToCurrentPeriod,
       rangeType: this.props.filter.rangeType || "year",
       modelName: {technical: this.props.filter.modelName, label: null},
       objects: {},
@@ -110,10 +112,9 @@ export class EditFilterPanel extends Component {
   }
   get dateRangeTypes() {
     return [
-      {type: "year", description: _t("Year")},
-      {type: "quarter", description: _t("Quarter")},
-      {type: "month", description: _t("Month")},
+      {type: "fixedPeriod", description: _t("Month / Quarter")},
       {type: "relative", description: _t("Relative Period")},
+      {type: "from_to", description: _t("From / To")},
     ];
   }
   get dateOffset() {
@@ -134,6 +135,7 @@ export class EditFilterPanel extends Component {
   }
   onDateRangeChange(ev) {
     this.state.rangeType = ev.target.value;
+    this.state.defaultValue = undefined;
   }
   onSave() {
     const action = this.props.filter.id ? "EDIT_GLOBAL_FILTER" : "ADD_GLOBAL_FILTER";
@@ -144,7 +146,6 @@ export class EditFilterPanel extends Component {
       label: this.state.label,
       defaultValue: this.state.defaultValue,
       rangeType: this.state.rangeType,
-      defaultsToCurrentPeriod: this.state.defaultsToCurrentPeriod,
       modelName: this.state.modelName.technical,
     };
     var filterMatching = {};
@@ -167,6 +168,9 @@ export class EditFilterPanel extends Component {
   }
   onFieldMatchUpdate(object, name) {
     this.state.objects[object.id].fieldMatch.chain = name;
+  }
+  toggleDateDefaultValue(ev) {
+    this.state.defaultValue = ev.target.checked ? "this_month" : undefined;
   }
 }
 
