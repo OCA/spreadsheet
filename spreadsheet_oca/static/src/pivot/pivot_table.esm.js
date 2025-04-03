@@ -1,8 +1,8 @@
 /** @odoo-module */
 /* Copyright 2024 Tecnativa - Carlos Roca
  * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
-import {SpreadsheetPivotTable} from "@spreadsheet/pivot/pivot_table";
-import {patch} from "@web/core/utils/patch";
+import { SpreadsheetPivotTable } from "@spreadsheet/pivot/pivot_table";
+import { patch } from "@web/core/utils/patch";
 
 patch(SpreadsheetPivotTable.prototype, {
   get _dynamic_cols() {
@@ -53,7 +53,9 @@ patch(SpreadsheetPivotTable.prototype, {
       const vals = JSON.stringify(values);
       const maxLength = Math.max(...cols.map((col) => col.length));
       for (let i = 0; i < maxLength; i++) {
-        const cellValues = cols.map((col) => JSON.stringify((col[i] || {}).values));
+        const cellValues = cols.map((col) =>
+          JSON.stringify((col[i] || {}).values)
+        );
         if (cellValues.includes(vals)) {
           return i;
         }

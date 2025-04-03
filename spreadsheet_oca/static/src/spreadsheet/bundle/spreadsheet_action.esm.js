@@ -1,17 +1,20 @@
 /** @odoo-module **/
 
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {makeDynamicCols, makeDynamicRows} from "../utils/dynamic_generators.esm";
-import {ListDataSource} from "@spreadsheet/list/list_data_source";
-import {PivotDataSource} from "@spreadsheet/pivot/pivot_data_source";
-import {SpreadsheetControlPanel} from "./spreadsheet_controlpanel.esm";
-import {SpreadsheetRenderer} from "./spreadsheet_renderer.esm";
-import {registry} from "@web/core/registry";
-import {useService} from "@web/core/utils/hooks";
+import {
+  makeDynamicCols,
+  makeDynamicRows,
+} from "../utils/dynamic_generators.esm";
+import { ListDataSource } from "@spreadsheet/list/list_data_source";
+import { PivotDataSource } from "@spreadsheet/pivot/pivot_data_source";
+import { SpreadsheetControlPanel } from "./spreadsheet_controlpanel.esm";
+import { SpreadsheetRenderer } from "./spreadsheet_renderer.esm";
+import { registry } from "@web/core/registry";
+import { useService } from "@web/core/utils/hooks";
 
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
 const actionRegistry = registry.category("actions");
-const {Component, onMounted, onWillStart, useSubEnv} = owl;
+const { Component, onMounted, onWillStart, useSubEnv } = owl;
 
 export class ActionSpreadsheetOca extends Component {
   setup() {
@@ -36,7 +39,7 @@ export class ActionSpreadsheetOca extends Component {
             this.model,
             "get_spreadsheet_data",
             [[this.spreadsheetId]],
-            {context: {bin_size: false}}
+            { context: { bin_size: false } }
           )
         ) || {};
     });
@@ -60,7 +63,7 @@ export class ActionSpreadsheetOca extends Component {
       this.orm.call(this.model, "write", [this.spreadsheetId, data]);
     } else {
       this.spreadsheetId = await this.orm.call(this.model, "create", [data]);
-      this.router.pushState({spreadsheet_id: this.spreadsheetId});
+      this.router.pushState({ spreadsheet_id: this.spreadsheetId });
     }
   }
   /**
@@ -80,7 +83,7 @@ export class ActionSpreadsheetOca extends Component {
       }
       context[key] = searchParams.context[key];
     }
-    return {...searchParams, context};
+    return { ...searchParams, context };
   }
   async importDataGraph(spreadsheet_model) {
     var sheetId = spreadsheet_model.getters.getActiveSheetId();
@@ -144,7 +147,8 @@ export class ActionSpreadsheetOca extends Component {
       while (row >= 0) {
         for (var col = maxcols; col >= 0; col--) {
           if (
-            spreadsheet_model.getters.getCell(sheetId, col, row) !== undefined &&
+            spreadsheet_model.getters.getCell(sheetId, col, row) !==
+              undefined &&
             !spreadsheet_model.getters.getCell(sheetId, col, row).isEmpty()
           ) {
             filled = true;
@@ -158,10 +162,10 @@ export class ActionSpreadsheetOca extends Component {
       }
       row += 1;
     }
-    return {sheetId, row};
+    return { sheetId, row };
   }
   async importDataList(spreadsheet_model) {
-    var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
+    var { sheetId, row } = this.importCreateOrReuseSheet(spreadsheet_model);
     const dataSourceId = uuidGenerator.uuidv4();
     var list_info = {
       metaData: {
@@ -196,10 +200,13 @@ export class ActionSpreadsheetOca extends Component {
     for (let col = 0; col < this.import_data.metaData.columns.length; col++) {
       columns.push(col);
     }
-    spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {sheetId, cols: columns});
+    spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {
+      sheetId,
+      cols: columns,
+    });
   }
   async importDataPivot(spreadsheet_model) {
-    var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
+    var { sheetId, row } = this.importCreateOrReuseSheet(spreadsheet_model);
     const dataSourceId = uuidGenerator.uuidv4();
     const colGroupBys = this.import_data.metaData.colGroupBys.concat(
       this.import_data.metaData.expandedColGroupBys
@@ -224,7 +231,7 @@ export class ActionSpreadsheetOca extends Component {
       pivot_info
     );
     await dataSource.load();
-    var {cols, rows, measures} = dataSource.getTableStructure().export();
+    var { cols, rows, measures } = dataSource.getTableStructure().export();
     if (this.import_data.dyn_number_of_rows) {
       const indentations = rows.map((r) => r.indent);
       const max_indentation = Math.max(...indentations);
@@ -260,7 +267,10 @@ export class ActionSpreadsheetOca extends Component {
     for (let col = 0; col < table.cols[table.cols.length - 1].length; col++) {
       columns.push(col);
     }
-    spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {sheetId, cols: columns});
+    spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {
+      sheetId,
+      cols: columns,
+    });
   }
   async importData(spreadsheet_model) {
     if (this.import_data.mode === "pivot") {
@@ -279,4 +289,6 @@ ActionSpreadsheetOca.components = {
   SpreadsheetRenderer,
   SpreadsheetControlPanel,
 };
-actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {force: true});
+actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {
+  force: true,
+});
