@@ -1,9 +1,9 @@
 /** @odoo-module **/
 
-import {Component} from "@odoo/owl";
-import {ControlPanel} from "@web/search/control_panel/control_panel";
+import { Component } from "@odoo/owl";
+import { ControlPanel } from "@web/search/control_panel/control_panel";
 
-const {useState} = owl;
+const { useState } = owl;
 
 export class SpreadsheetName extends Component {
   setup() {
@@ -13,7 +13,7 @@ export class SpreadsheetName extends Component {
   }
   _onNameChanged(ev) {
     if (ev.target.value) {
-      this.env.saveRecord({name: ev.target.value});
+      this.env.saveRecord({ name: ev.target.value });
     }
     this.state.name = ev.target.value;
   }
