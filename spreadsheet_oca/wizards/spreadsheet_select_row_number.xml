@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record model="ir.ui.view" id="spreadsheet_select_row_number_form_view">
+        <field name="name">spreadsheet.select.row.number.form</field>
+        <field name="model">spreadsheet.select.row.number</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="dynamic_rows" />
+                        <field
+              name="number_of_rows"
+              invisible='not dynamic_rows'
+            />
+                        <field name="can_have_dynamic_cols" invisible="1" />
+                        <field
+              name="dynamic_cols"
+              invisible='not can_have_dynamic_cols'
+            />
+                        <field
+              name="number_of_cols"
+              invisible='not dynamic_cols'
+            />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

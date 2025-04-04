@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record
+    id="spreadsheet_import_mode_new"
+    model="spreadsheet.spreadsheet.import.mode"
+  >
+        <field name="code">new</field>
+        <field name="name">Create spreadsheet</field>
+        <field name="sequence" eval="10" />
+        <field
+      name="group_ids"
+      eval="[(4, ref('spreadsheet_oca.group_user'))]"
+    />
+    </record>
+    <record
+    id="spreadsheet_import_mode_add"
+    model="spreadsheet.spreadsheet.import.mode"
+  >
+        <field name="code">add</field>
+        <field name="name">Add to spreadsheet</field>
+        <field name="sequence" eval="15" />
+        <field
+      name="group_ids"
+      eval="[(4, ref('spreadsheet_oca.group_user'))]"
+    />
+    </record>
+    <record
+    id="spreadsheet_import_mode_add_sheet"
+    model="spreadsheet.spreadsheet.import.mode"
+  >
+        <field name="code">add_sheet</field>
+        <field name="name">Add sheet to spreadsheet</field>
+        <field name="sequence" eval="16" />
+        <field
+      name="group_ids"
+      eval="[(4, ref('spreadsheet_oca.group_user'))]"
+    />
+    </record>
+</odoo>

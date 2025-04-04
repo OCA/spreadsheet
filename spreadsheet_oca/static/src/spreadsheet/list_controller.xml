@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="web.ListView.Buttons" t-inherit-mode="extension" owl="1">
+        <xpath
+      expr="//button[hasclass('o_list_button_discard')]/.."
+      position="after"
+    >
+                <t t-if="!env.isSmall">
+                    <button
+          type="button"
+          class="btn btn-secondary fa fa-table o_list_export_spreadsheet"
+          data-tooltip="Add to spreadsheet"
+          aria-label="Add to spreadesheet"
+          t-on-click="(ev) => this.onSpreadsheetButtonClicked(ev)"
+        />
+                </t>
+        </xpath>
+    </t>
+</templates>

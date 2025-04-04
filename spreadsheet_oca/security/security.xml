@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 CreuBlanca
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.module.category" id="module_category_spreedsheet">
+        <field name="name">Spreadsheet</field>
+        <field name="sequence">99</field>
+    </record>
+    <record id="group_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="module_category_spreedsheet" />
+    </record>
+    <record id="group_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="module_category_spreedsheet" />
+        <field name="implied_ids" eval="[(4, ref('group_user'))]" />
+        <field
+      name="users"
+      eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+    />
+    </record>
+    <record model="ir.rule" id="spreadsheet_company_rule">
+        <field name="name">Spreadsheet Company Rule</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field
+      name="domain_force"
+    >[('company_id', 'in', company_ids + [False])]</field>
+    </record>
+    <record model="ir.rule" id="spreadsheet_owner_rule">
+        <field name="name">Spreadsheet Owner</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[('owner_id','=', user.id)]</field>
+    </record>
+    <record model="ir.rule" id="spreadsheet_contributor_rule">
+        <field name="name">Spreadsheet Contributor</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field
+      name="domain_force"
+    >['|', ('contributor_ids','=', user.id), ('contributor_group_ids','in', user.groups_id.ids)]</field>
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+    <record model="ir.rule" id="spreadsheet_reader_rule">
+        <field name="name">Spreadsheet Reader</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field
+      name="domain_force"
+    >['|', ('reader_ids','=', user.id), ('reader_group_ids','in', user.groups_id.ids)]</field>
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+    <record model="ir.rule" id="spreadsheet_manager_rule">
+        <field name="name">Spreadsheet Manager</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet" />
+        <field
+      name="groups"
+      eval="[(4, ref('spreadsheet_oca.group_manager'))]"
+    />
+        <field name="domain_force">[(1,'=', 1)]</field>
+    </record>
+    <record model="ir.rule" id="spreadsheet_import_mode_rule">
+        <field name="name">Spreadsheet Import mode</field>
+        <field
+      name="model_id"
+      ref="model_spreadsheet_spreadsheet_import_mode"
+    />
+        <field
+      name="domain_force"
+    >[('group_ids','in', user.groups_id.ids)]</field>
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="demo_spreadsheet" model="spreadsheet.spreadsheet">
+        <field name="name">Demo spreadsheet</field>
+        <field
+      name="spreadsheet_binary_data"
+      type="base64"
+      file="spreadsheet_oca/demo/demo_spreadsheet.json"
+    />
+
+    </record>
+</odoo>

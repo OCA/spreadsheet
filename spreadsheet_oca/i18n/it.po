@@ -1,0 +1,694 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-11-04 15:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6.2\n"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Add date"
+msgstr "Aggiungi data"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Add relation"
+msgstr "Aggiungi relazione"
+
+#. module: spreadsheet_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add_sheet
+msgid "Add sheet to spreadsheet"
+msgstr "Aggiungi scheda a foglIo di calcolo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Add text"
+msgstr "Aggiungi testo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
+#, python-format
+msgid "Add to spreadesheet"
+msgstr "Aggiungi al foglio di calcolo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/graph_controller.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.xml:0
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
+#, python-format
+msgid "Add to spreadsheet"
+msgstr "Aggiungi al foglio di calcolo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "After next"
+msgstr "Dopo il sucessivo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Automatically filter on the current period"
+msgstr "Filtra automaticamente sul periodo attuale"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Before Previous"
+msgstr "Prima del precedente"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
+msgid "Can Be Dynamic"
+msgstr "Può essere dinamico"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__can_have_dynamic_cols
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_have_dynamic_cols
+msgid "Can Have Dynamic Cols"
+msgstr "Può avere colonne dinamiche"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
+#, python-format
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Change name"
+msgstr "Modifica nome"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__client_id
+msgid "Client"
+msgstr "Client"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__code
+msgid "Code"
+msgstr "Codice"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
+msgid "Commands"
+msgstr "Comandi"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#, python-format
+msgid "Comparisons in pivot are not supprted"
+msgstr "Le comparazioni nella vista pivot non sono supportate"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Confirm"
+msgstr "Conferma"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
+msgid "Contributors"
+msgstr "Contributori"
+
+#. module: spreadsheet_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
+msgid "Create spreadsheet"
+msgstr "Crea foglio di calcolo"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__create_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__data
+msgid "Data"
+msgstr "Dati"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
+msgid "Datasource Name"
+msgstr "Nome origine dati"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Default value"
+msgstr "Valore predefinito"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Dimensions"
+msgstr "Dimensioni"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__display_name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Domain"
+msgstr "Dominio"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Download XLSX"
+msgstr "Scarica XLSX"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
+#, python-format
+msgid "Duplicated groupbys in pivot are not supprted"
+msgstr "Nelle viste pivot Non sono supportati i raggruppamenti duplicati"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_cols
+msgid "Dynamic Cols"
+msgstr "Colonne dinamiche"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
+msgid "Dynamic Columns"
+msgstr "Colonne dinamiche"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid "Dynamic Rows"
+msgstr "Righe dinamiche"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_tree_view
+msgid "Edit"
+msgstr "Modifica"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Edit domain"
+msgstr "Modifica dominio"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "File"
+msgstr "File"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__filename
+msgid "Filename"
+msgstr "Nome file"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Filters"
+msgstr "Filtri"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__group_ids
+msgid "Group"
+msgstr "Gruppo"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__id
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__id
+msgid "ID"
+msgstr "ID"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__import_data
+msgid "Import Data"
+msgstr "Importa dati"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_import_mode
+msgid "Import Mode"
+msgstr "Modo importazione"
+
+#. module: spreadsheet_oca
+#: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_import_act_window
+msgid "Import Pivot"
+msgstr "Importa pivot"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_import
+msgid "Import data to spreadsheet"
+msgstr "Importa dati nel foglio di calcolo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Insert dynamic pivot"
+msgstr "Inserisci pivot dinamico"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Insert pivot"
+msgstr "Inserisci pivot"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__is_tree
+msgid "Is Tree"
+msgstr "È albero"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Label"
+msgstr "Etichetta"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision____last_update
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number____last_update
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet____last_update
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import____last_update
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_uid
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__write_date
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Last updated at"
+msgstr "Ultimo aggiornamento il"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Link to Odoo menu"
+msgstr "Collegamento al menu Odoo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "List name"
+msgstr "Nome elenco"
+
+#. module: spreadsheet_oca
+#: model:res.groups,name:spreadsheet_oca.group_manager
+msgid "Manager"
+msgstr "Responsabile"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Measures"
+msgstr "Misure"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode_id
+msgid "Mode"
+msgstr "Modo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
+#, python-format
+msgid "Model"
+msgstr "Modello"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Month"
+msgstr "Mese"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__name
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__name
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
+msgid "Name"
+msgstr "Nome"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Next"
+msgstr "Successiva"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
+msgid "Next Revision"
+msgstr "Revisione successiva"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_cols
+msgid "Number Of Cols"
+msgstr "Numero di colonne"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
+msgid "Number Of Rows"
+msgstr "Numero di righe"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_cols
+msgid "Number of Columns"
+msgstr "Numero di colonne"
+
+#. module: spreadsheet_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
+msgid "OK"
+msgstr "OK"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
+msgid "Owner"
+msgstr "Proprietario"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Pivot name"
+msgstr "Nome pivot"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Previous"
+msgstr "Precedente"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Quarter"
+msgstr "Trimestre"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
+msgid "Readers"
+msgstr "Lettori"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+#, python-format
+msgid "Refresh all data"
+msgstr "Aggiorna tutti i dati"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Related model"
+msgstr "Modello correlato"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Relative Period"
+msgstr "Periodo relativo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Remove"
+msgstr "Rimuovi"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__res_id
+msgid "Res"
+msgstr "Res"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Save"
+msgstr "Salva"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
+msgid "Select number of rows to duplicate row"
+msgstr "Selezionare il numero di righe per duplicare la riga"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+#, python-format
+msgid "Select the quantity of rows"
+msgstr "Selezionare la quantità di righe"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__sequence
+msgid "Sequence"
+msgstr "Sequenza"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__server_revision_id
+msgid "Server Revision"
+msgstr "Revisione server"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Sorting"
+msgstr "Ordinamento"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
+#: model:ir.module.category,name:spreadsheet_oca.module_category_spreedsheet
+msgid "Spreadsheet"
+msgstr "Foglio di calcolo"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_oca_revision
+msgid "Spreadsheet Oca Revision"
+msgstr "Revisione OCA foglio di calcolo"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_raw
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_raw
+msgid "Spreadsheet Raw"
+msgstr "Foglio di calcolo grezzo"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_revision_ids
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "Revisione foglio di calcolo"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_spreadsheet_abstract
+msgid "Spreadsheet abstract for inheritance"
+msgstr "Foglio di calcolo astratto per ereditarietà"
+
+#. module: spreadsheet_oca
+#: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
+#: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_menu
+msgid "Spreadsheets"
+msgstr "Fogli di calcolo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Stacked"
+msgstr "In coda"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
+msgid ""
+"This field allows you to generate tables that its cols are updated with the "
+"filters set in the spreadsheets."
+msgstr ""
+"Questo campo consente di generare tabelle le cui colonne sono aggiornate con "
+"i filtri impostati nei fogli di lavoro."
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
+msgid ""
+"This field allows you to generate tables that its rows are updated with the "
+"filters set in the spreadsheets."
+msgstr ""
+"Questo campo consente di generare tabelle le cui righe sono aggiornate con i "
+"filtri impostati nei fogli di lavoro."
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Time range"
+msgstr "Intervallo orario"
+
+#. module: spreadsheet_oca
+#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#. odoo-python
+#: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "Unnamed"
+msgstr "Senza nome"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml:0
+#, python-format
+msgid "Upload XLSX"
+msgstr "Carica XLSX"
+
+#. module: spreadsheet_oca
+#: model:res.groups,name:spreadsheet_oca.group_user
+msgid "User"
+msgstr "Utente"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
+#, python-format
+msgid "Year"
+msgstr "Anno"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+#, python-format
+msgid "ascending"
+msgstr "crescente"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+#, python-format
+msgid "descending"
+msgstr "decrescente"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+#, python-format
+msgid "name is required"
+msgstr "è richiesto il nome"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+#, python-format
+msgid "not updated"
+msgstr "non aggiornato"
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_ir_websocket
+msgid "websocket message handling"
+msgstr "gestione messaggio websocket"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dinamico"
+
+#~ msgid ""
+#~ "This field allows you to generate tables that are updated with the "
+#~ "filters set in the spreadsheets."
+#~ msgstr ""
+#~ "Questo campo consente di generare tabelle che sono aggiornate con i "
+#~ "filtri impostati nel foglio di lavoro."
