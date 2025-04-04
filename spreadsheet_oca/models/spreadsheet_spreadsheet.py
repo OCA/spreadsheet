@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import base64
-import json
 import zipfile
 from io import BytesIO
 
@@ -14,11 +13,7 @@ class SpreadsheetSpreadsheet(models.Model):
     _inherit = "spreadsheet.abstract"
     _description = "Spreadsheet"
 
-    spreadsheet_binary_data = fields.Binary()
     filename = fields.Char(compute="_compute_filename")
-    spreadsheet_raw = fields.Serialized(
-        compute="_compute_spreadsheet_raw", inverse="_inverse_spreadsheet_raw"
-    )
     owner_id = fields.Many2one(
         "res.users", required=True, default=lambda r: r.env.user.id
     )
@@ -60,24 +55,6 @@ class SpreadsheetSpreadsheet(models.Model):
     def _compute_filename(self):
         for record in self:
             record.filename = "%s.json" % (self.name or _("Unnamed"))
-
-    @api.depends("spreadsheet_binary_data")
-    def _compute_spreadsheet_raw(self):
-        for dashboard in self:
-            if dashboard.spreadsheet_binary_data:
-                dashboard.spreadsheet_raw = json.loads(
-                    base64.decodebytes(dashboard.spreadsheet_binary_data).decode(
-                        "UTF-8"
-                    )
-                )
-            else:
-                dashboard.spreadsheet_raw = {}
-
-    def _inverse_spreadsheet_raw(self):
-        for record in self:
-            record.spreadsheet_binary_data = base64.encodebytes(
-                json.dumps(record.spreadsheet_raw).encode("UTF-8")
-            )
 
     def create_document_from_attachment(self, attachment_ids):
         attachments = self.env["ir.attachment"].browse(attachment_ids)
