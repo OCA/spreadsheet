@@ -1,7 +1,8 @@
 [project]
 name = "odoo-addons-oca-spreadsheet"
-version = "17.0.20250404.0"
+version = "17.0.20250405.0"
 dependencies = [
+    "odoo-addon-spreadsheet_dashboard_oca>=17.0dev,<17.1dev",
     "odoo-addon-spreadsheet_oca>=17.0dev,<17.1dev",
 ]
 classifiers=[
