@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 CreuBlanca
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_import_form_view">
+        <field
+      name="name"
+    >spreadsheet.spreadsheet.import.form (in spreadsheet_dashboard_oca)</field>
+        <field name="model">spreadsheet.spreadsheet.import</field>
+        <field
+      name="inherit_id"
+      ref="spreadsheet_oca.spreadsheet_spreadsheet_import_form_view"
+    />
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute
+          name="invisible"
+          add="mode != 'dashboard_spreadsheet'"
+          separator=" and "
+        />
+                <attribute
+          name="required"
+          add="mode == 'dashboard_spreadsheet'"
+          separator=" or "
+        />
+            </field>
+            <field name="spreadsheet_id" position="after">
+                <field
+          name="dashboard_id"
+          invisible="mode not in ['dashboard', 'dashboard_sheet']"
+          required="mode in ['dashboard', 'dashboard_sheet']"
+          domain="[('can_edit', '=', True)]"
+          options="{'no_create': True}"
+        />
+                <field
+          name="dashboard_group_id"
+          invisible="mode != 'dashboard_spreadsheet'"
+          required="mode == 'dashboard_spreadsheet'"
+          options="{'no_create': True}"
+        />
+            </field>
+        </field>
+    </record>
+
+
+
+</odoo>

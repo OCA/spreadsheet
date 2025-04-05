@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Tecnativa - Pedro M. Baeza
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record
+    model="ir.actions.act_window"
+    id="spreadsheet_dashboard.spreadsheet_dashboard_action_configuration_dashboards"
+  >
+        <field name="context">{'active_test': False}</field>
+    </record>
+</odoo>
