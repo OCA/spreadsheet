@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-06-21 13:27+0000\n"
+"PO-Revision-Date: 2025-06-24 09:25+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -72,14 +72,14 @@ msgstr "Dopo il sucessivo"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #, python-format
 msgid "Are you sure you want to delete this list?"
-msgstr ""
+msgstr "Si è sicuri di voler cancellare questo elenco?"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #, python-format
 msgid "Are you sure you want to delete this pivot?"
-msgstr ""
+msgstr "Si è sicuri di voler cancellare questa pivot?"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -140,7 +140,7 @@ msgstr "Comandi"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -164,7 +164,7 @@ msgstr "Contributori"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
 msgid "Contributors Groups"
-msgstr ""
+msgstr "Gruppo contributori"
 
 #. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
@@ -194,7 +194,7 @@ msgstr "Creato il"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
 #, python-format
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
@@ -213,7 +213,7 @@ msgstr "Valore predefinito"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Delete"
-msgstr ""
+msgstr "Cancella"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -305,7 +305,7 @@ msgstr "Filtri"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #, python-format
 msgid "From / To"
-msgstr ""
+msgstr "Da / A"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__group_ids
@@ -327,6 +327,8 @@ msgid ""
 "If set, the spreadsheet will be available only if this company is in the "
 "current companies."
 msgstr ""
+"Se impostata, il foglio di lavoro sarà disponibile se l'azienda è nelle "
+"aziende attuali."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__import_data
@@ -431,7 +433,7 @@ msgstr "Misure"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 #, python-format
 msgid "Menu Items"
-msgstr ""
+msgstr "Menu elementi"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode_id
@@ -458,7 +460,7 @@ msgstr "Mese"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #, python-format
 msgid "Month / Quarter"
-msgstr ""
+msgstr "Mese / Trimestre"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__name
@@ -507,7 +509,7 @@ msgstr "OK"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
 #, python-format
 msgid "Odoo Spreadsheet"
-msgstr ""
+msgstr "Foglio di calcolo Odoo"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
@@ -538,7 +540,7 @@ msgstr "Trimestre"
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Read Access"
-msgstr ""
+msgstr "Accesso in lettura"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
@@ -548,7 +550,7 @@ msgstr "Lettori"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
 msgid "Readers Groups"
-msgstr ""
+msgstr "Gruppi lettori"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -618,14 +620,14 @@ msgstr "Revisione server"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #, python-format
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_abstract.py:0
 #, python-format
 msgid "Sheet1"
-msgstr ""
+msgstr "Foglio1"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -667,7 +669,7 @@ msgstr "Foglio di calcolo astratto per ereditarietà"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_binary_data
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_binary_data
 msgid "Spreadsheet file"
-msgstr ""
+msgstr "File foglio di calcolo"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
@@ -712,7 +714,7 @@ msgstr "Intervallo orario"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Attiva menu a tendina"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
@@ -731,14 +733,14 @@ msgstr "Senza nome"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml:0
 #, python-format
 msgid "Upload"
-msgstr ""
+msgstr "Carica"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.esm.js:0
 #, python-format
 msgid "Upload a Spreadsheet"
-msgstr ""
+msgstr "Carica un foglio di calcolo"
 
 #. module: spreadsheet_oca
 #: model:res.groups,name:spreadsheet_oca.group_user
@@ -748,7 +750,7 @@ msgstr "Utente"
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Write Access"
-msgstr ""
+msgstr "Accesso in scrittura"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
