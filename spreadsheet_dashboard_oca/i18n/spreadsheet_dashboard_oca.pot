@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -61,7 +61,6 @@ msgstr ""
 #. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
-#, python-format
 msgid "Search operation not supported"
 msgstr ""
 
@@ -88,7 +87,6 @@ msgstr ""
 #. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
-#, python-format
 msgid "The value has to be a boolean"
 msgstr ""
 
