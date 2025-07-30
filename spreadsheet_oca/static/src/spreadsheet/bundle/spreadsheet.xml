@@ -3,9 +3,9 @@
 
     <t t-name="spreadsheet_oca.ActionSpreadsheetOca" owl="1">
         <div class="o_spreadsheet_oca_container">
-            <SpreadsheetControlPanel record="record" />
+            <SpreadsheetControlPanel record="state.record" />
             <SpreadsheetRenderer
-                record="record"
+                record="state.record"
                 res_id="spreadsheetId"
                 model="model"
                 importData="importData"
@@ -320,6 +320,7 @@
             title="Change name"
             t-ref="spreadsheetName"
             t-att-value="state.name"
+            t-att-readonly="props.isReadonly"
             t-on-change="_onNameChanged"
         />
         <i class="fa fa-exclamation-triangle text-danger" t-if="! state.name" />
@@ -444,34 +445,6 @@
         </div>
 
         <t t-slot="control-panel-status-indicator" />
-        <!--<ol class="breadcrumb">
-            <t t-foreach="breadcrumbs" t-as="breadcrumb" t-key="breadcrumb.jsId">
-                <t
-          t-set="isPenultimate"
-          t-value="breadcrumb_index === breadcrumbs.length - 2"
-        />
-                <li
-          t-if="!breadcrumb_last"
-          class="breadcrumb-item"
-          t-att-data-hotkey="isPenultimate and 'b'"
-          t-att-class="{ o_back_button: isPenultimate}"
-          t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
-        >
-                    <a href="#">
-                        <t t-if="breadcrumb.name" t-esc="breadcrumb.name" />
-                        <em t-else="" class="text-warning">Unnamed</em>
-                    </a>
-                </li>
-
-                <li t-else="" class="breadcrumb-item active d-flex align-items-center">
-                    <SpreadsheetName
-            name="props.record.name"
-            isReadonly="false"
-            onChanged="onSpreadsheetNameChanged"
-          />
-                </li>
-            </t>
-        </ol>-->
     </t>
     <t t-name="spreadsheet_oca.PivotIcon" owl="1">
         <i class="fa fa-table" />
@@ -633,11 +606,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-BarConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-GenericChartConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -647,11 +616,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-LineConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-BarConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -661,11 +626,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-LineBarPieConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-LineConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -675,11 +636,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-GaugeChartConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-GaugeChartConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -689,11 +646,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-ScorecardChartConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-ScorecardChartConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>

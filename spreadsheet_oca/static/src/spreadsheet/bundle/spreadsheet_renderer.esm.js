@@ -1,18 +1,18 @@
-/** @odoo-module **/
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
+const {load} = spreadsheet;
 import {Component} from "@odoo/owl";
 import {ConfirmationDialog} from "@web/core/confirmation_dialog/confirmation_dialog";
-import {DataSources} from "@spreadsheet/data_sources/data_sources";
 import {Dialog} from "@web/core/dialog/dialog";
 import {Field} from "@web/views/fields/field";
+import {OdooDataProvider} from "@spreadsheet/data_sources/odoo_data_provider";
 import {_t} from "@web/core/l10n/translation";
+
 import {loadSpreadsheetDependencies} from "@spreadsheet/assets_backend/helpers";
-import {migrate} from "@spreadsheet/o_spreadsheet/migration";
+
 import {useService} from "@web/core/utils/hooks";
-import {useSetupAction} from "@web/webclient/actions/action_hook";
+import {useSetupAction} from "@web/search/action_hook";
+import {user} from "@web/core/user";
 import {waitForDataLoaded} from "@spreadsheet/helpers/model";
-import {createDefaultCurrencyFormat} from "@spreadsheet/currency/helpers";
 
 const {Spreadsheet, Model} = spreadsheet;
 const {useSubEnv, onWillStart} = owl;
@@ -58,6 +58,16 @@ class SpreadsheetTransportService {
 }
 
 export class SpreadsheetRenderer extends Component {
+    createDefaultCurrency(currency) {
+        if (!currency) {
+            return undefined;
+        }
+        return {
+            symbol: currency.symbol,
+            position: currency.position,
+            decimalPlaces: currency.decimal_places,
+        };
+    }
     getLocales() {
         const orm = useService("orm");
         return async () => {
@@ -90,23 +100,20 @@ export class SpreadsheetRenderer extends Component {
     setup() {
         this.orm = useService("orm");
         this.bus_service = this.env.services.bus_service;
-        this.user = useService("user");
         this.ui = useService("ui");
         this.action = useService("action");
         this.dialog = useService("dialog");
-        const dataSources = new DataSources(this.env);
+        const odooDataProvider = new OdooDataProvider(this.env);
         this.confirmDialog = this.closeDialog;
         this.loadCurrencies = this.getCurrencies();
         this.loadLocales = this.getLocales();
         const defaultCurrency = this.props.record.default_currency;
-        const defaultCurrencyFormat = defaultCurrency
-            ? createDefaultCurrencyFormat(defaultCurrency)
-            : undefined;
+        // The o-spreadsheet Model handles currency formatting internally
         this.spreadsheet_model = new Model(
-            migrate(this.props.record.spreadsheet_raw),
+            load(this.props.record.spreadsheet_raw),
             {
-                custom: {env: this.env, orm: this.orm, dataSources},
-                defaultCurrencyFormat,
+                custom: {env: this.env, orm: this.orm, odooDataProvider},
+                defaultCurrency: this.createDefaultCurrency(defaultCurrency),
                 external: {
                     loadCurrencies: this.loadCurrencies,
                     loadLocales: this.loadLocales,
@@ -119,7 +126,7 @@ export class SpreadsheetRenderer extends Component {
                 ),
                 client: {
                     id: uuidGenerator.uuidv4(),
-                    name: this.user.name,
+                    name: user.name,
                 },
                 mode: this.props.record.mode,
             },
@@ -132,13 +139,16 @@ export class SpreadsheetRenderer extends Component {
         });
         onWillStart(async () => {
             await loadSpreadsheetDependencies();
-            await dataSources.waitForAllLoaded();
+            await waitForDataLoaded(this.spreadsheet_model);
             await this.env.importData(this.spreadsheet_model);
         });
         useSetupAction({
-            beforeLeave: () => this.onSpreadsheetSaved(),
+            beforeLeave: () => {
+                this.onSpreadsheetSaved();
+                return Promise.resolve();
+            },
         });
-        dataSources.addEventListener("data-source-updated", () => {
+        odooDataProvider.addEventListener("data-source-updated", () => {
             const sheetId = this.spreadsheet_model.getters.getActiveSheetId();
             this.spreadsheet_model.dispatch("EVALUATE_CELLS", {sheetId});
         });

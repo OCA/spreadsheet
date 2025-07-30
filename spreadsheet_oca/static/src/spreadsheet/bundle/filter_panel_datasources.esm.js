@@ -1,5 +1,3 @@
-/** @odoo-module **/
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Component, onWillStart, onWillUpdateProps} from "@odoo/owl";
 import {makeDynamicCols, makeDynamicRows} from "../utils/dynamic_generators.esm";
@@ -108,7 +106,7 @@ export class PivotPanelDisplay extends Component {
     }
     async insertPivot() {
         const datasourceModel = await this.env.model.getters
-            .getPivotDataSource(this.props.pivotId)
+            .getPivot(this.props.pivotId)
             .copyModelWithOriginalDomain();
         const tableStructure = datasourceModel.getTableStructure().export();
         const selectedZone = this.env.model.getters.getSelectedZone();
@@ -124,7 +122,7 @@ export class PivotPanelDisplay extends Component {
 
     async insertDynamicPivot() {
         const datasourceModel = await this.env.model.getters
-            .getPivotDataSource(this.props.pivotId)
+            .getPivot(this.props.pivotId)
             .copyModelWithOriginalDomain();
         var {cols, rows, measures} = datasourceModel.getTableStructure().export();
         const {dynamic_rows, number_of_rows, dynamic_cols, number_of_cols} =

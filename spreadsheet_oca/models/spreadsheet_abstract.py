@@ -76,8 +76,7 @@ class SpreadsheetAbstract(models.AbstractModel):
         self.ensure_one()
         mode = "normal"
         try:
-            self.check_access_rights("write")
-            self.check_access_rule("write")
+            self.check_access("write")
         except AccessError:
             mode = "readonly"
         return {
