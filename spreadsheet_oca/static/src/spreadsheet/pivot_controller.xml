@@ -3,12 +3,12 @@
     <t t-inherit="web.PivotView.Buttons" t-inherit-mode="extension" owl="1">
         <xpath expr="//button[hasclass('o_pivot_download')]" position="after">
             <button
-        t-att-data-tooltip="getSpreadsheetInsertionTooltip()"
-        class="btn btn-secondary fa fa-table"
-        t-on-click="onSpreadsheetButtonClicked"
-        aria-label="Add to spreadsheet"
-        t-att-disabled="disableSpreadsheetInsertion()"
-      />
+                t-att-data-tooltip="getSpreadsheetInsertionTooltip()"
+                class="btn btn-secondary fa fa-table"
+                t-on-click="onSpreadsheetButtonClicked"
+                aria-label="Add to spreadsheet"
+                t-att-disabled="disableSpreadsheetInsertion()"
+            />
         </xpath>
     </t>
 </templates>
