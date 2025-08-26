@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* spreadsheet_dashboard_purchase
-# 
+# 	* spreadsheet_dashboard_purchase_oca
+#
 # Translators:
 # Jonathan Spier, 2023
 # שהאב חוסיין <shhab89@gmail.com>, 2023
@@ -13,7 +13,7 @@
 # tomerlayline, 2024
 # or balmas, 2025
 # Yoram Lavi, 2025
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
@@ -28,231 +28,231 @@ msgstr ""
 "Language: he\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % 1 == 0) ? 1: 2;\n"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid " days"
 msgstr "ימים "
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Amount"
 msgstr "סכום כולל"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Buyer"
 msgstr "קונה"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Country"
 msgstr "ארץ"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Current"
 msgstr "נוכחי"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Days to receive"
 msgstr "ימים לקבלה"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "KPI"
 msgstr "KPI"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Lines"
 msgstr "שורות"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Order"
 msgstr "הזמנה"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Ordered"
 msgstr "הוזמן"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Orders"
 msgstr "הזמנות"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Period"
 msgstr "תקופה"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Previous"
 msgstr "קודם"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Analysis by Partner Country"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Analysis by Purchase Representative"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Analysis by Vendor"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Orders by Untaxed Amount"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchased"
 msgstr "נרכש"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Qty ordered"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Quantity ordered"
 msgstr "כמות שהוזמנה"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Source"
 msgstr "מקור"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Sourcing by Country"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Buyers"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Orders"
 msgstr "הזמנות מובילות"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Vendors"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Vendors by Amount"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Untaxed total"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Vendor"
 msgstr "ספק"
 
-#. module: spreadsheet_dashboard_purchase
-#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase.spreadsheet_dashboard_vendors
+#. module: spreadsheet_dashboard_purchase_oca
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_vendors
 msgid "Vendors"
 msgstr "ספקים"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "last period"
 msgstr "תקופה אחרונה"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "since last period"
 msgstr "מאז התקופה האחרונה"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "stats - current"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "stats - previous"
 msgstr ""

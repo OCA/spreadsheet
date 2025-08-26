@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* spreadsheet_dashboard_purchase
-# 
+# 	* spreadsheet_dashboard_purchase_oca
+#
 # Translators:
 # InfernalLV <karlisdreizis@gmail.com>, 2023
 # Martin Trigaux, 2023
@@ -10,7 +10,7 @@
 # Konstantins Zabogonskis <inculin4ik@gmail.com>, 2023
 # Arnis Putniņš <arnis@allegro.lv>, 2023
 # Armīns Jeltajevs <armins.jeltajevs@gmail.com>, 2025
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
@@ -25,231 +25,231 @@ msgstr ""
 "Language: lv\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid " days"
 msgstr " dienas"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Amount"
 msgstr "Summa"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Buyer"
 msgstr "Pircējs"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Country"
 msgstr "Valsts"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Current"
 msgstr "Tekošais"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Days to receive"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "KPI"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Lines"
 msgstr "Rindas"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Order"
 msgstr "Pasūtījums"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Ordered"
 msgstr "Pasūtīts"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Orders"
 msgstr "Pasūtījumi"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Period"
 msgstr "Periods"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Previous"
 msgstr "Iepriekšējais"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Analysis by Partner Country"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Analysis by Purchase Representative"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Analysis by Vendor"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchase Orders by Untaxed Amount"
 msgstr "Iepirkumu pasūtījumi pēc summas bez nodokļiem"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Purchased"
 msgstr "Nopirkts"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Qty ordered"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Quantity ordered"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Source"
 msgstr "Avots"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Sourcing by Country"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Buyers"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Orders"
 msgstr "Top pasūtījumi"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Vendors"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Top Vendors by Amount"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Untaxed total"
 msgstr "Kopā bez nodokļiem"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "Vendor"
 msgstr "Pārdevējs"
 
-#. module: spreadsheet_dashboard_purchase
-#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase.spreadsheet_dashboard_vendors
+#. module: spreadsheet_dashboard_purchase_oca
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_vendors
 msgid "Vendors"
 msgstr "Pārdevēji"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "last period"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "since last period"
 msgstr "kopš pēdējā perioda"
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "stats - current"
 msgstr ""
 
-#. module: spreadsheet_dashboard_purchase
+#. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase/data/files/vendors_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 #, python-format
 msgid "stats - previous"
 msgstr ""
