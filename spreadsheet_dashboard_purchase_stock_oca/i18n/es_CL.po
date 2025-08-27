@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* spreadsheet_dashboard_purchase_stock
+# 	* spreadsheet_dashboard_purchase_stock_oca
 #
 # Translators:
 # Patricia Gutiérrez Capetillo <pagc@odoo.com>, 2024
@@ -21,16 +21,16 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#. module: spreadsheet_dashboard_purchase_stock
+#. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Purchase Orders by Untaxed Amount"
 msgstr "Órdenes de compra por monto neto"
 
-#. module: spreadsheet_dashboard_purchase_stock
+#. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_dashboard_purchase_stock/data/files/purchase_dashboard.json:0
+#: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 #, python-format
 msgid "Requests for Quotation by Untaxed Amount"
 msgstr "Solicitud de cotización por monto neto"
