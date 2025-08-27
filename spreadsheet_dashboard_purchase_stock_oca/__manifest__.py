@@ -1,15 +1,12 @@
-# -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name': "Spreadsheet dashboard for purchases",
-    'category': 'Hidden',
-    'summary': 'Spreadsheet',
-    'description': 'Spreadsheet',
-    'depends': ['spreadsheet_dashboard', 'purchase_stock'],
-    'data': [
-        "data/dashboards.xml",
-    ],
-    'installable': True,
-    'auto_install': ['purchase_stock'],
-    'license': 'LGPL-3',
+    "name": "Spreadsheet dashboard for purchases",
+    "category": "Hidden",
+    "depends": ["spreadsheet_dashboard", "purchase_stock"],
+    "version": "18.0.1.0.0",
+    "website": "https://github.com/OCA/spreadsheet",
+    "author": "Odoo S.A., Tecnativa, Odoo Community Association (OCA)",
+    "data": ["data/dashboards.xml"],
+    "installable": True,
+    "auto_install": ["purchase_stock"],
+    "license": "LGPL-3",
 }
