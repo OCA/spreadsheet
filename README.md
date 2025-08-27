@@ -17,7 +17,11 @@ spreadsheet
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[spreadsheet_dashboard_purchase_oca](spreadsheet_dashboard_purchase_oca/) | 18.0.1.0.0 |  | Spreadsheet dashboard for vendors
 
 [//]: # (end addons)
 
