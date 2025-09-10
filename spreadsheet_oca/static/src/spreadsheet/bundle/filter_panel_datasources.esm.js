@@ -81,8 +81,7 @@ export class PivotPanelDisplay extends Component {
     const sortedColumn = this.props.pivotDefinition.sortedColumn;
     const orderTranslate =
       sortedColumn.order === "asc" ? _t("ascending") : _t("descending");
-    const GroupByDisplayLabel = this.PivotDataSource.getGroupByDisplayLabel(
-      "measure",
+    const GroupByDisplayLabel = this.PivotDataSource.getMeasureDisplayName(
       sortedColumn.measure
     );
     return `${GroupByDisplayLabel} (${orderTranslate})`;
