@@ -1,8 +1,6 @@
 # Copyright 2024 Tecnativa - Carlos Roca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import json
-from io import BytesIO
-from zipfile import ZipFile
 
 from odoo.http import Controller, content_disposition, request, route
 
@@ -13,13 +11,9 @@ class SpreadsheetDownloadXLSX(Controller):
         if hasattr(files, "read"):
             files = files.read().decode("utf-8")
         files = json.loads(files)
-        file_bytes = BytesIO()
-        with ZipFile(file_bytes, "w") as zip_file:
-            for file in files:
-                zip_file.writestr(file["path"], file["content"])
-        file_content = file_bytes.getvalue()
+        file_content = request.env["spreadsheet.mixin"]._zip_xslx_files(files)
         return request.make_response(
-            file_bytes.getvalue(),
+            file_content,
             [
                 ("Content-Length", len(file_content)),
                 ("Content-Type", "application/vnd.ms-excel"),
