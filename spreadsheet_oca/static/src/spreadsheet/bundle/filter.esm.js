@@ -181,6 +181,7 @@ export class EditFilterPanel extends Component {
   }
   onFieldMatchUpdate(object, name) {
     this.state.objects[object.id].fieldMatch.chain = name;
+    this.state.objects[object.id].fieldMatch.type = object.fields[name]?.type;
   }
   toggleDateDefaultValue(ev) {
     this.state.defaultValue = ev.target.checked ? "this_month" : undefined;
