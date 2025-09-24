@@ -1,5 +1,3 @@
-/** @odoo-module **/
-
 import {Component} from "@odoo/owl";
 import {FileUploader} from "@web/views/fields/file_handler";
 import {ListController} from "@web/views/list/list_controller";

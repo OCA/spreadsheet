@@ -1,12 +1,12 @@
-/** @odoo-module **/
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Component, onWillStart, useState} from "@odoo/owl";
-import {_lt, _t} from "@web/core/l10n/translation";
+
 import {FilterValue} from "@spreadsheet/global_filters/components/filter_value/filter_value";
 import {ModelFieldSelector} from "@web/core/model_field_selector/model_field_selector";
 import {ModelSelector} from "@web/core/model_selector/model_selector";
 import {RELATIVE_DATE_RANGE_TYPES} from "@spreadsheet/helpers/constants";
+
+import {_t} from "@web/core/l10n/translation";
 import {globalFiltersFieldMatchers} from "@spreadsheet/global_filters/plugins/global_filters_core_plugin";
 import {useService} from "@web/core/utils/hooks";
 
@@ -123,10 +123,10 @@ export class EditFilterPanel extends Component {
     get dateOffset() {
         return [
             {value: 0, name: ""},
-            {value: -1, name: _lt("Previous")},
-            {value: -2, name: _lt("Before Previous")},
-            {value: 1, name: _lt("Next")},
-            {value: 2, name: _lt("After next")},
+            {value: -1, name: _t("Previous")},
+            {value: -2, name: _t("Before Previous")},
+            {value: 1, name: _t("Next")},
+            {value: 2, name: _t("After next")},
         ];
     }
     onChangeFieldMatchOffset(object, ev) {
@@ -144,8 +144,8 @@ export class EditFilterPanel extends Component {
         const action = this.props.filter.id
             ? "EDIT_GLOBAL_FILTER"
             : "ADD_GLOBAL_FILTER";
-        this.env.openSidePanel("FilterPanel", {});
-        var filter = {
+
+        const filter = {
             id: this.props.filter.id || uuidGenerator.uuidv4(),
             type: this.state.type,
             label: this.state.label,
@@ -153,17 +153,16 @@ export class EditFilterPanel extends Component {
             rangeType: this.state.rangeType,
             modelName: this.state.modelName.technical,
         };
-        var filterMatching = {};
+        const filterMatching = {};
         Object.values(this.state.objects).forEach((object) => {
             filterMatching[object.type] = filterMatching[object.type] || {};
-            filterMatching[object.type][object.objectId] = {...object.fieldMatch};
+            const fieldMatch = object.fieldMatch ? {...object.fieldMatch} : {};
+            filterMatching[object.type][object.objectId] = fieldMatch;
         });
         this.env.model.dispatch(action, {
-            id: filter.id,
             filter,
             ...filterMatching,
         });
-
         this.env.openSidePanel("FilterPanel", {});
     }
     onCancel() {
@@ -177,12 +176,53 @@ export class EditFilterPanel extends Component {
         }
         this.env.openSidePanel("FilterPanel", {});
     }
-    onFieldMatchUpdate(object, name) {
-        this.state.objects[object.id].fieldMatch.chain = name;
-        this.state.objects[object.id].fieldMatch.type = object.fields[name]?.type;
+    onFieldMatchUpdate(object, path, fieldInfo) {
+        if (!path) {
+            // Clear the field match if no path selected
+            this.state.objects[object.id].fieldMatch = {};
+            return;
+        }
+        // Extract field definition from fieldInfo (V18> structure)
+        const fieldDef =
+            fieldInfo && fieldInfo.fieldDef ? fieldInfo.fieldDef : fieldInfo;
+        this.state.objects[object.id].fieldMatch = {
+            chain: path,
+            type: fieldDef?.type || "",
+        };
     }
     toggleDateDefaultValue(ev) {
         this.state.defaultValue = ev.target.checked ? "this_month" : undefined;
+    }
+    getModelField(fieldMatch) {
+        if (!fieldMatch || !fieldMatch.chain) {
+            return "";
+        }
+        return fieldMatch.chain;
+    }
+    filterModelFieldSelectorField(field, path, coModel) {
+        if (!field.searchable) {
+            return false;
+        }
+
+        // TODO: Define allowed field types based on filter type
+        const ALLOWED_FIELD_TYPES = [
+            "char",
+            "text",
+            "selection",
+            "many2one",
+            "date",
+            "datetime",
+        ];
+
+        if (field.name === "id" && this.state.type === "relation") {
+            const paths = path.split(".");
+            const lastField = paths.at(-2);
+            if (!lastField || (lastField.relation && lastField.relation === coModel)) {
+                return true;
+            }
+            return false;
+        }
+        return ALLOWED_FIELD_TYPES.includes(field.type) || Boolean(field.relation);
     }
 }
 

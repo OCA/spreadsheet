@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,14 +16,12 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Add date"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Add relation"
 msgstr ""
 
@@ -35,61 +33,58 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Add text"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
-#, python-format
 msgid "Add to spreadesheet"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/graph_controller.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/graph_controller.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
-#, python-format
 msgid "Add to spreadsheet"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "After next"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#, python-format
 msgid "Are you sure you want to delete this list?"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#, python-format
 msgid "Are you sure you want to delete this pivot?"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Area"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Automatically filter on the current period"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Before Previous"
 msgstr ""
 
@@ -108,14 +103,12 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
-#, python-format
 msgid "Cancel"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Change name"
 msgstr ""
 
@@ -131,6 +124,12 @@ msgid "Code"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Column"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
 msgid "Commands"
 msgstr ""
@@ -143,15 +142,7 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
-#, python-format
-msgid "Comparisons in pivot are not supprted"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
-#, python-format
-msgid "Confirm"
+msgid "Comparisons in pivot are not supported"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -190,7 +181,6 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
-#, python-format
 msgid "Currency"
 msgstr ""
 
@@ -202,22 +192,18 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Default value"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Delete"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Dimensions"
 msgstr ""
 
@@ -233,23 +219,19 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Domain"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Download XLSX"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
-#, python-format
-msgid "Duplicated groupbys in pivot are not supprted"
+msgid "Duplicated groupbys in pivot are not supported"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -277,15 +259,12 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Edit domain"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "File"
 msgstr ""
 
@@ -297,14 +276,12 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Filters"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "From / To"
 msgstr ""
 
@@ -352,14 +329,18 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Insert dynamic pivot"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
+msgid "Insert list"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Insert pivot"
 msgstr ""
 
@@ -371,7 +352,6 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Label"
 msgstr ""
 
@@ -396,27 +376,24 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Last updated at"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Line"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Link to Odoo menu"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "List name"
 msgstr ""
 
@@ -428,7 +405,6 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Measures"
 msgstr ""
 
@@ -436,7 +412,6 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-#, python-format
 msgid "Menu Items"
 msgstr ""
 
@@ -448,23 +423,19 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
-#, python-format
 msgid "Model"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Month"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Month / Quarter"
 msgstr ""
 
@@ -480,7 +451,6 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Next"
 msgstr ""
 
@@ -511,35 +481,31 @@ msgid "OK"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
-#, python-format
-msgid "Odoo Spreadsheet"
-msgstr ""
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
 msgid "Owner"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Pie"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Pivot name"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Previous"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Quarter"
 msgstr ""
 
@@ -561,28 +527,24 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#, python-format
 msgid "Refresh all data"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Related model"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Relative Period"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Remove"
 msgstr ""
 
@@ -593,22 +555,20 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Rows:"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Save"
 msgstr ""
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
 msgid "Select number of rows to duplicate row"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#, python-format
-msgid "Select the quantity of rows"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -624,21 +584,18 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
-#, python-format
 msgid "Settings"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_abstract.py:0
-#, python-format
 msgid "Sheet1"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Sorting"
 msgstr ""
 
@@ -686,8 +643,25 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Stacked"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Stacked Area"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Stacked Column"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
+msgid "Stacked Line"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -707,15 +681,19 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Time range"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Toggle Dropdown"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Total rows used when inserting list"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -726,21 +704,18 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
-#, python-format
 msgid "Unnamed"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml:0
-#, python-format
 msgid "Upload"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.esm.js:0
-#, python-format
 msgid "Upload a Spreadsheet"
 msgstr ""
 
@@ -757,36 +732,30 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "Year"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#, python-format
 msgid "ascending"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#, python-format
 msgid "descending"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-#, python-format
 msgid "name is required"
 msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-#, python-format
 msgid "not updated"
 msgstr ""
 

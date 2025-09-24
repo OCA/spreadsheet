@@ -1,4 +1,3 @@
-/** @odoo-module **/
 /* Copyright 2024 Tecnativa - Carlos Roca
  * License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). */
 
@@ -45,7 +44,7 @@ export function makeDynamicRows(
     var rows = [];
     for (var index = 1; index <= number_of_rows; index++) {
         rows.push({
-            fields: fields.map((f) => (f.startsWith("#") ? f : `#${f}`)), // Add # prefix
+            fields: fields.map((f) => (f.startsWith("#") ? f : `#${f}`)),
             indent: indent,
             values: [...parent_indexes, index.toString()],
         });

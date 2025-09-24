@@ -1,4 +1,3 @@
-/** @odoo-module **/
 import {GraphRenderer} from "@web/views/graph/graph_renderer";
 
 import {patch} from "@web/core/utils/patch";

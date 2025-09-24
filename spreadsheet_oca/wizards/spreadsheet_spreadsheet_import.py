@@ -40,7 +40,7 @@ class SpreadsheetSpreadsheetImport(models.TransientModel):
 
     def insert_pivot(self):
         self.ensure_one()
-        return getattr(self, "_insert_pivot_%s" % self.mode_id.code)()
+        return getattr(self, f"_insert_pivot_{self.mode_id.code}")()
 
     def _create_spreadsheet_vals(self):
         return {"name": self.name}

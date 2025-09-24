@@ -1,21 +1,20 @@
-/** @odoo-module **/
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
+
 import {Component} from "@odoo/owl";
-import {ConfirmationDialog} from "@web/core/confirmation_dialog/confirmation_dialog";
-import {DataSources} from "@spreadsheet/data_sources/data_sources";
-import {Dialog} from "@web/core/dialog/dialog";
-import {Field} from "@web/views/fields/field";
+import {ImageFileStore} from "./image_file_store.esm";
+import {OdooDataProvider} from "@spreadsheet/data_sources/odoo_data_provider";
+import {SpreadsheetComponent} from "@spreadsheet/actions/spreadsheet_component";
 import {_t} from "@web/core/l10n/translation";
 import {loadSpreadsheetDependencies} from "@spreadsheet/assets_backend/helpers";
-import {migrate} from "@spreadsheet/o_spreadsheet/migration";
 import {useService} from "@web/core/utils/hooks";
-import {useSetupAction} from "@web/webclient/actions/action_hook";
+import {useSetupAction} from "@web/search/action_hook";
+import {user} from "@web/core/user";
 import {waitForDataLoaded} from "@spreadsheet/helpers/model";
-import {createDefaultCurrencyFormat} from "@spreadsheet/currency/helpers";
 
-const {Spreadsheet, Model} = spreadsheet;
+const {Model, load} = spreadsheet;
+
 const {useSubEnv, onWillStart} = owl;
+const {useStoreProvider, ModelStore} = spreadsheet.stores;
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
 
 class SpreadsheetTransportService {
@@ -26,11 +25,14 @@ class SpreadsheetTransportService {
         this.res_id = res_id;
         this.channel = "spreadsheet_oca;" + this.model + ";" + this.res_id;
         this.bus_service.addChannel(this.channel);
-        this.bus_service.addEventListener(
-            "notification",
-            this.onNotification.bind(this)
-        );
+        this.dialog = useService("dialog");
+        this.bus_service.subscribe("notification", (payload) => {
+            if (payload.id === this.res_id) {
+                this._handleNotification(payload);
+            }
+        });
         this.listeners = [];
+        this._listener = null;
     }
     onNotification({detail: notifications}) {
         for (const {payload, type} of notifications) {
@@ -46,18 +48,46 @@ class SpreadsheetTransportService {
             }
         }
     }
-    sendMessage(message) {
-        this.orm.call(this.model, "send_spreadsheet_message", [[this.res_id], message]);
+    async sendMessage(message) {
+        const isAccepted = await this.orm.call(this.model, "send_spreadsheet_message", [
+            [this.res_id],
+            message,
+            this.accessToken,
+        ]);
+        if (isAccepted) {
+            this._handleNotification(message);
+        }
     }
     onNewMessage(id, callback) {
-        this.listeners.push({id, callback});
+        this._listener = callback;
+        for (const message of this.listeners) {
+            callback(message);
+        }
+        this.listeners = [];
     }
     leave(id) {
         this.listeners = this.listeners.filter((listener) => listener.id !== id);
     }
+    _handleNotification(payload) {
+        if (!this._listener) {
+            this.listeners.push(payload);
+        } else {
+            this._listener(payload);
+        }
+    }
 }
 
 export class SpreadsheetRenderer extends Component {
+    createDefaultCurrency(currency) {
+        if (!currency) {
+            return undefined;
+        }
+        return {
+            symbol: currency.symbol,
+            position: currency.position,
+            decimalPlaces: currency.decimal_places,
+        };
+    }
     getLocales() {
         const orm = useService("orm");
         return async () => {
@@ -89,27 +119,33 @@ export class SpreadsheetRenderer extends Component {
     }
     setup() {
         this.orm = useService("orm");
+        this.http = useService("http");
         this.bus_service = this.env.services.bus_service;
-        this.user = useService("user");
         this.ui = useService("ui");
         this.action = useService("action");
         this.dialog = useService("dialog");
-        const dataSources = new DataSources(this.env);
-        this.confirmDialog = this.closeDialog;
+        this.notifications = useService("notification");
+        const odooDataProvider = new OdooDataProvider(this.env);
         this.loadCurrencies = this.getCurrencies();
         this.loadLocales = this.getLocales();
         const defaultCurrency = this.props.record.default_currency;
-        const defaultCurrencyFormat = defaultCurrency
-            ? createDefaultCurrencyFormat(defaultCurrency)
-            : undefined;
+        this.fileStore = new ImageFileStore(
+            this.props.model,
+            this.props.res_id,
+            this.http,
+            this.orm
+        );
+        this.stores = useStoreProvider();
+        // The o-spreadsheet Model handles currency formatting internally
         this.spreadsheet_model = new Model(
-            migrate(this.props.record.spreadsheet_raw),
+            load(this.props.record.spreadsheet_raw),
             {
-                custom: {env: this.env, orm: this.orm, dataSources},
-                defaultCurrencyFormat,
+                custom: {env: this.env, orm: this.orm, odooDataProvider},
+                defaultCurrency: this.createDefaultCurrency(defaultCurrency),
                 external: {
                     loadCurrencies: this.loadCurrencies,
                     loadLocales: this.loadLocales,
+                    fileStore: this.fileStore,
                 },
                 transportService: new SpreadsheetTransportService(
                     this.orm,
@@ -119,7 +155,8 @@ export class SpreadsheetRenderer extends Component {
                 ),
                 client: {
                     id: uuidGenerator.uuidv4(),
-                    name: this.user.name,
+                    name: user.name,
+                    userId: user.userId,
                 },
                 mode: this.props.record.mode,
             },
@@ -127,18 +164,22 @@ export class SpreadsheetRenderer extends Component {
         );
         useSubEnv({
             saveSpreadsheet: this.onSpreadsheetSaved.bind(this),
-            askConfirmation: this.askConfirmation.bind(this),
             downloadAsXLXS: this.downloadAsXLXS.bind(this),
         });
         onWillStart(async () => {
             await loadSpreadsheetDependencies();
-            await dataSources.waitForAllLoaded();
+            await waitForDataLoaded(this.spreadsheet_model);
             await this.env.importData(this.spreadsheet_model);
+            this.spreadsheet_model.joinSession();
+            this.stores.inject(ModelStore, this.spreadsheet_model);
         });
         useSetupAction({
-            beforeLeave: () => this.onSpreadsheetSaved(),
+            beforeLeave: () => {
+                this.onSpreadsheetSaved();
+                return Promise.resolve();
+            },
         });
-        dataSources.addEventListener("data-source-updated", () => {
+        odooDataProvider.addEventListener("data-source-updated", () => {
             const sheetId = this.spreadsheet_model.getters.getActiveSheetId();
             this.spreadsheet_model.dispatch("EVALUATE_CELLS", {sheetId});
         });
@@ -147,14 +188,7 @@ export class SpreadsheetRenderer extends Component {
         const data = this.spreadsheet_model.exportData();
         this.env.saveRecord({spreadsheet_raw: data});
         this.spreadsheet_model.leaveSession();
-    }
-    askConfirmation(content, confirm) {
-        this.dialog.add(ConfirmationDialog, {
-            title: _t("Odoo Spreadsheet"),
-            body: content,
-            confirm,
-            confirmLabel: _t("Confirm"),
-        });
+        this.spreadsheet_model.off("update", this);
     }
     async downloadAsXLXS() {
         this.ui.block();
@@ -172,14 +206,10 @@ export class SpreadsheetRenderer extends Component {
 }
 
 SpreadsheetRenderer.template = "spreadsheet_oca.SpreadsheetRenderer";
-SpreadsheetRenderer.components = {
-    Spreadsheet,
-    Field,
-    Dialog,
-};
+SpreadsheetRenderer.components = {SpreadsheetComponent};
 SpreadsheetRenderer.props = {
     record: Object,
-    res_id: {type: Number, optional: true},
+    res_id: Number,
     model: String,
-    importData: {type: Function, optional: true},
+    importData: Function,
 };
