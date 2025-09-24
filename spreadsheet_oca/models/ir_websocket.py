@@ -58,9 +58,9 @@ class IrWebsocket(models.AbstractModel):
                         channels.append(
                             (
                                 self.env.registry.db_name,
-                                "spreadsheet_oca",
                                 model_name,
                                 res_id,
+                                "spreadsheet_oca",
                             )
                         )
         return super()._build_bus_channel_list(channels)

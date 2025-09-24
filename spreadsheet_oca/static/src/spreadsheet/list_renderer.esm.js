@@ -1,13 +1,14 @@
-/** @odoo-module **/
 import {useBus, useService} from "@web/core/utils/hooks";
+
+import {HandleField} from "@web/views/fields/handle/handle_field";
 import {ListRenderer} from "@web/views/list/list_renderer";
 import {omit} from "@web/core/utils/objects";
 import {patch} from "@web/core/utils/patch";
+import {user} from "@web/core/user";
 
 patch(ListRenderer.prototype, {
     setup() {
         super.setup(...arguments);
-        this.userService = useService("user");
         this.actionService = useService("action");
         useBus(
             this.env.bus,
@@ -34,8 +35,8 @@ patch(ListRenderer.prototype, {
                             domain: model.domain,
                             orderBy: model.orderBy,
                             context: omit(
-                                model.context,
-                                ...Object.keys(this.userService.context)
+                                model.searchParams?.context || {},
+                                ...Object.keys(user.context)
                             ),
                             columns: this.getSpreadsheetColumns(),
                             fields: model.fields,
@@ -48,10 +49,14 @@ patch(ListRenderer.prototype, {
     },
     getSpreadsheetColumns() {
         const fields = this.env.model.root.fields;
-        return this.state.columns
+        return this.columns
             .filter(
-                (col) => col.type === "field" && fields[col.name].type !== "binary"
-                // We want to avoid binary fields
+                (col) =>
+                    col.type === "field" &&
+                    col.field.component !== HandleField &&
+                    !col.relatedPropertyField &&
+                    !["binary", "json"].includes(fields[col.name].type)
+                // We want to avoid binary or json fields
             )
             .map((col) => ({name: col.name, type: fields[col.name].type}));
     },
