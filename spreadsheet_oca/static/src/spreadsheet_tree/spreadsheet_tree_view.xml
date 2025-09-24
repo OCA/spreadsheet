@@ -2,20 +2,20 @@
 <templates xml:space="preserve">
     <t t-name="spreadsheet_oca.SpreadsheetFileUploader" owl="1">
         <div
-      t-att-class="props.record and props.record.data ? 'oe_kanban_color_' + props.record.data.color : ''"
-    >
+            t-att-class="props.record and props.record.data ? 'oe_kanban_color_' + props.record.data.color : ''"
+        >
             <FileUploader
-        acceptedFileExtensions="props.acceptedFileExtensions"
-        fileUploadClass="'spreadsheet_file_uploader'"
-        multiUpload="true"
-        onUploaded.bind="onFileUploaded"
-        onUploadComplete.bind="onUploadComplete"
-      >
+                acceptedFileExtensions="props.acceptedFileExtensions"
+                fileUploadClass="'spreadsheet_file_uploader'"
+                multiUpload="true"
+                onUploaded.bind="onFileUploaded"
+                onUploadComplete.bind="onUploadComplete"
+            >
                 <t t-set-slot="toggler">
                     <t
-            t-if="props.togglerTemplate"
-            t-call="{{ props.togglerTemplate }}"
-          />
+                        t-if="props.togglerTemplate"
+                        t-call="{{ props.togglerTemplate }}"
+                    />
                     <t t-else="" t-slot="toggler" />
                 </t>
                 <t t-slot="extra" />
@@ -23,17 +23,17 @@
         </div>
     </t>
     <t
-    t-name="spreadsheet_oca.ListView.Buttons"
-    t-inherit="web.ListView.Buttons"
-    t-inherit-mode="primary"
-  >
+        t-name="spreadsheet_oca.ListView.Buttons"
+        t-inherit="web.ListView.Buttons"
+        t-inherit-mode="primary"
+    >
         <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
             <SpreadsheetFileUploader>
                 <t t-set-slot="toggler">
                     <button
-            type="button"
-            class="btn btn-secondary o_button_upload_spreadsheet"
-          >
+                        type="button"
+                        class="btn btn-secondary o_button_upload_spreadsheet"
+                    >
                         Upload
                     </button>
                 </t>
