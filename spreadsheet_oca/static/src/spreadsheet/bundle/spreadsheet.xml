@@ -67,13 +67,10 @@
                 <t
                     t-foreach="props.pivotDefinition.measures"
                     t-as="measure"
-                    t-key="measure"
+                    t-key="measure.id"
                 >
-                    <div t-esc="measure" />
+                    <div t-esc="measure.displayName" />
                 </t>
-            </div>
-            <div class="o_spreadsheet_oca_pivot_panel_info">
-                Last updated at <t t-esc="lastUpdate" />
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
                 <button
@@ -88,6 +85,9 @@
                     t-on-click="() => this.delete()"
                     class="btn btn-danger"
                 >Delete</button>
+            </div>
+            <div class="o_spreadsheet_oca_pivot_panel_info">
+                Last updated at <t t-esc="lastUpdate" />
             </div>
         </div>
     </t>
@@ -123,14 +123,31 @@
                     Edit domain
                 </div>
             </div>
-            <div class="o_spreadsheet_oca_pivot_panel_info">
-                Last updated at <t t-esc="lastUpdate" />
-            </div>
             <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
+                <button
+                    t-on-click="insertList"
+                    class="btn btn-success"
+                >Insert list</button>
                 <button
                     t-on-click="() => this.delete()"
                     class="btn btn-danger"
                 >Delete</button>
+            </div>
+            <div
+                class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons mt-2 mb-2"
+            >
+                <label for="list_rows">Rows:</label>
+                <input
+                    type="number"
+                    class="o_input"
+                    t-model="state.listRows"
+                    id="list_rows"
+                    min="1"
+                    title="Total rows used when inserting list"
+                />
+            </div>
+            <div class="o_spreadsheet_oca_pivot_panel_info">
+                Last updated at <t t-esc="lastUpdate" />
             </div>
         </div>
     </t>
@@ -276,12 +293,13 @@
             <div class="d-flex justify-content-between">
                 <div class="spreadsheet_oca_filter_value flex-column flex-grow-1">
                     <ModelFieldSelector
-                        path="object.fieldMatch.chain || ''"
+                        path="getModelField(object.fieldMatch)"
                         resModel="object.model"
                         readonly="false"
                         allowEmpty="true"
                         isDebugMode="!!env.debug"
-                        update="(name) => this.onFieldMatchUpdate(object, name)"
+                        update="(path, fieldInfo) => this.onFieldMatchUpdate(object, path, fieldInfo)"
+                        filter.bind="this.filterModelFieldSelectorField"
                         t-key="object_index"
                     />
                 </div>
@@ -311,7 +329,7 @@
         </div>
     </t>
     <t t-name="spreadsheet_oca.SpreadsheetRenderer" owl="1">
-        <Spreadsheet model="spreadsheet_model" />
+        <SpreadsheetComponent model="spreadsheet_model" />
     </t>
     <t t-name="spreadsheet_oca.SpreadsheetName" owl="1">
         <input
@@ -320,6 +338,7 @@
             title="Change name"
             t-ref="spreadsheetName"
             t-att-value="state.name"
+            t-att-readonly="props.isReadonly"
             t-on-change="_onNameChanged"
         />
         <i class="fa fa-exclamation-triangle text-danger" t-if="! state.name" />
@@ -444,34 +463,6 @@
         </div>
 
         <t t-slot="control-panel-status-indicator" />
-        <!--<ol class="breadcrumb">
-            <t t-foreach="breadcrumbs" t-as="breadcrumb" t-key="breadcrumb.jsId">
-                <t
-          t-set="isPenultimate"
-          t-value="breadcrumb_index === breadcrumbs.length - 2"
-        />
-                <li
-          t-if="!breadcrumb_last"
-          class="breadcrumb-item"
-          t-att-data-hotkey="isPenultimate and 'b'"
-          t-att-class="{ o_back_button: isPenultimate}"
-          t-on-click.prevent="() => this.onBreadcrumbClicked(breadcrumb.jsId)"
-        >
-                    <a href="#">
-                        <t t-if="breadcrumb.name" t-esc="breadcrumb.name" />
-                        <em t-else="" class="text-warning">Unnamed</em>
-                    </a>
-                </li>
-
-                <li t-else="" class="breadcrumb-item active d-flex align-items-center">
-                    <SpreadsheetName
-            name="props.record.name"
-            isReadonly="false"
-            onChanged="onSpreadsheetNameChanged"
-          />
-                </li>
-            </t>
-        </ol>-->
     </t>
     <t t-name="spreadsheet_oca.PivotIcon" owl="1">
         <i class="fa fa-table" />
@@ -633,11 +624,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-BarConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-GenericChartConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -647,11 +634,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-LineConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-BarConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -661,11 +644,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-LineBarPieConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-LineConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -675,11 +654,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-GaugeChartConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-GaugeChartConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>
@@ -689,11 +664,7 @@
             </div>
         </xpath>
     </t>
-    <t
-        t-inherit="spreadsheet.o-spreadsheet-ScorecardChartConfigPanel"
-        t-inherit-mode="extension"
-        owl="1"
-    >
+    <t t-inherit="o-spreadsheet-ScorecardChartConfigPanel" t-inherit-mode="extension">
         <xpath expr="//div" position="inside">
             <div class="o-section">
                 <div class="o-section-title">Link to Odoo menu</div>

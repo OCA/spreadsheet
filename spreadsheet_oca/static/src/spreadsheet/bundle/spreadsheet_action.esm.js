@@ -1,37 +1,45 @@
-/** @odoo-module **/
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {makeDynamicCols, makeDynamicRows} from "../utils/dynamic_generators.esm";
-import {ListDataSource} from "@spreadsheet/list/list_data_source";
-import {PivotDataSource} from "@spreadsheet/pivot/pivot_data_source";
+
+import {Domain} from "@web/core/domain";
 import {SpreadsheetControlPanel} from "./spreadsheet_controlpanel.esm";
 import {SpreadsheetRenderer} from "./spreadsheet_renderer.esm";
+import {deepCopy} from "@web/core/utils/objects";
+import {helpers} from "@odoo/o-spreadsheet";
 import {registry} from "@web/core/registry";
+import {standardActionServiceProps} from "@web/webclient/actions/action_service";
 import {useService} from "@web/core/utils/hooks";
+
+const {load} = spreadsheet;
 
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
 const actionRegistry = registry.category("actions");
-const {Component, onMounted, onWillStart, useSubEnv} = owl;
+const {Component, onWillStart, useSubEnv} = owl;
+const {parseDimension, isDateOrDatetimeField} = helpers;
+
+function normalizeGroupBys(dimensions, fields) {
+    return dimensions.map((dimension) => {
+        if (
+            isDateOrDatetimeField(fields[dimension.fieldName]) &&
+            !dimension.granularity
+        ) {
+            return {granularity: "month", ...dimension};
+        }
+        return dimension;
+    });
+}
 
 export class ActionSpreadsheetOca extends Component {
     setup() {
-        this.router = useService("router");
         this.orm = useService("orm");
         this.notification = useService("notification");
         const params = this.props.action.params || this.props.action.context.params;
-        this.spreadsheetId = params.spreadsheet_id;
+        this.spreadsheetId = params.spreadsheet_id || params.active_id;
         this.model = params.model || "spreadsheet.spreadsheet";
         this.import_data = params.import_data || {};
-        onMounted(() => {
-            this.router.pushState({
-                spreadsheet_id: this.spreadsheetId,
-                model: this.model,
-            });
-        });
         onWillStart(async () => {
             // We need to load in case the data comes from an XLSX
             this.record =
-                spreadsheet.load(
+                load(
                     await this.orm.call(
                         this.model,
                         "get_spreadsheet_data",
@@ -46,6 +54,7 @@ export class ActionSpreadsheetOca extends Component {
             notifyUser: this.notifyUser.bind(this),
         });
     }
+
     notifyUser(notification) {
         this.notification.add(notification.text, {
             type: notification.type,
@@ -60,7 +69,6 @@ export class ActionSpreadsheetOca extends Component {
             this.orm.call(this.model, "write", [this.spreadsheetId, data]);
         } else {
             this.spreadsheetId = await this.orm.call(this.model, "create", [data]);
-            this.router.pushState({spreadsheet_id: this.spreadsheetId});
         }
     }
     /**
@@ -84,7 +92,6 @@ export class ActionSpreadsheetOca extends Component {
     }
     async importDataGraph(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
-        var y = 0;
         if (this.import_data.new === undefined && this.import_data.new_sheet) {
             sheetId = uuidGenerator.uuidv4();
             spreadsheet_model.dispatch("CREATE_SHEET", {
@@ -101,23 +108,29 @@ export class ActionSpreadsheetOca extends Component {
             // TODO: Add a way to detect the last row total height
         }
         const dataSourceId = uuidGenerator.uuidv4();
+        const chartType = `odoo_${this.import_data.metaData.mode}`;
         const definition = {
-            title: this.import_data.name,
-            type: "odoo_" + this.import_data.metaData.mode,
+            title: {text: this.import_data.name},
+            type: chartType,
+            fillArea: chartType === "odoo_line",
             background: "#FFFFFF",
             stacked: this.import_data.metaData.stacked,
             metaData: this.import_data.metaData,
             searchParams: this.cleanSearchParams(),
             dataSourceId: dataSourceId,
+            id: uuidGenerator.uuidv4(),
+            cumulative: this.import_data.metaData.cumulated,
+            cumulatedStart: this.import_data.metaData.cumulatedStart,
             legendPosition: "top",
             verticalAxisPosition: "left",
+            actionXmlId: this.import_data.actionXmlId,
         };
         spreadsheet_model.dispatch("CREATE_CHART", {
             sheetId,
             id: dataSourceId,
             position: {
                 x: 0,
-                y: y,
+                y: 0,
             },
             definition,
         });
@@ -159,115 +172,107 @@ export class ActionSpreadsheetOca extends Component {
             }
             row += 1;
         }
-        return {sheetId, row};
+        return sheetId;
     }
     async importDataList(spreadsheet_model) {
-        var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
-        const dataSourceId = uuidGenerator.uuidv4();
-        var list_info = {
+        var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
+        if (!sheetId) {
+            const sheetIds = spreadsheet_model.getters.getSheetIds();
+            sheetId = sheetIds.length ? sheetIds[0] : uuidGenerator.uuidv4();
+        }
+        const listId = spreadsheet_model.getters.getNextListId();
+        const list_info = {
             metaData: {
                 resModel: this.import_data.metaData.model,
                 columns: this.import_data.metaData.columns.map((column) => column.name),
                 fields: this.import_data.metaData.fields,
             },
             searchParams: {
-                domain: this.import_data.metaData.domain,
+                domain: new Domain(this.import_data.metaData.domain).toJson(),
                 context: this.import_data.metaData.context,
                 orderBy: this.import_data.metaData.orderBy,
             },
             name: this.import_data.name,
+            actionXmlId: this.import_data.actionXmlId,
         };
-        const dataSource = spreadsheet_model.config.custom.dataSources.add(
-            dataSourceId,
-            ListDataSource,
-            list_info
-        );
-        await dataSource.load();
-        spreadsheet_model.dispatch("INSERT_ODOO_LIST", {
+        const columns = this.import_data.metaData.columns.map((c) => ({
+            name: c.name,
+            type: this.import_data.metaData.fields[c.name].type,
+        }));
+        spreadsheet_model.dispatch("INSERT_ODOO_LIST_WITH_TABLE", {
             sheetId,
             col: 0,
-            row: row,
-            id: spreadsheet_model.getters.getNextListId(),
-            dataSourceId,
+            row: 0,
+            id: listId,
             definition: list_info,
             linesNumber: this.import_data.dyn_number_of_rows,
-            columns: this.import_data.metaData.columns,
+            columns: columns,
         });
-        const columns = [];
-        for (let col = 0; col < this.import_data.metaData.columns.length; col++) {
-            columns.push(col);
-        }
+        const dataSource = spreadsheet_model.getters.getListDataSource(listId);
+        await dataSource.load();
         spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {
             sheetId,
-            cols: columns,
+            cols: Array.from({length: columns.length}, (_, i) => i),
         });
     }
     async importDataPivot(spreadsheet_model) {
-        var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
-        const dataSourceId = uuidGenerator.uuidv4();
-        const colGroupBys = this.import_data.metaData.colGroupBys.concat(
-            this.import_data.metaData.expandedColGroupBys
+        var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
+        const pivotId = uuidGenerator.uuidv4();
+        const fields = this.import_data.metaData.fields || {};
+        const activeMeasures = this.import_data.metaData.activeMeasures;
+        const measures = activeMeasures.map((measure) => ({
+            id: fields[measure]?.aggregator
+                ? `${measure}:${fields[measure].aggregator}`
+                : measure,
+            fieldName: measure,
+            aggregator: fields[measure]?.aggregator,
+        }));
+        const sortedMeasure = this.import_data.metaData.sortedColumn?.measure;
+        const sortedColumn = activeMeasures.includes(sortedMeasure)
+            ? this.import_data.metaData.sortedColumn
+            : null;
+        const colGroupBys = (this.import_data.metaData.colGroupBys || []).concat(
+            this.import_data.metaData.expandedColGroupBys || []
         );
-        const rowGroupBys = this.import_data.metaData.rowGroupBys.concat(
-            this.import_data.metaData.expandedRowGroupBys
+        const rowGroupBys = (this.import_data.metaData.rowGroupBys || []).concat(
+            this.import_data.metaData.expandedRowGroupBys || []
         );
-        const pivot_info = {
-            metaData: {
-                colGroupBys,
-                rowGroupBys,
-                activeMeasures: this.import_data.metaData.activeMeasures,
-                resModel: this.import_data.metaData.resModel,
-                sortedColumn: this.import_data.metaData.sortedColumn,
-            },
-            searchParams: this.cleanSearchParams(),
-            name: this.import_data.name,
-        };
-        const dataSource = spreadsheet_model.config.custom.dataSources.add(
-            dataSourceId,
-            PivotDataSource,
-            pivot_info
-        );
-        await dataSource.load();
-        var {cols, rows, measures} = dataSource.getTableStructure().export();
-        if (this.import_data.dyn_number_of_rows) {
-            const indentations = rows.map((r) => r.indent);
-            const max_indentation = Math.max(...indentations);
-            rows = makeDynamicRows(
-                rowGroupBys,
-                this.import_data.dyn_number_of_rows,
-                1,
-                max_indentation
-            );
-        }
-        if (this.import_data.dyn_number_of_cols) {
-            cols = makeDynamicCols(
-                colGroupBys,
-                this.import_data.dyn_number_of_cols,
-                this.import_data.metaData.activeMeasures
-            );
-        }
-        const table = {
-            cols,
-            rows,
+        const pivot_info = deepCopy({
+            type: "ODOO",
+            domain: new Domain(this.import_data.searchParams.domain).toJson(),
+            context: this.import_data.searchParams.context,
+            sortedColumn,
             measures,
-        };
-        spreadsheet_model.dispatch("INSERT_PIVOT", {
+            model: this.import_data.metaData.resModel,
+            columns: normalizeGroupBys(colGroupBys.map(parseDimension), fields),
+            rows: normalizeGroupBys(rowGroupBys.map(parseDimension), fields),
+            name: this.import_data.name,
+            actionXmlId: this.import_data.actionXmlId,
+        });
+        spreadsheet_model.dispatch("ADD_PIVOT", {
+            pivotId,
+            pivot: pivot_info,
+        });
+        const ds = spreadsheet_model.getters.getPivot(pivotId);
+        await ds.load();
+        const table = ds.getTableStructure();
+        spreadsheet_model.dispatch("INSERT_PIVOT_WITH_TABLE", {
             sheetId,
             col: 0,
-            row: row,
-            id: spreadsheet_model.getters.getNextPivotId(),
-            table,
-            dataSourceId,
-            definition: pivot_info,
+            row: 0,
+            pivotId,
+            table: table.export(),
+            pivotMode: "dynamic",
         });
         const columns = [];
-        for (let col = 0; col < table.cols[table.cols.length - 1].length; col++) {
+        for (
+            let col = 0;
+            col <= table.columns[table.columns.length - 1].length;
+            col++
+        ) {
             columns.push(col);
         }
-        spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {
-            sheetId,
-            cols: columns,
-        });
+        spreadsheet_model.dispatch("AUTORESIZE_COLUMNS", {sheetId, cols: columns});
     }
     async importData(spreadsheet_model) {
         if (this.import_data.mode === "pivot") {
@@ -286,6 +291,7 @@ ActionSpreadsheetOca.components = {
     SpreadsheetRenderer,
     SpreadsheetControlPanel,
 };
+ActionSpreadsheetOca.props = {...standardActionServiceProps};
 actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {
     force: true,
 });

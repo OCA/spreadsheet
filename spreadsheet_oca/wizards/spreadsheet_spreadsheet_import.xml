@@ -59,8 +59,14 @@
                         string="OK"
                         class="btn-primary"
                         type="object"
+                        data-hotkey="o"
                     />
-                    <button string="Cancel" class="btn-default" special="cancel" />
+                    <button
+                        string="Cancel"
+                        class="btn-default"
+                        special="cancel"
+                        data-hotkey="c"
+                    />
                 </footer>
             </form>
         </field>
