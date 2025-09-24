@@ -3,14 +3,18 @@
 
 import base64
 import json
+from typing import Any
 
 from odoo import _, api, fields, models
 from odoo.exceptions import AccessError
+
+CollaborationMessage = dict[str, Any]
 
 
 class SpreadsheetAbstract(models.AbstractModel):
     _name = "spreadsheet.abstract"
     _description = "Spreadsheet abstract for inheritance"
+    _inherit = ["bus.listener.mixin"]
 
     name = fields.Char(required=True)
     spreadsheet_binary_data = fields.Binary(
@@ -76,8 +80,7 @@ class SpreadsheetAbstract(models.AbstractModel):
         self.ensure_one()
         mode = "normal"
         try:
-            self.check_access_rights("write")
-            self.check_access_rule("write")
+            self.check_access("write")
         except AccessError:
             mode = "readonly"
         return {
@@ -106,11 +109,12 @@ class SpreadsheetAbstract(models.AbstractModel):
             "params": {"spreadsheet_id": self.id, "model": self._name},
         }
 
-    def send_spreadsheet_message(self, message):
+    def send_spreadsheet_message(
+        self, message: CollaborationMessage, access_token=None
+    ):
         self.ensure_one()
-        channel = (self.env.cr.dbname, "spreadsheet_oca", self._name, self.id)
-        message.update({"res_model": self._name, "res_id": self.id})
         if message["type"] in ["REVISION_UNDONE", "REMOTE_REVISION", "REVISION_REDONE"]:
+            self._check_access_spreadsheet("write")
             self.env["spreadsheet.oca.revision"].create(
                 {
                     "model": self._name,
@@ -124,7 +128,39 @@ class SpreadsheetAbstract(models.AbstractModel):
                     ),
                 }
             )
-        self.env["bus.bus"]._sendone(channel, "spreadsheet_oca", message)
+            self._bus_send(
+                "notification", dict(message, id=self.id), subchannel="spreadsheet_oca"
+            )
+            return True
+        elif message["type"] == "SNAPSHOT":
+            self._check_access_spreadsheet("write")
+            self.env["spreadsheet.oca.revision"].create(
+                {
+                    "model": self._name,
+                    "res_id": self.id,
+                    "type": message["type"],
+                    "client_id": message.get("clientId"),
+                    "next_revision_id": message["nextRevisionId"],
+                    "server_revision_id": message["serverRevisionId"],
+                    "commands": json.dumps(
+                        self._build_spreadsheet_revision_commands_data(message)
+                    ),
+                }
+            )
+            return True
+        elif message["type"] in ["CLIENT_JOINED", "CLIENT_LEFT", "CLIENT_MOVED"]:
+            self._check_access_spreadsheet("read")
+            self._bus_send(
+                "notification", dict(message, id=self.id), subchannel="spreadsheet_oca"
+            )
+            return True
+        return False
+
+    def _check_access_spreadsheet(self, operation: str):
+        try:
+            self.check_access(operation)
+        except AccessError as e:
+            raise e
         return True
 
     @api.model

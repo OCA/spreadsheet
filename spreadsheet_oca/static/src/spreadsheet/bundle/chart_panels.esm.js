@@ -1,15 +1,17 @@
-/** @odoo-module */
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Domain} from "@web/core/domain";
-
 import {Many2XAutocomplete} from "@web/views/fields/relational_utils";
+import {_t} from "@web/core/l10n/translation";
 import {patch} from "@web/core/utils/patch";
 import {useService} from "@web/core/utils/hooks";
-import {_t} from "@web/core/l10n/translation";
 
-const {LineBarPieConfigPanel, ScorecardChartConfigPanel, GaugeChartConfigPanel} =
-    spreadsheet.components;
+const {
+    GenericChartConfigPanel,
+    LineConfigPanel,
+    BarConfigPanel,
+    ScorecardChartConfigPanel,
+    GaugeChartConfigPanel,
+} = spreadsheet.components;
 
 const menuChartProps = {
     setup() {
@@ -55,7 +57,6 @@ const menuChartProps = {
             return;
         }
         const menu = this.env.model.getters.getIrMenu(menuId[0].id);
-        console.log(menu);
         this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
             chartId: this.props.figureId,
             odooMenuId: menu.xmlid || menu.id,
@@ -77,9 +78,21 @@ const menuChartProps = {
     },
 };
 
-patch(LineBarPieConfigPanel.prototype, menuChartProps);
-LineBarPieConfigPanel.components = {
-    ...LineBarPieConfigPanel.components,
+patch(GenericChartConfigPanel.prototype, menuChartProps);
+GenericChartConfigPanel.components = {
+    ...GenericChartConfigPanel.components,
+    Many2XAutocomplete,
+};
+
+patch(LineConfigPanel.prototype, menuChartProps);
+LineConfigPanel.components = {
+    ...LineConfigPanel.components,
+    Many2XAutocomplete,
+};
+
+patch(BarConfigPanel.prototype, menuChartProps);
+BarConfigPanel.components = {
+    ...BarConfigPanel.components,
     Many2XAutocomplete,
 };
 

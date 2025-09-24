@@ -1,7 +1,5 @@
-/** @odoo-module **/
-
 import {PivotRenderer} from "@web/views/pivot/pivot_renderer";
-import {_lt} from "@web/core/l10n/translation";
+import {_t} from "@web/core/l10n/translation";
 import {patch} from "@web/core/utils/patch";
 
 patch(PivotRenderer.prototype, {
@@ -38,11 +36,11 @@ patch(PivotRenderer.prototype, {
         );
     },
     getSpreadsheetInsertionTooltip() {
-        var message = _lt("Add to spreadsheet");
+        var message = _t("Add to spreadsheet");
         if (this.containsDuplicatedGroupBys()) {
-            message = _lt("Duplicated groupbys in pivot are not supprted");
+            message = _t("Duplicated groupbys in pivot are not supported");
         } else if (this.isComparingInfo()) {
-            message = _lt("Comparisons in pivot are not supprted");
+            message = _t("Comparisons in pivot are not supported");
         }
         return message;
     },
@@ -53,8 +51,10 @@ patch(PivotRenderer.prototype, {
                 additionalContext: {
                     default_name: this.model.metaData.title,
                     default_datasource_name: this.model.metaData.title,
-                    default_can_be_dynamic: true,
-                    default_can_have_dynamic_cols: this.containsColGroupBys(),
+                    default_can_be_dynamic: false,
+                    default_can_have_dynamic_cols: false,
+                    // Default_can_be_dynamic: true,
+                    // default_can_have_dynamic_cols: this.containsColGroupBys(),
                     default_import_data: {
                         mode: "pivot",
                         metaData: JSON.parse(JSON.stringify(this.model.metaData)),
