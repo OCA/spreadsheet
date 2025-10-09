@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record
+        id="spreadsheet_import_mode_dashboard"
+        model="spreadsheet.spreadsheet.import.mode"
+    >
+        <field name="code">dashboard</field>
+        <field name="name">To dashboard</field>
+        <field name="sequence" eval="20" />
+        <field name="group_ids" eval="[(4, ref('base.group_system'))]" />
+    </record>
+    <record
+        id="spreadsheet_import_mode_dashboard_sheet"
+        model="spreadsheet.spreadsheet.import.mode"
+    >
+        <field name="code">dashboard_sheet</field>
+        <field name="name">To dashboard new sheet</field>
+        <field name="sequence" eval="21" />
+        <field name="group_ids" eval="[(4, ref('base.group_system'))]" />
+    </record>
+    <record
+        id="spreadsheet_import_mode_dashboard_new_spreadsheet"
+        model="spreadsheet.spreadsheet.import.mode"
+    >
+        <field name="code">dashboard_spreadsheet</field>
+        <field name="name">New dashboard</field>
+        <field name="sequence" eval="19" />
+        <field name="group_ids" eval="[(4, ref('base.group_system'))]" />
+    </record>
+</odoo>
