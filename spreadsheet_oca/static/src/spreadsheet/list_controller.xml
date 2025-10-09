@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t
+        t-name="spreadsheet_oca.ListView.Buttons"
+        t-inherit="web.ListView"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//button[hasclass('o_list_button_add')]/.." position="after">
+            <t t-if="!env.isSmall">
+                <button
+                    type="button"
+                    class="btn btn-secondary o_list_export_spreadsheet"
+                    data-tooltip="Add to spreadsheet"
+                    aria-label="Add to spreadesheet"
+                    t-on-click="(ev) => this.onSpreadsheetButtonClicked(ev)"
+                    data-hotkey="s"
+                >
+                    <i class="fa fa-table" />
+                </button>
+            </t>
+        </xpath>
+    </t>
+</templates>
