@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[spreadsheet_dashboard_oca](spreadsheet_dashboard_oca/) | 18.0.1.0.0 |  | Use OCA Spreadsheets on dashboards configuration
 [spreadsheet_dashboard_purchase_oca](spreadsheet_dashboard_purchase_oca/) | 18.0.1.0.0 |  | Spreadsheet dashboard for vendors
 [spreadsheet_dashboard_purchase_stock_oca](spreadsheet_dashboard_purchase_stock_oca/) | 18.0.1.0.0 |  | Spreadsheet dashboard for purchases
 [spreadsheet_oca](spreadsheet_oca/) | 18.0.1.0.0 |  | Allow to edit spreadsheets
