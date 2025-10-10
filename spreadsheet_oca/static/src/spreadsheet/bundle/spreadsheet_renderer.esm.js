@@ -174,20 +174,17 @@ export class SpreadsheetRenderer extends Component {
             this.stores.inject(ModelStore, this.spreadsheet_model);
         });
         useSetupAction({
-            beforeLeave: () => {
-                this.onSpreadsheetSaved();
-                return Promise.resolve();
-            },
+            beforeLeave: this.onSpreadsheetSaved.bind(this),
         });
         odooDataProvider.addEventListener("data-source-updated", () => {
             const sheetId = this.spreadsheet_model.getters.getActiveSheetId();
             this.spreadsheet_model.dispatch("EVALUATE_CELLS", {sheetId});
         });
     }
-    onSpreadsheetSaved() {
+    async onSpreadsheetSaved() {
         const data = this.spreadsheet_model.exportData();
-        this.env.saveRecord({spreadsheet_raw: data});
-        this.spreadsheet_model.leaveSession();
+        await this.env.saveRecord({spreadsheet_raw: data});
+        await this.spreadsheet_model.leaveSession();
         this.spreadsheet_model.off("update", this);
     }
     async downloadAsXLXS() {
