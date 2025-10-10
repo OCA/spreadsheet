@@ -147,9 +147,9 @@ export class ActionSpreadsheetOca extends Component {
       while (row >= 0) {
         for (var col = maxcols; col >= 0; col--) {
           if (
-            spreadsheet_model.getters.getCell(sheetId, col, row) !==
+            spreadsheet_model.getters.getCell({ sheetId, col, row }) !==
               undefined &&
-            !spreadsheet_model.getters.getCell(sheetId, col, row).isEmpty()
+            spreadsheet_model.getters.getCell({ sheetId, col, row }).content
           ) {
             filled = true;
             break;
