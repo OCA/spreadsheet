@@ -10,6 +10,3 @@ class SpreadsheetSelectRowNumber(models.TransientModel):
 
     dynamic_rows = fields.Boolean()
     number_of_rows = fields.Integer()
-    can_have_dynamic_cols = fields.Boolean()
-    dynamic_cols = fields.Boolean()
-    number_of_cols = fields.Integer()
