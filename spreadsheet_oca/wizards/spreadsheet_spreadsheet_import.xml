@@ -28,7 +28,6 @@
                             options="{'no_create': True}"
                         />
                         <field name="can_be_dynamic" invisible="1" />
-                        <field name="can_have_dynamic_cols" invisible="1" />
                         <field name="is_tree" invisible="1" />
                         <field
                             name="dynamic"
@@ -40,16 +39,6 @@
                             name="number_of_rows"
                             invisible='not dynamic'
                             required='dynamic'
-                        />
-                        <field
-                            name="dynamic_cols"
-                            force_save="1"
-                            invisible='not can_have_dynamic_cols or is_tree'
-                        />
-                        <field
-                            name="number_of_cols"
-                            invisible='not dynamic_cols'
-                            required='dynamic_cols'
                         />
                     </group>
                 </sheet>
