@@ -137,8 +137,7 @@ export class ActionSpreadsheetOca extends Component {
     }
     importCreateOrReuseSheet(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
-        var row = 0;
-        if (this.import_data.new === undefined && this.import_data.new_sheet) {
+        if (this.import_data.new === undefined) {
             sheetId = uuidGenerator.uuidv4();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
@@ -150,27 +149,6 @@ export class ActionSpreadsheetOca extends Component {
                 sheetIdFrom,
                 sheetIdTo: sheetId,
             });
-        } else if (this.import_data.new === undefined) {
-            row = spreadsheet_model.getters.getNumberRows(sheetId);
-            var maxcols = spreadsheet_model.getters.getNumberCols(sheetId);
-            var filled = false;
-            while (row >= 0) {
-                for (var col = maxcols; col >= 0; col--) {
-                    if (
-                        spreadsheet_model.getters.getCell(sheetId, col, row) !==
-                            undefined &&
-                        !spreadsheet_model.getters.getCell(sheetId, col, row).isEmpty()
-                    ) {
-                        filled = true;
-                        break;
-                    }
-                }
-                if (filled) {
-                    break;
-                }
-                row -= 1;
-            }
-            row += 1;
         }
         return sheetId;
     }
