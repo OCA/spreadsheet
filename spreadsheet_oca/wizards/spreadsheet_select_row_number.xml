@@ -9,12 +9,6 @@
                     <group>
                         <field name="dynamic_rows" />
                         <field name="number_of_rows" invisible='not dynamic_rows' />
-                        <field name="can_have_dynamic_cols" invisible="1" />
-                        <field
-                            name="dynamic_cols"
-                            invisible='not can_have_dynamic_cols'
-                        />
-                        <field name="number_of_cols" invisible='not dynamic_cols' />
                     </group>
                 </sheet>
             </form>
