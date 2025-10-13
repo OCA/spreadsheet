@@ -64,7 +64,6 @@ msgstr "新建仪表盘"
 #. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
-#, python-format
 msgid "Search operation not supported"
 msgstr "不支持搜索操作"
 
@@ -91,7 +90,6 @@ msgstr "电子表格文件"
 #. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
-#, python-format
 msgid "The value has to be a boolean"
 msgstr "值必须为布尔型"
 
@@ -100,7 +98,5 @@ msgstr "值必须为布尔型"
 msgid "To dashboard"
 msgstr "到仪表盘"
 
-#. module: spreadsheet_dashboard_oca
-#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_sheet
-msgid "To dashboard new sheet"
-msgstr "到仪表盘新工作表"
+#~ msgid "To dashboard new sheet"
+#~ msgstr "到仪表盘新工作表"
