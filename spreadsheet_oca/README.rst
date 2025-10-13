@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ===============
 Spreadsheet Oca
 ===============
@@ -17,7 +13,7 @@ Spreadsheet Oca
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fspreadsheet-lightgray.png?logo=github
@@ -88,44 +84,6 @@ Usage
        of ``account.account`` model. (``income``, ``asset_receivable``,
        etc.)
 
-**Create a new dynamic spreadsheet from pivot**
------------------------------------------------
-
-- Go to any pivot
-- Press on insert button
-- Select the dynamic rows or dynamic columns option and set a number of
-  rows/columns
-
-A new table that will be updated with the actual or filtered values will
-be added.
-
-- Note: When a pivot has multiple levels of aggrupations in the rows or
-  the columns, the number of rows/columns selected will be transfered to
-  each level.
-
-  Example: number of groups -> 2 number of rows -> 3
-
-  - val1
-
-    - subval1.1
-    - subval1.2
-    - subval1.3
-
-  - val2
-
-    - subval2.1
-    - subval2.2
-    - subval2.3
-
-  - val3
-
-    - subval3.1
-    - subval3.2
-    - subval3.3
-
-https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/Hhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/vhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/xhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ahttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/phttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/lhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ohttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/shttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/.https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/fhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ihttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ghttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/uhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/rhttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/ehttps://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/:https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/
-https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/../static/description/spreadsheetdynamic_table.gif
-
 .. |image1| image:: https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/static/description/spreadsheet_create.png
 .. |image2| image:: https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/static/description/spreadsheet_edit.png
 .. |image3| image:: https://raw.githubusercontent.com/OCA/spreadsheet/18.0/spreadsheet_oca/static/description/o-spreadsheet.png
@@ -136,17 +94,6 @@ Development
 If you want to develop custom business functions, you can add others,
 based on the file
 https://github.com/odoo/odoo/blob/16.0/addons/spreadsheet_account/static/src/accounting_functions.js
-
-Known issues / Roadmap
-======================
-
-Adding new lines on pivot tables
---------------------------------
-
-When we add a pivot table, the number of rows is predefined according to
-the current data.
-
-In order to add new rows, we need to reinsert the pivot table.
 
 Bug Tracker
 ===========
