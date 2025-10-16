@@ -12,7 +12,7 @@
                 data-tooltip="Add to spreadsheet"
                 aria-label="Add to spreadsheet"
                 t-attf-disabled="{{noDataDisplayed ? 'disabled' : false}}"
-                data-hotkey="s"
+                data-hotkey="t"
             />
         </xpath>
     </t>
