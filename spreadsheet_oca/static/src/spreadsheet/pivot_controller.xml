@@ -12,7 +12,7 @@
                 t-on-click="onSpreadsheetButtonClicked"
                 aria-label="Add to spreadsheet"
                 t-att-disabled="disableSpreadsheetInsertion()"
-                data-hotkey="s"
+                data-hotkey="t"
             />
         </xpath>
     </t>

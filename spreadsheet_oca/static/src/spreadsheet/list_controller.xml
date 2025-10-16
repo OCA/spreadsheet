@@ -13,7 +13,7 @@
                     data-tooltip="Add to spreadsheet"
                     aria-label="Add to spreadesheet"
                     t-on-click="(ev) => this.onSpreadsheetButtonClicked(ev)"
-                    data-hotkey="s"
+                    data-hotkey="t"
                 >
                     <i class="fa fa-table" />
                 </button>
