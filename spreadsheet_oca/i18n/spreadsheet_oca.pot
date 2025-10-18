@@ -26,11 +26,6 @@ msgid "Add relation"
 msgstr ""
 
 #. module: spreadsheet_oca
-#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add_sheet
-msgid "Add sheet to spreadsheet"
-msgstr ""
-
-#. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Add text"
@@ -91,12 +86,6 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
 msgid "Can Be Dynamic"
-msgstr ""
-
-#. module: spreadsheet_oca
-#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__can_have_dynamic_cols
-#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_have_dynamic_cols
-msgid "Can Have Dynamic Cols"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -232,16 +221,6 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 msgid "Duplicated groupbys in pivot are not supported"
-msgstr ""
-
-#. module: spreadsheet_oca
-#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_cols
-msgid "Dynamic Cols"
-msgstr ""
-
-#. module: spreadsheet_oca
-#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
-msgid "Dynamic Columns"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -460,19 +439,9 @@ msgid "Next Revision"
 msgstr ""
 
 #. module: spreadsheet_oca
-#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_cols
-msgid "Number Of Cols"
-msgstr ""
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
 msgid "Number Of Rows"
-msgstr ""
-
-#. module: spreadsheet_oca
-#: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_cols
-msgid "Number of Columns"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -662,13 +631,6 @@ msgstr ""
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Line"
-msgstr ""
-
-#. module: spreadsheet_oca
-#: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic_cols
-msgid ""
-"This field allows you to generate tables that its cols are updated with the "
-"filters set in the spreadsheets."
 msgstr ""
 
 #. module: spreadsheet_oca
