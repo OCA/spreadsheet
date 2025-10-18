@@ -64,7 +64,6 @@ msgstr "Novo painel"
 #. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
-#, python-format
 msgid "Search operation not supported"
 msgstr "Operação de pesquisa não suportada"
 
@@ -84,9 +83,13 @@ msgid "Spreadsheet Revision"
 msgstr "Revisão da Folha de Cálculo"
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_binary_data
+msgid "Spreadsheet file"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
-#, python-format
 msgid "The value has to be a boolean"
 msgstr "O valor deve ser um booleano"
 
@@ -95,7 +98,5 @@ msgstr "O valor deve ser um booleano"
 msgid "To dashboard"
 msgstr "Para painel"
 
-#. module: spreadsheet_dashboard_oca
-#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_sheet
-msgid "To dashboard new sheet"
-msgstr "Nova folha para painel"
+#~ msgid "To dashboard new sheet"
+#~ msgstr "Nova folha para painel"
