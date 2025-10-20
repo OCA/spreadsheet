@@ -14,9 +14,20 @@
         "spreadsheet_oca",
     ],
     "data": [
+        "security/ir.model.access.csv",
         "wizards/spreadsheet_spreadsheet_import.xml",
+        "wizards/spreadsheet_to_dashboard.xml",
         "views/spreadsheet_dashboard_group_views.xml",
         "views/spreadsheet_dashboard.xml",
         "data/spreadsheet_spreadsheet_import_mode.xml",
     ],
+    "assets": {
+        "spreadsheet.o_spreadsheet": [
+            (
+                "after",
+                "spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js",
+                "spreadsheet_dashboard_oca/static/src/bundle/*.js",
+            ),
+        ],
+    },
 }
