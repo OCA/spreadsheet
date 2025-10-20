@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-06-24 09:25+0000\n"
+"PO-Revision-Date: 2025-10-20 08:42+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -72,7 +72,7 @@ msgstr "Si è sicuri di voler cancellare questa pivot?"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Area"
-msgstr ""
+msgstr "Area"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -119,7 +119,7 @@ msgstr "Codice"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Column"
-msgstr ""
+msgstr "Colonna"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
@@ -135,7 +135,7 @@ msgstr "Azienda"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 msgid "Comparisons in pivot are not supported"
-msgstr ""
+msgstr "Il confronto nella pivot non è supportato"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
@@ -224,7 +224,7 @@ msgstr "Scarica XLSX"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 msgid "Duplicated groupbys in pivot are not supported"
-msgstr ""
+msgstr "Il raggruppamento nella pivot non è supportato"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
@@ -320,7 +320,7 @@ msgstr "Inserisci pivot dinamico"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Insert list"
-msgstr ""
+msgstr "Inserisci elenco"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -367,7 +367,7 @@ msgstr "Ultimo aggiornamento il"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Line"
-msgstr ""
+msgstr "Riga"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -463,7 +463,7 @@ msgstr "Proprietario"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Pie"
-msgstr ""
+msgstr "Torta"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -531,7 +531,7 @@ msgstr "Res"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Rows:"
-msgstr ""
+msgstr "Righe:"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -624,19 +624,19 @@ msgstr "In coda"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Area"
-msgstr ""
+msgstr "Area riempita"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Column"
-msgstr ""
+msgstr "Colonna riempita"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Line"
-msgstr ""
+msgstr "Riga riempita"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
@@ -663,7 +663,7 @@ msgstr "Attiva menu a tendina"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Total rows used when inserting list"
-msgstr ""
+msgstr "Righe usati totali nell'inserimento dell'elenco"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
