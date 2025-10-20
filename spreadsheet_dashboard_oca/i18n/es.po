@@ -23,14 +23,45 @@ msgid "Active"
 msgstr "Activo"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/spreadsheet_to_dashboard.esm.js:0
+msgid "Add to dashboard"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__can_edit
 msgid "Can Edit"
 msgstr "Se puede editar"
 
 #. module: spreadsheet_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_to_dashboard_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
 msgid "Copy"
 msgstr "Copiar"
+
+#. module: spreadsheet_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_to_dashboard_view_form
+msgid "Create"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_to_dashboard
+msgid "Create dashboard from spreadsheet"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_date
+msgid "Created on"
+msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
@@ -43,14 +74,44 @@ msgid "Dashboard Group"
 msgstr "Tablero grupal"
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__name
+msgid "Dashboard Name"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__dashboard_group_id
+msgid "Dashboard Section"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
 msgid "Edit"
 msgstr "Editar"
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__id
+msgid "ID"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_spreadsheet_import
 msgid "Import data to spreadsheet"
 msgstr "Importar datos a hoja de cálculo"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__write_date
+msgid "Last Updated on"
+msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__name
@@ -67,6 +128,11 @@ msgstr "Nuevo tablero"
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
 msgid "Search operation not supported"
 msgstr "Operación de búsqueda no soportada"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__spreadsheet_id
+msgid "Spreadsheet"
+msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_dashboard
@@ -98,6 +164,11 @@ msgstr "El valor tiene que ser un booleano"
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard
 msgid "To dashboard"
 msgstr "A tablero"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__group_ids
+msgid "User Groups"
+msgstr ""
 
 #~ msgid "To dashboard new sheet"
 #~ msgstr "A tablero en nueva hoja"
