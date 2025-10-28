@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2025-10-20 08:42+0000\n"
+"PO-Revision-Date: 2025-10-28 10:43+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -25,7 +25,7 @@ msgstr "Attiva"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_oca/static/src/bundle/spreadsheet_to_dashboard.esm.js:0
 msgid "Add to dashboard"
-msgstr ""
+msgstr "Aggiungi alla bacheca"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__can_edit
@@ -35,7 +35,7 @@ msgstr "Può modificare"
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_to_dashboard_view_form
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
@@ -45,22 +45,22 @@ msgstr "Copia"
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_to_dashboard_view_form
 msgid "Create"
-msgstr ""
+msgstr "Crea"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_to_dashboard
 msgid "Create dashboard from spreadsheet"
-msgstr ""
+msgstr "Crea bacheca da foglio di calcolo"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
@@ -75,17 +75,17 @@ msgstr "Gruppo cruscotto"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__name
 msgid "Dashboard Name"
-msgstr ""
+msgstr "Nome bacheca"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__dashboard_group_id
 msgid "Dashboard Section"
-msgstr ""
+msgstr "Sezione bacheca"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
@@ -95,7 +95,7 @@ msgstr "Modifica"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_spreadsheet_import
@@ -105,12 +105,12 @@ msgstr "Importa dati nel foglio di calcolo"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento il"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__name
@@ -131,7 +131,7 @@ msgstr "Cerca operazioni non supportate"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__spreadsheet_id
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Foglio di calcolo"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_dashboard
@@ -167,7 +167,7 @@ msgstr "Alla bacheca"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__group_ids
 msgid "User Groups"
-msgstr ""
+msgstr "Gruppi utente"
 
 #~ msgid "To dashboard new sheet"
 #~ msgstr "Al nuovo foglio bacheca"
