@@ -17,6 +17,7 @@ class SpreadsheetAbstract(models.AbstractModel):
     _inherit = ["bus.listener.mixin"]
 
     name = fields.Char(required=True)
+    active = fields.Boolean(default=True)
     spreadsheet_binary_data = fields.Binary(
         string="Spreadsheet file",
         default=lambda self: self._empty_spreadsheet_data_base64(),

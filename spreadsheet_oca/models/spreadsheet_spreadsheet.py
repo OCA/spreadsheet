@@ -10,10 +10,11 @@ from odoo import _, api, fields, models
 
 class SpreadsheetSpreadsheet(models.Model):
     _name = "spreadsheet.spreadsheet"
-    _inherit = "spreadsheet.abstract"
+    _inherit = ["spreadsheet.abstract", "mail.thread", "mail.activity.mixin"]
     _description = "Spreadsheet"
 
     filename = fields.Char(compute="_compute_filename")
+    badge_image = fields.Image("Badge Background", max_width=1024, max_height=1024)
     owner_id = fields.Many2one(
         "res.users", required=True, default=lambda r: r.env.user.id
     )
@@ -49,6 +50,10 @@ class SpreadsheetSpreadsheet(models.Model):
         comodel_name="res.company",
         help="If set, the spreadsheet will be available only"
         " if this company is in the current companies.",
+    )
+
+    spreadsheet_tag_ids = fields.Many2many(
+        string="Tags", comodel_name="spreadsheet.spreadsheet.tag"
     )
 
     @api.depends("name")
