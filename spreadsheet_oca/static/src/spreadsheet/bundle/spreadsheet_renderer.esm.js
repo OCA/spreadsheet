@@ -92,6 +92,7 @@ export class SpreadsheetRenderer extends Component {
             editText: this.editText.bind(this),
             askConfirmation: this.askConfirmation.bind(this),
             downloadAsXLXS: this.downloadAsXLXS.bind(this),
+            raiseError: this.raiseError.bind(this),
         });
         onWillStart(async () => {
             await loadSpreadsheetDependencies();
@@ -147,6 +148,12 @@ export class SpreadsheetRenderer extends Component {
             },
         });
         this.ui.unblock();
+    }
+    raiseError(content) {
+        this.state.dialogContent = content;
+        this.confirmDialog = this.closeDialog;
+        this.state.dialogDisplayed = true;
+        this.state.dialogHideInputBox = true;
     }
 }
 
