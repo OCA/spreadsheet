@@ -132,6 +132,7 @@ export class SpreadsheetRenderer extends Component {
       saveSpreadsheet: this.onSpreadsheetSaved.bind(this),
       askConfirmation: this.askConfirmation.bind(this),
       downloadAsXLXS: this.downloadAsXLXS.bind(this),
+      raiseError: this.raiseError.bind(this),
     });
     onWillStart(async () => {
       await loadSpreadsheetDependencies();
@@ -171,6 +172,13 @@ export class SpreadsheetRenderer extends Component {
       },
     });
     this.ui.unblock();
+  }
+  raiseError(body, callBack) {
+    this.dialog.add(
+      ConfirmationDialog,
+      { title: _t("Odoo Spreadsheet"), body },
+      { onClose: callBack }
+    );
   }
 }
 
