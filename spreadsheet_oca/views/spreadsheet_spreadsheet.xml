@@ -53,6 +53,13 @@
             <form>
                 <header />
                 <sheet>
+                    <field name="active" invisible="1" />
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="text-bg-danger"
+                        invisible="active"
+                    />
                     <div name="button_box" id="button_box" class="oe_button_box">
                         <button
                             name="open_spreadsheet"
@@ -106,6 +113,7 @@
                         </group>
                     </group>
                 </sheet>
+                <chatter />
             </form>
         </field>
     </record>
