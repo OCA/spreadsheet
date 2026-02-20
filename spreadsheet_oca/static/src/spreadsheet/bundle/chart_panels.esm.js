@@ -14,7 +14,7 @@ const {
   GaugeChartConfigPanel,
 } = spreadsheet.components;
 
-const menuChartProps = {
+const menuChartProps = () => ({
   setup() {
     super.setup(...arguments);
     this.menus = useService("menu");
@@ -78,21 +78,21 @@ const menuChartProps = {
       },
     };
   },
-};
+});
 
-patch(LineBarPieConfigPanel.prototype, menuChartProps);
+patch(LineBarPieConfigPanel.prototype, menuChartProps());
 LineBarPieConfigPanel.components = {
   ...LineBarPieConfigPanel.components,
   Many2XAutocomplete,
 };
 
-patch(ScorecardChartConfigPanel.prototype, menuChartProps);
+patch(ScorecardChartConfigPanel.prototype, menuChartProps());
 ScorecardChartConfigPanel.components = {
   ...ScorecardChartConfigPanel.components,
   Many2XAutocomplete,
 };
 
-patch(GaugeChartConfigPanel.prototype, menuChartProps);
+patch(GaugeChartConfigPanel.prototype, menuChartProps());
 GaugeChartConfigPanel.components = {
   ...GaugeChartConfigPanel.components,
   Many2XAutocomplete,
