@@ -106,12 +106,6 @@ msgid "Are you sure you want to delete this list?"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-msgid "Are you sure you want to delete this pivot?"
-msgstr ""
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
@@ -251,12 +245,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 msgid "Delete"
 msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Dimensions"
-msgstr "Dimensions"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
@@ -413,20 +401,8 @@ msgstr "Importer des données au tableur"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Insert dynamic pivot"
-msgstr "Insérer un pivot dynamique"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Insert list"
 msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Insert pivot"
-msgstr "Insérer un pivot"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_is_follower
@@ -486,12 +462,6 @@ msgstr ""
 #: model:res.groups,name:spreadsheet_oca.group_manager
 msgid "Manager"
 msgstr "Gestionnaire"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Measures"
-msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -622,12 +592,6 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Pivot name"
-msgstr "Nom du pivot"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Previous"
 msgstr "Précédent"
@@ -636,6 +600,18 @@ msgstr "Précédent"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Quarter"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Re-insert Dynamic"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Re-insert Static"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -929,6 +905,18 @@ msgstr ""
 #: model:ir.model,name:spreadsheet_oca.model_ir_websocket
 msgid "websocket message handling"
 msgstr ""
+
+#~ msgid "Dimensions"
+#~ msgstr "Dimensions"
+
+#~ msgid "Insert dynamic pivot"
+#~ msgstr "Insérer un pivot dynamique"
+
+#~ msgid "Insert pivot"
+#~ msgstr "Insérer un pivot"
+
+#~ msgid "Pivot name"
+#~ msgstr "Nom du pivot"
 
 #~ msgid "Add sheet to spreadsheet"
 #~ msgstr "Ajouter une feuille au tableur"
