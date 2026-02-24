@@ -107,18 +107,6 @@ msgid "Are you sure you want to delete this list?"
 msgstr ""
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
-msgid "Are you sure you want to delete this pivot?"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Area"
-msgstr ""
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_attachment_count
 msgid "Attachment Count"
 msgstr ""
@@ -172,12 +160,6 @@ msgstr "Código"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
 msgid "Color"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Column"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -264,12 +246,6 @@ msgstr "Valor por defecto"
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 msgid "Delete"
 msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Dimensions"
-msgstr "Dimensiones"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
@@ -426,20 +402,8 @@ msgstr "Importar datos a hoja de cálculo"
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Insert dynamic pivot"
-msgstr "Insertar pivot dinámica"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Insert list"
 msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Insert pivot"
-msgstr "Insertar pivot"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_is_follower
@@ -485,12 +449,6 @@ msgstr "Última Actualización el"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Line"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Link to Odoo menu"
 msgstr "Enlazar al menú de Odoo"
@@ -505,12 +463,6 @@ msgstr "Lista de nombres"
 #: model:res.groups,name:spreadsheet_oca.group_manager
 msgid "Manager"
 msgstr "Administrador"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Measures"
-msgstr "Medidas"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -641,18 +593,6 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Pie"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
-msgid "Pivot name"
-msgstr "Nombre de pivot"
-
-#. module: spreadsheet_oca
-#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Previous"
 msgstr "Anterior"
@@ -662,6 +602,18 @@ msgstr "Anterior"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Quarter"
 msgstr "Trimestre"
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Re-insert Dynamic"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
+msgid "Re-insert Static"
+msgstr ""
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
@@ -822,24 +774,6 @@ msgid "Stacked"
 msgstr "Apilados"
 
 #. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Stacked Area"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Stacked Column"
-msgstr ""
-
-#. module: spreadsheet_oca
-#. odoo-javascript
-#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
-msgid "Stacked Line"
-msgstr ""
-
-#. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
 msgid ""
 "Status based on activities\n"
@@ -972,6 +906,21 @@ msgstr "no actualizado"
 #: model:ir.model,name:spreadsheet_oca.model_ir_websocket
 msgid "websocket message handling"
 msgstr "gestión de mensajes websocket"
+
+#~ msgid "Dimensions"
+#~ msgstr "Dimensiones"
+
+#~ msgid "Insert dynamic pivot"
+#~ msgstr "Insertar pivot dinámica"
+
+#~ msgid "Insert pivot"
+#~ msgstr "Insertar pivot"
+
+#~ msgid "Measures"
+#~ msgstr "Medidas"
+
+#~ msgid "Pivot name"
+#~ msgstr "Nombre de pivot"
 
 #~ msgid "Add sheet to spreadsheet"
 #~ msgstr "Añadir hoja a la hoja de cálculo"
