@@ -14,19 +14,15 @@ export class OdooPanel extends Component {
         this.menus = useService("menu");
     }
     get menuProps() {
-        const menu = this.env.model.getters.getChartOdooMenu(this.props.figureId);
-        var result = {
+        return {
             fieldString: _t("Menu Items"),
             resModel: "ir.ui.menu",
             update: this.updateMenu.bind(this),
             activeActions: {},
             getDomain: this.getDomain.bind(this),
+            placeholder: _t("Select a menu..."),
+            value: this.menuId ? this.menuId[1] : "",
         };
-        if (menu) {
-            result.value = menu.name;
-            result.id = menu.id;
-        }
-        return result;
     }
     getDomain() {
         const menus = this.menus
