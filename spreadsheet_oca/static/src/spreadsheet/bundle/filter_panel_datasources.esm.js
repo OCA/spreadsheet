@@ -120,7 +120,7 @@ export class PivotPanelDisplay extends Component {
     editDomain() {
         this.dialog.add(DomainSelectorDialog, {
             resModel: this.store.definition.model,
-            domain: this.store.definition.domain,
+            domain: this.domain,
             readonly: false,
             isDebugMode: Boolean(this.env.debug),
             onConfirm: this.onSelectDomain.bind(this),

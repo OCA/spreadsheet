@@ -54,10 +54,11 @@ patch(PivotRenderer.prototype, {
                     default_can_be_dynamic: false,
                     default_import_data: {
                         mode: "pivot",
-                        metaData: JSON.parse(JSON.stringify(this.model.metaData)),
-                        searchParams: JSON.parse(
-                            JSON.stringify(this.model.searchParams)
-                        ),
+                        metaData: this.model.metaData,
+                        searchParams: {
+                            ...this.model.searchParams,
+                            domain: this.env.searchModel.domainString,
+                        },
                     },
                 },
             }
