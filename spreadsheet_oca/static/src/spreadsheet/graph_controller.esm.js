@@ -12,10 +12,11 @@ patch(GraphRenderer.prototype, {
                     default_datasource_name: this.model.metaData.title,
                     default_import_data: {
                         mode: "graph",
-                        metaData: JSON.parse(JSON.stringify(this.model.metaData)),
-                        searchParams: JSON.parse(
-                            JSON.stringify(this.model.searchParams)
-                        ),
+                        metaData: this.model.metaData,
+                        searchParams: {
+                            ...this.model.searchParams,
+                            domain: this.env.searchModel.domainString,
+                        },
                     },
                 },
             }
