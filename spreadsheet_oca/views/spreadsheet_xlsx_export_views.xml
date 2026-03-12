@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_xlsx_export_form">
+        <field
+            name="name"
+        >spreadsheet.spreadsheet.xlsx.export.form (in spreadsheet_oca)</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="action_export_xlsx"
+                    type="object"
+                    string="Export Pivot Data"
+                    icon="fa-table"
+                    class="btn-secondary"
+                    title="Generate an .xlsx file with fresh server-side pivot data
+(distinct from the editor's File → Download which exports the full spreadsheet)"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

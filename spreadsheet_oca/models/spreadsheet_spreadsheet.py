@@ -56,7 +56,7 @@ class SpreadsheetSpreadsheet(models.Model):
         string="Tags", comodel_name="spreadsheet.spreadsheet.tag"
     )
 
-    # ── DRY helper for grouped count fields ──────────────────────────────────
+    # ── DRY helper for read_group-based count fields ─────────────────────────
 
     def _compute_related_count(self, comodel, field_name, extra_domain=None):
         """Compute a count field by grouping *comodel* on ``spreadsheet_id``.
@@ -69,12 +69,10 @@ class SpreadsheetSpreadsheet(models.Model):
             domain += extra_domain
         else:
             domain.append(("active", "=", True))
-        count_map = {
-            spreadsheet.id: count
-            for spreadsheet, count in self.env[comodel]._read_group(
-                domain, ["spreadsheet_id"], ["__count"]
-            )
-        }
+        counts = self.env[comodel].read_group(
+            domain, ["spreadsheet_id"], ["spreadsheet_id"]
+        )
+        count_map = {c["spreadsheet_id"][0]: c["spreadsheet_id_count"] for c in counts}
         for rec in self:
             rec[field_name] = count_map.get(rec.id, 0)
 
@@ -82,6 +80,45 @@ class SpreadsheetSpreadsheet(models.Model):
     def _compute_filename(self):
         for record in self:
             record.filename = f"{record.name or _('Unnamed')}.json"
+
+    # ── XLSX Export ──────────────────────────────────────────────────────────
+
+    def action_export_xlsx(self):
+        """Export this spreadsheet as .xlsx and return a download action."""
+        from .spreadsheet_xlsx_export import SpreadsheetXlsxExporter
+
+        self.ensure_one()
+        exporter = SpreadsheetXlsxExporter(self.env, self)
+        xlsx_bytes = exporter.render()
+
+        filename = f"{self.name or 'spreadsheet'}.xlsx"
+        attachment = self.env["ir.attachment"].create(
+            {
+                "name": filename,
+                "type": "binary",
+                "datas": base64.b64encode(xlsx_bytes),
+                "mimetype": (
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                ),
+                "res_model": self._name,
+                "res_id": self.id,
+            }
+        )
+        return {
+            "type": "ir.actions.act_url",
+            "url": f"/web/content/{attachment.id}?download=true",
+            "target": "self",
+        }
+
+    @api.model
+    def get_xlsx_bytes(self, spreadsheet_id):
+        """Return raw .xlsx bytes (base64) for a spreadsheet."""
+        from .spreadsheet_xlsx_export import SpreadsheetXlsxExporter
+
+        spreadsheet = self.browse(spreadsheet_id)
+        spreadsheet.check_access("read")
+        exporter = SpreadsheetXlsxExporter(self.env, spreadsheet)
+        return base64.b64encode(exporter.render()).decode()
 
     def create_document_from_attachment(self, attachment_ids):
         attachments = self.env["ir.attachment"].browse(attachment_ids)

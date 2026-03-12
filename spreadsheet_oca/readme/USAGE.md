@@ -37,3 +37,14 @@
   > - `ODOO.ACCOUNT.GROUP(type)`: Returns the account ids of a given
   >   group where type should be a value of the `account_type` field of
   >   `account.account` model. (`income`, `asset_receivable`, etc.)
+
+## **Export a spreadsheet to XLSX**
+
+Open a spreadsheet and use **Export XLSX**. The file is generated on the server,
+so it works from a scheduled action or any other headless context — no browser
+session is needed.
+
+Static sheets are exported as-is. Every Odoo pivot in the workbook gets its own
+worksheet, recomputed against the **current** database rather than the values
+last saved from the browser, so an export is never stale. Grouped rows and
+columns are labelled with their display names and sorted by those names.
