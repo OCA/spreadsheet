@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ── Search view ───────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_subscription_search_view">
+        <field name="name">spreadsheet.subscription.search</field>
+        <field name="model">spreadsheet.subscription</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="spreadsheet_id" />
+                <separator />
+                <filter
+                    name="daily"
+                    string="Daily"
+                    domain="[('frequency', '=', 'daily')]"
+                />
+                <filter
+                    name="weekly"
+                    string="Weekly"
+                    domain="[('frequency', '=', 'weekly')]"
+                />
+                <filter
+                    name="monthly"
+                    string="Monthly"
+                    domain="[('frequency', '=', 'monthly')]"
+                />
+                <separator />
+                <filter
+                    name="active"
+                    string="Active"
+                    domain="[('active', '=', True)]"
+                />
+                <filter
+                    name="archived"
+                    string="Archived"
+                    domain="[('active', '=', False)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="by_spreadsheet"
+                        string="Spreadsheet"
+                        context="{'group_by': 'spreadsheet_id'}"
+                    />
+                    <filter
+                        name="by_frequency"
+                        string="Frequency"
+                        context="{'group_by': 'frequency'}"
+                    />
+                    <filter
+                        name="by_partner"
+                        string="Subscriber"
+                        context="{'group_by': 'partner_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── List view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_subscription_list_view">
+        <field name="name">spreadsheet.subscription.list</field>
+        <field name="model">spreadsheet.subscription</field>
+        <field name="arch" type="xml">
+            <list string="Subscriptions" decoration-muted="not active">
+                <field name="partner_id" />
+                <field name="spreadsheet_id" />
+                <field name="frequency" />
+                <field name="include_pivot_data" />
+                <field name="last_sent" />
+                <field name="active" column_invisible="True" />
+                <button
+                    name="action_send_now"
+                    type="object"
+                    string="Send Now"
+                    icon="fa-paper-plane"
+                    title="Send digest immediately"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Form view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_subscription_form_view">
+        <field name="name">spreadsheet.subscription.form</field>
+        <field name="model">spreadsheet.subscription</field>
+        <field name="arch" type="xml">
+            <form string="Dashboard Subscription">
+                <header>
+                    <button
+                        name="action_send_now"
+                        type="object"
+                        string="Send Now"
+                        class="btn-primary"
+                        title="Send digest email immediately"
+                    />
+                    <field name="active" invisible="1" />
+                </header>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Inactive"
+                        bg_color="bg-secondary"
+                        invisible="active"
+                    />
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="spreadsheet_id" />
+                            <field name="partner_id" />
+                        </group>
+                        <group>
+                            <field name="frequency" />
+                            <field name="include_pivot_data" />
+                            <field name="last_sent" />
+                        </group>
+                    </group>
+                    <separator string="Digest Email Preview" />
+                    <div class="alert alert-light border" role="alert">
+                        <p class="mb-1" style="font-size:12px;color:#888">
+                            The digest email sent to the subscriber will look
+                            like the layout below. If <em>Include Pivot Data</em>
+                            is enabled, live pivot tables are rendered inline.
+                            To customise the template, go to
+                            <b>Settings &gt; Technical &gt; Views</b> and
+                            search for <em>spreadsheet.subscription.digest</em>.
+                        </p>
+                        <hr class="my-2" />
+                        <div style="font-size:12px;max-width:400px">
+                            <div
+                                style="background:#4a4a8a;color:#fff;padding:8px 14px;border-radius:3px 3px 0 0;font-size:13px;font-weight:bold"
+                            >
+                                <field
+                                    name="spreadsheet_id"
+                                    readonly="1"
+                                    class="d-inline"
+                                    nolabel="1"
+                                />
+                            </div>
+                            <div
+                                style="background:#f7f7f7;padding:4px 14px;border-bottom:1px solid #ddd;font-size:11px;color:#777"
+                            >
+                                Generated: (timestamp)
+                            </div>
+                            <div
+                                style="padding:10px 14px;border:1px solid #e0e0e0;border-top:none"
+                            >
+                                <p style="font-size:11px;color:#888;margin:0">
+                                    (Pivot data tables appear here when enabled)
+                                </p>
+                            </div>
+                            <div
+                                style="text-align:center;padding:8px 14px;border:1px solid #e0e0e0;border-top:none"
+                            >
+                                <span
+                                    style="display:inline-block;padding:4px 16px;background:#4a4a8a;color:#fff;border-radius:3px;font-size:11px"
+                                >
+                                    Open Spreadsheet
+                                </span>
+                            </div>
+                            <div
+                                style="background:#f0f0f0;padding:6px 14px;font-size:10px;color:#aaa;border-radius:0 0 3px 3px;text-align:center"
+                            >
+                                You are receiving this because you subscribed ...
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Action ────────────────────────────────────────────────── -->
+    <record model="ir.actions.act_window" id="spreadsheet_subscription_act_window">
+        <field name="name">Dashboard Subscriptions</field>
+        <field name="res_model">spreadsheet.subscription</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+    </record>
+
+    <!-- ── Menu item ─────────────────────────────────────────────── -->
+    <record model="ir.ui.menu" id="spreadsheet_subscription_menu">
+        <field name="name">Dashboard Subscriptions</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="spreadsheet_subscription_act_window" />
+        <field name="groups_id" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="sequence" eval="22" />
+    </record>
+
+    <!-- ── Smart button on spreadsheet form ─────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_subscription_button">
+        <field name="name">spreadsheet.spreadsheet.form.subscription</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_open_subscriptions"
+                    icon="fa-users"
+                >
+                    <field
+                        string="Subscribers"
+                        name="subscriber_count"
+                        widget="statinfo"
+                    />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

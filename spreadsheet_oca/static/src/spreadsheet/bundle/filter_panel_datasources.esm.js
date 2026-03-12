@@ -14,6 +14,76 @@ const {useLocalStore, PivotSidePanelStore} = spreadsheet.stores;
 const {sidePanelRegistry, topbarMenuRegistry, pivotSidePanelRegistry} =
     spreadsheet.registries;
 
+/**
+ * Scan every cell in every sheet to find the top-left anchor position of each
+ * pivot table. Returns a Map<pivotId, {sheetId, col, row}>.
+ *
+ * @param {Object} getters  o-spreadsheet getters
+ * @returns {Map<string, {sheetId: string, col: number, row: number}>}
+ */
+function _findPivotAnchors(getters) {
+    const anchors = new Map();
+    for (const sheetId of getters.getSheetIds()) {
+        const cells = getters.getCells(sheetId);
+        for (const cellId in cells) {
+            const {col, row} = getters.getCellPosition(cellId);
+            const pivotId = getters.getPivotIdFromPosition({sheetId, col, row});
+            if (!pivotId) {
+                continue;
+            }
+            const current = anchors.get(pivotId);
+            if (
+                !current ||
+                row < current.row ||
+                (row === current.row && col < current.col)
+            ) {
+                anchors.set(pivotId, {sheetId, col, row});
+            }
+        }
+    }
+    return anchors;
+}
+
+/**
+ * Reload all pivot data sources from Odoo concurrently, then re-insert each
+ * pivot table at its current position using the fresh data.
+ *
+ * Also dispatches REFRESH_ALL_DATA_SOURCES so that lists and charts are
+ * handled by the CE plugin (which refreshes their data sources independently).
+ *
+ * @param {Object} env  o-spreadsheet environment
+ */
+async function _refreshAndReinsertAllPivots(env) {
+    const getters = env.model.getters;
+    const pivotIds = getters.getPivotIds();
+
+    // Snapshot pivot positions before reload (cell layout doesn't change)
+    const anchors = _findPivotAnchors(getters);
+
+    // Reload all pivots concurrently for speed
+    await Promise.all(pivotIds.map((id) => getters.getPivot(id).load({reload: true})));
+
+    // Re-insert each pivot at its anchor with the freshly-loaded table structure
+    for (const pivotId of pivotIds) {
+        const anchor = anchors.get(pivotId);
+        if (!anchor) {
+            continue; // Pivot was never inserted into a sheet — skip
+        }
+        const table = getters.getPivot(pivotId).getTableStructure().export();
+        env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
+            pivotId,
+            table,
+            col: anchor.col,
+            row: anchor.row,
+            sheetId: anchor.sheetId,
+            pivotMode: "dynamic",
+        });
+    }
+
+    // Let the CE plugin handle lists and charts (REFRESH_ALL_DATA_SOURCES)
+    env.model.dispatch("REFRESH_ALL_DATA_SOURCES");
+}
+
 topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
     let sequence = 53;
     const lists = env.model.getters.getListIds().map((listId, index) => ({
@@ -32,9 +102,7 @@ topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
             id: "refresh_all_data",
             name: _t("Refresh all data"),
             sequence: 110,
-            execute: (child_env) => {
-                child_env.model.dispatch("REFRESH_ALL_DATA_SOURCES");
-            },
+            execute: (child_env) => _refreshAndReinsertAllPivots(child_env),
             separator: true,
         },
     ]);
@@ -64,12 +132,14 @@ export class PivotTitleSectionInsertion extends PivotTitleSection {
         );
         return res;
     }
-    reinsertTable(env, mode) {
+    async reinsertTable(env, mode) {
+        const pivot = env.model.getters.getPivot(this.props.pivotId);
+        // Reload fresh data from Odoo before reading the table structure.
+        // The previous implementation dispatched REFRESH_PIVOT *after* reading
+        // stale data, so the re-inserted table always contained old values.
+        await pivot.load({reload: true});
         const zone = env.model.getters.getSelectedZone();
-        const table = env.model.getters
-            .getPivot(this.props.pivotId)
-            .getTableStructure()
-            .export();
+        const table = pivot.getTableStructure().export();
         env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
             pivotId: this.props.pivotId,
             table,
@@ -78,7 +148,6 @@ export class PivotTitleSectionInsertion extends PivotTitleSection {
             sheetId: env.model.getters.getActiveSheetId(),
             pivotMode: mode,
         });
-        env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
     }
 }
 

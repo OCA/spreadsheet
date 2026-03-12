@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="spreadsheet_oca_features_tour" model="web_tour.tour">
+        <field name="name">spreadsheet_oca_features</field>
+        <field name="url">/odoo</field>
+        <field
+            name="rainbow_man_message"
+        >Congratulations! You've explored all spreadsheet features.</field>
+    </record>
+
+    <!-- Tour Steps -->
+    <record id="tour_step_01" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">10</field>
+        <field
+            name="trigger"
+        >.o_menu_sections a:contains('Spreadsheets'), .o_navbar a:contains('Spreadsheets'), a.dropdown-item:contains('Spreadsheets')</field>
+        <field name="content">Open the Spreadsheets menu to see your dashboards.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_02" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">20</field>
+        <field name="trigger">.o_kanban_view</field>
+        <field
+            name="content"
+        >Welcome to Spreadsheets! You're looking at your spreadsheet dashboards.</field>
+    </record>
+
+    <record id="tour_step_03" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">30</field>
+        <field
+            name="trigger"
+        >.o_kanban_record:contains('Sales Pipeline Summary')</field>
+        <field
+            name="content"
+        >Open the Sales Pipeline Summary spreadsheet to explore its features.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_04" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">40</field>
+        <field
+            name="trigger"
+        >.o_form_view div[name='button_box'], .o_form_view #button_box</field>
+        <field
+            name="content"
+        >These smart buttons give you quick access to all features: alerts, scenarios, parameters, and more.</field>
+    </record>
+
+    <record id="tour_step_05" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">50</field>
+        <field
+            name="trigger"
+        >button[name='action_open_alerts'], div[name='alert_count'] .oe_stat_button</field>
+        <field
+            name="content"
+        >Click to view KPI Alerts configured for this spreadsheet.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_06" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">60</field>
+        <field name="trigger">.o_list_view, .o_kanban_view</field>
+        <field
+            name="content"
+        >KPI Alerts monitor cell values and notify you when thresholds are crossed.</field>
+    </record>
+
+    <record id="tour_step_07" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">70</field>
+        <field name="trigger">.o_back_button, .breadcrumb-item a</field>
+        <field name="content">Go back to the spreadsheet form.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_08" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">80</field>
+        <field
+            name="trigger"
+        >button[name='action_open_scenarios'], div[name='scenario_count'] .oe_stat_button</field>
+        <field name="content">Click to view What-If Scenarios.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_09" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">90</field>
+        <field name="trigger">.o_list_view, .o_kanban_view</field>
+        <field
+            name="content"
+        >What-If Scenarios let you model different outcomes without duplicating your spreadsheet.</field>
+    </record>
+
+    <record id="tour_step_10" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">100</field>
+        <field name="trigger">.o_back_button, .breadcrumb-item a</field>
+        <field name="content">Go back to the spreadsheet form.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_11" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">110</field>
+        <field
+            name="trigger"
+        >button[name='action_open_input_params'], div[name='input_param_count'] .oe_stat_button</field>
+        <field name="content">Click to view Input Parameters.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_12" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">120</field>
+        <field name="trigger">.o_list_view, .o_kanban_view</field>
+        <field
+            name="content"
+        >Input Parameters bind named cells to server-side values for scheduled refreshes.</field>
+    </record>
+
+    <record id="tour_step_13" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">130</field>
+        <field name="trigger">.o_back_button, .breadcrumb-item a</field>
+        <field name="content">Go back to the spreadsheet form.</field>
+        <field name="run">click</field>
+    </record>
+
+    <record id="tour_step_14" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">140</field>
+        <field name="trigger">button[name='action_export_xlsx']</field>
+        <field
+            name="content"
+        >Export XLSX generates a server-side .xlsx file with fresh pivot data.</field>
+    </record>
+
+    <record id="tour_step_15" model="web_tour.tour.step">
+        <field name="tour_id" ref="spreadsheet_oca_features_tour" />
+        <field name="sequence">150</field>
+        <field name="trigger">.o_form_view</field>
+        <field
+            name="content"
+        >You're all set! Explore each feature to unlock the full power of your spreadsheets.</field>
+    </record>
+</odoo>

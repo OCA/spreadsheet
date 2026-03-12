@@ -62,4 +62,122 @@
         <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
         <field name="domain_force">[('group_ids','in', user.groups_id.ids)]</field>
     </record>
+
+    <!-- ══ Record rules for child models ══════════════════════════════
+         Visibility follows the parent spreadsheet: users can only see
+         records linked to spreadsheets they own, contribute to, or read. -->
+
+    <record model="ir.rule" id="refresh_schedule_user_rule">
+        <field name="name">Refresh Schedule: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_refresh_schedule" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="refresh_schedule_manager_rule">
+        <field name="name">Refresh Schedule: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_refresh_schedule" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <record model="ir.rule" id="alert_user_rule">
+        <field name="name">Alert: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_alert" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="alert_manager_rule">
+        <field name="name">Alert: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_alert" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <record model="ir.rule" id="subscription_user_rule">
+        <field name="name">Subscription: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_subscription" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="subscription_manager_rule">
+        <field name="name">Subscription: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_subscription" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <record model="ir.rule" id="scenario_user_rule">
+        <field name="name">Scenario: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_scenario" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="scenario_manager_rule">
+        <field name="name">Scenario: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_scenario" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <record model="ir.rule" id="writeback_log_user_rule">
+        <field name="name">Writeback Log: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_writeback_log" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="writeback_log_manager_rule">
+        <field name="name">Writeback Log: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_writeback_log" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+
+    <record model="ir.rule" id="input_param_user_rule">
+        <field name="name">Input Param: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_input_param" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="input_param_manager_rule">
+        <field name="name">Input Param: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_input_param" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
 </odoo>

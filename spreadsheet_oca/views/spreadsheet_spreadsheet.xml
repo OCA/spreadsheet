@@ -47,7 +47,7 @@
     </record>
 
     <record model="ir.ui.view" id="spreadsheet_spreadsheet_form_view">
-        <field name="name">spreadsheet.spreadsheet.tree (in spreadsheet_oca)</field>
+        <field name="name">spreadsheet.spreadsheet.form (in spreadsheet_oca)</field>
         <field name="model">spreadsheet.spreadsheet</field>
         <field name="arch" type="xml">
             <form>
@@ -158,7 +158,7 @@
                                         <img
                                             class="h-100 img-fluid"
                                             src="/spreadsheet_oca/static/description/icon.png"
-                                            alt="Spreasheet Image"
+                                            alt="Spreadsheet Image"
                                         />
                                     </t>
                                 </a>
