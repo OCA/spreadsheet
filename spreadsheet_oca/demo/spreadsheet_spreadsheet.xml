@@ -87,4 +87,16 @@
             file="spreadsheet_oca/demo/demo_pivot_dashboard.json"
         />
     </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         Refresh Schedules
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_refresh_weekly" model="spreadsheet.refresh.schedule">
+        <field name="name">Weekly Partner Pivot Refresh</field>
+        <field name="spreadsheet_id" ref="demo_pivot_dashboard" />
+        <field name="interval_number">1</field>
+        <field name="interval_type">weeks</field>
+        <field name="notify_partner_ids" eval="[(4, ref('base.partner_admin'))]" />
+    </record>
 </odoo>

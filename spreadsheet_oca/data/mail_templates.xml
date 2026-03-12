@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ══ Refresh notification (posted to Chatter) ═════════════════════
+         Rendered by spreadsheet.refresh.schedule._render_refresh_html().
+         Variables: pivot_html_list
+
+         Customise via Settings > Technical > Views, search for
+         "spreadsheet.refresh.notification". -->
+    <record model="ir.ui.view" id="spreadsheet_refresh_notification_template">
+        <field name="name">spreadsheet.refresh.notification</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="spreadsheet_oca.spreadsheet_refresh_notification_template">
+                <div style="font-family:sans-serif;font-size:14px">
+                    <t t-if="not pivot_html_list">
+                        <p>No ODOO pivot data sources found in this spreadsheet.</p>
+                    </t>
+                    <t t-else="">
+                        <t t-foreach="pivot_html_list" t-as="pivot_html">
+                            <t t-out="pivot_html" />
+                            <hr
+                                style="border:none;border-top:1px solid #eee;margin:8px 0"
+                            />
+                        </t>
+                    </t>
+                </div>
+            </t>
+        </field>
+    </record>
+
+    <!-- ══ Refresh warning (posted to Chatter on partial failure) ══════
+         Variables: schedule_name, failed_names -->
+    <record model="ir.ui.view" id="spreadsheet_refresh_warning_template">
+        <field name="name">spreadsheet.refresh.warning</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="spreadsheet_oca.spreadsheet_refresh_warning_template">
+                <p>
+                    [Warning] Refresh schedule <b>
+                    <t t-out="schedule_name" />
+                </b>
+                    could not load pivot(s):
+                    <t t-foreach="failed_names" t-as="pname">
+                    <b>
+                        <t t-out="pname" />
+                    </b>
+                    <t t-if="not pname_last">, </t>
+                </t>.
+                    Check server logs for details.
+                </p>
+            </t>
+        </field>
+    </record>
+</odoo>

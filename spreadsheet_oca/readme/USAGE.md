@@ -37,3 +37,31 @@
   > - `ODOO.ACCOUNT.GROUP(type)`: Returns the account ids of a given
   >   group where type should be a value of the `account_type` field of
   >   `account.account` model. (`income`, `asset_receivable`, etc.)
+
+## **Schedule an automatic data refresh**
+
+A spreadsheet that contains `=PIVOT()` formulas can be re-computed on a
+schedule, with the resulting tables posted to its Chatter.
+
+- Open a spreadsheet, then click the **Schedules** smart button (or go to
+  'Spreadsheet \> Configuration \> Refresh Schedules').
+- Click **New**, pick the spreadsheet, and set how often it should run —
+  for example every `1` `Week(s)`.
+- Optionally add partners under **Notify Partners**; they receive the same
+  summary by email.
+- **Run As** decides whose permissions the refresh uses. It defaults to you.
+- Use **Pause** to stop a schedule without losing its configuration,
+  **Activate** to resume it, and **Run Now** to refresh immediately.
+
+A single scheduled action ('Spreadsheet: Scheduled Data Refresh') wakes hourly
+and refreshes whichever schedules are due, so adding schedules does not add
+scheduled actions.
+
+Each run reads every Odoo pivot defined in the spreadsheet, recomputes it
+server-side, and posts one rendered table per pivot to the spreadsheet's
+Chatter, along with the total record count. **Last Run** records when it
+last executed.
+
+Note that the pivots are computed with the permissions of the schedule's
+**Run As** user — not the scheduler's — so a summary never exposes records
+that user could not read themselves.

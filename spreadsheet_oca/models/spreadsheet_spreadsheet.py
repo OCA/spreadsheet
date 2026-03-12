@@ -83,6 +83,33 @@ class SpreadsheetSpreadsheet(models.Model):
         for record in self:
             record.filename = f"{record.name or _('Unnamed')}.json"
 
+    # ── Refresh Schedules ───────────────────────────────────────────────────
+    refresh_schedule_ids = fields.One2many(
+        comodel_name="spreadsheet.refresh.schedule",
+        inverse_name="spreadsheet_id",
+        string="Schedules",
+    )
+    refresh_schedule_count = fields.Integer(
+        compute="_compute_refresh_schedule_count", string="Refresh Schedules"
+    )
+
+    @api.depends("refresh_schedule_ids.active")
+    def _compute_refresh_schedule_count(self):
+        self._compute_related_count(
+            "spreadsheet.refresh.schedule", "refresh_schedule_count"
+        )
+
+    def action_open_refresh_schedules(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Refresh Schedules"),
+            "res_model": "spreadsheet.refresh.schedule",
+            "view_mode": "list,form",
+            "domain": [("spreadsheet_id", "=", self.id)],
+            "context": {"default_spreadsheet_id": self.id},
+        }
+
     def create_document_from_attachment(self, attachment_ids):
         attachments = self.env["ir.attachment"].browse(attachment_ids)
         spreadsheets = self.env["spreadsheet.spreadsheet"]
