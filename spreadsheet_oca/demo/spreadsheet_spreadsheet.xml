@@ -87,4 +87,34 @@
             file="spreadsheet_oca/demo/demo_pivot_dashboard.json"
         />
     </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         What-If Scenarios
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_scenario_base" model="spreadsheet.scenario">
+        <field name="name">Base Case</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="is_base" eval="True" />
+        <field name="description">Current pipeline estimates</field>
+        <field name="cell_overrides">{}</field>
+    </record>
+
+    <record id="demo_scenario_optimistic" model="spreadsheet.scenario">
+        <field name="name">Optimistic (+20%)</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="description">20% uplift on all revenue</field>
+        <field
+            name="cell_overrides"
+        >{"Sales Pipeline!B2": 144000, "Sales Pipeline!C2": 168000, "Sales Pipeline!D2": 192000, "Sales Pipeline!B3": 96000, "Sales Pipeline!C3": 108000, "Sales Pipeline!D3": 120000, "Sales Pipeline!B4": 60000, "Sales Pipeline!C4": 72000, "Sales Pipeline!D4": 84000, "Sales Pipeline!B5": 36000, "Sales Pipeline!C5": 42000, "Sales Pipeline!D5": 48000, "Sales Pipeline!B6": 24000, "Sales Pipeline!C6": 30000, "Sales Pipeline!D6": 36000}</field>
+    </record>
+
+    <record id="demo_scenario_pessimistic" model="spreadsheet.scenario">
+        <field name="name">Pessimistic (-30%)</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="description">30% reduction across the board</field>
+        <field
+            name="cell_overrides"
+        >{"Sales Pipeline!B2": 84000, "Sales Pipeline!C2": 98000, "Sales Pipeline!D2": 112000, "Sales Pipeline!B3": 56000, "Sales Pipeline!C3": 63000, "Sales Pipeline!D3": 70000, "Sales Pipeline!B4": 35000, "Sales Pipeline!C4": 42000, "Sales Pipeline!D4": 49000, "Sales Pipeline!B5": 21000, "Sales Pipeline!C5": 24500, "Sales Pipeline!D5": 28000, "Sales Pipeline!B6": 14000, "Sales Pipeline!C6": 17500, "Sales Pipeline!D6": 21000}</field>
+    </record>
 </odoo>
