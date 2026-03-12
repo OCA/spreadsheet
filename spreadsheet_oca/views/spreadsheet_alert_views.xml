@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ── Search view ───────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_alert_search_view">
+        <field name="name">spreadsheet.alert.search</field>
+        <field name="model">spreadsheet.alert</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <separator />
+                <filter
+                    name="in_alert"
+                    string="Currently Firing"
+                    domain="[('last_state', '=', True)]"
+                />
+                <filter
+                    name="active"
+                    string="Active"
+                    domain="[('active', '=', True)]"
+                />
+                <filter
+                    name="archived"
+                    string="Archived"
+                    domain="[('active', '=', False)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="by_spreadsheet"
+                        string="Spreadsheet"
+                        context="{'group_by': 'spreadsheet_id'}"
+                    />
+                    <filter
+                        name="by_trigger"
+                        string="Trigger Mode"
+                        context="{'group_by': 'trigger_mode'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── List view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_alert_list_view">
+        <field name="name">spreadsheet.alert.list</field>
+        <field name="model">spreadsheet.alert</field>
+        <field name="arch" type="xml">
+            <list string="KPI Alerts" decoration-muted="not active">
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="cell_ref" />
+                <field name="operator" />
+                <field name="threshold" />
+                <field name="trigger_mode" />
+                <field name="last_value" string="Last Value" />
+                <field name="last_checked" string="Last Checked" />
+                <field name="last_state" string="In Alert" widget="boolean" />
+                <field name="active" column_invisible="True" />
+                <button
+                    name="action_evaluate_now"
+                    type="object"
+                    string="Check Now"
+                    icon="fa-bolt"
+                    title="Evaluate alert now"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Form view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_alert_form_view">
+        <field name="name">spreadsheet.alert.form</field>
+        <field name="model">spreadsheet.alert</field>
+        <field name="arch" type="xml">
+            <form string="KPI Alert">
+                <header>
+                    <button
+                        name="action_evaluate_now"
+                        type="object"
+                        string="Check Now"
+                        class="btn-primary"
+                    />
+                    <button
+                        name="action_reset_state"
+                        type="object"
+                        string="Allow Re-trigger"
+                        invisible="trigger_mode != 'edge' or not last_state"
+                        title="Clear the triggered state so this alert can fire again on the next evaluation"
+                    />
+                    <field name="active" invisible="1" />
+                </header>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Inactive"
+                        bg_color="bg-secondary"
+                        invisible="active"
+                    />
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="spreadsheet_id" />
+                            <field name="user_id" />
+                        </group>
+                        <group>
+                            <field name="last_checked" />
+                            <field name="last_value" />
+                            <field name="last_state" string="Currently In Alert" />
+                        </group>
+                    </group>
+                    <group string="Cell to Watch">
+                        <field
+                            name="sheet_name"
+                            placeholder="Leave blank for first sheet"
+                        />
+                        <field name="cell_ref" placeholder="e.g. B3" />
+                    </group>
+                    <group string="Threshold Condition">
+                        <label for="operator" string="Alert when cell" />
+                        <div class="o_row">
+                            <field name="operator" class="oe_inline" />
+                            <field name="threshold" class="oe_inline" />
+                        </div>
+                        <field
+                            name="trigger_mode"
+                            help="Edge: notify once when the condition first becomes true,
+then wait for it to go false and true again.
+Level: notify on every evaluation cycle while the condition holds."
+                        />
+                    </group>
+                    <group string="Notifications">
+                        <field
+                            name="notify_partner_ids"
+                            widget="many2many_tags"
+                            placeholder="Leave empty to post a private note only"
+                        />
+                    </group>
+                    <separator string="Notification Preview" />
+                    <div class="alert alert-light border" role="alert">
+                        <p class="mb-1" style="font-size:12px;color:#888">
+                            When this alert fires, a message like the one below
+                            is posted on the spreadsheet's Chatter and emailed
+                            to the listed partners. To customise the template,
+                            go to <b>Settings &gt; Technical &gt; Views</b> and
+                            search for <em>spreadsheet.alert.notification</em>.
+                        </p>
+                        <hr class="my-2" />
+                        <div style="font-size:13px">
+                            <div
+                                style="background:#c0392b;color:#fff;padding:6px 12px;border-radius:3px 3px 0 0;font-size:12px"
+                            >
+                                &#9888; KPI Alert Triggered
+                            </div>
+                            <div
+                                style="border:1px solid #e0e0e0;border-top:none;padding:12px;border-radius:0 0 3px 3px"
+                            >
+                                <p class="mb-1" style="font-weight:bold">
+                                    <field
+                                        name="name"
+                                        readonly="1"
+                                        class="d-inline"
+                                        nolabel="1"
+                                    />
+                                </p>
+                                <table style="font-size:12px;color:#555">
+                                    <tr>
+                                        <td
+                                            style="padding:1px 10px 1px 0;color:#888"
+                                        >Cell</td>
+                                        <td>
+                                            <b>
+                                                <field
+                                                    name="cell_ref"
+                                                    readonly="1"
+                                                    class="d-inline"
+                                                    nolabel="1"
+                                                />
+                                            </b>
+                                            <field name="sheet_name" invisible="1" />
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="padding:1px 10px 1px 0;color:#888"
+                                        >Value</td>
+                                        <td>
+                                            <b>(current cell value)</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td
+                                            style="padding:1px 10px 1px 0;color:#888"
+                                        >Condition</td>
+                                        <td>
+                                            <field
+                                                name="operator"
+                                                readonly="1"
+                                                class="d-inline"
+                                                nolabel="1"
+                                            />
+                                            <field
+                                                name="threshold"
+                                                readonly="1"
+                                                class="d-inline"
+                                                nolabel="1"
+                                            />
+                                        </td>
+                                    </tr>
+                                </table>
+                                <div
+                                    style="margin-top:8px;padding-top:8px;border-top:1px solid #eee;font-size:11px;color:#2980b9"
+                                >
+                                    &#128196; Open Spreadsheet &#160;&#160; &#9881; Alert Settings
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Action ────────────────────────────────────────────────── -->
+    <record model="ir.actions.act_window" id="spreadsheet_alert_act_window">
+        <field name="name">KPI Alerts</field>
+        <field name="res_model">spreadsheet.alert</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+    </record>
+
+    <!-- ── Menu item ─────────────────────────────────────────────── -->
+    <record model="ir.ui.menu" id="spreadsheet_alert_menu">
+        <field name="name">KPI Alerts</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="spreadsheet_alert_act_window" />
+        <field name="groups_id" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="sequence" eval="21" />
+    </record>
+
+    <!-- ── Smart button on spreadsheet form ─────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_alert_button">
+        <field name="name">spreadsheet.spreadsheet.form.kpi_alert</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_open_alerts"
+                    icon="fa-bell"
+                >
+                    <field string="KPI Alerts" name="alert_count" widget="statinfo" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

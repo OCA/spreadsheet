@@ -37,3 +37,26 @@
   > - `ODOO.ACCOUNT.GROUP(type)`: Returns the account ids of a given
   >   group where type should be a value of the `account_type` field of
   >   `account.account` model. (`income`, `asset_receivable`, etc.)
+
+## **Get notified when a KPI crosses a threshold**
+
+- Go to 'Spreadsheet \> Configuration \> KPI Alerts' and click **New**.
+- Pick the spreadsheet, the **Cell Reference** to watch (e.g. `C3`) and,
+  if the workbook has several sheets, the **Sheet**.
+- Choose a comparison and a **Threshold** — for example `<` and `0.15`.
+- **Run As** decides whose permissions the evaluation uses; it defaults to you.
+- **Trigger Mode** controls repetition:
+  - *Edge* notifies once, when the condition first becomes true. Use this for
+    "tell me when we fall behind".
+  - *Level* notifies on every cycle while the condition holds. Use this for
+    "keep reminding me until it is fixed".
+- Add partners under **Notify Partners** to have them emailed as well.
+
+A single scheduled action wakes hourly and evaluates every active alert, so
+adding alerts does not add scheduled actions. Use **Evaluate Now** to test an
+alert immediately, and **Reset State** to let an *edge* alert fire again without
+waiting for the value to recover first.
+
+The watched cell must hold a number. A cell that is missing, on a sheet that
+does not exist, or holding text is logged as a warning and the alert never
+fires.

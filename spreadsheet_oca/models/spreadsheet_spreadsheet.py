@@ -56,7 +56,7 @@ class SpreadsheetSpreadsheet(models.Model):
         string="Tags", comodel_name="spreadsheet.spreadsheet.tag"
     )
 
-    # ── DRY helper for grouped count fields ──────────────────────────────────
+    # ── DRY helper for read_group-based count fields ─────────────────────────
 
     def _compute_related_count(self, comodel, field_name, extra_domain=None):
         """Compute a count field by grouping *comodel* on ``spreadsheet_id``.
@@ -69,12 +69,10 @@ class SpreadsheetSpreadsheet(models.Model):
             domain += extra_domain
         else:
             domain.append(("active", "=", True))
-        count_map = {
-            spreadsheet.id: count
-            for spreadsheet, count in self.env[comodel]._read_group(
-                domain, ["spreadsheet_id"], ["__count"]
-            )
-        }
+        counts = self.env[comodel].read_group(
+            domain, ["spreadsheet_id"], ["spreadsheet_id"]
+        )
+        count_map = {c["spreadsheet_id"][0]: c["spreadsheet_id_count"] for c in counts}
         for rec in self:
             rec[field_name] = count_map.get(rec.id, 0)
 
@@ -82,6 +80,29 @@ class SpreadsheetSpreadsheet(models.Model):
     def _compute_filename(self):
         for record in self:
             record.filename = f"{record.name or _('Unnamed')}.json"
+
+    # ── KPI Alerts ─────────────────────────────────────────────────────────
+    alert_ids = fields.One2many(
+        comodel_name="spreadsheet.alert",
+        inverse_name="spreadsheet_id",
+        string="Alerts",
+    )
+    alert_count = fields.Integer(compute="_compute_alert_count", string="KPI Alerts")
+
+    @api.depends("alert_ids.active")
+    def _compute_alert_count(self):
+        self._compute_related_count("spreadsheet.alert", "alert_count")
+
+    def action_open_alerts(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("KPI Alerts"),
+            "res_model": "spreadsheet.alert",
+            "view_mode": "list,form",
+            "domain": [("spreadsheet_id", "=", self.id)],
+            "context": {"default_spreadsheet_id": self.id},
+        }
 
     def create_document_from_attachment(self, attachment_ids):
         attachments = self.env["ir.attachment"].browse(attachment_ids)

@@ -78,6 +78,16 @@
         />
     </record>
 
+    <record id="demo_kpi_dashboard" model="spreadsheet.spreadsheet">
+        <field name="name">KPI Dashboard</field>
+        <field name="owner_id" ref="base.user_admin" />
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_oca/demo/demo_kpi_dashboard.json"
+        />
+    </record>
+
     <record id="demo_pivot_dashboard" model="spreadsheet.spreadsheet">
         <field name="name">Partner Pivot Dashboard</field>
         <field name="owner_id" ref="base.user_admin" />
@@ -86,5 +96,33 @@
             type="base64"
             file="spreadsheet_oca/demo/demo_pivot_dashboard.json"
         />
+    </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         KPI Alerts
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <!-- Actual 0.12 is below the 0.15 target, so this alert fires and shows
+         what a triggered notification looks like. -->
+    <record id="demo_alert_revenue" model="spreadsheet.alert">
+        <field name="name">Revenue Growth Below Target</field>
+        <field name="spreadsheet_id" ref="demo_kpi_dashboard" />
+        <field name="cell_ref">C3</field>
+        <field name="sheet_name">Dashboard</field>
+        <field name="operator" eval="'&lt;'" />
+        <field name="threshold">0.15</field>
+        <field name="trigger_mode">edge</field>
+    </record>
+
+    <!-- Actual 42 is under the 50 target, so this one stays quiet — the
+         healthy counterpart to the alert above. -->
+    <record id="demo_alert_cost_lead" model="spreadsheet.alert">
+        <field name="name">Cost Per Lead Over Target</field>
+        <field name="spreadsheet_id" ref="demo_kpi_dashboard" />
+        <field name="cell_ref">C2</field>
+        <field name="sheet_name">Dashboard</field>
+        <field name="operator" eval="'&gt;'" />
+        <field name="threshold">50</field>
+        <field name="trigger_mode">level</field>
     </record>
 </odoo>
