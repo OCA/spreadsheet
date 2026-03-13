@@ -65,3 +65,20 @@ last executed.
 Note that the pivots are computed with the permissions of the schedule's
 **Run As** user — not the scheduler's — so a summary never exposes records
 that user could not read themselves.
+
+## **Drive pivot domains from spreadsheet cells**
+
+Named input parameters let a spreadsheet cell act as a filter for the Odoo
+pivots inside it — change the cell, and the next refresh uses the new value.
+
+- Go to 'Spreadsheet \> Configuration \> Input Parameters' and add one per
+  filter, giving it a **Name** and the **Cell Reference** holding its value.
+- Reference the parameter in a pivot domain with `%(name)s`, for example
+  `[("date_order", ">=", "%(start_date)s")]`.
+- **Sync Now** reads the current cell values; a scheduled refresh does this
+  automatically before recomputing.
+
+Only the *value* position of a domain is substituted — never a field name or an
+operator — so a parameter can filter a domain but cannot restructure it. An
+unknown parameter name is left in place and logged rather than silently
+matching everything.

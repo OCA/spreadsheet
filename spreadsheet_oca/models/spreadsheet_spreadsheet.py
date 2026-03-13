@@ -78,6 +78,34 @@ class SpreadsheetSpreadsheet(models.Model):
         for rec in self:
             rec[field_name] = count_map.get(rec.id, 0)
 
+    # ── Input Parameters ────────────────────────────────────────────────────
+    input_param_ids = fields.One2many(
+        comodel_name="spreadsheet.input_param",
+        inverse_name="spreadsheet_id",
+        string="Parameters",
+    )
+    input_param_count = fields.Integer(
+        compute="_compute_input_param_count", string="Input Parameters"
+    )
+
+    @api.depends("input_param_ids.active")
+    def _compute_input_param_count(self):
+        self._compute_related_count("spreadsheet.input_param", "input_param_count")
+
+    def action_open_input_params(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Input Parameters"),
+            "res_model": "spreadsheet.input_param",
+            "view_mode": "list,form",
+            "domain": [("spreadsheet_id", "=", self.id)],
+            "context": {
+                "default_spreadsheet_id": self.id,
+                "search_default_active": 1,
+            },
+        }
+
     @api.depends("name")
     def _compute_filename(self):
         for record in self:

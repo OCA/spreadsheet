@@ -8,3 +8,4 @@ from . import ir_websocket
 from . import spreadsheet_spreadsheet_import_mode
 from . import pivot_data
 from . import spreadsheet_refresh_schedule
+from . import spreadsheet_input_param

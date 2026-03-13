@@ -99,4 +99,32 @@
         <field name="interval_type">weeks</field>
         <field name="notify_partner_ids" eval="[(4, ref('base.partner_admin'))]" />
     </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         Input Parameters
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_param_start_date" model="spreadsheet.input_param">
+        <field name="name">start_date</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="cell_ref">Parameters!B2</field>
+        <field name="description">Start of reporting period</field>
+        <field name="current_value">2026-01-01</field>
+    </record>
+
+    <record id="demo_param_end_date" model="spreadsheet.input_param">
+        <field name="name">end_date</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="cell_ref">Parameters!B3</field>
+        <field name="description">End of reporting period</field>
+        <field name="current_value">2026-12-31</field>
+    </record>
+
+    <record id="demo_param_growth" model="spreadsheet.input_param">
+        <field name="name">growth_rate</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="cell_ref">Parameters!B4</field>
+        <field name="description">Expected annual growth rate</field>
+        <field name="current_value">0.15</field>
+    </record>
 </odoo>
