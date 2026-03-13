@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ── List view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_writeback_log_list_view">
+        <field name="name">spreadsheet.writeback.log.list</field>
+        <field name="model">spreadsheet.writeback.log</field>
+        <field name="arch" type="xml">
+            <list
+                string="Writeback Log"
+                decoration-danger="status == 'error'"
+                decoration-muted="status == 'rolled_back'"
+                default_order="writeback_at desc"
+            >
+                <field name="writeback_at" />
+                <field name="user_id" />
+                <field name="res_model" />
+                <field name="record_id" />
+                <field name="field_name" />
+                <field name="old_value" />
+                <field name="new_value" />
+                <field name="status" />
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Form view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_writeback_log_form_view">
+        <field name="name">spreadsheet.writeback.log.form</field>
+        <field name="model">spreadsheet.writeback.log</field>
+        <field name="arch" type="xml">
+            <form string="Writeback Log Entry" create="false" edit="false">
+                <header>
+                    <button
+                        name="action_rollback"
+                        type="object"
+                        string="Roll Back"
+                        class="btn-warning"
+                        invisible="status != 'ok'"
+                        confirm="This will restore the previous value on the target record. Continue?"
+                    />
+                    <field name="status" widget="statusbar" readonly="1" />
+                </header>
+                <sheet>
+                    <group>
+                        <group string="What was changed">
+                            <field name="spreadsheet_id" readonly="1" />
+                            <field name="res_model" readonly="1" />
+                            <field name="record_id" readonly="1" />
+                            <field name="field_name" readonly="1" />
+                        </group>
+                        <group string="Values">
+                            <field name="old_value" readonly="1" />
+                            <field name="new_value" readonly="1" />
+                        </group>
+                    </group>
+                    <group string="Metadata">
+                        <field name="user_id" readonly="1" />
+                        <field name="writeback_at" readonly="1" />
+                        <field
+                            name="error_message"
+                            readonly="1"
+                            invisible="not error_message"
+                        />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Action ────────────────────────────────────────────────── -->
+    <record model="ir.actions.act_window" id="spreadsheet_writeback_log_act_window">
+        <field name="name">Writeback Log</field>
+        <field name="res_model">spreadsheet.writeback.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- ── Smart button on spreadsheet form ─────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_writeback_button">
+        <field name="name">spreadsheet.spreadsheet.form.writeback</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_open_writeback_log"
+                    icon="fa-history"
+                    invisible="not writeback_enabled"
+                >
+                    <field
+                        string="Writeback Log"
+                        name="writeback_log_count"
+                        widget="statinfo"
+                    />
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ── Writeback settings on spreadsheet form ────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_writeback_field">
+        <field name="name">spreadsheet.spreadsheet.form.writeback_enabled</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='contributor_ids']" position="before">
+                <group string="Writeback" colspan="2">
+                    <field
+                        name="writeback_enabled"
+                        widget="boolean_toggle"
+                        help="When enabled, users can edit Odoo record values directly from this spreadsheet's List views. Every change is logged and can be rolled back."
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
