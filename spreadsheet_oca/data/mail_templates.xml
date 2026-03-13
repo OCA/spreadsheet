@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ══ Subscription digest email ════════════════════════════════════
+         Rendered by spreadsheet.subscription._render_digest_html().
+         Variables: spreadsheet, now_str, summaries, pivot_html_list, base_url
+
+         Customise via Settings > Technical > Views, search for
+         "spreadsheet.subscription.digest". -->
+    <record model="ir.ui.view" id="spreadsheet_subscription_digest_template">
+        <field name="name">spreadsheet.subscription.digest</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="spreadsheet_oca.spreadsheet_subscription_digest_template">
+                <div
+                    style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;max-width:700px;margin:0 auto"
+                >
+                    <h2
+                        style="background:#4a4a8a;color:#fff;padding:16px 20px;margin:0;border-radius:4px 4px 0 0"
+                    >
+                        <t t-out="spreadsheet.name or 'Spreadsheet Digest'" />
+                    </h2>
+                    <div
+                        style="background:#f7f7f7;padding:8px 20px;border-bottom:1px solid #ddd;font-size:12px;color:#777"
+                    >
+                        Generated: <t t-out="now_str" />
+                    </div>
+                    <div style="padding:16px 20px">
+                        <t t-if="not pivot_html_list">
+                            <p style="color:#888">
+                                No pivot data sources are available in this spreadsheet.
+                            </p>
+                        </t>
+                        <t t-else="">
+                            <t t-foreach="pivot_html_list" t-as="pivot_html">
+                                <div style="margin-bottom:20px">
+                                    <t t-out="pivot_html" />
+                                </div>
+                            </t>
+                        </t>
+                    </div>
+                    <!-- Action link -->
+                    <div style="padding:10px 20px;text-align:center">
+                        <t
+                            t-set="spreadsheet_url"
+                            t-value="'%s/web#id=%d&amp;model=spreadsheet.spreadsheet&amp;view_type=form' % (base_url, spreadsheet.id)"
+                        />
+                        <a
+                            t-att-href="spreadsheet_url"
+                            style="display:inline-block;padding:8px 24px;background:#4a4a8a;color:#fff;text-decoration:none;border-radius:4px;font-size:13px"
+                        >
+                            Open Spreadsheet
+                        </a>
+                    </div>
+                    <div
+                        style="background:#f0f0f0;padding:10px 20px;font-size:11px;color:#aaa;border-radius:0 0 4px 4px;text-align:center"
+                    >
+                        You are receiving this because you subscribed
+                        to digest emails for this spreadsheet.
+                    </div>
+                </div>
+            </t>
+        </field>
+    </record>
+</odoo>

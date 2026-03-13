@@ -87,4 +87,15 @@
             file="spreadsheet_oca/demo/demo_pivot_dashboard.json"
         />
     </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         Subscriptions
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_sub_weekly" model="spreadsheet.subscription">
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="partner_id" ref="base.partner_admin" />
+        <field name="frequency">weekly</field>
+        <field name="include_pivot_data" eval="True" />
+    </record>
 </odoo>
