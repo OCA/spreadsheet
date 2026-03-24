@@ -101,13 +101,10 @@ export class PivotPanelDisplay extends Component {
         const sortedColumn = this.store.definition.sortedColumn;
         const orderTranslate =
             sortedColumn.order === "asc" ? _t("ascending") : _t("descending");
-        let label = null;
-        if (sortedColumn.measure) {
-            const measure = this.PivotDataSource.getMeasure(sortedColumn.measure);
-            label = measure ? measure.displayName : sortedColumn.measure;
-        } else if (sortedColumn.groupBy) {
-            label = this.PivotDataSource.getFormattedGroupBy(sortedColumn.groupBy);
-        }
+        const measure = this.store.definition.measures.find(
+            (m) => m.fieldName === sortedColumn.measure
+        );
+        const label = this.PivotDataSource.getMeasure(measure.id).displayName;
         return `${label} (${orderTranslate})`;
     }
     get lastUpdate() {
