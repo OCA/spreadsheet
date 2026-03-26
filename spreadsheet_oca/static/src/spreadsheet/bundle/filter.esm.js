@@ -1,10 +1,15 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Component, onWillStart, useState} from "@odoo/owl";
-
+import {Domain} from "@web/core/domain";
+import {DomainSelector} from "@web/core/domain_selector/domain_selector";
+import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
 import {FilterValue} from "@spreadsheet/global_filters/components/filter_value/filter_value";
 import {ModelFieldSelector} from "@web/core/model_field_selector/model_field_selector";
 import {ModelSelector} from "@web/core/model_selector/model_selector";
+import {MultiRecordSelector} from "@web/core/record_selectors/multi_record_selector";
 import {RELATIVE_DATE_RANGE_TYPES} from "@spreadsheet/helpers/constants";
+const {Checkbox} = spreadsheet.components;
+import {user} from "@web/core/user";
 
 import {_t} from "@web/core/l10n/translation";
 import {globalFiltersFieldMatchers} from "@spreadsheet/global_filters/plugins/global_filters_core_plugin";
@@ -63,25 +68,42 @@ sidePanelRegistry.add("FilterPanel", {
 
 export class EditFilterPanel extends Component {
     setup() {
-        this.filterId = this.props.filter;
+        this.filterId = this.props.filter.id;
         this.orm = useService("orm");
+        this.nameService = useService("name");
+        this.dialog = useService("dialog");
         this.state = useState({
             label: this.props.filter.label,
             type: this.props.filter.type,
-            defaultValue: this.props.filter.defaultValue,
+            defaultValue: this.props.filter.defaultValue || [],
+            defaultValueDisplayNames: this.props.filter.defaultValueDisplayNames || [],
             rangeType: this.props.filter.rangeType || "year",
-            modelName: {technical: this.props.filter.modelName, label: null},
+            modelData: {technical: this.props.filter.modelName, label: null},
             objects: {},
+            includeChildren: this.props.filter.includeChildren,
+            domainOfAllowedValues: this.props.filter.domainOfAllowedValues,
+            valuesRestricted: Boolean(this.props.filter.domainOfAllowedValues?.length),
         });
         this.relativeDateRangeTypes = RELATIVE_DATE_RANGE_TYPES;
         onWillStart(this.willStart.bind(this));
     }
     async willStart() {
-        if (this.state.modelName.technical !== undefined) {
+        if (this.state.modelData.technical !== undefined) {
+            const technicalName = this.state.modelData.technical;
             const modelLabel = await this.orm.call("ir.model", "display_name_for", [
-                [this.state.modelName.technical],
+                [technicalName],
             ]);
-            this.state.modelName.label = modelLabel[0] && modelLabel[0].display_name;
+            this.state.modelData.label = modelLabel[0] && modelLabel[0].display_name;
+            if (this.state.includeChildren) {
+                this.state.modelData.hasParentRelation = true;
+            } else {
+                const hasParentRelation = await this.orm.call(
+                    "ir.model",
+                    "has_parent_relation",
+                    [technicalName]
+                );
+                this.state.modelData.hasParentRelation = hasParentRelation;
+            }
         }
         var ModelFields = [];
         for (var [objectType, objectClass] of Object.entries(
@@ -132,9 +154,46 @@ export class EditFilterPanel extends Component {
     onChangeFieldMatchOffset(object, ev) {
         this.state.objects[object.id].fieldMatch.offset = parseInt(ev.target.value, 10);
     }
-    onModelSelected(ev) {
-        this.state.modelName.technical = ev.technical;
-        this.state.modelName.label = ev.label;
+    async onModelSelected(ev) {
+        this.state.modelData.technical = ev.technical;
+        this.state.modelData.label = ev.label;
+        this.state.modelData.hasParentRelation = await this.orm.call(
+            "ir.model",
+            "has_parent_relation",
+            [ev.technical]
+        );
+        this.state.domainOfAllowedValues = [];
+    }
+    async onRecordsSelected(resIds) {
+        const defaultValueDisplayNames = await this.nameService.loadDisplayNames(
+            this.state.modelData.technical,
+            resIds
+        );
+        this.state.defaultValue = resIds;
+        this.state.defaultValueDisplayNames = Object.values(defaultValueDisplayNames);
+    }
+    onUpdateDomain(domain) {
+        this.state.domainOfAllowedValues = domain;
+    }
+    getCorrectDomain() {
+        const domain = this.state.domainOfAllowedValues;
+        if (domain) {
+            return new Domain(domain).toList(user.context);
+        }
+        return [];
+    }
+    changeDomainRestriction(value) {
+        this.state.valuesRestricted = value;
+        this.state.domainOfAllowedValues = [];
+    }
+    editDomain() {
+        this.dialog.add(DomainSelectorDialog, {
+            resModel: this.state.modelData.technical,
+            domain: this.getCorrectDomain(),
+            readonly: false,
+            isDebugMode: Boolean(this.env.debug),
+            onConfirm: this.onUpdateDomain.bind(this),
+        });
     }
     onDateRangeChange(ev) {
         this.state.rangeType = ev.target.value;
@@ -148,10 +207,13 @@ export class EditFilterPanel extends Component {
         const filter = {
             id: this.props.filter.id || uuidGenerator.uuidv4(),
             type: this.state.type,
-            label: this.state.label,
+            label: this.state.label || "",
             defaultValue: this.state.defaultValue,
+            defaultValueDisplayNames: this.state.defaultValueDisplayNames,
             rangeType: this.state.rangeType,
-            modelName: this.state.modelName.technical,
+            modelName: this.state.modelData.technical,
+            includeChildren: this.state.includeChildren,
+            domainOfAllowedValues: this.state.domainOfAllowedValues,
         };
         const filterMatching = {};
         Object.values(this.state.objects).forEach((object) => {
@@ -227,7 +289,13 @@ export class EditFilterPanel extends Component {
 }
 
 EditFilterPanel.template = "spreadsheet_oca.EditFilterPanel";
-EditFilterPanel.components = {ModelSelector, ModelFieldSelector};
+EditFilterPanel.components = {
+    Checkbox,
+    DomainSelector,
+    ModelSelector,
+    ModelFieldSelector,
+    MultiRecordSelector,
+};
 
 sidePanelRegistry.add("EditFilterPanel", {
     title: "Edit Filter",

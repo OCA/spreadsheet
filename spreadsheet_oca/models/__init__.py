@@ -1,3 +1,4 @@
+from . import ir_model
 from . import spreadsheet_abstract
 from . import spreadsheet_spreadsheet_tag
 from . import spreadsheet_spreadsheet
