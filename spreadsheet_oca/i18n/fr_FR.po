@@ -121,6 +121,12 @@ msgid "Automatically filter on the current period"
 msgstr ""
 
 #. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Automatically filter on the current user"
+msgstr ""
+
+#. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__badge_image
 msgid "Badge Background"
 msgstr ""
@@ -411,6 +417,12 @@ msgstr ""
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Include children"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Insert list"
 msgstr ""
 
@@ -506,6 +518,11 @@ msgstr ""
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
 msgid "Model"
+msgstr ""
+
+#. module: spreadsheet_oca
+#: model:ir.model,name:spreadsheet_oca.model_ir_model
+msgid "Models"
 msgstr ""
 
 #. module: spreadsheet_oca
@@ -614,6 +631,12 @@ msgstr ""
 
 #. module: spreadsheet_oca
 #. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Possible values"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Previous"
 msgstr ""
@@ -683,6 +706,12 @@ msgstr ""
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_user_id
 msgid "Responsible User"
+msgstr ""
+
+#. module: spreadsheet_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
+msgid "Restrict values with a domain"
 msgstr ""
 
 #. module: spreadsheet_oca
