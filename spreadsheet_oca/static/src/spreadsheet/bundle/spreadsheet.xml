@@ -243,17 +243,75 @@
                 t-model="state.defaultValue"
             />
         </div>
-
-        <div class="o_spreadsheet_oca_filter" t-if="state.type === 'relation'">
-            <div class="spreadsheet_oca_filter_label">Related model</div>
-            <div class="spreadsheet_oca_filter_value">
-                <ModelSelector
-                    value="state.modelName.label or ''"
-                    models="models"
-                    onModelSelected.bind="onModelSelected"
+        <t t-if="state.type === 'relation'">
+            <div class="o_spreadsheet_oca_filter">
+                <div class="spreadsheet_oca_filter_label">Related model</div>
+                <div class="spreadsheet_oca_filter_value">
+                    <ModelSelector
+                        value="state.modelData.label or ''"
+                        models="models"
+                        onModelSelected.bind="onModelSelected"
+                    />
+                </div>
+                <Checkbox
+                    t-if="state.modelData.hasParentRelation"
+                    name="'includeChildren'"
+                    label.translate="Include children"
+                    value="state.includeChildren"
+                    onChange="(value) => this.state.includeChildren = value"
                 />
             </div>
-        </div>
+            <t t-if="state.modelData.technical">
+                <div class="o_spreadsheet_oca_filter">
+                    <div class="spreadsheet_oca_filter_label">Default value</div>
+                    <div
+                        class="spreadsheet_oca_filter_value"
+                        t-if="!(state.modelData.technical === 'res.users' and state.defaultValue === 'current_user')"
+                    >
+                        <MultiRecordSelector
+                            resModel="state.modelData.technical"
+                            resIds="state.defaultValue || []"
+                            t-key="state.modelData.technical"
+                            placeholder="''"
+                            domain="getCorrectDomain()"
+                            update.bind="onRecordsSelected"
+                        />
+                    </div>
+                    <div
+                        class="spreadsheet_oca_filter_value"
+                        t-if="state.modelData.technical === 'res.users'"
+                    >
+                        <Checkbox
+                            className="'mb-1'"
+                            label.translate="Automatically filter on the current user"
+                            onChange="(value) => this.state.defaultValue = value ? 'current_user' : []"
+                            value="state.defaultValue === 'current_user'"
+                        />
+                    </div>
+                </div>
+                <div class="o_spreadsheet_oca_filter">
+                    <div class="spreadsheet_oca_filter_label">Possible values</div>
+                    <div class="spreadsheet_oca_filter_value">
+                        <Checkbox
+                            className="'mb-1'"
+                            label.translate="Restrict values with a domain"
+                            onChange.bind="changeDomainRestriction"
+                            value="state.valuesRestricted"
+                        />
+                    </div>
+                    <t t-if="state.valuesRestricted">
+                        <DomainSelector
+                            resModel="state.modelData.technical"
+                            domain="getCorrectDomain()"
+                            t-key="'filter_' + filterId"
+                        />
+                        <div class="btn btn-link" t-on-click="editDomain">
+                            Edit domain
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
         <div
             class="o_spreadsheet_oca_filter"
             t-foreach="Object.values(state.objects)"
@@ -296,7 +354,7 @@
                 </select>
             </div>
         </div>
-        <div class="o-sidePanelButtons">
+        <div class="o-sidePanelButtons justify-content-center">
             <button t-on-click="onRemove" class="btn btn-danger">Remove</button>
             <button t-on-click="onCancel" class="btn btn-warning">Cancel</button>
             <button t-on-click="onSave" class="btn btn-primary">Save</button>
