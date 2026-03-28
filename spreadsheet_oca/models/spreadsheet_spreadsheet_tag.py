@@ -19,7 +19,7 @@ class SpreadsheetSpreadsheetTags(models.Model):
         help="Transparent tags are not visible in the kanban view",
     )
 
-    name_uniq = models.Constraint(
+    _name_uniq = models.Constraint(
         "unique (name)",
         "A tag with the same name already exists.",
     )
