@@ -1,0 +1,101 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_oca
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-05-25 12:11+0000\n"
+"Last-Translator: \"Sandrine (ACSONE)\" <sandrine.ravet@acsone.eu>\n"
+"Language-Team: none\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__active
+msgid "Active"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__can_edit
+msgid "Can Edit"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
+msgid "Copy"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_group_id
+msgid "Dashboard Group"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
+msgid "Edit"
+msgstr "Modifier"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_spreadsheet_import
+msgid "Import data to spreadsheet"
+msgstr "Importer des données dans la feuille de calcul"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: spreadsheet_dashboard_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_new_spreadsheet
+msgid "New dashboard"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
+#, python-format
+msgid "Search operation not supported"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_dashboard
+msgid "Spreadsheet Dashboard"
+msgstr "Tableau de bord des feuilles de calcul"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_raw
+msgid "Spreadsheet Raw"
+msgstr "Feuille de calcul brute"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_revision_ids
+msgid "Spreadsheet Revision"
+msgstr "Révision de la feuille de calcul"
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-python
+#: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
+#, python-format
+msgid "The value has to be a boolean"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard
+msgid "To dashboard"
+msgstr "Au tableau de bord"
+
+#. module: spreadsheet_dashboard_oca
+#: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_sheet
+msgid "To dashboard new sheet"
+msgstr "Nouvelle feuille du tableau de bord"
