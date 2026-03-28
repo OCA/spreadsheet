@@ -1,4 +1,3 @@
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
 
 import {Domain} from "@web/core/domain";
@@ -6,7 +5,7 @@ import {Many2XAutocomplete} from "@web/views/fields/relational_utils";
 import {_t} from "@web/core/l10n/translation";
 import {useService} from "@web/core/utils/hooks";
 
-const {chartSidePanelComponentRegistry, chartSubtypeRegistry} = spreadsheet.registries;
+const {chartSidePanelComponentRegistry} = spreadsheet.registries;
 const {PieChartDesignPanel} = spreadsheet.components;
 const {Component} = owl;
 
@@ -97,12 +96,3 @@ chartSidePanelComponentRegistry
         configuration: OdooPanel,
         design: PieChartDesignPanel,
     });
-
-
-
-
-
-
-
-
-

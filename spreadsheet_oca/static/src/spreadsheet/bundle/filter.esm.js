@@ -4,10 +4,11 @@ import {Component, onWillStart, useState} from "@odoo/owl";
 import {FilterValue} from "@spreadsheet/global_filters/components/filter_value/filter_value";
 import {ModelFieldSelector} from "@web/core/model_field_selector/model_field_selector";
 import {ModelSelector} from "@web/core/model_selector/model_selector";
-import {RELATIVE_PERIODS} from "@spreadsheet/global_filters/helpers";
-
 import {_t} from "@web/core/l10n/translation";
-import {globalFieldMatchingRegistry} from "@spreadsheet/global_filters/helpers";
+import {
+    RELATIVE_PERIODS,
+    globalFieldMatchingRegistry,
+} from "@spreadsheet/global_filters/helpers";
 import {useService} from "@web/core/utils/hooks";
 
 const {topbarMenuRegistry} = spreadsheet.registries;
@@ -87,8 +88,11 @@ export class EditFilterPanel extends Component {
                     name: objectClass.getDisplayName(getters, objectId),
                     tag: await objectClass.getTag(getters, objectId),
                     fieldMatch:
-                        objectClass.getFieldMatching(getters, objectId, this.props.filter.id) ||
-                        {},
+                        objectClass.getFieldMatching(
+                            getters,
+                            objectId,
+                            this.props.filter.id
+                        ) || {},
                     fields: fields,
                     type: objectType,
                     model: objectClass.getModel(getters, objectId),

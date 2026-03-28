@@ -1,4 +1,3 @@
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Component, onWillStart, onWillUpdateProps, useState} from "@odoo/owl";
 import {Domain} from "@web/core/domain";
@@ -179,9 +178,13 @@ PivotPanel.components = {
     PivotPanelDisplay,
 };
 
-pivotSidePanelRegistry.add("ODOO",  {
-    editor: PivotPanel,
-}, { force: true });
+pivotSidePanelRegistry.add(
+    "ODOO",
+    {
+        editor: PivotPanel,
+    },
+    {force: true}
+);
 
 export class ListPanelDisplay extends Component {
     setup() {
@@ -281,4 +284,3 @@ sidePanelRegistry.add("ListPanel", {
     title: "List information",
     Body: ListPanel,
 });
-

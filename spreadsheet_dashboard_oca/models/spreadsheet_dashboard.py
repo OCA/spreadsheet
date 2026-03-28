@@ -27,7 +27,7 @@ class SpreadsheetDashboard(models.Model):
         if operator != "=":
             raise NotImplementedError(_("Search operation not supported"))
         if not isinstance(value, bool):
-            raise ValidationError(_("The value has to be a boolean"))
+            raise ValidationError(self.env._("The value has to be a boolean"))
         no_edit_ids = (
             self.env["ir.model.data"]
             .search(

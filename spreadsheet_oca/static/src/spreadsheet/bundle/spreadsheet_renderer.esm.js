@@ -1,4 +1,3 @@
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
 
 import {Component} from "@odoo/owl";
@@ -211,4 +210,3 @@ SpreadsheetRenderer.props = {
     model: String,
     importData: Function,
 };
-

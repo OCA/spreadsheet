@@ -1,4 +1,3 @@
-
 import * as spreadsheet from "@odoo/o-spreadsheet";
 
 import {Domain} from "@web/core/domain";
@@ -293,5 +292,4 @@ ActionSpreadsheetOca.components = {
     SpreadsheetControlPanel,
 };
 ActionSpreadsheetOca.props = {...standardActionServiceProps};
-actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, { force: true });
-
+actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {force: true});
