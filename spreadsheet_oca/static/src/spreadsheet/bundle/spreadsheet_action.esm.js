@@ -137,7 +137,8 @@ export class ActionSpreadsheetOca extends Component {
     }
     importCreateOrReuseSheet(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
-        if (this.import_data.new === undefined) {
+        var row = 0;
+        if (this.import_data.new === undefined && this.import_data.new_sheet) {
             sheetId = uuidGenerator.uuidv4();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
@@ -149,6 +150,27 @@ export class ActionSpreadsheetOca extends Component {
                 sheetIdFrom,
                 sheetIdTo: sheetId,
             });
+        } else if (this.import_data.new === undefined) {
+            row = spreadsheet_model.getters.getNumberRows(sheetId);
+            var maxcols = spreadsheet_model.getters.getNumberCols(sheetId);
+            var filled = false;
+            while (row >= 0) {
+                for (var col = maxcols; col >= 0; col--) {
+                    if (
+                        spreadsheet_model.getters.getCell(sheetId, col, row) !==
+                            undefined &&
+                        !spreadsheet_model.getters.getCell(sheetId, col, row).isEmpty()
+                    ) {
+                        filled = true;
+                        break;
+                    }
+                }
+                if (filled) {
+                    break;
+                }
+                row -= 1;
+            }
+            row += 1;
         }
         return sheetId;
     }
@@ -233,7 +255,7 @@ export class ActionSpreadsheetOca extends Component {
         });
         const ds = spreadsheet_model.getters.getPivot(pivotId);
         await ds.load();
-        const table = ds.getTableStructure();
+        const table = ds.getExpandedTableStructure();
         spreadsheet_model.dispatch("INSERT_PIVOT_WITH_TABLE", {
             sheetId,
             col: 0,

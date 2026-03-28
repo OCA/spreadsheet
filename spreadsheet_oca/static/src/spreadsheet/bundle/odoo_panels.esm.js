@@ -5,7 +5,7 @@ import {Many2XAutocomplete} from "@web/views/fields/relational_utils";
 import {_t} from "@web/core/l10n/translation";
 import {useService} from "@web/core/utils/hooks";
 
-const {chartSidePanelComponentRegistry, chartSubtypeRegistry} = spreadsheet.registries;
+const {chartSidePanelComponentRegistry} = spreadsheet.registries;
 const {PieChartDesignPanel} = spreadsheet.components;
 const {Component} = owl;
 
@@ -14,15 +14,19 @@ export class OdooPanel extends Component {
         this.menus = useService("menu");
     }
     get menuProps() {
-        return {
+        const menu = this.env.model.getters.getChartOdooMenu(this.props.figureId);
+        var result = {
             fieldString: _t("Menu Items"),
             resModel: "ir.ui.menu",
             update: this.updateMenu.bind(this),
             activeActions: {},
             getDomain: this.getDomain.bind(this),
-            placeholder: _t("Select a menu..."),
-            value: this.menuId ? this.menuId[1] : "",
         };
+        if (menu) {
+            result.value = menu.name;
+            result.id = menu.id;
+        }
+        return result;
     }
     getDomain() {
         const menus = this.menus
@@ -92,69 +96,3 @@ chartSidePanelComponentRegistry
         configuration: OdooPanel,
         design: PieChartDesignPanel,
     });
-
-chartSubtypeRegistry.add("odoo_line", {
-    matcher: (definition) =>
-        definition.type === "odoo_line" && !definition.stacked && !definition.fillArea,
-    subtypeDefinition: {stacked: false, fillArea: false},
-    displayName: _t("Line"),
-    chartSubtype: "odoo_line",
-    chartType: "odoo_line",
-    category: "line",
-    preview: "o-spreadsheet-ChartPreview.LINE_CHART",
-});
-chartSubtypeRegistry.add("odoo_stacked_line", {
-    matcher: (definition) =>
-        definition.type === "odoo_line" && definition.stacked && !definition.fillArea,
-    subtypeDefinition: {stacked: true, fillArea: false},
-    displayName: _t("Stacked Line"),
-    chartSubtype: "odoo_stacked_line",
-    chartType: "odoo_line",
-    category: "line",
-    preview: "o-spreadsheet-ChartPreview.STACKED_LINE_CHART",
-});
-chartSubtypeRegistry.add("odoo_area", {
-    matcher: (definition) =>
-        definition.type === "odoo_line" && !definition.stacked && definition.fillArea,
-    subtypeDefinition: {stacked: false, fillArea: true},
-    displayName: _t("Area"),
-    chartSubtype: "odoo_area",
-    chartType: "odoo_line",
-    category: "area",
-    preview: "o-spreadsheet-ChartPreview.AREA_CHART",
-});
-chartSubtypeRegistry.add("odoo_stacked_area", {
-    matcher: (definition) =>
-        definition.type === "odoo_line" && definition.stacked && definition.fillArea,
-    subtypeDefinition: {stacked: true, fillArea: true},
-    displayName: _t("Stacked Area"),
-    chartSubtype: "odoo_stacked_area",
-    chartType: "odoo_line",
-    category: "area",
-    preview: "o-spreadsheet-ChartPreview.STACKED_AREA_CHART",
-});
-chartSubtypeRegistry.add("odoo_bar", {
-    matcher: (definition) => definition.type === "odoo_bar" && !definition.stacked,
-    subtypeDefinition: {stacked: false},
-    displayName: _t("Column"),
-    chartSubtype: "odoo_bar",
-    chartType: "odoo_bar",
-    category: "column",
-    preview: "o-spreadsheet-ChartPreview.COLUMN_CHART",
-});
-chartSubtypeRegistry.add("odoo_stacked_bar", {
-    matcher: (definition) => definition.type === "odoo_bar" && definition.stacked,
-    subtypeDefinition: {stacked: true},
-    displayName: _t("Stacked Column"),
-    chartSubtype: "odoo_stacked_bar",
-    chartType: "odoo_bar",
-    category: "column",
-    preview: "o-spreadsheet-ChartPreview.STACKED_COLUMN_CHART",
-});
-chartSubtypeRegistry.add("odoo_pie", {
-    displayName: _t("Pie"),
-    chartSubtype: "odoo_pie",
-    chartType: "odoo_pie",
-    category: "pie",
-    preview: "o-spreadsheet-ChartPreview.PIE_CHART",
-});

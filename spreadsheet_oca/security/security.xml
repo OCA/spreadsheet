@@ -8,16 +8,10 @@
     </record>
     <record id="group_user" model="res.groups">
         <field name="name">User</field>
-        <field name="category_id" ref="module_category_spreedsheet" />
     </record>
     <record id="group_manager" model="res.groups">
         <field name="name">Manager</field>
-        <field name="category_id" ref="module_category_spreedsheet" />
         <field name="implied_ids" eval="[(4, ref('group_user'))]" />
-        <field
-            name="users"
-            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
-        />
     </record>
     <record model="ir.rule" id="spreadsheet_company_rule">
         <field name="name">Spreadsheet Company Rule</field>
@@ -36,7 +30,7 @@
         <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
         <field
             name="domain_force"
-        >['|', ('contributor_ids','=', user.id), ('contributor_group_ids','in', user.groups_id.ids)]</field>
+        >['|', ('contributor_ids','=', user.id), ('contributor_group_ids','in', user.group_ids.ids)]</field>
         <field name="perm_create" eval="False" />
         <field name="perm_unlink" eval="False" />
     </record>
@@ -46,7 +40,7 @@
         <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
         <field
             name="domain_force"
-        >['|', ('reader_ids','=', user.id), ('reader_group_ids','in', user.groups_id.ids)]</field>
+        >['|', ('reader_ids','=', user.id), ('reader_group_ids','in', user.group_ids.ids)]</field>
         <field name="perm_write" eval="False" />
         <field name="perm_create" eval="False" />
         <field name="perm_unlink" eval="False" />
@@ -60,6 +54,6 @@
     <record model="ir.rule" id="spreadsheet_import_mode_rule">
         <field name="name">Spreadsheet Import mode</field>
         <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
-        <field name="domain_force">[('group_ids','in', user.groups_id.ids)]</field>
+        <field name="domain_force">[('group_ids','in', user.group_ids.ids)]</field>
     </record>
 </odoo>

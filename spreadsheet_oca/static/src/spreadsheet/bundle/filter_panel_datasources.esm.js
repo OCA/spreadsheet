@@ -1,16 +1,13 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Component, onWillStart, onWillUpdateProps, useRef, useState} from "@odoo/owl";
+import {Component, onWillStart, onWillUpdateProps, useState} from "@odoo/owl";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
 import {_t} from "@web/core/l10n/translation";
 import {formatDate} from "@web/core/l10n/dates";
 import {useService} from "@web/core/utils/hooks";
-import {ODOO_AGGREGATORS} from "@spreadsheet/pivot/pivot_helpers";
 
 const {DateTime} = luxon;
-const {PivotTitleSection, PivotLayoutConfigurator} = spreadsheet.components;
-const {useLocalStore, PivotSidePanelStore} = spreadsheet.stores;
 const {sidePanelRegistry, topbarMenuRegistry, pivotSidePanelRegistry} =
     spreadsheet.registries;
 
@@ -40,53 +37,9 @@ topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
     ]);
 });
 
-export class PivotLayoutConfiguratorWithAggregators extends PivotLayoutConfigurator {
-    setup() {
-        super.setup();
-        this.AGGREGATORS = ODOO_AGGREGATORS;
-    }
-}
-
-export class PivotTitleSectionInsertion extends PivotTitleSection {
-    get cogWheelMenuItems() {
-        const res = super.cogWheelMenuItems;
-        res.push(
-            {
-                name: _t("Re-insert Dynamic"),
-                icon: "o-spreadsheet-Icon.INSERT_PIVOT",
-                execute: (env) => this.reinsertTable(env, "dynamic"),
-            },
-            {
-                name: _t("Re-insert Static"),
-                icon: "o-spreadsheet-Icon.INSERT_PIVOT",
-                execute: (env) => this.reinsertTable(env, "static"),
-            }
-        );
-        return res;
-    }
-    reinsertTable(env, mode) {
-        const zone = env.model.getters.getSelectedZone();
-        const table = env.model.getters
-            .getPivot(this.props.pivotId)
-            .getTableStructure()
-            .export();
-        env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
-            pivotId: this.props.pivotId,
-            table,
-            col: zone.left,
-            row: zone.top,
-            sheetId: env.model.getters.getActiveSheetId(),
-            pivotMode: mode,
-        });
-        env.model.dispatch("REFRESH_PIVOT", {id: this.props.pivotId});
-    }
-}
-
 export class PivotPanelDisplay extends Component {
     setup() {
         this.dialog = useService("dialog");
-        this.store = useLocalStore(PivotSidePanelStore, this.props.pivotId);
-        this.pivotPanelRef = useRef("pivotPanel");
         onWillStart(this.modelData.bind(this));
         onWillUpdateProps(this.modelData.bind(this));
     }
@@ -95,16 +48,27 @@ export class PivotPanelDisplay extends Component {
         this.modelLabel = await this.PivotDataSource.getModelLabel();
     }
     get domain() {
-        return new Domain(this.store.definition.domain).toString();
+        return new Domain(this.props.pivotDefinition.domain).toString();
+    }
+    get pivotDimensions() {
+        const {rows = [], columns = []} = this.props.pivotDefinition;
+        return [...rows, ...columns].map((dim) => {
+            const label = dim.displayName || dim.fieldName;
+            return dim.granularity ? `${label} (${dim.granularity})` : label;
+        });
     }
     get sortInformation() {
-        const sortedColumn = this.store.definition.sortedColumn;
+        const sortedColumn = this.props.pivotDefinition.sortedColumn;
         const orderTranslate =
             sortedColumn.order === "asc" ? _t("ascending") : _t("descending");
-        const measure = this.store.definition.measures.find(
-            (m) => m.fieldName === sortedColumn.measure
-        );
-        const label = this.PivotDataSource.getMeasure(measure.id).displayName;
+
+        let label = null;
+        if (sortedColumn.measure) {
+            const measure = this.PivotDataSource.getMeasure(sortedColumn.measure);
+            label = measure ? measure.displayName : sortedColumn.measure;
+        } else if (sortedColumn.groupBy) {
+            label = this.PivotDataSource.getFormattedGroupBy(sortedColumn.groupBy);
+        }
         return `${label} (${orderTranslate})`;
     }
     get lastUpdate() {
@@ -116,39 +80,84 @@ export class PivotPanelDisplay extends Component {
     }
     editDomain() {
         this.dialog.add(DomainSelectorDialog, {
-            resModel: this.store.definition.model,
+            resModel: this.props.pivotDefinition.model,
             domain: this.domain,
             readonly: false,
             isDebugMode: Boolean(this.env.debug),
             onConfirm: this.onSelectDomain.bind(this),
         });
     }
-    updateDimensions(dimensions) {
-        this.store.update(dimensions);
-    }
     onSelectDomain(domain) {
-        this.store.update({domain});
+        this.env.model.dispatch("UPDATE_ODOO_PIVOT_DOMAIN", {
+            pivotId: this.props.pivotId,
+            domain: new Domain(domain).toList(),
+        });
     }
-    getScrollableContainerEl() {
-        return this.pivotPanelRef.el;
+    async insertPivot() {
+        const pivotId = this.props.pivotId;
+        const {type} = this.env.model.getters.getPivotCoreDefinition(pivotId);
+        const position = this.env.model.getters.getActivePosition();
+        let table = null;
+        if (type === "ODOO") {
+            const dataSource = this.env.model.getters.getPivot(pivotId);
+            const model = await dataSource.copyModelWithOriginalDomain();
+            table = model.getCollapsedTableStructure().export();
+        } else {
+            table = this.env.model.getters
+                .getPivot(pivotId)
+                .getCollapsedTableStructure()
+                .export();
+        }
+        this.env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
+            ...position,
+            pivotId,
+            table,
+            pivotMode: "static",
+        });
+        this.env.model.dispatch("REFRESH_PIVOT", {id: pivotId});
     }
-    flipAxis() {
-        const dimensions = {
-            rows: this.store.definition.columns,
-            columns: this.store.definition.rows,
-        };
-        this.updateDimensions(dimensions);
+    async insertDynamicPivot() {
+        const pivotId = this.props.pivotId;
+        const {type} = this.env.model.getters.getPivotCoreDefinition(pivotId);
+        const position = this.env.model.getters.getActivePosition();
+        let table = null;
+        if (type === "ODOO") {
+            const dataSource = this.env.model.getters.getPivot(this.props.pivotId);
+            const model = await dataSource.copyModelWithOriginalDomain();
+            table = model.getExpandedTableStructure().export();
+        } else {
+            table = this.env.model.getters
+                .getPivot(this.props.pivotId)
+                .getExpandedTableStructure()
+                .export();
+        }
+        this.env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
+            ...position,
+            pivotId,
+            table,
+            pivotMode: "dynamic",
+        });
+        this.env.model.dispatch("REFRESH_PIVOT", {id: pivotId});
+    }
+    delete() {
+        this.env.askConfirmation(
+            _t("Are you sure you want to delete this pivot?"),
+            () => {
+                this.env.model.dispatch("REMOVE_PIVOT", {
+                    pivotId: this.props.pivotId,
+                });
+            }
+        );
     }
 }
 
 PivotPanelDisplay.template = "spreadsheet_oca.PivotPanelDisplay";
 PivotPanelDisplay.components = {
     DomainSelector,
-    PivotTitleSectionInsertion,
-    PivotLayoutConfiguratorWithAggregators,
 };
 PivotPanelDisplay.properties = {
     pivotId: String,
+    pivotDefinition: Object,
 };
 
 export class PivotPanel extends Component {
@@ -157,6 +166,10 @@ export class PivotPanel extends Component {
     }
     get pivotType() {
         return this.env.model.getters.getPivotCoreDefinition(this.pivotId).type;
+    }
+    get pivotDefinition() {
+        const dataSource = this.env.model.getters.getPivot(this.pivotId);
+        return dataSource ? dataSource.definition || {} : {};
     }
 }
 
