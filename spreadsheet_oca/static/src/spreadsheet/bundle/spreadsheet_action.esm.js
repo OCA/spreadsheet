@@ -255,7 +255,7 @@ export class ActionSpreadsheetOca extends Component {
         });
         const ds = spreadsheet_model.getters.getPivot(pivotId);
         await ds.load();
-        const table = ds.getTableStructure();
+        const table = ds.getExpandedTableStructure();
         spreadsheet_model.dispatch("INSERT_PIVOT_WITH_TABLE", {
             sheetId,
             col: 0,
@@ -292,4 +292,6 @@ ActionSpreadsheetOca.components = {
     SpreadsheetControlPanel,
 };
 ActionSpreadsheetOca.props = {...standardActionServiceProps};
-actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {force: true});
+actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {
+    force: true,
+});

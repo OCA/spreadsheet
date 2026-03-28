@@ -101,11 +101,11 @@ export class PivotPanelDisplay extends Component {
         if (type === "ODOO") {
             const dataSource = this.env.model.getters.getPivot(pivotId);
             const model = await dataSource.copyModelWithOriginalDomain();
-            table = model.getTableStructure().export();
+            table = model.getCollapsedTableStructure().export();
         } else {
             table = this.env.model.getters
                 .getPivot(pivotId)
-                .getTableStructure()
+                .getCollapsedTableStructure()
                 .export();
         }
         this.env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
@@ -124,11 +124,11 @@ export class PivotPanelDisplay extends Component {
         if (type === "ODOO") {
             const dataSource = this.env.model.getters.getPivot(this.props.pivotId);
             const model = await dataSource.copyModelWithOriginalDomain();
-            table = model.getTableStructure().export();
+            table = model.getExpandedTableStructure().export();
         } else {
             table = this.env.model.getters
                 .getPivot(this.props.pivotId)
-                .getTableStructure()
+                .getExpandedTableStructure()
                 .export();
         }
         this.env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
@@ -178,13 +178,9 @@ PivotPanel.components = {
     PivotPanelDisplay,
 };
 
-pivotSidePanelRegistry.add(
-    "ODOO",
-    {
-        editor: PivotPanel,
-    },
-    {force: true}
-);
+pivotSidePanelRegistry.add("ODOO", {
+    editor: PivotPanel,
+});
 
 export class ListPanelDisplay extends Component {
     setup() {
