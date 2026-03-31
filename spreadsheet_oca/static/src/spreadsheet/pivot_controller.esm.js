@@ -52,13 +52,15 @@ patch(PivotRenderer.prototype, {
                     default_name: this.model.metaData.title,
                     default_datasource_name: this.model.metaData.title,
                     default_can_be_dynamic: false,
+                    default_can_have_dynamic_cols: false,
+                    // Default_can_be_dynamic: true,
+                    // default_can_have_dynamic_cols: this.containsColGroupBys(),
                     default_import_data: {
                         mode: "pivot",
-                        metaData: this.model.metaData,
-                        searchParams: {
-                            ...this.model.searchParams,
-                            domain: this.env.searchModel.domainString,
-                        },
+                        metaData: JSON.parse(JSON.stringify(this.model.metaData)),
+                        searchParams: JSON.parse(
+                            JSON.stringify(this.model.searchParams)
+                        ),
                     },
                 },
             }

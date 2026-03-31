@@ -61,14 +61,8 @@ export class PivotPanelDisplay extends Component {
         const sortedColumn = this.props.pivotDefinition.sortedColumn;
         const orderTranslate =
             sortedColumn.order === "asc" ? _t("ascending") : _t("descending");
-
-        let label = null;
-        if (sortedColumn.measure) {
-            const measure = this.PivotDataSource.getMeasure(sortedColumn.measure);
-            label = measure ? measure.displayName : sortedColumn.measure;
-        } else if (sortedColumn.groupBy) {
-            label = this.PivotDataSource.getFormattedGroupBy(sortedColumn.groupBy);
-        }
+        const measure = this.PivotDataSource.getMeasure(sortedColumn.measure);
+        const label = measure ? measure.displayName : sortedColumn.measure;
         return `${label} (${orderTranslate})`;
     }
     get lastUpdate() {
@@ -178,9 +172,13 @@ PivotPanel.components = {
     PivotPanelDisplay,
 };
 
-pivotSidePanelRegistry.add("ODOO", {
-    editor: PivotPanel,
-});
+pivotSidePanelRegistry.add(
+    "ODOO",
+    {
+        editor: PivotPanel,
+    },
+    {force: true}
+);
 
 export class ListPanelDisplay extends Component {
     setup() {

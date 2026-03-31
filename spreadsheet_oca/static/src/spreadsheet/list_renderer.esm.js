@@ -32,7 +32,7 @@ patch(ListRenderer.prototype, {
                         mode: "list",
                         metaData: {
                             model: model.resModel,
-                            domain: this.env.searchModel.domainString,
+                            domain: model.domain,
                             orderBy: model.orderBy,
                             context: omit(
                                 model.searchParams?.context || {},

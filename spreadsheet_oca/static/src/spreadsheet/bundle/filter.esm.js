@@ -4,6 +4,7 @@ import {Component, onWillStart, useState} from "@odoo/owl";
 import {FilterValue} from "@spreadsheet/global_filters/components/filter_value/filter_value";
 import {ModelFieldSelector} from "@web/core/model_field_selector/model_field_selector";
 import {ModelSelector} from "@web/core/model_selector/model_selector";
+
 import {_t} from "@web/core/l10n/translation";
 import {
     RELATIVE_PERIODS,

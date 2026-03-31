@@ -1,67 +1,41 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {patch} from "@web/core/utils/patch";
-import {onWillUpdateProps} from "@odoo/owl";
 
-const {chartSubtypeRegistry} = spreadsheet.registries;
-const {ChartTypePicker} = spreadsheet.components;
+const {chartRegistry} = spreadsheet.registries;
+const {ChartPanel} = spreadsheet.components;
+export function isOdooKey(code) {
+    return code.startsWith("odoo_");
+}
 
-const ODOO_PREFIX = "odoo_";
-const isOdooKey = (key) => key?.startsWith(ODOO_PREFIX);
-
-const groupByCategory = (items) =>
-    items.reduce((acc, item) => {
-        (acc[item.category] ||= []).push(item);
-        return acc;
-    }, {});
-
-const getFigureDefinition = (env, figureId) =>
-    env.model.getters.getChartDefinition(figureId);
-
-patch(ChartTypePicker.prototype, {
-    setup() {
-        super.setup();
-        const refresh = (figureId) => this.filterCategoriesChartType(figureId);
-        refresh(this.props.figureId);
-        onWillUpdateProps((nextProps) => refresh(nextProps.figureId));
+patch(ChartPanel.prototype, {
+    get chartTypes() {
+        return this.filterChartTypes(isOdooKey(this.getChartDefinition().type));
     },
 
-    getChartTypes(isOdoo) {
-        const result = {};
-        for (const key of chartSubtypeRegistry.getKeys()) {
-            if (isOdoo === isOdooKey(key)) {
-                result[key] = chartSubtypeRegistry.get(key).name;
+    filterChartTypes(isOdoo) {
+        var result = {};
+        for (const key of chartRegistry.getKeys()) {
+            if ((isOdoo && isOdooKey(key)) || (!isOdoo && !isOdooKey(key))) {
+                result[key] = chartRegistry.get(key).name;
             }
         }
         return result;
     },
     onTypeChange(type) {
-        const {env} = this;
-        const figureId = this.props.figureId;
-        const current = getFigureDefinition(env, figureId);
-        if (!isOdooKey(current.type)) {
-            return super.onTypeChange(type);
+        if (isOdooKey(this.getChartDefinition().type)) {
+            const definition = {
+                stacked: false,
+                verticalAxisPosition: "left",
+                ...this.env.model.getters.getChartDefinition(this.figureId),
+                type,
+            };
+            this.env.model.dispatch("UPDATE_CHART", {
+                definition,
+                id: this.figureId,
+                sheetId: this.env.model.getters.getActiveSheetId(),
+            });
+        } else {
+            super.onTypeChange(type);
         }
-        const newChartInfo = chartSubtypeRegistry.get(type);
-        const definition = {
-            verticalAxisPosition: "left",
-            ...current,
-            ...newChartInfo.subtypeDefinition,
-            type: newChartInfo.chartType,
-        };
-        env.model.dispatch("UPDATE_CHART", {
-            definition,
-            id: figureId,
-            sheetId: env.model.getters.getActiveSheetId(),
-        });
-        this.closePopover();
-    },
-    filterCategoriesChartType(figureId) {
-        const {env} = this;
-        const definition = getFigureDefinition(env, figureId);
-        const isOdoo = isOdooKey(definition.type);
-        const registryItems = chartSubtypeRegistry
-            .getAll()
-            .filter((item) => isOdoo === isOdooKey(item.chartType));
-        this.chartTypeByCategories = groupByCategory(registryItems);
     },
 });

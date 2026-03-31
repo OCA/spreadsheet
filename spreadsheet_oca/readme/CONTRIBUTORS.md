@@ -3,5 +3,3 @@
   - Carlos Roca
 - [Open User Systems](https://www.openusersystems.com):
   - Chris Mann
-- [Mind And Go](https://mind-and-go.com)
-  - Florent THOMAS
