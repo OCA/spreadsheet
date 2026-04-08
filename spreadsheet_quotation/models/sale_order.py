@@ -25,10 +25,7 @@ class SaleOrder(models.Model):
 
     @api.onchange("sale_order_template_id")
     def _onchange_sale_order_template_id_spreadsheet(self):
-        if (
-            self.sale_order_template_id
-            and self.sale_order_template_id.spreadsheet_id
-        ):
+        if self.sale_order_template_id and self.sale_order_template_id.spreadsheet_id:
             spreadsheet = self._copy_template_spreadsheet(
                 self.sale_order_template_id.spreadsheet_id,
             )
@@ -55,10 +52,7 @@ class SaleOrder(models.Model):
             data = json.loads(data)
 
         for gf in data.get("globalFilters", []):
-            if (
-                gf.get("type") == "relation"
-                and gf.get("modelName") == "sale.order"
-            ):
+            if gf.get("type") == "relation" and gf.get("modelName") == "sale.order":
                 gf["defaultValue"] = [self.id]
                 break
 
