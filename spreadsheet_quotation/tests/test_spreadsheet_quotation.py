@@ -136,25 +136,19 @@ class TestSpreadsheetQuotation(TransactionCase):
         """Applying a template with a calculator to a SO should copy it."""
         self._create_calculator()
 
-        order = self.env["sale.order"].create(
-            {"partner_id": self.partner.id}
-        )
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
         order.sale_order_template_id = self.template
         order._onchange_sale_order_template_id()
         order._onchange_sale_order_template_id_spreadsheet()
 
         self.assertTrue(order.spreadsheet_id)
-        self.assertNotEqual(
-            order.spreadsheet_id, self.template.spreadsheet_id
-        )
+        self.assertNotEqual(order.spreadsheet_id, self.template.spreadsheet_id)
 
     def test_copied_spreadsheet_has_filter_with_order_id(self):
         """The copied spreadsheet should have the global filter set to the SO id."""
         self._create_calculator()
 
-        order = self.env["sale.order"].create(
-            {"partner_id": self.partner.id}
-        )
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
         order.sale_order_template_id = self.template
         order._onchange_sale_order_template_id()
         order._onchange_sale_order_template_id_spreadsheet()
@@ -176,9 +170,7 @@ class TestSpreadsheetQuotation(TransactionCase):
         template_no_calc = self.env["sale.order.template"].create(
             {"name": "No Calculator Template"}
         )
-        order = self.env["sale.order"].create(
-            {"partner_id": self.partner.id}
-        )
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
         order.sale_order_template_id = template_no_calc
         order._onchange_sale_order_template_id()
         order._onchange_sale_order_template_id_spreadsheet()
@@ -189,9 +181,7 @@ class TestSpreadsheetQuotation(TransactionCase):
         """Removing the template should clear the spreadsheet reference."""
         self._create_calculator()
 
-        order = self.env["sale.order"].create(
-            {"partner_id": self.partner.id}
-        )
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
         order.sale_order_template_id = self.template
         order._onchange_sale_order_template_id()
         order._onchange_sale_order_template_id_spreadsheet()
@@ -220,9 +210,7 @@ class TestSpreadsheetQuotation(TransactionCase):
 
     def test_has_spreadsheet_computed(self):
         """has_spreadsheet should reflect the presence of spreadsheet_id."""
-        order = self.env["sale.order"].create(
-            {"partner_id": self.partner.id}
-        )
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
         self.assertFalse(order.has_spreadsheet)
 
         self._create_calculator()

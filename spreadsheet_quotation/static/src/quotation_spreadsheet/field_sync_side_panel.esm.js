@@ -70,7 +70,9 @@ export class FieldSyncPanel extends Component {
             const filters = this.env.model.getters.getGlobalFilters();
             for (const filter of filters) {
                 if (filter.type === "relation" && filter.modelName === "sale.order") {
-                    const value = this.env.model.getters.getGlobalFilterValue(filter.id);
+                    const value = this.env.model.getters.getGlobalFilterValue(
+                        filter.id
+                    );
                     if (value && value.length > 0) {
                         return value[0];
                     }
@@ -82,7 +84,7 @@ export class FieldSyncPanel extends Component {
                 }
             }
         } catch {
-            // filter getters not available
+            // Filter getters not available
         }
         return null;
     }
@@ -116,12 +118,18 @@ export class FieldSyncPanel extends Component {
         }
         const existing = this.mappings.find((m) => m.column === this.state.newColumn);
         if (existing) {
-            this.notification.add(_t("This column already has a mapping"), {type: "warning"});
+            this.notification.add(_t("This column already has a mapping"), {
+                type: "warning",
+            });
             return;
         }
-        const existingField = this.mappings.find((m) => m.field === this.state.newField);
+        const existingField = this.mappings.find(
+            (m) => m.field === this.state.newField
+        );
         if (existingField) {
-            this.notification.add(_t("This field already has a mapping"), {type: "warning"});
+            this.notification.add(_t("This field already has a mapping"), {
+                type: "warning",
+            });
             return;
         }
         this.env.model.dispatch("ADD_FIELD_SYNC_MAPPING", {
@@ -168,7 +176,7 @@ export class FieldSyncPanel extends Component {
                 result.lineId = idResult.value;
             }
         } catch {
-            // no list record at this position
+            // No list record at this position
         }
 
         for (const mapping of this.mappings) {
@@ -178,7 +186,11 @@ export class FieldSyncPanel extends Component {
                 col: colIdx,
                 row,
             });
-            if (cell.type !== "empty" && cell.value !== undefined && cell.value !== "") {
+            if (
+                cell.type !== "empty" &&
+                cell.value !== undefined &&
+                cell.value !== ""
+            ) {
                 result.hasData = true;
                 if (mapping.field === "product_id") {
                     result.productName = String(cell.value);
@@ -257,7 +269,9 @@ export class FieldSyncPanel extends Component {
      */
     async saveToSaleOrder() {
         if (!this.hasSOList) {
-            this.notification.add(_t("No sale order line list found"), {type: "warning"});
+            this.notification.add(_t("No sale order line list found"), {
+                type: "warning",
+            });
             return;
         }
         const orderId = this.orderId;
@@ -269,7 +283,9 @@ export class FieldSyncPanel extends Component {
             return;
         }
         if (!this.mappings.length) {
-            this.notification.add(_t("No field mappings configured"), {type: "warning"});
+            this.notification.add(_t("No field mappings configured"), {
+                type: "warning",
+            });
             return;
         }
 
@@ -304,7 +320,10 @@ export class FieldSyncPanel extends Component {
                         values: rowData.values,
                         productName: rowData.productName,
                     };
-                } else if (rowData.productName || Object.keys(rowData.values).length > 0) {
+                } else if (
+                    rowData.productName ||
+                    Object.keys(rowData.values).length > 0
+                ) {
                     newRows.push({
                         values: rowData.values,
                         productName: rowData.productName,
@@ -392,7 +411,9 @@ export class FieldSyncPanel extends Component {
                 this.notification.add(_t("No values to sync"), {type: "info"});
             }
         } catch (e) {
-            this.notification.add(_t("Error syncing: %s", e.message || e), {type: "danger"});
+            this.notification.add(_t("Error syncing: %s", e.message || e), {
+                type: "danger",
+            });
         } finally {
             this.state.saving = false;
         }

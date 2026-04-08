@@ -5,7 +5,6 @@ import uuid
 
 from odoo import _, api, fields, models
 
-
 DEFAULT_COLUMNS = [
     "product_id",
     "product_uom_qty",
@@ -113,18 +112,20 @@ class SpreadsheetQuotationCreate(models.TransientModel):
         for col_idx, col_name in enumerate(columns):
             col_letter = self._col_index_to_letter(col_idx)
             cells[f"{col_letter}1"] = {
-                "content": '=ODOO.LIST.HEADER(%s,"%s")' % (list_id, col_name),
+                "content": f'=ODOO.LIST.HEADER({list_id},"{col_name}")',
             }
             for row in range(1, line_count + 1):
                 cells[f"{col_letter}{row + 1}"] = {
-                    "content": '=ODOO.LIST(%s,%s,"%s")'
-                    % (list_id, row, col_name),
+                    "content": f'=ODOO.LIST({list_id},{row},"{col_name}")',
                 }
         return cells
 
     @api.model
     def _col_index_to_letter(self, idx):
-        """Convert 0-based column index to spreadsheet letter (A, B, ..., Z, AA, ...)."""
+        """Convert a 0-based column index to spreadsheet letters.
+
+        Examples: A, B, ..., Z, AA, ...
+        """
         result = ""
         while True:
             result = chr(ord("A") + idx % 26) + result
