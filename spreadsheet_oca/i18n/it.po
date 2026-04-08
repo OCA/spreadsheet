@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-03 10:45+0000\n"
+"PO-Revision-Date: 2026-04-08 12:45+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -126,7 +126,7 @@ msgstr "Filtra automaticamente sul periodo attuale"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Automatically filter on the current user"
-msgstr ""
+msgstr "Filtra automaticamente sull'utente corrente"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__badge_image
@@ -422,7 +422,7 @@ msgstr "Importa dati nel foglio di calcolo"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Include children"
-msgstr ""
+msgstr "Includi figli"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -527,7 +527,7 @@ msgstr "Modello"
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modelli"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -637,7 +637,7 @@ msgstr "Torta"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Possible values"
-msgstr ""
+msgstr "Valori possibili"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -716,7 +716,7 @@ msgstr "Utente responsabile"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Restrict values with a domain"
-msgstr ""
+msgstr "Restrizione valori con dominio"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
