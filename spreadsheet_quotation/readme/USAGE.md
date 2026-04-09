@@ -29,3 +29,14 @@ Syncing values back to the order
 After configuring field sync mappings in the spreadsheet, the mapped
 column values can be pushed to the corresponding sale order line fields
 when saving the spreadsheet or from the sale order form.
+
+Step-by-step guide
+~~~~~~~~~~~~~~~~~~
+
+[1. Add quotation templates in settings](image1.png)
+[2. Create a new template & create a calculator](image2.png)
+[3. Map Sync fields > columns to fields](image3.png)
+[4. Save template > create a quotation from template and open calculator](image4.png)
+[5. add new lines to the calculator, save and sync](image5.png)
+[6. Add new products if any](image6.png)
+[7. Quotation updated!!!](image7.png)
