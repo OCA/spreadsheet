@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-03 11:51+0000\n"
-"PO-Revision-Date: 2024-09-03 13:54+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2026-04-10 13:45+0000\n"
+"Last-Translator: alexmorel-tecnativa <alex.morel@tecnativa.com>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -48,7 +48,7 @@ msgstr "Añadir texto"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
 #, python-format
 msgid "Add to spreadesheet"
-msgstr ""
+msgstr "Agregar a spreadsheet"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -73,14 +73,14 @@ msgstr "Después del siguiente"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #, python-format
 msgid "Are you sure you want to delete this list?"
-msgstr ""
+msgstr "Está seguro de que desea eliminar esta lista?"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 #, python-format
 msgid "Are you sure you want to delete this pivot?"
-msgstr ""
+msgstr "Está seguro de que desea eliminar este Pivot?"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -99,13 +99,13 @@ msgstr "Antes del anterior"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
 msgid "Can Be Dynamic"
-msgstr ""
+msgstr "Puede ser dinámico"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__can_have_dynamic_cols
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_have_dynamic_cols
 msgid "Can Have Dynamic Cols"
-msgstr ""
+msgstr "Puede tener columnas dinámicas"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -141,7 +141,7 @@ msgstr "Comandos"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
 msgid "Company"
-msgstr ""
+msgstr "Compañía"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -165,7 +165,7 @@ msgstr "Colaboradores"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
 msgid "Contributors Groups"
-msgstr ""
+msgstr "Grupos de colaboradores"
 
 #. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
@@ -195,7 +195,7 @@ msgstr "Creado el"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
 #, python-format
 msgid "Currency"
-msgstr ""
+msgstr "Moneda"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
@@ -214,7 +214,7 @@ msgstr "Valor por defecto"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #, python-format
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -306,7 +306,7 @@ msgstr "Filtros"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #, python-format
 msgid "From / To"
-msgstr ""
+msgstr "De / A"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__group_ids
@@ -328,6 +328,8 @@ msgid ""
 "If set, the spreadsheet will be available only if this company is in the "
 "current companies."
 msgstr ""
+"Si se establece, la hoja de cálculo sólo estará disponible si esta empresa "
+"está entre las empresas actuales."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__import_data
