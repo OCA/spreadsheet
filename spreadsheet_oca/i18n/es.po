@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-03 11:51+0000\n"
-"PO-Revision-Date: 2026-04-10 15:45+0000\n"
+"PO-Revision-Date: 2026-04-10 18:45+0000\n"
 "Last-Translator: alexmorel-tecnativa <alex.morel@tecnativa.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -626,19 +626,19 @@ msgstr "Propietario"
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Ownership"
-msgstr ""
+msgstr "Propiedad"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Pie"
-msgstr ""
+msgstr "Circular"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Possible values"
-msgstr ""
+msgstr "Valores posibles"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -656,18 +656,18 @@ msgstr "Trimestre"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Re-insert Dynamic"
-msgstr ""
+msgstr "Reinsertar dinámico"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Re-insert Static"
-msgstr ""
+msgstr "Reinsertar estático"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Read Access"
-msgstr ""
+msgstr "Acceso de lectura"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
@@ -677,7 +677,7 @@ msgstr "Lectores"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
 msgid "Readers Groups"
-msgstr ""
+msgstr "Grupos con acceso de lectura"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -711,19 +711,19 @@ msgstr "Res"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Usuario responsable"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Restrict values with a domain"
-msgstr ""
+msgstr "Restringir los valores mediante un dominio"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Rows:"
-msgstr ""
+msgstr "Filas:"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -737,7 +737,7 @@ msgstr "Guardar"
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Select a menu..."
-msgstr ""
+msgstr "Seleccione un menú..."
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
