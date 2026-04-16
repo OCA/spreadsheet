@@ -5,7 +5,6 @@ import {ImageFileStore} from "./image_file_store.esm";
 import {OdooDataProvider} from "@spreadsheet/data_sources/odoo_data_provider";
 import {SpreadsheetComponent} from "@spreadsheet/actions/spreadsheet_component";
 import {_t} from "@web/core/l10n/translation";
-import {loadSpreadsheetDependencies} from "@spreadsheet/helpers/helpers";
 import {useService} from "@web/core/utils/hooks";
 import {useSetupAction} from "@web/search/action_hook";
 import {user} from "@web/core/user";
@@ -167,7 +166,6 @@ export class SpreadsheetRenderer extends Component {
             downloadAsXLXS: this.downloadAsXLXS.bind(this),
         });
         onWillStart(async () => {
-            await loadSpreadsheetDependencies();
             await waitForDataLoaded(this.spreadsheet_model);
             await this.env.importData(this.spreadsheet_model);
             this.spreadsheet_model.joinSession();

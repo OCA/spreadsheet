@@ -64,7 +64,6 @@ class SpreadsheetAbstract(models.AbstractModel):
         lang = self.env["res.lang"]._lang_get(self.env.user.lang)
         locale = lang._odoo_lang_to_spreadsheet_locale()
         return {
-            "version": 1,
             "sheets": [
                 {
                     "id": "sheet1",
