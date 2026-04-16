@@ -18,7 +18,7 @@ import {useService} from "@web/core/utils/hooks";
 const {topbarMenuRegistry} = spreadsheet.registries;
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
 
-topbarMenuRegistry.add("file", {name: _t("File"), sequence: 10});
+// "file" menu is already registered by o-spreadsheet core in Odoo 19
 topbarMenuRegistry.addChild("filters", ["file"], {
     name: _t("Filters"),
     sequence: 70,
@@ -27,7 +27,6 @@ topbarMenuRegistry.addChild("filters", ["file"], {
 });
 topbarMenuRegistry.addChild("save", ["file"], {
     name: _t("Save"),
-    // Description: "Ctrl+S", // This is not working, so removing it from the view for now...
     sequence: 10,
     execute: (env) => env.saveSpreadsheet(),
     icon: "o-spreadsheet-Icon.DOWNLOAD",
@@ -37,12 +36,6 @@ topbarMenuRegistry.addChild("download", ["file"], {
     sequence: 20,
     execute: (env) => env.downloadAsXLXS(),
     icon: "o-spreadsheet-Icon.EXPORT_XLSX",
-});
-topbarMenuRegistry.addChild("settings", ["file"], {
-    name: _t("Settings"),
-    sequence: 100,
-    execute: (env) => env.openSidePanel("Settings"),
-    icon: "o-spreadsheet-Icon.COG",
 });
 
 const {sidePanelRegistry} = spreadsheet.registries;
