@@ -5,7 +5,7 @@ import {ImageFileStore} from "./image_file_store.esm";
 import {OdooDataProvider} from "@spreadsheet/data_sources/odoo_data_provider";
 import {SpreadsheetComponent} from "@spreadsheet/actions/spreadsheet_component";
 import {_t} from "@web/core/l10n/translation";
-import {loadSpreadsheetDependencies} from "@spreadsheet/assets_backend/helpers";
+import {loadSpreadsheetDependencies} from "@spreadsheet/helpers/helpers";
 import {useService} from "@web/core/utils/hooks";
 import {useSetupAction} from "@web/search/action_hook";
 import {user} from "@web/core/user";
