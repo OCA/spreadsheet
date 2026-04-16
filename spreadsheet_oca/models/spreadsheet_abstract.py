@@ -20,7 +20,9 @@ class SpreadsheetAbstract(models.AbstractModel):
     active = fields.Boolean(default=True)
     spreadsheet_binary_data = fields.Binary(
         string="Spreadsheet file",
-        default=lambda self: self._empty_spreadsheet_data_base64(),
+        default=lambda self: base64.b64encode(
+            self._empty_spreadsheet_data_bin()
+        ).decode(),
     )
     spreadsheet_raw = fields.Serialized(
         inverse="_inverse_spreadsheet_raw", compute="_compute_spreadsheet_raw"
@@ -49,12 +51,11 @@ class SpreadsheetAbstract(models.AbstractModel):
                 json.dumps(record.spreadsheet_raw).encode("UTF-8")
             )
 
-    def _empty_spreadsheet_data_base64(self):
+    def _empty_spreadsheet_data_bin(self):
         """Create an empty spreadsheet workbook.
-        Encoded as base64
+        Returns raw JSON bytes.
         """
-        data = json.dumps(self._empty_spreadsheet_data())
-        return base64.b64encode(data.encode())
+        return json.dumps(self._empty_spreadsheet_data()).encode()
 
     def _empty_spreadsheet_data(self):
         """Create an empty spreadsheet workbook.
