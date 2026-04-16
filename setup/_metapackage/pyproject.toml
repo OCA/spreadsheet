@@ -1,0 +1,14 @@
+[project]
+name = "odoo-addons-oca-spreadsheet"
+version = "18.0.20251009.1"
+dependencies = [
+    "odoo-addon-spreadsheet_dashboard_oca==18.0.*",
+    "odoo-addon-spreadsheet_dashboard_purchase_oca==18.0.*",
+    "odoo-addon-spreadsheet_dashboard_purchase_stock_oca==18.0.*",
+    "odoo-addon-spreadsheet_oca==18.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 18.0",
+]
