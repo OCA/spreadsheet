@@ -54,10 +54,11 @@ FilterPanel.components = {
     FilterValue,
 };
 
-sidePanelRegistry.add("FilterPanel", {
-    title: "Filters",
-    Body: FilterPanel,
-});
+try {
+    sidePanelRegistry.add("FilterPanel", {title: "Filters", Body: FilterPanel});
+} catch {
+    sidePanelRegistry.replace("FilterPanel", {title: "Filters", Body: FilterPanel});
+}
 
 export class EditFilterPanel extends Component {
     setup() {
@@ -290,7 +291,8 @@ EditFilterPanel.components = {
     MultiRecordSelector,
 };
 
-sidePanelRegistry.add("EditFilterPanel", {
-    title: "Edit Filter",
-    Body: EditFilterPanel,
-});
+try {
+    sidePanelRegistry.add("EditFilterPanel", {title: "Edit Filter", Body: EditFilterPanel});
+} catch {
+    sidePanelRegistry.replace("EditFilterPanel", {title: "Edit Filter", Body: EditFilterPanel});
+}

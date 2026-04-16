@@ -79,21 +79,30 @@ class OdooStackablePanel extends OdooPanel {
 }
 OdooStackablePanel.template = "spreadsheet_oca.OdooStackablePanel";
 
-chartSidePanelComponentRegistry
-    .add("odoo_line", {
-        configuration: OdooStackablePanel,
-        design: PieChartDesignPanel,
-    })
-    .add("odoo_bar", {
-        configuration: OdooStackablePanel,
-        design: PieChartDesignPanel,
-    })
-    .add("odoo_pie", {
-        configuration: OdooPanel,
-        design: PieChartDesignPanel,
-    });
+// In Odoo 19, core spreadsheet module may already register these keys.
+// Use a helper to safely add or replace registry entries.
+function safeAdd(registry, key, value) {
+    try {
+        registry.add(key, value);
+    } catch {
+        registry.replace(key, value);
+    }
+}
 
-chartSubtypeRegistry.add("odoo_line", {
+safeAdd(chartSidePanelComponentRegistry, "odoo_line", {
+    configuration: OdooStackablePanel,
+    design: PieChartDesignPanel,
+});
+safeAdd(chartSidePanelComponentRegistry, "odoo_bar", {
+    configuration: OdooStackablePanel,
+    design: PieChartDesignPanel,
+});
+safeAdd(chartSidePanelComponentRegistry, "odoo_pie", {
+    configuration: OdooPanel,
+    design: PieChartDesignPanel,
+});
+
+safeAdd(chartSubtypeRegistry, "odoo_line", {
     matcher: (definition) =>
         definition.type === "odoo_line" && !definition.stacked && !definition.fillArea,
     subtypeDefinition: {stacked: false, fillArea: false},
@@ -103,7 +112,7 @@ chartSubtypeRegistry.add("odoo_line", {
     category: "line",
     preview: "o-spreadsheet-ChartPreview.LINE_CHART",
 });
-chartSubtypeRegistry.add("odoo_stacked_line", {
+safeAdd(chartSubtypeRegistry, "odoo_stacked_line", {
     matcher: (definition) =>
         definition.type === "odoo_line" && definition.stacked && !definition.fillArea,
     subtypeDefinition: {stacked: true, fillArea: false},
@@ -113,7 +122,7 @@ chartSubtypeRegistry.add("odoo_stacked_line", {
     category: "line",
     preview: "o-spreadsheet-ChartPreview.STACKED_LINE_CHART",
 });
-chartSubtypeRegistry.add("odoo_area", {
+safeAdd(chartSubtypeRegistry, "odoo_area", {
     matcher: (definition) =>
         definition.type === "odoo_line" && !definition.stacked && definition.fillArea,
     subtypeDefinition: {stacked: false, fillArea: true},
@@ -123,7 +132,7 @@ chartSubtypeRegistry.add("odoo_area", {
     category: "area",
     preview: "o-spreadsheet-ChartPreview.AREA_CHART",
 });
-chartSubtypeRegistry.add("odoo_stacked_area", {
+safeAdd(chartSubtypeRegistry, "odoo_stacked_area", {
     matcher: (definition) =>
         definition.type === "odoo_line" && definition.stacked && definition.fillArea,
     subtypeDefinition: {stacked: true, fillArea: true},
@@ -133,7 +142,7 @@ chartSubtypeRegistry.add("odoo_stacked_area", {
     category: "area",
     preview: "o-spreadsheet-ChartPreview.STACKED_AREA_CHART",
 });
-chartSubtypeRegistry.add("odoo_bar", {
+safeAdd(chartSubtypeRegistry, "odoo_bar", {
     matcher: (definition) => definition.type === "odoo_bar" && !definition.stacked,
     subtypeDefinition: {stacked: false},
     displayName: _t("Column"),
@@ -142,7 +151,7 @@ chartSubtypeRegistry.add("odoo_bar", {
     category: "column",
     preview: "o-spreadsheet-ChartPreview.COLUMN_CHART",
 });
-chartSubtypeRegistry.add("odoo_stacked_bar", {
+safeAdd(chartSubtypeRegistry, "odoo_stacked_bar", {
     matcher: (definition) => definition.type === "odoo_bar" && definition.stacked,
     subtypeDefinition: {stacked: true},
     displayName: _t("Stacked Column"),
@@ -151,7 +160,7 @@ chartSubtypeRegistry.add("odoo_stacked_bar", {
     category: "column",
     preview: "o-spreadsheet-ChartPreview.STACKED_COLUMN_CHART",
 });
-chartSubtypeRegistry.add("odoo_pie", {
+safeAdd(chartSubtypeRegistry, "odoo_pie", {
     displayName: _t("Pie"),
     chartSubtype: "odoo_pie",
     chartType: "odoo_pie",
