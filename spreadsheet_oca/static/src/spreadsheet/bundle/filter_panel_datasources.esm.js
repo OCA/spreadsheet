@@ -165,9 +165,11 @@ PivotPanel.components = {
     PivotPanelDisplay,
 };
 
-pivotSidePanelRegistry.add("ODOO", {
-    editor: PivotPanel,
-});
+try {
+    pivotSidePanelRegistry.add("ODOO", {editor: PivotPanel});
+} catch {
+    pivotSidePanelRegistry.replace("ODOO", {editor: PivotPanel});
+}
 
 export class ListPanelDisplay extends Component {
     setup() {
@@ -263,7 +265,8 @@ ListPanel.components = {
     ListPanelDisplay,
 };
 
-sidePanelRegistry.add("ListPanel", {
-    title: "List information",
-    Body: ListPanel,
-});
+try {
+    sidePanelRegistry.add("ListPanel", {title: "List information", Body: ListPanel});
+} catch {
+    sidePanelRegistry.replace("ListPanel", {title: "List information", Body: ListPanel});
+}
