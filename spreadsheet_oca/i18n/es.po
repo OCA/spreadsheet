@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-09-03 11:51+0000\n"
-"PO-Revision-Date: 2026-04-16 16:45+0000\n"
+"PO-Revision-Date: 2026-04-17 16:45+0000\n"
 "Last-Translator: alexmorel-tecnativa <alex.morel@tecnativa.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -810,7 +810,7 @@ msgstr "Hoja de cálculo abstracta para herencia"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_binary_data
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_binary_data
 msgid "Spreadsheet file"
-msgstr "Fichero hoja de cálculo"
+msgstr "Archivo de hoja de cálculo"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
