@@ -295,7 +295,10 @@ EditFilterPanel.components = {
 };
 
 try {
-    sidePanelRegistry.add("EditFilterPanel", {title: "Edit Filter", Body: EditFilterPanel});
+    sidePanelRegistry.add("EditFilterPanel", {
+        title: "Edit Filter",
+        Body: EditFilterPanel,
+    });
 } catch {
     sidePanelRegistry.replace("EditFilterPanel", {
         title: "Edit Filter",

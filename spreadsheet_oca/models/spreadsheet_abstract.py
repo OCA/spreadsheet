@@ -5,7 +5,7 @@ import base64
 import json
 from typing import Any
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import AccessError
 
 CollaborationMessage = dict[str, Any]
@@ -68,7 +68,7 @@ class SpreadsheetAbstract(models.AbstractModel):
             "sheets": [
                 {
                     "id": "sheet1",
-                    "name": _("Sheet1"),
+                    "name": self.env._("Sheet1"),
                 }
             ],
             "settings": {

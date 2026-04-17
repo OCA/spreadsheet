@@ -1735,9 +1735,7 @@
             "background": "#FFFFFF",
             "legendPosition": "none",
             "metaData": {
-              "groupBy": [
-                "date_order:month"
-              ],
+              "groupBy": ["date_order:month"],
               "measure": "untaxed_total",
               "order": null,
               "resModel": "purchase.report"
@@ -1748,25 +1746,11 @@
               "domain": [
                 "&",
                 "&",
-                [
-                  "state",
-                  "!=",
-                  "draft"
-                ],
-                [
-                  "state",
-                  "!=",
-                  "sent"
-                ],
-                [
-                  "state",
-                  "!=",
-                  "cancel"
-                ]
+                ["state", "!=", "draft"],
+                ["state", "!=", "sent"],
+                ["state", "!=", "cancel"]
               ],
-              "groupBy": [
-                "date_order:month"
-              ],
+              "groupBy": ["date_order:month"],
               "orderBy": []
             },
             "type": "odoo_line",
@@ -2062,16 +2046,10 @@
   },
   "borders": {
     "1": {
-      "bottom": [
-        "thin",
-        "#000"
-      ]
+      "bottom": ["thin", "#000"]
     },
     "2": {
-      "top": [
-        "thin",
-        "#000"
-      ]
+      "top": ["thin", "#000"]
     }
   },
   "revisionId": "START_REVISION",
@@ -2096,24 +2074,8 @@
   "odooVersion": 4,
   "lists": {
     "1": {
-      "columns": [
-        "name",
-        "create_date",
-        "partner_id",
-        "user_id",
-        "amount_untaxed"
-      ],
-      "domain": [
-        [
-          "state",
-          "in",
-          [
-            "draft",
-            "sent",
-            "to approve"
-          ]
-        ]
-      ],
+      "columns": ["name", "create_date", "partner_id", "user_id", "amount_untaxed"],
+      "domain": [["state", "in", ["draft", "sent", "to approve"]]],
       "model": "purchase.order",
       "context": {
         "quotation_only": true
@@ -2128,23 +2090,8 @@
       "name": "Requests for Quotation by Untaxed Amount"
     },
     "2": {
-      "columns": [
-        "name",
-        "date_approve",
-        "partner_id",
-        "user_id",
-        "amount_untaxed"
-      ],
-      "domain": [
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
-      ],
+      "columns": ["name", "date_approve", "partner_id", "user_id", "amount_untaxed"],
+      "domain": [["state", "in", ["purchase", "done"]]],
       "model": "purchase.order",
       "context": {},
       "orderBy": [
@@ -2195,19 +2142,8 @@
       "context": {},
       "domain": [
         "&",
-        [
-          "country_id",
-          "!=",
-          false
-        ],
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
+        ["country_id", "!=", false],
+        ["state", "in", ["purchase", "done"]]
       ],
       "id": "1",
       "measures": [
@@ -2219,15 +2155,10 @@
         }
       ],
       "model": "purchase.report",
-      "rowGroupBys": [
-        "country_id"
-      ],
+      "rowGroupBys": ["country_id"],
       "name": "Purchase Analysis by Partner Country",
       "sortedColumn": {
-        "groupId": [
-          [],
-          []
-        ],
+        "groupId": [[], []],
         "measure": "untaxed_total",
         "order": "desc"
       }
@@ -2235,16 +2166,7 @@
     "2": {
       "colGroupBys": [],
       "context": {},
-      "domain": [
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
-      ],
+      "domain": [["state", "in", ["purchase", "done"]]],
       "id": "2",
       "measures": [
         {
@@ -2255,15 +2177,10 @@
         }
       ],
       "model": "purchase.report",
-      "rowGroupBys": [
-        "partner_id"
-      ],
+      "rowGroupBys": ["partner_id"],
       "name": "Purchase Analysis by Vendor",
       "sortedColumn": {
-        "groupId": [
-          [],
-          []
-        ],
+        "groupId": [[], []],
         "measure": "untaxed_total",
         "order": "desc"
       }
@@ -2273,19 +2190,8 @@
       "context": {},
       "domain": [
         "&",
-        [
-          "category_id",
-          "!=",
-          false
-        ],
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
+        ["category_id", "!=", false],
+        ["state", "in", ["purchase", "done"]]
       ],
       "id": "6",
       "measures": [
@@ -2300,15 +2206,10 @@
         }
       ],
       "model": "purchase.report",
-      "rowGroupBys": [
-        "category_id"
-      ],
+      "rowGroupBys": ["category_id"],
       "name": "Purchase Analysis by Product Category",
       "sortedColumn": {
-        "groupId": [
-          [],
-          []
-        ],
+        "groupId": [[], []],
         "measure": "untaxed_total",
         "order": "desc"
       }
@@ -2318,19 +2219,8 @@
       "context": {},
       "domain": [
         "&",
-        [
-          "product_id",
-          "!=",
-          false
-        ],
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
+        ["product_id", "!=", false],
+        ["state", "in", ["purchase", "done"]]
       ],
       "id": "7",
       "measures": [
@@ -2345,15 +2235,10 @@
         }
       ],
       "model": "purchase.report",
-      "rowGroupBys": [
-        "product_id"
-      ],
+      "rowGroupBys": ["product_id"],
       "name": "Purchase Analysis by Product",
       "sortedColumn": {
-        "groupId": [
-          [],
-          []
-        ],
+        "groupId": [[], []],
         "measure": "untaxed_total",
         "order": "desc"
       }
@@ -2361,22 +2246,7 @@
     "8": {
       "colGroupBys": [],
       "context": {},
-      "domain": [
-        "&",
-        [
-          "user_id",
-          "!=",
-          false
-        ],
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
-      ],
+      "domain": ["&", ["user_id", "!=", false], ["state", "in", ["purchase", "done"]]],
       "id": "8",
       "measures": [
         {
@@ -2390,15 +2260,10 @@
         }
       ],
       "model": "purchase.report",
-      "rowGroupBys": [
-        "user_id"
-      ],
+      "rowGroupBys": ["user_id"],
       "name": "Purchase Analysis by Purchase Representative",
       "sortedColumn": {
-        "groupId": [
-          [],
-          []
-        ],
+        "groupId": [[], []],
         "measure": "untaxed_total",
         "order": "desc"
       }
@@ -2406,16 +2271,7 @@
     "10": {
       "colGroupBys": [],
       "context": {},
-      "domain": [
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
-      ],
+      "domain": [["state", "in", ["purchase", "done"]]],
       "id": "10",
       "measures": [
         {
@@ -2438,10 +2294,7 @@
       "rowGroupBys": [],
       "name": "purchase stats - current",
       "sortedColumn": {
-        "groupId": [
-          [],
-          []
-        ],
+        "groupId": [[], []],
         "measure": "untaxed_total",
         "order": "desc"
       }
@@ -2449,16 +2302,7 @@
     "11": {
       "colGroupBys": [],
       "context": {},
-      "domain": [
-        [
-          "state",
-          "in",
-          [
-            "purchase",
-            "done"
-          ]
-        ]
-      ],
+      "domain": [["state", "in", ["purchase", "done"]]],
       "id": "11",
       "measures": [
         {
@@ -2481,10 +2325,7 @@
       "rowGroupBys": [],
       "name": "purchase stats - previous",
       "sortedColumn": {
-        "groupId": [
-          [],
-          []
-        ],
+        "groupId": [[], []],
         "measure": "untaxed_total",
         "order": "desc"
       }
