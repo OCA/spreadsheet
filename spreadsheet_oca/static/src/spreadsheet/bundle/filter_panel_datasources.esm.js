@@ -268,5 +268,8 @@ ListPanel.components = {
 try {
     sidePanelRegistry.add("ListPanel", {title: "List information", Body: ListPanel});
 } catch {
-    sidePanelRegistry.replace("ListPanel", {title: "List information", Body: ListPanel});
+    sidePanelRegistry.replace("ListPanel", {
+        title: "List information",
+        Body: ListPanel,
+    });
 }
