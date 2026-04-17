@@ -27,7 +27,10 @@
         t-inherit="web.ListView.Buttons"
         t-inherit-mode="primary"
     >
-        <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
+        <!-- Odoo 19.0: web.ListView.Buttons template no longer has a
+             <div class="o_list_buttons"> wrapper — buttons are at root level.
+             Place the Upload button after the "New" button. -->
+        <xpath expr="//button[hasclass('o_list_button_add')]" position="after">
             <SpreadsheetFileUploader>
                 <t t-set-slot="toggler">
                     <button
