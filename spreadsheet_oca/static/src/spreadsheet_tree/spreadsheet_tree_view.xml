@@ -27,7 +27,9 @@
         t-inherit="web.ListView.Buttons"
         t-inherit-mode="primary"
     >
-        <xpath expr="//div[hasclass('o_list_buttons')]" position="inside">
+        <!-- saas-19.2: web.ListView.Buttons templatesi artik bir <div class="o_list_buttons"> wrapper'i yok.
+             Butonlar direkt root level. 'o_list_button_add' butonunun yanina Upload butonunu ekliyoruz. -->
+        <xpath expr="//button[hasclass('o_list_button_add')]" position="after">
             <SpreadsheetFileUploader>
                 <t t-set-slot="toggler">
                     <button
