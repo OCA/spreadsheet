@@ -38,24 +38,34 @@ const menuChartProps = () => ({
         return [["id", "in", menus]];
     },
     get menuId() {
-        const menu = this.env.model.getters.getChartOdooMenu(this.props.chartId);
-        if (menu) {
-            return [menu.id, menu.name];
+        // Saas-19.2+: getChartOdooMenu removed; use getChartOdooLink which returns
+        // { type: "odooMenu" | "dataSource", ... } | undefined.
+        const link = this.env.model.getters.getChartOdooLink(this.props.chartId);
+        if (link && link.type === "odooMenu") {
+            const menu = this.env.model.getters.getIrMenu(link.odooMenuId);
+            if (menu) {
+                return [menu.id, menu.name];
+            }
         }
         return false;
     },
     updateMenu(menuId) {
+        // Saas-19.2+: LINK_ODOO_MENU_TO_CHART replaced by UPDATE_ODOO_LINK_TO_CHART
+        // with a typed odooLink payload; pass undefined to unlink.
         if (!menuId) {
-            this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
+            this.env.model.dispatch("UPDATE_ODOO_LINK_TO_CHART", {
                 chartId: this.props.chartId,
-                odooMenuId: false,
+                odooLink: undefined,
             });
             return;
         }
         const menu = this.env.model.getters.getIrMenu(menuId[0].id);
-        this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
+        this.env.model.dispatch("UPDATE_ODOO_LINK_TO_CHART", {
             chartId: this.props.chartId,
-            odooMenuId: menu.xmlid || menu.id,
+            odooLink: {
+                type: "odooMenu",
+                odooMenuId: menu.xmlid || menu.id,
+            },
         });
     },
     get record() {
