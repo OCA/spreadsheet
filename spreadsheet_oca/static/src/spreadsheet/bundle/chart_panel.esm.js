@@ -14,15 +14,15 @@ const groupByCategory = (items) =>
         return acc;
     }, {});
 
-const getFigureDefinition = (env, figureId) =>
-    env.model.getters.getChartDefinition(figureId);
+const getChartDefinition = (env, chartId) =>
+    env.model.getters.getChartDefinition(chartId);
 
 patch(ChartTypePicker.prototype, {
     setup() {
         super.setup();
-        const refresh = (figureId) => this.filterCategoriesChartType(figureId);
-        refresh(this.props.figureId);
-        onWillUpdateProps((nextProps) => refresh(nextProps.figureId));
+        const refresh = (chartId) => this.filterCategoriesChartType(chartId);
+        refresh(this.props.chartId);
+        onWillUpdateProps((nextProps) => refresh(nextProps.chartId));
     },
 
     getChartTypes(isOdoo) {
@@ -36,8 +36,11 @@ patch(ChartTypePicker.prototype, {
     },
     onTypeChange(type) {
         const {env} = this;
-        const figureId = this.props.figureId;
-        const current = getFigureDefinition(env, figureId);
+        const chartId = this.props.chartId;
+        if (!chartId) {
+            return super.onTypeChange(type);
+        }
+        const current = getChartDefinition(env, chartId);
         if (!isOdooKey(current.type)) {
             return super.onTypeChange(type);
         }
@@ -50,14 +53,17 @@ patch(ChartTypePicker.prototype, {
         };
         env.model.dispatch("UPDATE_CHART", {
             definition,
-            id: figureId,
+            id: chartId,
             sheetId: env.model.getters.getActiveSheetId(),
         });
         this.closePopover();
     },
-    filterCategoriesChartType(figureId) {
+    filterCategoriesChartType(chartId) {
+        if (!chartId) {
+            return;
+        }
         const {env} = this;
-        const definition = getFigureDefinition(env, figureId);
+        const definition = getChartDefinition(env, chartId);
         const isOdoo = isOdooKey(definition.type);
         const registryItems = chartSubtypeRegistry
             .getAll()
