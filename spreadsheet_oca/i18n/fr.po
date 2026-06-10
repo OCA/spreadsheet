@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-10 06:26+0000\n"
+"PO-Revision-Date: 2026-06-10 06:35+0000\n"
 "Last-Translator: Yann Papouin <ypa@decgroupe.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -74,7 +74,7 @@ msgstr "Ajouter du texte"
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
 msgid "Add to spreadesheet"
-msgstr "Ajouter à la feuille de calcul"
+msgstr "Ajouter au tableur"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -399,8 +399,8 @@ msgid ""
 "If set, the spreadsheet will be available only if this company is in the "
 "current companies."
 msgstr ""
-"Si cette option est activée, la feuille de calcul ne sera disponible que si "
-"cette société figure parmi les sociétés actuelles."
+"Si cette option est activée, le tableur ne sera disponible que si cette "
+"société figure parmi les sociétés actuelles."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__import_data
@@ -780,34 +780,34 @@ msgstr "Tri"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
 #: model:ir.module.category,name:spreadsheet_oca.module_category_spreedsheet
 msgid "Spreadsheet"
-msgstr "Feuille de calcul"
+msgstr "Tableur"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_oca_revision
 msgid "Spreadsheet Oca Revision"
-msgstr "Version OCA de la feuille de calcul"
+msgstr "Version OCA du tableur"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_raw
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_raw
 msgid "Spreadsheet Raw"
-msgstr "Feuille de calcul brute"
+msgstr "Tableur brute"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_revision_ids
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_revision_ids
 msgid "Spreadsheet Revision"
-msgstr "Version de le feuille de calcul"
+msgstr "Version du tableur"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_tag
 msgid "Spreadsheet Tag"
-msgstr "Étiquette de feuille de calcul"
+msgstr "Étiquette de tableur"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_abstract
 msgid "Spreadsheet abstract for inheritance"
-msgstr "Feuille de calcul abstraite pour héritage"
+msgstr "Tableur abstrait pour héritage"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_binary_data
@@ -819,13 +819,13 @@ msgstr "Fichier tableur"
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_menu
 msgid "Spreadsheets"
-msgstr "Feuilles de calcul"
+msgstr "Tableurs"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_tags_act_window
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_tag_menu
 msgid "Spreadsheets Tags"
-msgstr "Étiquettes de feuilles de calcul"
+msgstr "Étiquettes de tableurs"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
@@ -881,7 +881,7 @@ msgid ""
 "filters set in the spreadsheets."
 msgstr ""
 "Ce champ vous permet de générer des tableaux dont les lignes sont mises à "
-"jour avec les filtres définis dans les feuilles de calcul."
+"jour avec les filtres définis dans les tableurs."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
