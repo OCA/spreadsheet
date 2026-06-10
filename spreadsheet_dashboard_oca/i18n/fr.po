@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-10 06:26+0000\n"
+"PO-Revision-Date: 2026-06-10 06:35+0000\n"
 "Last-Translator: Yann Papouin <ypa@decgroupe.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -25,12 +25,12 @@ msgstr "Actif"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_oca/static/src/bundle/spreadsheet_to_dashboard.esm.js:0
 msgid "Add to dashboard"
-msgstr ""
+msgstr "Ajouter au tableau de bord"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__can_edit
 msgid "Can Edit"
-msgstr ""
+msgstr "Peut éditer"
 
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_to_dashboard_view_form
@@ -40,17 +40,17 @@ msgstr "Annuler"
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
 msgid "Copy"
-msgstr ""
+msgstr "Copier"
 
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_to_dashboard_view_form
 msgid "Create"
-msgstr ""
+msgstr "Créer"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_to_dashboard
 msgid "Create dashboard from spreadsheet"
-msgstr ""
+msgstr "Créer un tableau de bord à partir d'une feuille de calcul"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_uid
@@ -65,32 +65,32 @@ msgstr "Créé le"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
 msgid "Dashboard"
-msgstr ""
+msgstr "Tableau de bord"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_group_id
 msgid "Dashboard Group"
-msgstr ""
+msgstr "Groupe Tableau de bord"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__name
 msgid "Dashboard Name"
-msgstr ""
+msgstr "Nom du tableau de bord"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__dashboard_group_id
 msgid "Dashboard Section"
-msgstr ""
+msgstr "Section Tableau de bord"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__display_name
 msgid "Display Name"
-msgstr "Nom"
+msgstr "Nom affiché"
 
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
 msgid "Edit"
-msgstr "Edition"
+msgstr "Editer"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__id
@@ -100,17 +100,17 @@ msgstr "ID"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_spreadsheet_import
 msgid "Import data to spreadsheet"
-msgstr "Importer des données au tableur"
+msgstr "Importer des données dans un tableur"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__write_uid
 msgid "Last Updated by"
-msgstr "Dernière mise à jour par"
+msgstr "Modifié par"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__write_date
 msgid "Last Updated on"
-msgstr "Dernière mise à jour le"
+msgstr "Modifié le"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__name
@@ -120,23 +120,23 @@ msgstr "Nom"
 #. module: spreadsheet_dashboard_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard_new_spreadsheet
 msgid "New dashboard"
-msgstr ""
+msgstr "Nouveau tableau de bord"
 
 #. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
 msgid "Search operation not supported"
-msgstr ""
+msgstr "Opération de recherche non prise en charge"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__spreadsheet_id
 msgid "Spreadsheet"
-msgstr "Feuille de calcul"
+msgstr "Tableur"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_dashboard
 msgid "Spreadsheet Dashboard"
-msgstr ""
+msgstr "Tableau de bord du tableur"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_raw
@@ -157,14 +157,14 @@ msgstr "Fichier tableur"
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
 msgid "The value has to be a boolean"
-msgstr ""
+msgstr "La valeur doit être un booléen"
 
 #. module: spreadsheet_dashboard_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_dashboard_oca.spreadsheet_import_mode_dashboard
 msgid "To dashboard"
-msgstr ""
+msgstr "Vers le tableau de bord"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__group_ids
 msgid "User Groups"
-msgstr ""
+msgstr "Groupes d'utilisateurs"
