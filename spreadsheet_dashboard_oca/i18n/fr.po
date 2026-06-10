@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-10 06:35+0000\n"
+"PO-Revision-Date: 2026-06-10 08:46+0000\n"
 "Last-Translator: Yann Papouin <ypa@decgroupe.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -50,7 +50,7 @@ msgstr "Créer"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_to_dashboard
 msgid "Create dashboard from spreadsheet"
-msgstr "Créer un tableau de bord à partir d'une feuille de calcul"
+msgstr "Créer un tableau de bord à partir d'un tableur"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_uid
@@ -141,12 +141,12 @@ msgstr "Tableau de bord du tableur"
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_raw
 msgid "Spreadsheet Raw"
-msgstr "Feuille de calcul brute"
+msgstr "Tableur brute"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_revision_ids
 msgid "Spreadsheet Revision"
-msgstr "Version de le feuille de calcul"
+msgstr "Version du tableur"
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__spreadsheet_binary_data
