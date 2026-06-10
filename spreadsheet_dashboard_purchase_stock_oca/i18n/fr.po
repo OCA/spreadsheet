@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-26 21:56+0000\n"
-"PO-Revision-Date: 2026-06-10 06:35+0000\n"
+"PO-Revision-Date: 2026-06-10 08:46+0000\n"
 "Last-Translator: Yann Papouin <ypa@decgroupe.com>\n"
 "Language-Team: French (https://app.transifex.com/odoo/teams/41243/fr/)\n"
 "Language: fr\n"
@@ -216,13 +216,13 @@ msgstr "Meilleures commandes"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Top Product Categories"
-msgstr "Meilleures catégories de produits"
+msgstr "Meilleures catégories d'articles"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json:0
 msgid "Top Products"
-msgstr "Meilleurs produits"
+msgstr "Meilleurs articles"
 
 #. module: spreadsheet_dashboard_purchase_stock_oca
 #. odoo-javascript
