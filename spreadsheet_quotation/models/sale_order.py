@@ -4,6 +4,7 @@
 import json
 
 from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class SaleOrder(models.Model):
@@ -77,3 +78,17 @@ class SaleOrder(models.Model):
         if self.spreadsheet_id:
             return self.spreadsheet_id.open_spreadsheet()
         return False
+
+    def _check_spreadsheet_sync_allowed(self):
+        self.ensure_one()
+        if self.state == "cancel":
+            raise UserError(_("Cannot sync a cancelled quotation."))
+        if self.state == "sale":
+            raise UserError(_("Cannot sync a confirmed sales order."))
+
+    def action_sync_spreadsheet_order_lines(self, commands):
+        """Sync sale order lines from the quotation calculator spreadsheet."""
+        self.ensure_one()
+        self._check_spreadsheet_sync_allowed()
+        self.write({"order_line": commands})
+        return True
