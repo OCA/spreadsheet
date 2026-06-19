@@ -3,6 +3,7 @@
 
 import json
 
+from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase, tagged
 
 
@@ -220,3 +221,55 @@ class TestSpreadsheetQuotation(TransactionCase):
         order._onchange_sale_order_template_id_spreadsheet()
 
         self.assertTrue(order.has_spreadsheet)
+
+    def _create_order_with_line(self):
+        return self.env["sale.order"].create(
+            {
+                "partner_id": self.partner.id,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "product_id": self.product.id,
+                            "product_uom_qty": 1,
+                        },
+                    )
+                ],
+            }
+        )
+
+    def test_sync_allowed_in_draft(self):
+        """Spreadsheet sync should update lines on draft quotations."""
+        order = self._create_order_with_line()
+        line = order.order_line[0]
+        commands = [[1, line.id, {"product_uom_qty": 10}]]
+        order.action_sync_spreadsheet_order_lines(commands)
+        self.assertEqual(line.product_uom_qty, 10)
+
+    def test_sync_allowed_in_sent(self):
+        """Spreadsheet sync should update lines on sent quotations."""
+        order = self._create_order_with_line()
+        order.write({"state": "sent"})
+        line = order.order_line[0]
+        commands = [[1, line.id, {"product_uom_qty": 8}]]
+        order.action_sync_spreadsheet_order_lines(commands)
+        self.assertEqual(line.product_uom_qty, 8)
+
+    def test_sync_blocked_in_sale(self):
+        """Spreadsheet sync should be blocked on confirmed sales orders."""
+        order = self._create_order_with_line()
+        order.action_confirm()
+        line = order.order_line[0]
+        commands = [[1, line.id, {"product_uom_qty": 10}]]
+        with self.assertRaises(UserError):
+            order.action_sync_spreadsheet_order_lines(commands)
+
+    def test_sync_blocked_in_cancel(self):
+        """Spreadsheet sync should be blocked on cancelled quotations."""
+        order = self._create_order_with_line()
+        order.action_cancel()
+        line = order.order_line[0]
+        commands = [[1, line.id, {"product_uom_qty": 10}]]
+        with self.assertRaises(UserError):
+            order.action_sync_spreadsheet_order_lines(commands)

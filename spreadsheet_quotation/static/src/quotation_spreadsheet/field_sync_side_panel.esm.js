@@ -233,6 +233,26 @@ export class FieldSyncPanel extends Component {
         return null;
     }
 
+    _getRpcErrorMessage(error) {
+        return error.data?.message || error.message || String(error);
+    }
+
+    /**
+     * Ensure the linked sale order allows spreadsheet synchronization.
+     */
+    async _ensureOrderSyncAllowed(orderId) {
+        const [order] = await this.orm.read("sale.order", [orderId], ["state"]);
+        if (order.state === "sale" || order.state === "cancel") {
+            const message =
+                order.state === "cancel"
+                    ? _t("Cannot sync a cancelled quotation.")
+                    : _t("Cannot sync a confirmed sales order.");
+            this.notification.add(message, {type: "warning"});
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Show a confirmation dialog listing the products that will be created.
      * Resolves to true when the user confirms, false otherwise.
@@ -291,6 +311,9 @@ export class FieldSyncPanel extends Component {
 
         this.state.saving = true;
         try {
+            if (!(await this._ensureOrderSyncAllowed(orderId))) {
+                return;
+            }
             await this.env.saveSpreadsheet();
 
             const sheetId = this.env.model.getters.getActiveSheetId();
@@ -392,10 +415,11 @@ export class FieldSyncPanel extends Component {
 
             // ---- 5. Execute ----
             if (writeCommands.length) {
-                await this.orm.call("sale.order", "write", [
-                    [orderId],
-                    {order_line: writeCommands},
-                ]);
+                await this.orm.call(
+                    "sale.order",
+                    "action_sync_spreadsheet_order_lines",
+                    [[orderId], writeCommands]
+                );
 
                 const updated = writeCommands.filter((c) => c[0] === 1).length;
                 const created = writeCommands.filter((c) => c[0] === 0).length;
@@ -411,9 +435,10 @@ export class FieldSyncPanel extends Component {
                 this.notification.add(_t("No values to sync"), {type: "info"});
             }
         } catch (e) {
-            this.notification.add(_t("Error syncing: %s", e.message || e), {
-                type: "danger",
-            });
+            this.notification.add(
+                _t("Error syncing: %s", this._getRpcErrorMessage(e)),
+                {type: "danger"}
+            );
         } finally {
             this.state.saving = false;
         }
