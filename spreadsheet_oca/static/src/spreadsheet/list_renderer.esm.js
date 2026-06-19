@@ -52,6 +52,7 @@ patch(ListRenderer.prototype, {
         return this.columns
             .filter(
                 (col) =>
+                    fields[col.name] &&
                     col.type === "field" &&
                     col.field.component !== HandleField &&
                     !col.relatedPropertyField &&
