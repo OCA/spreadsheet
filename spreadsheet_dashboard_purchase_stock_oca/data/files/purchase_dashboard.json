@@ -404,52 +404,52 @@
         "B47": {
           "style": 9,
           "format": 1,
-          "content": "=ODOO.LIST(3,1,\"date\")"
+          "content": "=ODOO.LIST(3,1,\"create_date\")"
         },
         "B48": {
           "style": 10,
           "format": 1,
-          "content": "=ODOO.LIST(3,2,\"date\")"
+          "content": "=ODOO.LIST(3,2,\"create_date\")"
         },
         "B49": {
           "style": 9,
           "format": 1,
-          "content": "=ODOO.LIST(3,3,\"date\")"
+          "content": "=ODOO.LIST(3,3,\"create_date\")"
         },
         "B50": {
           "style": 10,
           "format": 1,
-          "content": "=ODOO.LIST(3,4,\"date\")"
+          "content": "=ODOO.LIST(3,4,\"create_date\")"
         },
         "B51": {
           "style": 9,
           "format": 1,
-          "content": "=ODOO.LIST(3,5,\"date\")"
+          "content": "=ODOO.LIST(3,5,\"create_date\")"
         },
         "B52": {
           "style": 10,
           "format": 1,
-          "content": "=ODOO.LIST(3,6,\"date\")"
+          "content": "=ODOO.LIST(3,6,\"create_date\")"
         },
         "B53": {
           "style": 9,
           "format": 1,
-          "content": "=ODOO.LIST(3,7,\"date\")"
+          "content": "=ODOO.LIST(3,7,\"create_date\")"
         },
         "B54": {
           "style": 10,
           "format": 1,
-          "content": "=ODOO.LIST(3,8,\"date\")"
+          "content": "=ODOO.LIST(3,8,\"create_date\")"
         },
         "B55": {
           "style": 9,
           "format": 1,
-          "content": "=ODOO.LIST(3,9,\"date\")"
+          "content": "=ODOO.LIST(3,9,\"create_date\")"
         },
         "B56": {
           "style": 10,
           "format": 1,
-          "content": "=ODOO.LIST(3,10,\"date\")"
+          "content": "=ODOO.LIST(3,10,\"create_date\")"
         },
         "B57": {
           "style": 10,
@@ -2106,7 +2106,7 @@
     "3": {
       "columns": [
         "name",
-        "date",
+        "create_date",
         "partner_id",
         "user_id",
         "scheduled_date",
@@ -2128,7 +2128,7 @@
       },
       "orderBy": [
         {
-          "name": "date",
+          "name": "create_date",
           "asc": true
         }
       ],
