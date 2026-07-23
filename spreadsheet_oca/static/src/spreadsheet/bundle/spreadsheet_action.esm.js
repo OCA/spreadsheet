@@ -16,6 +16,9 @@ const actionRegistry = registry.category("actions");
 const {Component, onWillStart, useSubEnv} = owl;
 const {parseDimension, isDateOrDatetimeField} = helpers;
 
+const DEFAULT_FIGURE_WIDTH = 536;
+const DEFAULT_FIGURE_HEIGHT = 335;
+
 function normalizeGroupBys(dimensions, fields) {
     return dimensions.map((dimension) => {
         if (
@@ -107,7 +110,8 @@ export class ActionSpreadsheetOca extends Component {
         } else if (this.import_data.new === undefined) {
             // TODO: Add a way to detect the last row total height
         }
-        const dataSourceId = uuidGenerator.uuidv4();
+        const figureId = uuidGenerator.uuidv4();
+        const chartId = uuidGenerator.uuidv4();
         const chartType = `odoo_${this.import_data.metaData.mode}`;
         const definition = {
             title: {text: this.import_data.name},
@@ -117,23 +121,40 @@ export class ActionSpreadsheetOca extends Component {
             stacked: this.import_data.metaData.stacked,
             metaData: this.import_data.metaData,
             searchParams: this.cleanSearchParams(),
-            dataSourceId: dataSourceId,
-            id: uuidGenerator.uuidv4(),
+            dataSourceId: chartId,
+            id: chartId,
             cumulative: this.import_data.metaData.cumulated,
             cumulatedStart: this.import_data.metaData.cumulatedStart,
             legendPosition: "top",
             verticalAxisPosition: "left",
             actionXmlId: this.import_data.actionXmlId,
         };
+        const size = {width: DEFAULT_FIGURE_WIDTH, height: DEFAULT_FIGURE_HEIGHT};
         spreadsheet_model.dispatch("CREATE_CHART", {
             sheetId,
-            id: dataSourceId,
-            position: {
-                x: 0,
-                y: 0,
-            },
+            figureId,
+            chartId,
+            col: 0,
+            row: 0,
+            offset: {x: 0, y: 0},
+            size,
             definition,
         });
+    }
+    getFigureBottomRow(spreadsheet_model, sheetId, figure) {
+        const top =
+            spreadsheet_model.getters.getRowDimensions(sheetId, figure.row).start +
+            figure.offset.y;
+        const bottom = top + figure.height;
+        const lastRow = spreadsheet_model.getters.getNumberRows(sheetId) - 1;
+        var row = figure.row;
+        while (
+            row < lastRow &&
+            spreadsheet_model.getters.getRowDimensions(sheetId, row).end < bottom
+        ) {
+            row += 1;
+        }
+        return row;
     }
     importCreateOrReuseSheet(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
@@ -171,11 +192,24 @@ export class ActionSpreadsheetOca extends Component {
                 row -= 1;
             }
             row += 1;
+            // Cell scanning above only detects actual cell content. Figures
+            // (charts) are separate floating objects that don't occupy cells,
+            // so without this they'd be silently overlapped by new imports.
+            for (const figure of spreadsheet_model.getters.getFigures(sheetId)) {
+                const figureBottomRow = this.getFigureBottomRow(
+                    spreadsheet_model,
+                    sheetId,
+                    figure
+                );
+                if (figureBottomRow + 1 > row) {
+                    row = figureBottomRow + 1;
+                }
+            }
         }
-        return sheetId;
+        return {sheetId, row};
     }
     async importDataList(spreadsheet_model) {
-        var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
+        var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
         if (!sheetId) {
             const sheetIds = spreadsheet_model.getters.getSheetIds();
             sheetId = sheetIds.length ? sheetIds[0] : uuidGenerator.uuidv4();
@@ -202,7 +236,7 @@ export class ActionSpreadsheetOca extends Component {
         spreadsheet_model.dispatch("INSERT_ODOO_LIST_WITH_TABLE", {
             sheetId,
             col: 0,
-            row: 0,
+            row,
             id: listId,
             definition: list_info,
             linesNumber: this.import_data.dyn_number_of_rows,
@@ -216,7 +250,7 @@ export class ActionSpreadsheetOca extends Component {
         });
     }
     async importDataPivot(spreadsheet_model) {
-        var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
+        var {sheetId, row} = this.importCreateOrReuseSheet(spreadsheet_model);
         const pivotId = uuidGenerator.uuidv4();
         const fields = this.import_data.metaData.fields || {};
         const activeMeasures = this.import_data.metaData.activeMeasures;
@@ -259,7 +293,7 @@ export class ActionSpreadsheetOca extends Component {
         spreadsheet_model.dispatch("INSERT_PIVOT_WITH_TABLE", {
             sheetId,
             col: 0,
-            row: 0,
+            row,
             pivotId,
             table: table.export(),
             pivotMode: "dynamic",
