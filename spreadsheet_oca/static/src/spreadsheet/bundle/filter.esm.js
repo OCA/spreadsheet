@@ -8,12 +8,11 @@ import {ModelFieldSelector} from "@web/core/model_field_selector/model_field_sel
 import {ModelSelector} from "@web/core/model_selector/model_selector";
 import {MultiRecordSelector} from "@web/core/record_selectors/multi_record_selector";
 import {RELATIVE_DATE_RANGE_TYPES} from "@spreadsheet/helpers/constants";
-const {Checkbox} = spreadsheet.components;
-import {user} from "@web/core/user";
-
 import {_t} from "@web/core/l10n/translation";
 import {globalFiltersFieldMatchers} from "@spreadsheet/global_filters/plugins/global_filters_core_plugin";
 import {useService} from "@web/core/utils/hooks";
+import {user} from "@web/core/user";
+const {Checkbox} = spreadsheet.components;
 
 const {topbarMenuRegistry} = spreadsheet.registries;
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
