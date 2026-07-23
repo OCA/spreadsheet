@@ -136,7 +136,12 @@
                 <span t-esc="filter.label" />
             </div>
             <div class="spreadsheet_oca_filter_value">
-                <FilterValue filter="filter" model="env.model" />
+                <FilterValue
+                    filter="filter"
+                    model="env.model"
+                    globalFilterValue="getGlobalFilterValue(filter.id)"
+                    setGlobalFilterValue="(id, value) => this.setGlobalFilterValue(filter.id, value)"
+                />
                 <i
                     class="fa fa-cog btn btn-link text-muted spreadsheet_oca_filter_value_edit"
                     t-on-click="() =&gt; this.onEditFilter(filter)"
@@ -167,77 +172,18 @@
                 <input type="text" t-model="state.label" class="o_input" />
             </div>
         </div>
-        <div class="o_spreadsheet_oca_filter" t-if="state.type == 'date'">
-            <div class="spreadsheet_oca_filter_label">Time range</div>
+        <div class="o_spreadsheet_oca_filter" t-if="state.type === 'date'">
+            <div class="spreadsheet_oca_filter_label">Default value</div>
             <div class="spreadsheet_oca_filter_value">
-                <select
-                    t-model="state.rangeType"
-                    t-on-change="onDateRangeChange"
-                    class="o_input"
-                >
-                    <t t-foreach="dateRangeTypes" t-as="range" t-key="range.type">
-                        <option
-                            t-att-selected="state.rangeType === range.type ? 1 : 0"
-                            t-att-value="range.type"
-                        >
-                            <t t-esc="range.description" />
-                        </option>
-                    </t>
-                </select>
+                <DefaultDateValue
+                    value="state.defaultValue"
+                    update="(value) => this.onDefaultValueChanged(value)"
+                />
             </div>
         </div>
-        <div
-            class="o_spreadsheet_oca_filter"
-            t-if="state.type !== 'relation' and state.rangeType !== 'from_to'"
-        >
+        <div class="o_spreadsheet_oca_filter" t-if="state.type === 'text'">
             <div class="spreadsheet_oca_filter_label">Default value</div>
-            <div
-                t-if="state.type === 'date' and state.rangeType !== 'relative'"
-                class="spreadsheet_oca_filter_value"
-            >
-                <input
-                    type="checkbox"
-                    class="me-2"
-                    id="default_to_current_period"
-                    t-att-checked="state.defaultValue"
-                    t-on-change="toggleDateDefaultValue"
-                />
-                <label
-                    for="default_to_current_period"
-                > Automatically filter on the current period </label>
-            </div>
-            <div
-                class="pt-3"
-                t-if="state.defaultValue and state.type === 'date' and state.rangeType !== 'relative'"
-            >
-                <select t-model="state.defaultValue" class="o_input">
-                    <option value="this_month">Month</option>
-                    <option value="this_quarter">Quarter</option>
-                    <option value="this_year">Year</option>
-                </select>
-            </div>
-            <div
-                t-if="state.type === 'date' and state.rangeType === 'relative'"
-                class="spreadsheet_oca_filter_value"
-            >
-                <select t-model="state.defaultValue" class="o_input">
-                    <option value="" />
-                    <t
-                        t-foreach="relativeDateRangeTypes"
-                        t-as="range"
-                        t-key="range.type"
-                    >
-                        <option
-                            t-att-selected="range.type === state.defaultValue ? 1 : 0"
-                            t-att-value="range.type"
-                        >
-                            <t t-esc="range.description" />
-                        </option>
-                    </t>
-                </select>
-            </div>
             <input
-                t-if="state.type === 'text'"
                 type="text"
                 class="o_input o_global_filter_default_value"
                 t-model="state.defaultValue"

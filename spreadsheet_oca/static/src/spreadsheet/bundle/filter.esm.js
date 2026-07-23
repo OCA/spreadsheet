@@ -1,5 +1,6 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 import {Component, onWillStart, useState} from "@odoo/owl";
+import {DefaultDateValue} from "@spreadsheet/global_filters/components/default_date_value/default_date_value";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
@@ -7,9 +8,8 @@ import {FilterValue} from "@spreadsheet/global_filters/components/filter_value/f
 import {ModelFieldSelector} from "@web/core/model_field_selector/model_field_selector";
 import {ModelSelector} from "@web/core/model_selector/model_selector";
 import {MultiRecordSelector} from "@web/core/record_selectors/multi_record_selector";
-import {RELATIVE_DATE_RANGE_TYPES} from "@spreadsheet/helpers/constants";
 import {_t} from "@web/core/l10n/translation";
-import {globalFiltersFieldMatchers} from "@spreadsheet/global_filters/plugins/global_filters_core_plugin";
+import {globalFieldMatchingRegistry} from "@spreadsheet/global_filters/helpers";
 import {useService} from "@web/core/utils/hooks";
 import {user} from "@web/core/user";
 const {Checkbox} = spreadsheet.components;
@@ -17,7 +17,6 @@ const {Checkbox} = spreadsheet.components;
 const {topbarMenuRegistry} = spreadsheet.registries;
 const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
 
-topbarMenuRegistry.add("file", {name: _t("File"), sequence: 10});
 topbarMenuRegistry.addChild("filters", ["file"], {
     name: _t("Filters"),
     sequence: 70,
@@ -37,13 +36,6 @@ topbarMenuRegistry.addChild("download", ["file"], {
     execute: (env) => env.downloadAsXLXS(),
     icon: "o-spreadsheet-Icon.EXPORT_XLSX",
 });
-topbarMenuRegistry.addChild("settings", ["file"], {
-    name: _t("Settings"),
-    sequence: 100,
-    execute: (env) => env.openSidePanel("Settings"),
-    icon: "o-spreadsheet-Icon.COG",
-});
-
 const {sidePanelRegistry} = spreadsheet.registries;
 
 export class FilterPanel extends Component {
@@ -52,6 +44,15 @@ export class FilterPanel extends Component {
     }
     onAddFilter(type) {
         this.env.openSidePanel("EditFilterPanel", {filter: {type: type}});
+    }
+    getGlobalFilterValue(filterId) {
+        return this.env.model.getters.getGlobalFilterValue(filterId);
+    }
+    setGlobalFilterValue(filterId, value) {
+        this.env.model.dispatch("SET_GLOBAL_FILTER_VALUE", {
+            id: filterId,
+            value,
+        });
     }
 }
 
@@ -74,16 +75,17 @@ export class EditFilterPanel extends Component {
         this.state = useState({
             label: this.props.filter.label,
             type: this.props.filter.type,
-            defaultValue: this.props.filter.defaultValue || [],
+            defaultValue: this._unwrapDefaultValue(
+                this.props.filter.type,
+                this.props.filter.defaultValue
+            ),
             defaultValueDisplayNames: this.props.filter.defaultValueDisplayNames || [],
-            rangeType: this.props.filter.rangeType || "year",
             modelData: {technical: this.props.filter.modelName, label: null},
             objects: {},
             includeChildren: this.props.filter.includeChildren,
             domainOfAllowedValues: this.props.filter.domainOfAllowedValues,
             valuesRestricted: Boolean(this.props.filter.domainOfAllowedValues?.length),
         });
-        this.relativeDateRangeTypes = RELATIVE_DATE_RANGE_TYPES;
         onWillStart(this.willStart.bind(this));
     }
     async willStart() {
@@ -105,22 +107,25 @@ export class EditFilterPanel extends Component {
             }
         }
         var ModelFields = [];
-        for (var [objectType, objectClass] of Object.entries(
-            globalFiltersFieldMatchers
-        )) {
-            for (const objectId of objectClass.getIds()) {
-                var fields = objectClass.getFields(objectId);
+        const getters = this.env.model.getters;
+        for (var objectType of globalFieldMatchingRegistry.getKeys()) {
+            const objectClass = globalFieldMatchingRegistry.get(objectType);
+            for (const objectId of objectClass.getIds(getters)) {
+                var fields = objectClass.getFields(getters, objectId);
                 this.state.objects[objectType + "_" + objectId] = {
                     id: objectType + "_" + objectId,
                     objectId: objectId,
-                    name: objectClass.getDisplayName(objectId),
-                    tag: await objectClass.getTag(objectId),
+                    name: objectClass.getDisplayName(getters, objectId),
+                    tag: await objectClass.getTag(getters, objectId),
                     fieldMatch:
-                        objectClass.getFieldMatching(objectId, this.props.filter.id) ||
-                        {},
+                        objectClass.getFieldMatching(
+                            getters,
+                            objectId,
+                            this.props.filter.id
+                        ) || {},
                     fields: fields,
                     type: objectType,
-                    model: objectClass.getModel(objectId),
+                    model: objectClass.getModel(getters, objectId),
                 };
                 ModelFields.push(fields);
             }
@@ -132,13 +137,6 @@ export class EditFilterPanel extends Component {
                     .filter((field) => field.relation)
                     .map((field) => field.relation)
             ),
-        ];
-    }
-    get dateRangeTypes() {
-        return [
-            {type: "fixedPeriod", description: _t("Month / Quarter")},
-            {type: "relative", description: _t("Relative Period")},
-            {type: "from_to", description: _t("From / To")},
         ];
     }
     get dateOffset() {
@@ -194,9 +192,50 @@ export class EditFilterPanel extends Component {
             onConfirm: this.onUpdateDomain.bind(this),
         });
     }
-    onDateRangeChange(ev) {
-        this.state.rangeType = ev.target.value;
-        this.state.defaultValue = undefined;
+    onDefaultValueChanged(value) {
+        this.state.defaultValue = value;
+    }
+    _unwrapDefaultValue(type, defaultValue) {
+        if (defaultValue === undefined || defaultValue === null) {
+            return type === "relation" ? [] : undefined;
+        }
+        if (type === "relation") {
+            if (defaultValue.ids !== undefined) {
+                return defaultValue.ids;
+            }
+            return defaultValue;
+        }
+        if (type === "text") {
+            if (defaultValue.strings !== undefined) {
+                return defaultValue.strings.join(", ");
+            }
+            return defaultValue;
+        }
+        return defaultValue;
+    }
+    _wrapDefaultValue(type, value) {
+        if (type === "relation") {
+            if (value === "current_user") {
+                return {operator: "in", ids: "current_user"};
+            }
+            if (!value || (Array.isArray(value) && value.length === 0)) {
+                return undefined;
+            }
+            return {operator: "in", ids: value};
+        }
+        if (type === "text") {
+            if (!value) {
+                return undefined;
+            }
+            const strings = Array.isArray(value)
+                ? value
+                : String(value)
+                      .split(",")
+                      .map((s) => s.trim())
+                      .filter((s) => s);
+            return strings.length ? {operator: "ilike", strings} : undefined;
+        }
+        return value;
     }
     onSave() {
         const action = this.props.filter.id
@@ -207,9 +246,11 @@ export class EditFilterPanel extends Component {
             id: this.props.filter.id || uuidGenerator.uuidv4(),
             type: this.state.type,
             label: this.state.label || "",
-            defaultValue: this.state.defaultValue,
+            defaultValue: this._wrapDefaultValue(
+                this.state.type,
+                this.state.defaultValue
+            ),
             defaultValueDisplayNames: this.state.defaultValueDisplayNames,
-            rangeType: this.state.rangeType,
             modelName: this.state.modelData.technical,
             includeChildren: this.state.includeChildren,
             domainOfAllowedValues: this.state.domainOfAllowedValues,
@@ -251,9 +292,6 @@ export class EditFilterPanel extends Component {
             type: fieldDef?.type || "",
         };
     }
-    toggleDateDefaultValue(ev) {
-        this.state.defaultValue = ev.target.checked ? "this_month" : undefined;
-    }
     getModelField(fieldMatch) {
         if (!fieldMatch || !fieldMatch.chain) {
             return "";
@@ -294,6 +332,7 @@ EditFilterPanel.components = {
     ModelSelector,
     ModelFieldSelector,
     MultiRecordSelector,
+    DefaultDateValue,
 };
 
 sidePanelRegistry.add("EditFilterPanel", {
