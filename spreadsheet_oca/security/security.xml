@@ -6,11 +6,17 @@
         <field name="name">Spreadsheet</field>
         <field name="sequence">99</field>
     </record>
+    <record model="res.groups.privilege" id="spreadsheet_privilege">
+        <field name="name">Spreadsheet</field>
+        <field name="category_id" ref="module_category_spreedsheet" />
+    </record>
     <record id="group_user" model="res.groups">
         <field name="name">User</field>
+        <field name="privilege_id" ref="spreadsheet_privilege" />
     </record>
     <record id="group_manager" model="res.groups">
         <field name="name">Manager</field>
+        <field name="privilege_id" ref="spreadsheet_privilege" />
         <field name="implied_ids" eval="[(4, ref('group_user'))]" />
     </record>
     <record model="ir.rule" id="spreadsheet_company_rule">
@@ -54,6 +60,6 @@
     <record model="ir.rule" id="spreadsheet_import_mode_rule">
         <field name="name">Spreadsheet Import mode</field>
         <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
-        <field name="domain_force">[('group_ids','in', user.group_ids.ids)]</field>
+        <field name="domain_force">[('group_ids', 'in', user.all_group_ids.ids)]</field>
     </record>
 </odoo>

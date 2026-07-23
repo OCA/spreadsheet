@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
     <t
-        t-name="spreadsheet_oca.ListView.Buttons"
+        t-name="spreadsheet_oca.ListView.ExportButton"
         t-inherit="web.ListView"
         t-inherit-mode="extension"
     >
