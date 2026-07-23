@@ -15,10 +15,11 @@ class SpreadsheetSpreadsheetTags(models.Model):
 
     name = fields.Char(required=True, translate=True)
     color = fields.Integer(
-        default=_get_default_color,
+        default=lambda self: self._get_default_color(),
         help="Transparent tags are not visible in the kanban view",
     )
 
-    _sql_constraints = [
-        ("name_uniq", "unique (name)", "A tag with the same name already exists."),
-    ]
+    _name_uniq = models.Constraint(
+        "unique (name)",
+        "A tag with the same name already exists.",
+    )
