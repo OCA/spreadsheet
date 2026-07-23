@@ -3,10 +3,10 @@ import {Component, onWillStart, onWillUpdateProps, useRef, useState} from "@odoo
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
+import {ODOO_AGGREGATORS} from "@spreadsheet/pivot/pivot_helpers";
 import {_t} from "@web/core/l10n/translation";
 import {formatDate} from "@web/core/l10n/dates";
 import {useService} from "@web/core/utils/hooks";
-import {ODOO_AGGREGATORS} from "@spreadsheet/pivot/pivot_helpers";
 
 const {DateTime} = luxon;
 const {PivotTitleSection, PivotLayoutConfigurator} = spreadsheet.components;
