@@ -1,6 +1,6 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {patch} from "@web/core/utils/patch";
 import {onWillUpdateProps} from "@odoo/owl";
+import {patch} from "@web/core/utils/patch";
 
 const {chartSubtypeRegistry} = spreadsheet.registries;
 const {ChartTypePicker} = spreadsheet.components;
