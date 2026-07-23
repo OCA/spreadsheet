@@ -115,10 +115,9 @@ export class ActionSpreadsheetOca extends Component {
             fillArea: chartType === "odoo_line",
             background: "#FFFFFF",
             stacked: this.import_data.metaData.stacked,
+            axisType: this.import_data.metaData.axisType,
             metaData: this.import_data.metaData,
             searchParams: this.cleanSearchParams(),
-            dataSourceId: dataSourceId,
-            id: uuidGenerator.uuidv4(),
             cumulative: this.import_data.metaData.cumulated,
             cumulatedStart: this.import_data.metaData.cumulatedStart,
             legendPosition: "top",
@@ -127,11 +126,11 @@ export class ActionSpreadsheetOca extends Component {
         };
         spreadsheet_model.dispatch("CREATE_CHART", {
             sheetId,
-            id: dataSourceId,
-            position: {
-                x: 0,
-                y: 0,
-            },
+            figureId: uuidGenerator.uuidv4(),
+            chartId: dataSourceId,
+            col: 0,
+            row: 0,
+            offset: {x: 0, y: 0},
             definition,
         });
     }
@@ -177,12 +176,14 @@ export class ActionSpreadsheetOca extends Component {
             name: c.name,
             type: this.import_data.metaData.fields[c.name].type,
         }));
+        const definitionWithoutFields = JSON.parse(JSON.stringify(list_info));
+        definitionWithoutFields.metaData.fields = undefined;
         spreadsheet_model.dispatch("INSERT_ODOO_LIST_WITH_TABLE", {
             sheetId,
             col: 0,
             row: 0,
             id: listId,
-            definition: list_info,
+            definition: definitionWithoutFields,
             linesNumber: this.import_data.dyn_number_of_rows,
             columns: columns,
         });
@@ -233,7 +234,7 @@ export class ActionSpreadsheetOca extends Component {
         });
         const ds = spreadsheet_model.getters.getPivot(pivotId);
         await ds.load();
-        const table = ds.getTableStructure();
+        const table = ds.getCollapsedTableStructure();
         spreadsheet_model.dispatch("INSERT_PIVOT_WITH_TABLE", {
             sheetId,
             col: 0,

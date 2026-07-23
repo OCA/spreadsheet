@@ -21,7 +21,6 @@ topbarMenuRegistry.addChild("data_sources", ["data"], (env) => {
         name: env.model.getters.getListDisplayName(listId),
         sequence: sequence++,
         execute: (child_env) => {
-            child_env.model.dispatch("SELECT_ODOO_LIST", {listId: listId});
             child_env.openSidePanel("ListPanel", {listId});
         },
         icon: "spreadsheet_oca.ListIcon",
@@ -66,10 +65,12 @@ export class PivotTitleSectionInsertion extends PivotTitleSection {
     }
     reinsertTable(env, mode) {
         const zone = env.model.getters.getSelectedZone();
-        const table = env.model.getters
-            .getPivot(this.props.pivotId)
-            .getTableStructure()
-            .export();
+        const pivot = env.model.getters.getPivot(this.props.pivotId);
+        const table = (
+            mode === "dynamic"
+                ? pivot.getCollapsedTableStructure()
+                : pivot.getExpandedTableStructure()
+        ).export();
         env.model.dispatch("INSERT_PIVOT_WITH_TABLE", {
             pivotId: this.props.pivotId,
             table,
