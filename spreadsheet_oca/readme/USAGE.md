@@ -37,3 +37,19 @@
   > - `ODOO.ACCOUNT.GROUP(type)`: Returns the account ids of a given
   >   group where type should be a value of the `account_type` field of
   >   `account.account` model. (`income`, `asset_receivable`, etc.)
+
+## **Email a spreadsheet digest on a schedule**
+
+Go to 'Spreadsheet \> Configuration \> Subscriptions' and add one per person
+who should receive a spreadsheet by email.
+
+- Pick the **Subscriber** and how often they should hear from you.
+- **Include Pivot Data** attaches a live summary of every Odoo pivot in the
+  workbook, recomputed at send time rather than reusing stale saved values.
+- **Run As** decides whose permissions the figures are computed with; it
+  defaults to you. A subscriber therefore never receives numbers that this
+  user could not read themselves.
+
+A single scheduled action wakes daily and sends whichever digests are due, so
+adding subscribers does not add scheduled actions. **Send Now** delivers one
+immediately without waiting for the schedule.

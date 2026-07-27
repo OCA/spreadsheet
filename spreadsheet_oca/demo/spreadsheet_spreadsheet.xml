@@ -1,11 +1,101 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- ════════════════════════════════════════════════════════════════════
+         Demo Partners (geographic diversity for pivot demos)
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_partner_de_1" model="res.partner">
+        <field name="name">Müller GmbH</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.de" />
+    </record>
+    <record id="demo_partner_de_2" model="res.partner">
+        <field name="name">Hans Weber</field>
+        <field name="country_id" ref="base.de" />
+        <field name="parent_id" ref="demo_partner_de_1" />
+    </record>
+    <record id="demo_partner_fr_1" model="res.partner">
+        <field name="name">Dupont SA</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.fr" />
+    </record>
+    <record id="demo_partner_fr_2" model="res.partner">
+        <field name="name">Marie Leclerc</field>
+        <field name="country_id" ref="base.fr" />
+        <field name="parent_id" ref="demo_partner_fr_1" />
+    </record>
+    <record id="demo_partner_uk_1" model="res.partner">
+        <field name="name">British Solutions Ltd</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.uk" />
+    </record>
+    <record id="demo_partner_uk_2" model="res.partner">
+        <field name="name">James Clarke</field>
+        <field name="country_id" ref="base.uk" />
+        <field name="parent_id" ref="demo_partner_uk_1" />
+    </record>
+    <record id="demo_partner_jp_1" model="res.partner">
+        <field name="name">Tanaka Industries</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.jp" />
+    </record>
+    <record id="demo_partner_br_1" model="res.partner">
+        <field name="name">Silva Comércio Ltda</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.br" />
+    </record>
+    <record id="demo_partner_br_2" model="res.partner">
+        <field name="name">Ana Costa</field>
+        <field name="country_id" ref="base.br" />
+    </record>
+    <record id="demo_partner_in_1" model="res.partner">
+        <field name="name">Patel Technologies Pvt Ltd</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.in" />
+    </record>
+    <record id="demo_partner_in_2" model="res.partner">
+        <field name="name">Priya Sharma</field>
+        <field name="country_id" ref="base.in" />
+        <field name="parent_id" ref="demo_partner_in_1" />
+    </record>
+    <record id="demo_partner_au_1" model="res.partner">
+        <field name="name">Outback Systems Pty Ltd</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.au" />
+    </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         Spreadsheet Records
+         ════════════════════════════════════════════════════════════════════ -->
+
     <record id="demo_spreadsheet" model="spreadsheet.spreadsheet">
-        <field name="name">Demo spreadsheet</field>
+        <field name="name">Sales Pipeline Summary</field>
+        <field name="owner_id" ref="base.user_admin" />
         <field
             name="spreadsheet_binary_data"
             type="base64"
             file="spreadsheet_oca/demo/demo_spreadsheet.json"
         />
+    </record>
+
+    <record id="demo_pivot_dashboard" model="spreadsheet.spreadsheet">
+        <field name="name">Partner Pivot Dashboard</field>
+        <field name="owner_id" ref="base.user_admin" />
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_oca/demo/demo_pivot_dashboard.json"
+        />
+    </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         Subscriptions
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_sub_weekly" model="spreadsheet.subscription">
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="partner_id" ref="base.partner_admin" />
+        <field name="frequency">weekly</field>
+        <field name="include_pivot_data" eval="True" />
     </record>
 </odoo>
