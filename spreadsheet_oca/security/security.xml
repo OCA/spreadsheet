@@ -62,4 +62,25 @@
         <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
         <field name="domain_force">[('group_ids','in', user.groups_id.ids)]</field>
     </record>
+
+    <!-- ══ Record rules for child models ══════════════════════════════ -->
+
+    <record model="ir.rule" id="writeback_log_user_rule">
+        <field name="name">Writeback Log: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_writeback_log" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="writeback_log_manager_rule">
+        <field name="name">Writeback Log: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_writeback_log" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
 </odoo>

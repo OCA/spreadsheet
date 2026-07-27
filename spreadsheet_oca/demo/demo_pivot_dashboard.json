@@ -1,0 +1,98 @@
+{
+  "version": 21,
+  "sheets": [
+    {
+      "id": "sheet_partners",
+      "name": "Partners by Country",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {
+        "0": {"size": 220},
+        "1": {"size": 140},
+        "2": {"size": 140},
+        "3": {"size": 140}
+      },
+      "merges": [],
+      "cells": {
+        "A1": {"content": "=PIVOT(1)"}
+      },
+      "conditionalFormats": [],
+      "figures": [],
+      "filterTables": [],
+      "tables": [],
+      "dataValidationRules": [],
+      "comments": {},
+      "headerGroups": {"ROW": [], "COL": []},
+      "areGridLinesVisible": true,
+      "isVisible": true
+    },
+    {
+      "id": "sheet_regions",
+      "name": "Regions per Country",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {
+        "0": {"size": 220},
+        "1": {"size": 140}
+      },
+      "merges": [],
+      "cells": {
+        "A1": {"content": "=PIVOT(2)"}
+      },
+      "conditionalFormats": [],
+      "figures": [],
+      "filterTables": [],
+      "tables": [],
+      "dataValidationRules": [],
+      "comments": {},
+      "headerGroups": {"ROW": [], "COL": []},
+      "areGridLinesVisible": true,
+      "isVisible": true
+    }
+  ],
+  "settings": {},
+  "customTableStyles": {},
+  "styles": {},
+  "formats": {},
+  "borders": {},
+  "revisionId": "START_REVISION",
+  "uniqueFigureIds": true,
+  "odooVersion": 12,
+  "globalFilters": [],
+  "pivots": {
+    "1": {
+      "type": "ODOO",
+      "id": "1",
+      "formulaId": "1",
+      "name": "Partners by Country & Type",
+      "model": "res.partner",
+      "domain": [["active", "=", true]],
+      "context": {},
+      "measures": [{"id": "__count", "fieldName": "__count"}],
+      "rows": [{"fieldName": "country_id", "order": "desc"}],
+      "columns": [{"fieldName": "is_company"}],
+      "sortedColumn": null,
+      "fieldMatching": {}
+    },
+    "2": {
+      "type": "ODOO",
+      "id": "2",
+      "formulaId": "2",
+      "name": "Regions per Country",
+      "model": "res.country.state",
+      "domain": [],
+      "context": {},
+      "measures": [{"id": "__count", "fieldName": "__count"}],
+      "rows": [{"fieldName": "country_id", "order": "desc"}],
+      "columns": [],
+      "sortedColumn": null,
+      "fieldMatching": {}
+    }
+  },
+  "pivotNextId": 3,
+  "lists": {},
+  "listNextId": 1,
+  "chartOdooMenusReferences": {}
+}
