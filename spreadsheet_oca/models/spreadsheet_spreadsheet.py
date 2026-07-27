@@ -59,7 +59,7 @@ class SpreadsheetSpreadsheet(models.Model):
     @api.depends("name")
     def _compute_filename(self):
         for record in self:
-            record.filename = "%s.json" % (self.name or _("Unnamed"))
+            record.filename = f"{record.name or _('Unnamed')}.json"
 
     def create_document_from_attachment(self, attachment_ids):
         attachments = self.env["ir.attachment"].browse(attachment_ids)
