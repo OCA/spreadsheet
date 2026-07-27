@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ══ Alert notification (posted to Chatter) ═══════════════════════
+         Rendered by spreadsheet.alert._fire_notification().
+         Variables: alert, value_str, op_label, threshold_str, base_url
+
+         Customise via Settings > Technical > Views, search for
+         "spreadsheet.alert.notification". -->
+    <record model="ir.ui.view" id="spreadsheet_alert_notification_template">
+        <field name="name">spreadsheet.alert.notification</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-name="spreadsheet_oca.spreadsheet_alert_notification_template">
+                <div
+                    style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#333;max-width:600px"
+                >
+                    <!-- Header bar -->
+                    <div
+                        style="background:#c0392b;color:#fff;padding:10px 16px;border-radius:4px 4px 0 0;font-size:13px"
+                    >
+                        &#9888; KPI Alert Triggered
+                    </div>
+                    <!-- Body -->
+                    <div
+                        style="border:1px solid #e0e0e0;border-top:none;padding:16px;border-radius:0 0 4px 4px"
+                    >
+                        <p
+                            style="margin:0 0 10px 0;font-size:15px;font-weight:bold;color:#222"
+                        >
+                            <t t-out="alert.name" />
+                        </p>
+                        <table
+                            style="font-size:13px;color:#555;line-height:1.6;border-collapse:collapse"
+                            cellpadding="0"
+                            cellspacing="0"
+                        >
+                            <tr>
+                                <td
+                                    style="padding:2px 12px 2px 0;color:#888;white-space:nowrap"
+                                >Cell</td>
+                                <td style="padding:2px 0">
+                                    <b>
+                                        <t t-out="alert.cell_ref" />
+                                    </b>
+                                    <t t-if="alert.sheet_name">
+                                        on sheet <i>
+                                        <t t-out="alert.sheet_name" />
+                                    </i>
+                                    </t>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="padding:2px 12px 2px 0;color:#888;white-space:nowrap"
+                                >Value</td>
+                                <td style="padding:2px 0">
+                                    <b>
+                                        <t t-out="value_str" />
+                                    </b>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td
+                                    style="padding:2px 12px 2px 0;color:#888;white-space:nowrap"
+                                >Condition</td>
+                                <td style="padding:2px 0">
+                                    <t t-out="op_label" />
+                                    &#160;
+                                    <t t-out="threshold_str" />
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- Action links -->
+                        <div
+                            style="margin-top:14px;padding-top:12px;border-top:1px solid #eee;font-size:12px"
+                        >
+                            <t
+                                t-set="spreadsheet_url"
+                                t-value="'%s/web#id=%d&amp;model=spreadsheet.spreadsheet&amp;view_type=form' % (base_url, alert.spreadsheet_id.id)"
+                            />
+                            <t
+                                t-set="alert_url"
+                                t-value="'%s/web#id=%d&amp;model=spreadsheet.alert&amp;view_type=form' % (base_url, alert.id)"
+                            />
+                            <a
+                                t-att-href="spreadsheet_url"
+                                style="color:#2980b9;text-decoration:none;margin-right:16px"
+                            >
+                                &#128196; Open Spreadsheet
+                            </a>
+                            <a
+                                t-att-href="alert_url"
+                                style="color:#2980b9;text-decoration:none"
+                            >
+                                &#9881; Alert Settings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </field>
+    </record>
+</odoo>

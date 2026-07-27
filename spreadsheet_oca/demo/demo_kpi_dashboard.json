@@ -1,0 +1,85 @@
+{
+  "version": 21,
+  "sheets": [
+    {
+      "id": "dashboard",
+      "name": "Dashboard",
+      "colNumber": 26,
+      "rowNumber": 100,
+      "rows": {},
+      "cols": {},
+      "merges": [],
+      "cells": {
+        "A1": {"content": "KPI", "style": 1, "border": 1},
+        "B1": {"content": "Target", "style": 1, "border": 1},
+        "C1": {"content": "Actual", "style": 1, "border": 1},
+        "D1": {"content": "Variance", "style": 1, "border": 1},
+        "E1": {"content": "Status", "style": 1, "border": 1},
+        "A2": {"content": "Cost Per Lead"},
+        "B2": {"content": "50", "format": 1},
+        "C2": {"content": "42", "format": 1},
+        "D2": {"content": "=C2-B2", "format": 1},
+        "E2": {"content": "=IF(C2<=B2,\"On Track\",\"Over\")"},
+        "A3": {"content": "Revenue Growth"},
+        "B3": {"content": "0.15", "format": 2},
+        "C3": {"content": "0.12", "format": 2},
+        "D3": {"content": "=C3-B3", "format": 2},
+        "E3": {"content": "=IF(C3>=B3,\"On Track\",\"Below\")"},
+        "A4": {"content": "Customer Churn"},
+        "B4": {"content": "0.05", "format": 2},
+        "C4": {"content": "0.032", "format": 2},
+        "D4": {"content": "=C4-B4", "format": 2},
+        "E4": {"content": "=IF(C4<=B4,\"On Track\",\"High\")"},
+        "A5": {"content": "Avg Deal Size"},
+        "B5": {"content": "25000", "format": 1},
+        "C5": {"content": "28500", "format": 1},
+        "D5": {"content": "=C5-B5", "format": 1},
+        "E5": {"content": "=IF(C5>=B5,\"On Track\",\"Low\")"},
+        "A6": {"content": "NPS Score"},
+        "B6": {"content": "70"},
+        "C6": {"content": "78"},
+        "D6": {"content": "=C6-B6"},
+        "E6": {"content": "=IF(C6>=B6,\"On Track\",\"Low\")"},
+        "A8": {"content": "Last Updated"},
+        "B8": {"content": "2026-03-01"},
+        "A9": {"content": "Updated By"},
+        "B9": {"content": "Admin"}
+      },
+      "conditionalFormats": [],
+      "figures": [],
+      "filterTables": [],
+      "tables": [],
+      "dataValidationRules": [],
+      "comments": {},
+      "headerGroups": {"ROW": [], "COL": []},
+      "areGridLinesVisible": true,
+      "isVisible": true
+    }
+  ],
+  "settings": {},
+  "customTableStyles": {},
+  "styles": {
+    "1": {"bold": true, "align": "center"}
+  },
+  "formats": {
+    "1": "$#,##0",
+    "2": "0.00%"
+  },
+  "borders": {
+    "1": {
+      "top": ["thin", "#000"],
+      "bottom": ["thin", "#000"],
+      "left": ["thin", "#000"],
+      "right": ["thin", "#000"]
+    }
+  },
+  "revisionId": "START_REVISION",
+  "uniqueFigureIds": true,
+  "odooVersion": 12,
+  "globalFilters": [],
+  "pivots": {},
+  "pivotNextId": 1,
+  "lists": {},
+  "listNextId": 1,
+  "chartOdooMenusReferences": {}
+}

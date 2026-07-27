@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record model="ir.cron" id="spreadsheet_alert_cron">
+        <field name="name">Spreadsheet KPI Alert Evaluation</field>
+        <field name="model_id" ref="model_spreadsheet_alert" />
+        <field name="state">code</field>
+        <field name="code">model._cron_evaluate_all()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <field name="active">True</field>
+    </record>
+</odoo>
