@@ -1,11 +1,120 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <!-- ════════════════════════════════════════════════════════════════════
+         Demo Partners (geographic diversity for pivot demos)
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_partner_de_1" model="res.partner">
+        <field name="name">Müller GmbH</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.de" />
+    </record>
+    <record id="demo_partner_de_2" model="res.partner">
+        <field name="name">Hans Weber</field>
+        <field name="country_id" ref="base.de" />
+        <field name="parent_id" ref="demo_partner_de_1" />
+    </record>
+    <record id="demo_partner_fr_1" model="res.partner">
+        <field name="name">Dupont SA</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.fr" />
+    </record>
+    <record id="demo_partner_fr_2" model="res.partner">
+        <field name="name">Marie Leclerc</field>
+        <field name="country_id" ref="base.fr" />
+        <field name="parent_id" ref="demo_partner_fr_1" />
+    </record>
+    <record id="demo_partner_uk_1" model="res.partner">
+        <field name="name">British Solutions Ltd</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.uk" />
+    </record>
+    <record id="demo_partner_uk_2" model="res.partner">
+        <field name="name">James Clarke</field>
+        <field name="country_id" ref="base.uk" />
+        <field name="parent_id" ref="demo_partner_uk_1" />
+    </record>
+    <record id="demo_partner_jp_1" model="res.partner">
+        <field name="name">Tanaka Industries</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.jp" />
+    </record>
+    <record id="demo_partner_br_1" model="res.partner">
+        <field name="name">Silva Comércio Ltda</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.br" />
+    </record>
+    <record id="demo_partner_br_2" model="res.partner">
+        <field name="name">Ana Costa</field>
+        <field name="country_id" ref="base.br" />
+    </record>
+    <record id="demo_partner_in_1" model="res.partner">
+        <field name="name">Patel Technologies Pvt Ltd</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.in" />
+    </record>
+    <record id="demo_partner_in_2" model="res.partner">
+        <field name="name">Priya Sharma</field>
+        <field name="country_id" ref="base.in" />
+        <field name="parent_id" ref="demo_partner_in_1" />
+    </record>
+    <record id="demo_partner_au_1" model="res.partner">
+        <field name="name">Outback Systems Pty Ltd</field>
+        <field name="is_company" eval="True" />
+        <field name="country_id" ref="base.au" />
+    </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         Spreadsheet Records
+         ════════════════════════════════════════════════════════════════════ -->
+
     <record id="demo_spreadsheet" model="spreadsheet.spreadsheet">
-        <field name="name">Demo spreadsheet</field>
+        <field name="name">Sales Pipeline Summary</field>
+        <field name="owner_id" ref="base.user_admin" />
         <field
             name="spreadsheet_binary_data"
             type="base64"
             file="spreadsheet_oca/demo/demo_spreadsheet.json"
         />
+    </record>
+
+    <record id="demo_pivot_dashboard" model="spreadsheet.spreadsheet">
+        <field name="name">Partner Pivot Dashboard</field>
+        <field name="owner_id" ref="base.user_admin" />
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_oca/demo/demo_pivot_dashboard.json"
+        />
+    </record>
+
+    <!-- ════════════════════════════════════════════════════════════════════
+         What-If Scenarios
+         ════════════════════════════════════════════════════════════════════ -->
+
+    <record id="demo_scenario_base" model="spreadsheet.scenario">
+        <field name="name">Base Case</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="is_base" eval="True" />
+        <field name="description">Current pipeline estimates</field>
+        <field name="cell_overrides">{}</field>
+    </record>
+
+    <record id="demo_scenario_optimistic" model="spreadsheet.scenario">
+        <field name="name">Optimistic (+20%)</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="description">20% uplift on all revenue</field>
+        <field
+            name="cell_overrides"
+        >{"Sales Pipeline!B2": 144000, "Sales Pipeline!C2": 168000, "Sales Pipeline!D2": 192000, "Sales Pipeline!B3": 96000, "Sales Pipeline!C3": 108000, "Sales Pipeline!D3": 120000, "Sales Pipeline!B4": 60000, "Sales Pipeline!C4": 72000, "Sales Pipeline!D4": 84000, "Sales Pipeline!B5": 36000, "Sales Pipeline!C5": 42000, "Sales Pipeline!D5": 48000, "Sales Pipeline!B6": 24000, "Sales Pipeline!C6": 30000, "Sales Pipeline!D6": 36000}</field>
+    </record>
+
+    <record id="demo_scenario_pessimistic" model="spreadsheet.scenario">
+        <field name="name">Pessimistic (-30%)</field>
+        <field name="spreadsheet_id" ref="demo_spreadsheet" />
+        <field name="description">30% reduction across the board</field>
+        <field
+            name="cell_overrides"
+        >{"Sales Pipeline!B2": 84000, "Sales Pipeline!C2": 98000, "Sales Pipeline!D2": 112000, "Sales Pipeline!B3": 56000, "Sales Pipeline!C3": 63000, "Sales Pipeline!D3": 70000, "Sales Pipeline!B4": 35000, "Sales Pipeline!C4": 42000, "Sales Pipeline!D4": 49000, "Sales Pipeline!B5": 21000, "Sales Pipeline!C5": 24500, "Sales Pipeline!D5": 28000, "Sales Pipeline!B6": 14000, "Sales Pipeline!C6": 17500, "Sales Pipeline!D6": 21000}</field>
     </record>
 </odoo>

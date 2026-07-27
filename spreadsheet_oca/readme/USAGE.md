@@ -37,3 +37,17 @@
   > - `ODOO.ACCOUNT.GROUP(type)`: Returns the account ids of a given
   >   group where type should be a value of the `account_type` field of
   >   `account.account` model. (`income`, `asset_receivable`, etc.)
+
+## **Try what-if changes without touching the original**
+
+Go to 'Spreadsheet \> Configuration \> What-If Scenarios' to model an
+alternative set of numbers against an existing spreadsheet.
+
+- Pick the **Base Spreadsheet** and give the scenario a name.
+- **Cell Overrides** is a JSON object of cell reference to value, for example
+  `{"B3": 125000, "Dashboard!C2": 38}`. Prefix with a sheet name when the
+  workbook has more than one. Invalid JSON or a malformed cell reference is
+  rejected when you save, not when you run it.
+- **Apply to Copy** creates a *new* spreadsheet with the overrides written in.
+  The original is never modified, so you can compare the two side by side or
+  keep several scenarios against the same baseline.

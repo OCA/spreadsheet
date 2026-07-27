@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ── Search view ───────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_scenario_search_view">
+        <field name="name">spreadsheet.scenario.search</field>
+        <field name="model">spreadsheet.scenario</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <separator />
+                <filter
+                    name="base_only"
+                    string="Base Scenarios"
+                    domain="[('is_base', '=', True)]"
+                />
+                <filter
+                    name="active"
+                    string="Active"
+                    domain="[('active', '=', True)]"
+                />
+                <filter
+                    name="archived"
+                    string="Archived"
+                    domain="[('active', '=', False)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="by_spreadsheet"
+                        string="Spreadsheet"
+                        context="{'group_by': 'spreadsheet_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── List view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_scenario_list_view">
+        <field name="name">spreadsheet.scenario.list</field>
+        <field name="model">spreadsheet.scenario</field>
+        <field name="arch" type="xml">
+            <list
+                string="What-If Scenarios"
+                decoration-info="is_base"
+                decoration-muted="not active"
+            >
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="is_base" string="Base" widget="boolean" />
+                <field name="override_count" string="# Overrides" />
+                <field name="description" />
+                <field name="active" column_invisible="True" />
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Form view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_scenario_form_view">
+        <field name="name">spreadsheet.scenario.form</field>
+        <field name="model">spreadsheet.scenario</field>
+        <field name="arch" type="xml">
+            <form string="What-If Scenario">
+                <header>
+                    <button
+                        name="action_apply_to_copy"
+                        type="object"
+                        string="Apply to Copy"
+                        class="btn-primary"
+                        title="Create a new spreadsheet with these overrides applied"
+                    />
+                    <button
+                        name="action_export_comparison"
+                        type="object"
+                        string="Compare vs Base"
+                        title="Show a comparison of override values against current spreadsheet values"
+                    />
+                    <field name="active" invisible="1" />
+                </header>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Base Scenario"
+                        bg_color="text-bg-info"
+                        invisible="not is_base"
+                    />
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="spreadsheet_id" />
+                        </group>
+                        <group>
+                            <field name="is_base" />
+                            <field name="override_count" />
+                        </group>
+                    </group>
+                    <group>
+                        <field
+                            name="description"
+                            placeholder="Optional: brief note on what this scenario represents"
+                        />
+                    </group>
+                    <group string="Cell Overrides">
+                        <field
+                            name="cell_overrides"
+                            widget="text"
+                            nolabel="1"
+                            placeholder='{"Sheet1!B3": 125000, "C5": 0.15}'
+                            help="JSON dict mapping cell references to override values.
+Keys: 'B3' (first sheet) or 'Sheet1!B3' (named sheet).
+Values: numbers, strings, booleans, or null."
+                            style="font-family: monospace; min-height: 120px;"
+                        />
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Action ────────────────────────────────────────────────── -->
+    <record model="ir.actions.act_window" id="spreadsheet_scenario_act_window">
+        <field name="name">What-If Scenarios</field>
+        <field name="res_model">spreadsheet.scenario</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_active': 1}</field>
+    </record>
+
+    <!-- ── Menu item ─────────────────────────────────────────────── -->
+    <record model="ir.ui.menu" id="spreadsheet_scenario_menu">
+        <field name="name">What-If Scenarios</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="spreadsheet_scenario_act_window" />
+        <field name="groups_id" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="sequence" eval="23" />
+    </record>
+
+    <!-- ── Smart button on spreadsheet form ─────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_scenario_button">
+        <field name="name">spreadsheet.spreadsheet.form.scenario</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_open_scenarios"
+                    icon="fa-flask"
+                >
+                    <field
+                        string="What-If Scenarios"
+                        name="scenario_count"
+                        widget="statinfo"
+                    />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
