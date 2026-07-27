@@ -37,3 +37,48 @@
   > - `ODOO.ACCOUNT.GROUP(type)`: Returns the account ids of a given
   >   group where type should be a value of the `account_type` field of
   >   `account.account` model. (`income`, `asset_receivable`, etc.)
+
+## **Schedule an automatic data refresh**
+
+A spreadsheet that contains `=PIVOT()` formulas can be re-computed on a
+schedule, with the resulting tables posted to its Chatter.
+
+- Open a spreadsheet, then click the **Schedules** smart button (or go to
+  'Spreadsheet \> Configuration \> Refresh Schedules').
+- Click **New**, pick the spreadsheet, and set how often it should run —
+  for example every `1` `Week(s)`.
+- Optionally add partners under **Notify Partners**; they receive the same
+  summary by email.
+- **Run As** decides whose permissions the refresh uses. It defaults to you.
+- Use **Pause** to stop a schedule without losing its configuration,
+  **Activate** to resume it, and **Run Now** to refresh immediately.
+
+A single scheduled action ('Spreadsheet: Scheduled Data Refresh') wakes hourly
+and refreshes whichever schedules are due, so adding schedules does not add
+scheduled actions.
+
+Each run reads every Odoo pivot defined in the spreadsheet, recomputes it
+server-side, and posts one rendered table per pivot to the spreadsheet's
+Chatter, along with the total record count. **Last Run** records when it
+last executed.
+
+Note that the pivots are computed with the permissions of the schedule's
+**Run As** user — not the scheduler's — so a summary never exposes records
+that user could not read themselves.
+
+## **Drive pivot domains from spreadsheet cells**
+
+Named input parameters let a spreadsheet cell act as a filter for the Odoo
+pivots inside it — change the cell, and the next refresh uses the new value.
+
+- Go to 'Spreadsheet \> Configuration \> Input Parameters' and add one per
+  filter, giving it a **Name** and the **Cell Reference** holding its value.
+- Reference the parameter in a pivot domain with `%(name)s`, for example
+  `[("date_order", ">=", "%(start_date)s")]`.
+- **Sync Now** reads the current cell values; a scheduled refresh does this
+  automatically before recomputing.
+
+Only the *value* position of a domain is substituted — never a field name or an
+operator — so a parameter can filter a domain but cannot restructure it. An
+unknown parameter name is left in place and logged rather than silently
+matching everything.
