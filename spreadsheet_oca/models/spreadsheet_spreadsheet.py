@@ -56,6 +56,28 @@ class SpreadsheetSpreadsheet(models.Model):
         string="Tags", comodel_name="spreadsheet.spreadsheet.tag"
     )
 
+    # ── DRY helper for grouped count fields ──────────────────────────────────
+
+    def _compute_related_count(self, comodel, field_name, extra_domain=None):
+        """Compute a count field by grouping *comodel* on ``spreadsheet_id``.
+
+        By default the domain filters on ``active=True``; pass *extra_domain*
+        to override (e.g. ``[("status", "!=", "error")]`` for writeback logs).
+        """
+        domain = [("spreadsheet_id", "in", self.ids)]
+        if extra_domain is not None:
+            domain += extra_domain
+        else:
+            domain.append(("active", "=", True))
+        count_map = {
+            spreadsheet.id: count
+            for spreadsheet, count in self.env[comodel]._read_group(
+                domain, ["spreadsheet_id"], ["__count"]
+            )
+        }
+        for rec in self:
+            rec[field_name] = count_map.get(rec.id, 0)
+
     @api.depends("name")
     def _compute_filename(self):
         for record in self:
