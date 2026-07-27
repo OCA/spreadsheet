@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Ledo Enterprises LLC
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- ── Search view ───────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_refresh_schedule_search_view">
+        <field name="name">spreadsheet.refresh.schedule.search</field>
+        <field name="model">spreadsheet.refresh.schedule</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <separator />
+                <filter
+                    name="active"
+                    string="Active"
+                    domain="[('active', '=', True)]"
+                />
+                <filter
+                    name="archived"
+                    string="Archived"
+                    domain="[('active', '=', False)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="by_spreadsheet"
+                        string="Spreadsheet"
+                        context="{'group_by': 'spreadsheet_id'}"
+                    />
+                    <filter
+                        name="by_interval"
+                        string="Interval"
+                        context="{'group_by': 'interval_type'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- ── List view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_refresh_schedule_list_view">
+        <field name="name">spreadsheet.refresh.schedule.list</field>
+        <field name="model">spreadsheet.refresh.schedule</field>
+        <field name="arch" type="xml">
+            <list string="Refresh Schedules" decoration-muted="not active">
+                <field name="name" />
+                <field name="spreadsheet_id" />
+                <field name="interval_number" string="Every" />
+                <field name="interval_type" string="Unit" />
+                <field name="last_run" />
+                <field name="active" column_invisible="True" />
+                <button
+                    name="action_run_now"
+                    type="object"
+                    string="Run Now"
+                    icon="fa-refresh"
+                    title="Run refresh now"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- ── Form view ─────────────────────────────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_refresh_schedule_form_view">
+        <field name="name">spreadsheet.refresh.schedule.form</field>
+        <field name="model">spreadsheet.refresh.schedule</field>
+        <field name="arch" type="xml">
+            <form string="Refresh Schedule">
+                <header>
+                    <button
+                        name="action_activate"
+                        type="object"
+                        string="Activate"
+                        class="btn-primary"
+                        invisible="active"
+                    />
+                    <button
+                        name="action_deactivate"
+                        type="object"
+                        string="Pause"
+                        invisible="not active"
+                    />
+                    <button name="action_run_now" type="object" string="Run Now" />
+                    <field name="active" invisible="1" />
+                </header>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Paused"
+                        bg_color="text-bg-warning"
+                        invisible="active"
+                    />
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="spreadsheet_id" />
+                        </group>
+                        <group>
+                            <field name="last_run" />
+                            <field name="user_id" />
+                        </group>
+                    </group>
+                    <group string="Schedule">
+                        <label for="interval_number" string="Run every" />
+                        <div class="o_row">
+                            <field name="interval_number" class="oe_inline" />
+                            <field name="interval_type" class="oe_inline" />
+                        </div>
+                    </group>
+                    <group string="Notifications">
+                        <field
+                            name="notify_partner_ids"
+                            widget="many2many_tags"
+                            placeholder="Leave empty to post a private note only"
+                        />
+                    </group>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- ── Action ────────────────────────────────────────────────── -->
+    <record model="ir.actions.act_window" id="spreadsheet_refresh_schedule_act_window">
+        <field name="name">Refresh Schedules</field>
+        <field name="res_model">spreadsheet.refresh.schedule</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- ── Smart button on spreadsheet form ─────────────────────── -->
+    <record model="ir.ui.view" id="spreadsheet_spreadsheet_refresh_schedule_button">
+        <field name="name">spreadsheet.spreadsheet.form.refresh_schedule</field>
+        <field name="model">spreadsheet.spreadsheet</field>
+        <field
+            name="inherit_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_form_view"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_open_refresh_schedules"
+                    icon="fa-clock-o"
+                >
+                    <field
+                        string="Schedules"
+                        name="refresh_schedule_count"
+                        widget="statinfo"
+                    />
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ── Menu items ─────────────────────────────────────────────── -->
+    <record model="ir.ui.menu" id="spreadsheet_refresh_schedule_menu">
+        <field name="name">Refresh Schedules</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu"
+        />
+        <field name="action" ref="spreadsheet_refresh_schedule_act_window" />
+        <field name="groups_id" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="sequence" eval="20" />
+    </record>
+</odoo>

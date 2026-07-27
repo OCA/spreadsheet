@@ -56,10 +56,59 @@ class SpreadsheetSpreadsheet(models.Model):
         string="Tags", comodel_name="spreadsheet.spreadsheet.tag"
     )
 
+    # ── DRY helper for grouped count fields ──────────────────────────────────
+
+    def _compute_related_count(self, comodel, field_name, extra_domain=None):
+        """Compute a count field by grouping *comodel* on ``spreadsheet_id``.
+
+        By default the domain filters on ``active=True``; pass *extra_domain*
+        to override (e.g. ``[("status", "!=", "error")]`` for writeback logs).
+        """
+        domain = [("spreadsheet_id", "in", self.ids)]
+        if extra_domain is not None:
+            domain += extra_domain
+        else:
+            domain.append(("active", "=", True))
+        count_map = {
+            spreadsheet.id: count
+            for spreadsheet, count in self.env[comodel]._read_group(
+                domain, ["spreadsheet_id"], ["__count"]
+            )
+        }
+        for rec in self:
+            rec[field_name] = count_map.get(rec.id, 0)
+
     @api.depends("name")
     def _compute_filename(self):
         for record in self:
-            record.filename = "%s.json" % (self.name or _("Unnamed"))
+            record.filename = f"{record.name or _('Unnamed')}.json"
+
+    # ── Refresh Schedules ───────────────────────────────────────────────────
+    refresh_schedule_ids = fields.One2many(
+        comodel_name="spreadsheet.refresh.schedule",
+        inverse_name="spreadsheet_id",
+        string="Schedules",
+    )
+    refresh_schedule_count = fields.Integer(
+        compute="_compute_refresh_schedule_count", string="Refresh Schedules"
+    )
+
+    @api.depends("refresh_schedule_ids.active")
+    def _compute_refresh_schedule_count(self):
+        self._compute_related_count(
+            "spreadsheet.refresh.schedule", "refresh_schedule_count"
+        )
+
+    def action_open_refresh_schedules(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Refresh Schedules"),
+            "res_model": "spreadsheet.refresh.schedule",
+            "view_mode": "list,form",
+            "domain": [("spreadsheet_id", "=", self.id)],
+            "context": {"default_spreadsheet_id": self.id},
+        }
 
     def create_document_from_attachment(self, attachment_ids):
         attachments = self.env["ir.attachment"].browse(attachment_ids)

@@ -62,4 +62,27 @@
         <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
         <field name="domain_force">[('group_ids','in', user.groups_id.ids)]</field>
     </record>
+
+    <!-- ══ Record rules for child models ══════════════════════════════
+         Visibility follows the parent spreadsheet: users can only see
+         records linked to spreadsheets they own, contribute to, or read. -->
+
+    <record model="ir.rule" id="refresh_schedule_user_rule">
+        <field name="name">Refresh Schedule: follow spreadsheet access</field>
+        <field name="model_id" ref="model_spreadsheet_refresh_schedule" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_user'))]" />
+        <field name="domain_force">[
+            '|', '|', '|',
+            ('spreadsheet_id.owner_id', '=', user.id),
+            ('spreadsheet_id.contributor_ids', '=', user.id),
+            ('spreadsheet_id.contributor_group_ids', 'in', user.groups_id.ids),
+            ('spreadsheet_id.reader_ids', '=', user.id),
+        ]</field>
+    </record>
+    <record model="ir.rule" id="refresh_schedule_manager_rule">
+        <field name="name">Refresh Schedule: manager full access</field>
+        <field name="model_id" ref="model_spreadsheet_refresh_schedule" />
+        <field name="groups" eval="[(4, ref('spreadsheet_oca.group_manager'))]" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
 </odoo>

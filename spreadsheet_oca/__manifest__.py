@@ -5,7 +5,7 @@
     "name": "Spreadsheet Oca",
     "summary": """
         Allow to edit spreadsheets""",
-    "version": "18.0.1.3.1",
+    "version": "18.0.1.3.0",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
@@ -14,6 +14,9 @@
         "security/security.xml",
         "security/ir.model.access.csv",
         "views/spreadsheet_spreadsheet.xml",
+        "data/spreadsheet_refresh_cron.xml",
+        "views/spreadsheet_refresh_schedule_views.xml",
+        "data/mail_templates.xml",
         "data/spreadsheet_spreadsheet_import_mode.xml",
         "wizards/spreadsheet_select_row_number.xml",
         "wizards/spreadsheet_spreadsheet_import.xml",
