@@ -46,5 +46,6 @@ SpreadsheetControlPanel.props = {
     record: Object,
 };
 SpreadsheetControlPanel.components = {
+    ...ControlPanel.components,
     SpreadsheetName,
 };
