@@ -5,7 +5,7 @@
     "name": "Spreadsheet Oca",
     "summary": """
         Allow to edit spreadsheets""",
-    "version": "18.0.1.3.1",
+    "version": "18.0.1.3.2",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
