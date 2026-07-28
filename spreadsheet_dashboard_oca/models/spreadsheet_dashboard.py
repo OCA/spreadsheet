@@ -1,7 +1,7 @@
 # Copyright 2022 CreuBlanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -25,9 +25,9 @@ class SpreadsheetDashboard(models.Model):
     @api.model
     def _search_can_edit(self, operator, value):
         if operator != "=":
-            raise NotImplementedError(_("Search operation not supported"))
+            raise NotImplementedError(self.env._("Search operation not supported"))
         if not isinstance(value, bool):
-            raise ValidationError(_("The value has to be a boolean"))
+            raise ValidationError(self.env._("The value has to be a boolean"))
         no_edit_ids = (
             self.env["ir.model.data"]
             .search(
