@@ -21,7 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
-[spreadsheet_oca](spreadsheet_oca/) | 19.0.1.0.0 |  | Allow to edit spreadsheets
+[spreadsheet_oca](spreadsheet_oca/) | 19.0.1.0.1 |  | Allow to edit spreadsheets
 
 [//]: # (end addons)
 
