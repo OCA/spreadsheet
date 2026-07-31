@@ -1,0 +1,1 @@
+odoo-addon-spreadsheet_field_linking @ git+https://github.com/OCA/spreadsheet.git@refs/pull/128/head#subdirectory=spreadsheet_field_linking
