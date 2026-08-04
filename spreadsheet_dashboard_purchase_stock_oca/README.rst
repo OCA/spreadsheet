@@ -39,13 +39,6 @@ Spreadsheet dashboard for purchases.
 .. contents::
    :local:
 
-Known issues / Roadmap
-======================
-
-- Modernize style and use new v18 features.
-- Unify both purchase modules into one, and remove duplicated
-  information.
-
 Bug Tracker
 ===========
 
@@ -71,6 +64,7 @@ Contributors
 - `Tecnativa <https://www.tecnativa.com>`__:
 
   - Pedro M. Baeza
+  - Pilar Vargas
 
 Other credits
 -------------

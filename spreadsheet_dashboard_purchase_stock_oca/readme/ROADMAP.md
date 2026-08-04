@@ -1,2 +1,0 @@
-- Modernize style and use new v18 features.
-- Unify both purchase modules into one, and remove duplicated information.
