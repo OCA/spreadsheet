@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <record id="spreadsheet_dashboard_purchase" model="spreadsheet.dashboard">
-        <field name="name">Purchase</field>
+        <field name="name">Purchase Receipts</field>
         <field
             name="spreadsheet_binary_data"
             type="base64"
@@ -9,7 +9,7 @@
         />
         <field
             name="main_data_model_ids"
-            eval="[Command.link(ref('purchase.model_purchase_order'))]"
+            eval="[Command.link(ref('stock.model_stock_picking'))]"
         />
         <field
             name="dashboard_group_id"
