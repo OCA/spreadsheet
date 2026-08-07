@@ -65,20 +65,32 @@ export class FieldSyncPanel extends Component {
         }
     }
 
+    /**
+     * Extract the record ids of a relation global filter value.
+     *
+     * Relation filter values are stored as {operator, ids}, where `ids` may
+     * also be the "current_user" placeholder.
+     */
+    _relationFilterIds(filterValue) {
+        const ids = filterValue?.ids;
+        return Array.isArray(ids) ? ids : [];
+    }
+
     get orderId() {
         try {
             const filters = this.env.model.getters.getGlobalFilters();
             for (const filter of filters) {
                 if (filter.type === "relation" && filter.modelName === "sale.order") {
-                    const value = this.env.model.getters.getGlobalFilterValue(
-                        filter.id
+                    const value = this._relationFilterIds(
+                        this.env.model.getters.getGlobalFilterValue(filter.id)
                     );
-                    if (value && value.length > 0) {
+                    if (value.length > 0) {
                         return value[0];
                     }
-                    const defaultValue =
-                        this.env.model.getters.getGlobalFilterDefaultValue(filter.id);
-                    if (defaultValue && defaultValue.length > 0) {
+                    const defaultValue = this._relationFilterIds(
+                        this.env.model.getters.getGlobalFilterDefaultValue(filter.id)
+                    );
+                    if (defaultValue.length > 0) {
                         return defaultValue[0];
                     }
                 }

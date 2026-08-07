@@ -4,9 +4,9 @@
 {
     "name": "Spreadsheet Quotation Calculator",
     "summary": (
-        "Use spreadsheets as quotation calculators linked " "to sale order templates"
+        "Use spreadsheets as quotation calculators linked to sale order templates"
     ),
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "license": "AGPL-3",
     "author": "Odoo Community Association (OCA), Cloud Lotus",
     "website": "https://github.com/OCA/spreadsheet",

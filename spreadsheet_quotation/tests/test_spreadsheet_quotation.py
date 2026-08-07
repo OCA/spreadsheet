@@ -166,6 +166,35 @@ class TestSpreadsheetQuotation(TransactionCase):
         self.assertIsNotNone(so_filter)
         self.assertEqual(so_filter["defaultValue"], [order.id])
 
+    def test_migrated_spreadsheet_filter_value(self):
+        """Migrated spreadsheet data keeps the {operator, ids} filter value."""
+        self._create_calculator()
+
+        spreadsheet = self.template.spreadsheet_id
+        data = spreadsheet.spreadsheet_raw
+        if isinstance(data, str):
+            data = json.loads(data)
+        data["version"] = "18.5.10"
+        for global_filter in data["globalFilters"]:
+            global_filter["defaultValue"] = {"operator": "in", "ids": [1]}
+        spreadsheet.spreadsheet_raw = data
+
+        order = self.env["sale.order"].create({"partner_id": self.partner.id})
+        order.sale_order_template_id = self.template
+        order._onchange_sale_order_template_id()
+        order._onchange_sale_order_template_id_spreadsheet()
+
+        data = order.spreadsheet_id.spreadsheet_raw
+        if isinstance(data, str):
+            data = json.loads(data)
+
+        so_filter = next(
+            f for f in data["globalFilters"] if f.get("modelName") == "sale.order"
+        )
+        self.assertEqual(
+            so_filter["defaultValue"], {"operator": "in", "ids": [order.id]}
+        )
+
     def test_template_without_spreadsheet(self):
         """Applying a template without calculator should not create one."""
         template_no_calc = self.env["sale.order.template"].create(

@@ -3,7 +3,7 @@
 
 import uuid
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 DEFAULT_COLUMNS = [
     "product_id",
@@ -69,7 +69,7 @@ class SpreadsheetQuotationCreate(models.TransientModel):
             "sheets": [
                 {
                     "id": sheet_id,
-                    "name": _("Sale Order Lines"),
+                    "name": self.env._("Sale Order Lines"),
                     "cells": cells,
                     "colNumber": max(col_count, 10),
                     "rowNumber": max(line_count + 2, 30),
@@ -85,7 +85,7 @@ class SpreadsheetQuotationCreate(models.TransientModel):
                     "context": {},
                     "orderBy": [],
                     "id": list_id,
-                    "name": _("Sale Order Lines"),
+                    "name": self.env._("Sale Order Lines"),
                     "fieldMatching": {
                         filter_id: {
                             "chain": "order_id",
@@ -99,7 +99,7 @@ class SpreadsheetQuotationCreate(models.TransientModel):
                 {
                     "id": filter_id,
                     "type": "relation",
-                    "label": _("Sale Order"),
+                    "label": self.env._("Sale Order"),
                     "modelName": "sale.order",
                     "defaultValue": [],
                 }

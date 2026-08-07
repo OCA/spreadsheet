@@ -3,7 +3,7 @@
 
 import json
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -37,8 +37,25 @@ class SaleOrder(models.Model):
     def _copy_template_spreadsheet(self, template_spreadsheet):
         """Create a copy of the template spreadsheet for this sale order."""
         return template_spreadsheet.copy(
-            {"name": _("Calculator - %s", self.name or _("New"))}
+            {"name": self.env._("Calculator - %s", self.name or self.env._("New"))}
         )
+
+    def _spreadsheet_relation_filter_value(self, data, global_filter):
+        """Return the relation global filter default value for this order.
+
+        Since 19.0 relation filter values are stored as
+        ``{"operator": ..., "ids": [...]}``. Spreadsheet payloads that have not
+        been through the client side migration yet keep the legacy plain list
+        of ids, which is recognizable by their numeric ``version``.
+        """
+        current_value = global_filter.get("defaultValue")
+        legacy_data = isinstance(data.get("version"), int)
+        if legacy_data and not isinstance(current_value, dict):
+            return [self.id]
+        operator = "in"
+        if isinstance(current_value, dict):
+            operator = current_value.get("operator") or operator
+        return {"operator": operator, "ids": [self.id]}
 
     def _update_spreadsheet_filter(self):
         """Update the global filter default value in the spreadsheet JSON
@@ -54,7 +71,7 @@ class SaleOrder(models.Model):
 
         for gf in data.get("globalFilters", []):
             if gf.get("type") == "relation" and gf.get("modelName") == "sale.order":
-                gf["defaultValue"] = [self.id]
+                gf["defaultValue"] = self._spreadsheet_relation_filter_value(data, gf)
                 break
 
         self.spreadsheet_id.spreadsheet_raw = data
@@ -82,9 +99,9 @@ class SaleOrder(models.Model):
     def _check_spreadsheet_sync_allowed(self):
         self.ensure_one()
         if self.state == "cancel":
-            raise UserError(_("Cannot sync a cancelled quotation."))
+            raise UserError(self.env._("Cannot sync a cancelled quotation."))
         if self.state == "sale":
-            raise UserError(_("Cannot sync a confirmed sales order."))
+            raise UserError(self.env._("Cannot sync a confirmed sales order."))
 
     def action_sync_spreadsheet_order_lines(self, commands):
         """Sync sale order lines from the quotation calculator spreadsheet."""
