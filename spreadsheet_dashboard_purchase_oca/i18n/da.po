@@ -1,0 +1,183 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_dashboard_purchase_oca
+#
+# Translators:
+# Martin Trigaux, 2023
+# lhmflexerp <lhm@flexerp.dk>, 2023
+# Sanne Kristensen <sanne@vkdata.dk>, 2024
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-26 21:56+0000\n"
+"PO-Revision-Date: 2023-10-26 23:09+0000\n"
+"Last-Translator: Sanne Kristensen <sanne@vkdata.dk>, 2024\n"
+"Language-Team: Danish (https://app.transifex.com/odoo/teams/41243/da/)\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid " days"
+msgstr "dage"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Amount"
+msgstr "Beløb"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Buyer"
+msgstr "Indkøber"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Country"
+msgstr "Land"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Current"
+msgstr "Aktuel"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Days to receive"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "KPI"
+msgstr "KPI"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Lines"
+msgstr "Linjer"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Order"
+msgstr "Ordre"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Ordered"
+msgstr "Bestilt"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Orders"
+msgstr "Ordre"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Period"
+msgstr "Periode"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Previous"
+msgstr "Forrige"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Purchased"
+msgstr "Indkøbt"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Qty ordered"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Quantity ordered"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Source"
+msgstr "Kilde"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Sourcing by Country"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Top Buyers"
+msgstr "Top indkøbere"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Top Orders"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Top Vendors"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Top Vendors by Amount"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Untaxed total"
+msgstr "Total beløb før moms"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Vendor"
+msgstr "Leverandør"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#: model:spreadsheet.dashboard,name:spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_vendors
+msgid "Vendors"
+msgstr "Leverandører"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "last period"
+msgstr "sidste periode"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "since last period"
+msgstr "siden sidste periode"

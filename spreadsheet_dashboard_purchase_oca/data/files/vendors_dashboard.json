@@ -1,0 +1,1494 @@
+{
+  "version": "18.5.10",
+  "sheets": [
+    {
+      "id": "sheet1",
+      "name": "Dashboard",
+      "colNumber": 11,
+      "rowNumber": 61,
+      "cells": {
+        "B7": "[Top Vendors by Amount](odoo://view/{\"viewType\":\"graph\",\"action\":{\"domain\":[],\"context\":{\"group_by\":[\"partner_id\"],\"graph_measure\":\"untaxed_total\",\"graph_mode\":\"bar\",\"graph_groupbys\":[\"partner_id\"]},\"modelName\":\"purchase.report\",\"views\":[[false,\"graph\"],[false,\"pivot\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Top Vendors by Amount\"})",
+        "B19": "[Top Orders](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":[[\"state\",\"in\",[\"purchase\",\"done\"]]],\"context\":{\"group_by\":[]},\"modelName\":\"purchase.order\",\"views\":[[false,\"list\"],[false,\"kanban\"],[false,\"form\"],[false,\"pivot\"],[false,\"graph\"],[false,\"calendar\"],[false,\"activity\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Top Orders\"})",
+        "B20": "=_t(\"Order\")",
+        "B21": "=ODOO.LIST(1,1,\"name\")",
+        "B22": "=ODOO.LIST(1,2,\"name\")",
+        "B23": "=ODOO.LIST(1,3,\"name\")",
+        "B24": "=ODOO.LIST(1,4,\"name\")",
+        "B25": "=ODOO.LIST(1,5,\"name\")",
+        "B26": "=ODOO.LIST(1,6,\"name\")",
+        "B27": "=ODOO.LIST(1,7,\"name\")",
+        "B28": "=ODOO.LIST(1,8,\"name\")",
+        "B29": "=ODOO.LIST(1,9,\"name\")",
+        "B30": "=ODOO.LIST(1,10,\"name\")",
+        "B31": "=ODOO.LIST(1,11,\"name\")",
+        "B32": "=ODOO.LIST(1,12,\"name\")",
+        "B33": "=ODOO.LIST(1,13,\"name\")",
+        "B34": "=ODOO.LIST(1,14,\"name\")",
+        "B35": "=ODOO.LIST(1,15,\"name\")",
+        "B36": "=ODOO.LIST(1,16,\"name\")",
+        "B37": "=ODOO.LIST(1,17,\"name\")",
+        "B38": "=ODOO.LIST(1,18,\"name\")",
+        "B39": "=ODOO.LIST(1,19,\"name\")",
+        "B40": "=ODOO.LIST(1,20,\"name\")",
+        "B41": "=ODOO.LIST(1,21,\"name\")",
+        "B42": "=ODOO.LIST(1,22,\"name\")",
+        "B43": "=ODOO.LIST(1,23,\"name\")",
+        "B44": "=ODOO.LIST(1,24,\"name\")",
+        "B45": "=ODOO.LIST(1,25,\"name\")",
+        "B47": "[Top Products](odoo://view/{\"viewType\":\"pivot\",\"action\":{\"domain\":[[\"product_id\",\"!=\",false]],\"context\":{\"group_by\":[\"product_id\"],\"pivot_measures\":[\"order_id\",\"qty_ordered\",\"untaxed_total\"],\"pivot_column_groupby\":[],\"pivot_row_groupby\":[\"product_id\"]},\"modelName\":\"purchase.report\",\"views\":[[false,\"pivot\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Top Products\"})",
+        "B49": "=_t(\"Product\")",
+        "B51": "=PIVOT.HEADER(6,\"#product_id\",1)",
+        "B52": "=PIVOT.HEADER(6,\"#product_id\",2)",
+        "B53": "=PIVOT.HEADER(6,\"#product_id\",3)",
+        "B54": "=PIVOT.HEADER(6,\"#product_id\",4)",
+        "B55": "=PIVOT.HEADER(6,\"#product_id\",5)",
+        "B56": "=PIVOT.HEADER(6,\"#product_id\",6)",
+        "B57": "=PIVOT.HEADER(6,\"#product_id\",7)",
+        "B58": "=PIVOT.HEADER(6,\"#product_id\",8)",
+        "B59": "=PIVOT.HEADER(6,\"#product_id\",9)",
+        "B60": "=PIVOT.HEADER(6,\"#product_id\",10)",
+        "C20": "=_t(\"Ordered\")",
+        "C21": "=ODOO.LIST(1,1,\"date_approve\")",
+        "C22": "=ODOO.LIST(1,2,\"date_approve\")",
+        "C23": "=ODOO.LIST(1,3,\"date_approve\")",
+        "C24": "=ODOO.LIST(1,4,\"date_approve\")",
+        "C25": "=ODOO.LIST(1,5,\"date_approve\")",
+        "C26": "=ODOO.LIST(1,6,\"date_approve\")",
+        "C27": "=ODOO.LIST(1,7,\"date_approve\")",
+        "C28": "=ODOO.LIST(1,8,\"date_approve\")",
+        "C29": "=ODOO.LIST(1,9,\"date_approve\")",
+        "C30": "=ODOO.LIST(1,10,\"date_approve\")",
+        "C31": "=ODOO.LIST(1,11,\"date_approve\")",
+        "C32": "=ODOO.LIST(1,12,\"date_approve\")",
+        "C33": "=ODOO.LIST(1,13,\"date_approve\")",
+        "C34": "=ODOO.LIST(1,14,\"date_approve\")",
+        "C35": "=ODOO.LIST(1,15,\"date_approve\")",
+        "C36": "=ODOO.LIST(1,16,\"date_approve\")",
+        "C37": "=ODOO.LIST(1,17,\"date_approve\")",
+        "C38": "=ODOO.LIST(1,18,\"date_approve\")",
+        "C39": "=ODOO.LIST(1,19,\"date_approve\")",
+        "C40": "=ODOO.LIST(1,20,\"date_approve\")",
+        "C41": "=ODOO.LIST(1,21,\"date_approve\")",
+        "C42": "=ODOO.LIST(1,22,\"date_approve\")",
+        "C43": "=ODOO.LIST(1,23,\"date_approve\")",
+        "C44": "=ODOO.LIST(1,24,\"date_approve\")",
+        "C45": "=ODOO.LIST(1,25,\"date_approve\")",
+        "D20": "=_t(\"Buyer\")",
+        "D21": "=ODOO.LIST(1,1,\"user_id\")",
+        "D22": "=ODOO.LIST(1,2,\"user_id\")",
+        "D23": "=ODOO.LIST(1,3,\"user_id\")",
+        "D24": "=ODOO.LIST(1,4,\"user_id\")",
+        "D25": "=ODOO.LIST(1,5,\"user_id\")",
+        "D26": "=ODOO.LIST(1,6,\"user_id\")",
+        "D27": "=ODOO.LIST(1,7,\"user_id\")",
+        "D28": "=ODOO.LIST(1,8,\"user_id\")",
+        "D29": "=ODOO.LIST(1,9,\"user_id\")",
+        "D30": "=ODOO.LIST(1,10,\"user_id\")",
+        "D31": "=ODOO.LIST(1,11,\"user_id\")",
+        "D32": "=ODOO.LIST(1,12,\"user_id\")",
+        "D33": "=ODOO.LIST(1,13,\"user_id\")",
+        "D34": "=ODOO.LIST(1,14,\"user_id\")",
+        "D35": "=ODOO.LIST(1,15,\"user_id\")",
+        "D36": "=ODOO.LIST(1,16,\"user_id\")",
+        "D37": "=ODOO.LIST(1,17,\"user_id\")",
+        "D38": "=ODOO.LIST(1,18,\"user_id\")",
+        "D39": "=ODOO.LIST(1,19,\"user_id\")",
+        "D40": "=ODOO.LIST(1,20,\"user_id\")",
+        "D41": "=ODOO.LIST(1,21,\"user_id\")",
+        "D42": "=ODOO.LIST(1,22,\"user_id\")",
+        "D43": "=ODOO.LIST(1,23,\"user_id\")",
+        "D44": "=ODOO.LIST(1,24,\"user_id\")",
+        "D45": "=ODOO.LIST(1,25,\"user_id\")",
+        "D49": "=_t(\"Qty Ordered\")",
+        "D51": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",1)",
+        "D52": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",2)",
+        "D53": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",3)",
+        "D54": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",4)",
+        "D55": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",5)",
+        "D56": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",6)",
+        "D57": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",7)",
+        "D58": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",8)",
+        "D59": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",9)",
+        "D60": "=PIVOT.VALUE(6,\"qty_ordered\",\"#product_id\",10)",
+        "E20": "=_t(\"Source\")",
+        "E21": "=ODOO.LIST(1,1,\"origin\")",
+        "E22": "=ODOO.LIST(1,2,\"origin\")",
+        "E23": "=ODOO.LIST(1,3,\"origin\")",
+        "E24": "=ODOO.LIST(1,4,\"origin\")",
+        "E25": "=ODOO.LIST(1,5,\"origin\")",
+        "E26": "=ODOO.LIST(1,6,\"origin\")",
+        "E27": "=ODOO.LIST(1,7,\"origin\")",
+        "E28": "=ODOO.LIST(1,8,\"origin\")",
+        "E29": "=ODOO.LIST(1,9,\"origin\")",
+        "E30": "=ODOO.LIST(1,10,\"origin\")",
+        "E31": "=ODOO.LIST(1,11,\"origin\")",
+        "E32": "=ODOO.LIST(1,12,\"origin\")",
+        "E33": "=ODOO.LIST(1,13,\"origin\")",
+        "E34": "=ODOO.LIST(1,14,\"origin\")",
+        "E35": "=ODOO.LIST(1,15,\"origin\")",
+        "E36": "=ODOO.LIST(1,16,\"origin\")",
+        "E37": "=ODOO.LIST(1,17,\"origin\")",
+        "E38": "=ODOO.LIST(1,18,\"origin\")",
+        "E39": "=ODOO.LIST(1,19,\"origin\")",
+        "E40": "=ODOO.LIST(1,20,\"origin\")",
+        "E41": "=ODOO.LIST(1,21,\"origin\")",
+        "E42": "=ODOO.LIST(1,22,\"origin\")",
+        "E43": "=ODOO.LIST(1,23,\"origin\")",
+        "E44": "=ODOO.LIST(1,24,\"origin\")",
+        "E45": "=ODOO.LIST(1,25,\"origin\")",
+        "F20": "=_t(\"Vendor\")",
+        "F21": "=ODOO.LIST(1,1,\"partner_id\")",
+        "F22": "=ODOO.LIST(1,2,\"partner_id\")",
+        "F23": "=ODOO.LIST(1,3,\"partner_id\")",
+        "F24": "=ODOO.LIST(1,4,\"partner_id\")",
+        "F25": "=ODOO.LIST(1,5,\"partner_id\")",
+        "F26": "=ODOO.LIST(1,6,\"partner_id\")",
+        "F27": "=ODOO.LIST(1,7,\"partner_id\")",
+        "F28": "=ODOO.LIST(1,8,\"partner_id\")",
+        "F29": "=ODOO.LIST(1,9,\"partner_id\")",
+        "F30": "=ODOO.LIST(1,10,\"partner_id\")",
+        "F31": "=ODOO.LIST(1,11,\"partner_id\")",
+        "F32": "=ODOO.LIST(1,12,\"partner_id\")",
+        "F33": "=ODOO.LIST(1,13,\"partner_id\")",
+        "F34": "=ODOO.LIST(1,14,\"partner_id\")",
+        "F35": "=ODOO.LIST(1,15,\"partner_id\")",
+        "F36": "=ODOO.LIST(1,16,\"partner_id\")",
+        "F37": "=ODOO.LIST(1,17,\"partner_id\")",
+        "F38": "=ODOO.LIST(1,18,\"partner_id\")",
+        "F39": "=ODOO.LIST(1,19,\"partner_id\")",
+        "F40": "=ODOO.LIST(1,20,\"partner_id\")",
+        "F41": "=ODOO.LIST(1,21,\"partner_id\")",
+        "F42": "=ODOO.LIST(1,22,\"partner_id\")",
+        "F43": "=ODOO.LIST(1,23,\"partner_id\")",
+        "F44": "=ODOO.LIST(1,24,\"partner_id\")",
+        "F45": "=ODOO.LIST(1,25,\"partner_id\")",
+        "F49": "=_t(\"Amount\")",
+        "F51": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",1)",
+        "F52": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",2)",
+        "F53": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",3)",
+        "F54": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",4)",
+        "F55": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",5)",
+        "F56": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",6)",
+        "F57": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",7)",
+        "F58": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",8)",
+        "F59": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",9)",
+        "F60": "=PIVOT.VALUE(6,\"untaxed_total\",\"#product_id\",10)",
+        "G20": "=_t(\"Amount\")",
+        "G21": "=ODOO.LIST(1,1,\"amount_untaxed\")",
+        "G22": "=ODOO.LIST(1,2,\"amount_untaxed\")",
+        "G23": "=ODOO.LIST(1,3,\"amount_untaxed\")",
+        "G24": "=ODOO.LIST(1,4,\"amount_untaxed\")",
+        "G25": "=ODOO.LIST(1,5,\"amount_untaxed\")",
+        "G26": "=ODOO.LIST(1,6,\"amount_untaxed\")",
+        "G27": "=ODOO.LIST(1,7,\"amount_untaxed\")",
+        "G28": "=ODOO.LIST(1,8,\"amount_untaxed\")",
+        "G29": "=ODOO.LIST(1,9,\"amount_untaxed\")",
+        "G30": "=ODOO.LIST(1,10,\"amount_untaxed\")",
+        "G31": "=ODOO.LIST(1,11,\"amount_untaxed\")",
+        "G32": "=ODOO.LIST(1,12,\"amount_untaxed\")",
+        "G33": "=ODOO.LIST(1,13,\"amount_untaxed\")",
+        "G34": "=ODOO.LIST(1,14,\"amount_untaxed\")",
+        "G35": "=ODOO.LIST(1,15,\"amount_untaxed\")",
+        "G36": "=ODOO.LIST(1,16,\"amount_untaxed\")",
+        "G37": "=ODOO.LIST(1,17,\"amount_untaxed\")",
+        "G38": "=ODOO.LIST(1,18,\"amount_untaxed\")",
+        "G39": "=ODOO.LIST(1,19,\"amount_untaxed\")",
+        "G40": "=ODOO.LIST(1,20,\"amount_untaxed\")",
+        "G41": "=ODOO.LIST(1,21,\"amount_untaxed\")",
+        "G42": "=ODOO.LIST(1,22,\"amount_untaxed\")",
+        "G43": "=ODOO.LIST(1,23,\"amount_untaxed\")",
+        "G44": "=ODOO.LIST(1,24,\"amount_untaxed\")",
+        "G45": "=ODOO.LIST(1,25,\"amount_untaxed\")",
+        "I19": "[Sourcing by Country](odoo://view/{\"viewType\":\"pivot\",\"action\":{\"domain\":[[\"country_id\",\"!=\",false]],\"context\":{\"group_by\":[\"country_id\"],\"pivot_measures\":[\"order_id\",\"untaxed_total\"],\"pivot_column_groupby\":[],\"pivot_row_groupby\":[\"country_id\"]},\"modelName\":\"purchase.report\",\"views\":[[false,\"pivot\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Sourcing by Country\"})",
+        "I20": "=_t(\"Country\")",
+        "I21": "=PIVOT.HEADER(1,\"#country_id\",1)",
+        "I22": "=PIVOT.HEADER(1,\"#country_id\",2)",
+        "I23": "=PIVOT.HEADER(1,\"#country_id\",3)",
+        "I24": "=PIVOT.HEADER(1,\"#country_id\",4)",
+        "I25": "=PIVOT.HEADER(1,\"#country_id\",5)",
+        "I26": "=PIVOT.HEADER(1,\"#country_id\",6)",
+        "I27": "=PIVOT.HEADER(1,\"#country_id\",7)",
+        "I28": "=PIVOT.HEADER(1,\"#country_id\",8)",
+        "I29": "=PIVOT.HEADER(1,\"#country_id\",9)",
+        "I30": "=PIVOT.HEADER(1,\"#country_id\",10)",
+        "I32": "[Top Vendors](odoo://view/{\"viewType\":\"pivot\",\"action\":{\"domain\":[],\"context\":{\"group_by\":[\"partner_id\"],\"pivot_measures\":[\"order_id\",\"untaxed_total\"],\"pivot_column_groupby\":[],\"pivot_row_groupby\":[\"partner_id\"]},\"modelName\":\"purchase.report\",\"views\":[[false,\"pivot\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Top Vendors\"})",
+        "I34": "=_t(\"Vendor\")",
+        "I36": "=PIVOT.HEADER(2,\"#partner_id\",1)",
+        "I37": "=PIVOT.HEADER(2,\"#partner_id\",2)",
+        "I38": "=PIVOT.HEADER(2,\"#partner_id\",3)",
+        "I39": "=PIVOT.HEADER(2,\"#partner_id\",4)",
+        "I40": "=PIVOT.HEADER(2,\"#partner_id\",5)",
+        "I41": "=PIVOT.HEADER(2,\"#partner_id\",6)",
+        "I42": "=PIVOT.HEADER(2,\"#partner_id\",7)",
+        "I43": "=PIVOT.HEADER(2,\"#partner_id\",8)",
+        "I44": "=PIVOT.HEADER(2,\"#partner_id\",9)",
+        "I45": "=PIVOT.HEADER(2,\"#partner_id\",10)",
+        "I47": "[Top Buyers](odoo://view/{\"viewType\":\"pivot\",\"action\":{\"domain\":[[\"user_id\",\"!=\",false]],\"context\":{\"group_by\":[\"user_id\"],\"pivot_measures\":[\"order_id\",\"untaxed_total\"],\"pivot_column_groupby\":[],\"pivot_row_groupby\":[\"user_id\"]},\"modelName\":\"purchase.report\",\"views\":[[false,\"pivot\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Top Buyers\"})",
+        "I49": "=_t(\"Buyer\")",
+        "I51": "=PIVOT.HEADER(3,\"#user_id\",1)",
+        "I52": "=PIVOT.HEADER(3,\"#user_id\",2)",
+        "I53": "=PIVOT.HEADER(3,\"#user_id\",3)",
+        "I54": "=PIVOT.HEADER(3,\"#user_id\",4)",
+        "I55": "=PIVOT.HEADER(3,\"#user_id\",5)",
+        "I56": "=PIVOT.HEADER(3,\"#user_id\",6)",
+        "I57": "=PIVOT.HEADER(3,\"#user_id\",7)",
+        "I58": "=PIVOT.HEADER(3,\"#user_id\",8)",
+        "I59": "=PIVOT.HEADER(3,\"#user_id\",9)",
+        "I60": "=PIVOT.HEADER(3,\"#user_id\",10)",
+        "J20": "=_t(\"Orders\")",
+        "J21": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",1)",
+        "J22": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",2)",
+        "J23": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",3)",
+        "J24": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",4)",
+        "J25": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",5)",
+        "J26": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",6)",
+        "J27": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",7)",
+        "J28": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",8)",
+        "J29": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",9)",
+        "J30": "=PIVOT.VALUE(1,\"order_id\",\"#country_id\",10)",
+        "J34": "=_t(\"Orders\")",
+        "J36": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",1)",
+        "J37": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",2)",
+        "J38": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",3)",
+        "J39": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",4)",
+        "J40": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",5)",
+        "J41": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",6)",
+        "J42": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",7)",
+        "J43": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",8)",
+        "J44": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",9)",
+        "J45": "=PIVOT.VALUE(2,\"order_id\",\"#partner_id\",10)",
+        "J49": "=_t(\"Orders\")",
+        "J51": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",1)",
+        "J52": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",2)",
+        "J53": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",3)",
+        "J54": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",4)",
+        "J55": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",5)",
+        "J56": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",6)",
+        "J57": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",7)",
+        "J58": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",8)",
+        "J59": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",9)",
+        "J60": "=PIVOT.VALUE(3,\"order_id\",\"#user_id\",10)",
+        "K20": "=_t(\"Amount\")",
+        "K21": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",1)",
+        "K22": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",2)",
+        "K23": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",3)",
+        "K24": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",4)",
+        "K25": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",5)",
+        "K26": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",6)",
+        "K27": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",7)",
+        "K28": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",8)",
+        "K29": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",9)",
+        "K30": "=PIVOT.VALUE(1,\"untaxed_total\",\"#country_id\",10)",
+        "K34": "=_t(\"Amount\")",
+        "K36": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",1)",
+        "K37": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",2)",
+        "K38": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",3)",
+        "K39": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",4)",
+        "K40": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",5)",
+        "K41": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",6)",
+        "K42": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",7)",
+        "K43": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",8)",
+        "K44": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",9)",
+        "K45": "=PIVOT.VALUE(2,\"untaxed_total\",\"#partner_id\",10)",
+        "K49": "=_t(\"Amount\")",
+        "K51": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",1)",
+        "K52": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",2)",
+        "K53": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",3)",
+        "K54": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",4)",
+        "K55": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",5)",
+        "K56": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",6)",
+        "K57": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",7)",
+        "K58": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",8)",
+        "K59": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",9)",
+        "K60": "=PIVOT.VALUE(3,\"untaxed_total\",\"#user_id\",10)"
+      },
+      "styles": {
+        "B7": 1,
+        "B19": 1,
+        "I19": 1,
+        "I32:K33": 1,
+        "I47:K48": 1,
+        "B47:G48": 1,
+        "B20:F20": 2,
+        "G20": 7,
+        "B49:C50": 2,
+        "D49:G50": 7,
+        "I20": 2,
+        "J20:K20": 7,
+        "I34:I35": 2,
+        "J34:K35": 7,
+        "I49:I50": 2,
+        "J49:K50": 7,
+        "B21:B45": 3,
+        "C21:G45": 5,
+        "B51:C60": 3,
+        "D51:G60": 5,
+        "I21:I30": 3,
+        "J21:K30": 5,
+        "I36:I45": 3,
+        "J36:K45": 5,
+        "I51:I60": 3,
+        "J51:K60": 5
+      },
+      "formats": {
+        "C21": 1,
+        "C22": 1,
+        "C23": 1,
+        "C24": 1,
+        "C25": 1,
+        "C26": 1,
+        "C27": 1,
+        "C28": 1,
+        "C29": 1,
+        "C30": 1,
+        "C31": 1,
+        "C32": 1,
+        "C33": 1,
+        "C34": 1,
+        "C35": 1,
+        "C36": 1,
+        "C37": 1,
+        "C38": 1,
+        "C39": 1,
+        "C40": 1,
+        "C41": 1,
+        "C42": 1,
+        "C43": 1,
+        "C44": 1,
+        "C45": 1,
+        "D51": 3,
+        "D52": 3,
+        "D53": 3,
+        "D54": 3,
+        "D55": 3,
+        "D56": 3,
+        "D57": 3,
+        "D58": 3,
+        "D59": 3,
+        "D60": 3,
+        "F51": 3,
+        "F52": 3,
+        "F53": 3,
+        "F54": 3,
+        "F55": 3,
+        "F56": 3,
+        "F57": 3,
+        "F58": 3,
+        "F59": 3,
+        "F60": 3,
+        "K21": 3,
+        "K22": 3,
+        "K23": 3,
+        "K24": 3,
+        "K25": 3,
+        "K26": 3,
+        "K27": 3,
+        "K28": 3,
+        "K29": 3,
+        "K30": 3,
+        "K36": 3,
+        "K37": 3,
+        "K38": 3,
+        "K39": 3,
+        "K40": 3,
+        "K41": 3,
+        "K42": 3,
+        "K43": 3,
+        "K44": 3,
+        "K45": 3,
+        "K51": 3,
+        "K52": 3,
+        "K53": 3,
+        "K54": 3,
+        "K55": 3,
+        "K56": 3,
+        "K57": 3,
+        "K58": 3,
+        "K59": 3,
+        "K60": 3
+      },
+      "borders": {
+        "B7:K7": 1,
+        "B8:K8": 2,
+        "B19:G19": 1,
+        "I19:K19": 1,
+        "B20:G20": 3,
+        "I20:K20": 3,
+        "B21:G21": 4,
+        "I21:K21": 4,
+        "B22:G44": 5,
+        "I22:K29": 5,
+        "B45:G45": 6,
+        "I30:K30": 6,
+        "B46:G46": 7,
+        "I31:K31": 7,
+        "B47:G48": 1,
+        "I32:K33": 1,
+        "B49:G50": 3,
+        "I34:K35": 3,
+        "B51:G51": 4,
+        "I36:K36": 4,
+        "B52:G59": 5,
+        "I37:K44": 5,
+        "B60:G60": 6,
+        "I45:K45": 6,
+        "I46:K46": 7,
+        "I47:K48": 1,
+        "I49:K50": 3,
+        "I51:K51": 4,
+        "I52:K59": 5,
+        "I60:K60": 6,
+        "B61:G61": 7,
+        "I61:K61": 7
+      },
+      "cols": {
+        "0": {
+          "size": 9
+        },
+        "1": {
+          "size": 104
+        },
+        "2": {
+          "size": 78
+        },
+        "3": {
+          "size": 130
+        },
+        "4": {
+          "size": 130
+        },
+        "5": {
+          "size": 130
+        },
+        "6": {
+          "size": 78
+        },
+        "7": {
+          "size": 52
+        },
+        "8": {
+          "size": 130
+        },
+        "9": {
+          "size": 103
+        },
+        "10": {
+          "size": 103
+        }
+      },
+      "rows": {
+        "6": {
+          "size": 40
+        },
+        "18": {
+          "size": 40
+        },
+        "19": {
+          "size": 40
+        }
+      },
+      "merges": [
+        "B47:G48",
+        "B49:C50",
+        "D49:E50",
+        "F49:G50",
+        "B51:C51",
+        "D51:E51",
+        "F51:G51",
+        "B52:C52",
+        "D52:E52",
+        "F52:G52",
+        "B53:C53",
+        "D53:E53",
+        "F53:G53",
+        "B54:C54",
+        "D54:E54",
+        "F54:G54",
+        "B55:C55",
+        "D55:E55",
+        "F55:G55",
+        "B56:C56",
+        "D56:E56",
+        "F56:G56",
+        "B57:C57",
+        "D57:E57",
+        "F57:G57",
+        "B58:C58",
+        "D58:E58",
+        "F58:G58",
+        "B59:C59",
+        "D59:E59",
+        "F59:G59",
+        "B60:C60",
+        "D60:E60",
+        "F60:G60",
+        "I34:I35",
+        "J34:J35",
+        "K34:K35",
+        "I49:I50",
+        "J49:J50",
+        "K49:K50",
+        "I32:K33",
+        "I47:K48"
+      ],
+      "conditionalFormats": [
+        {
+          "rule": {
+            "type": "DataBarRule",
+            "color": 15726335,
+            "rangeValues": "G21:G45"
+          },
+          "id": "purchase-top-orders",
+          "ranges": ["B21:B45"]
+        },
+        {
+          "rule": {
+            "type": "DataBarRule",
+            "color": 15726335,
+            "rangeValues": "F51:F60"
+          },
+          "id": "purchase-top-products",
+          "ranges": ["B51:B60"]
+        },
+        {
+          "rule": {
+            "type": "DataBarRule",
+            "color": 15531509,
+            "rangeValues": "K21:K30"
+          },
+          "id": "purchase-top-countries",
+          "ranges": ["I21:I30"]
+        },
+        {
+          "rule": {
+            "type": "DataBarRule",
+            "color": 16775149,
+            "rangeValues": "K36:K45"
+          },
+          "id": "purchase-top-vendors",
+          "ranges": ["I36:I45"]
+        },
+        {
+          "rule": {
+            "type": "DataBarRule",
+            "color": 15726335,
+            "rangeValues": "K51:K60"
+          },
+          "id": "purchase-top-buyers",
+          "ranges": ["I51:I60"]
+        }
+      ],
+      "dataValidationRules": [],
+      "figures": [
+        {
+          "id": "155096a3-ad7f-4e64-bf38-051fcfc90ee0",
+          "width": 1035,
+          "height": 230,
+          "tag": "chart",
+          "data": {
+            "title": {
+              "text": ""
+            },
+            "background": "#FFFFFF",
+            "legendPosition": "none",
+            "metaData": {
+              "groupBy": ["partner_id"],
+              "measure": "untaxed_total",
+              "order": "DESC",
+              "resModel": "purchase.report",
+              "cumulatedStart": false
+            },
+            "searchParams": {
+              "comparison": null,
+              "context": {},
+              "domain": [],
+              "groupBy": ["partner_id"],
+              "orderBy": []
+            },
+            "type": "odoo_bar",
+            "verticalAxisPosition": "left",
+            "stacked": true,
+            "fieldMatching": {
+              "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+                "chain": "date_order",
+                "type": "datetime",
+                "offset": 0
+              },
+              "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+                "chain": "country_id",
+                "type": "many2one"
+              },
+              "36330b95-00de-4d79-9ad9-3d67b5685993": {
+                "chain": "partner_id",
+                "type": "many2one"
+              },
+              "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+                "chain": "user_id",
+                "type": "many2one"
+              }
+            },
+            "cumulatedStart": false,
+            "chartId": "155096a3-ad7f-4e64-bf38-051fcfc90ee0"
+          },
+          "offset": {
+            "x": 0,
+            "y": 178
+          },
+          "col": 1,
+          "row": 0
+        },
+        {
+          "id": "53bdb059-e5ce-47d9-bb63-d5f2e665c05f",
+          "width": 200,
+          "height": 108,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": {
+              "text": "Purchased",
+              "align": "left",
+              "color": "#434343",
+              "bold": true
+            },
+            "type": "scorecard",
+            "background": "#FFF7ED",
+            "baseline": "Data!E2",
+            "baselineDescr": {
+              "text": "since last period"
+            },
+            "keyValue": "Data!D2",
+            "chartId": "53bdb059-e5ce-47d9-bb63-d5f2e665c05f"
+          },
+          "offset": {
+            "x": 0,
+            "y": 9
+          },
+          "col": 1,
+          "row": 0
+        },
+        {
+          "id": "1e548a1e-ef9f-47f8-a9c7-b42709559c74",
+          "width": 200,
+          "height": 108,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": {
+              "text": "Orders",
+              "align": "left",
+              "color": "#434343",
+              "bold": true
+            },
+            "type": "scorecard",
+            "background": "#EFF6FF",
+            "baseline": "Data!E4",
+            "baselineDescr": {
+              "text": "since last period"
+            },
+            "keyValue": "Data!D4",
+            "chartId": "1e548a1e-ef9f-47f8-a9c7-b42709559c74"
+          },
+          "offset": {
+            "x": 209,
+            "y": 9
+          },
+          "col": 1,
+          "row": 0
+        },
+        {
+          "id": "d161aa79-1991-4d86-9b51-df4e66f9ae7e",
+          "width": 200,
+          "height": 108,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": {
+              "text": "Lines",
+              "align": "left",
+              "color": "#434343",
+              "bold": true
+            },
+            "type": "scorecard",
+            "background": "#EFF6FF",
+            "baseline": "Data!E3",
+            "baselineDescr": {
+              "text": "since last period"
+            },
+            "keyValue": "Data!D3",
+            "chartId": "d161aa79-1991-4d86-9b51-df4e66f9ae7e"
+          },
+          "offset": {
+            "x": 418,
+            "y": 9
+          },
+          "col": 1,
+          "row": 0
+        },
+        {
+          "id": "3b318ab5-0677-4790-8446-d37a0b4c6ac6",
+          "width": 200,
+          "height": 108,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": {
+              "text": "Days to receive",
+              "align": "left",
+              "color": "#434343",
+              "bold": true
+            },
+            "type": "scorecard",
+            "background": "#EFF6FF",
+            "baseline": "Data!E6",
+            "baselineDescr": {
+              "text": "last period"
+            },
+            "keyValue": "Data!D6",
+            "chartId": "3b318ab5-0677-4790-8446-d37a0b4c6ac6"
+          },
+          "offset": {
+            "x": 836,
+            "y": 9
+          },
+          "col": 1,
+          "row": 0
+        },
+        {
+          "id": "7bd14ede-d636-44cc-ac07-bc3fe6c565c0",
+          "width": 200,
+          "height": 108,
+          "tag": "chart",
+          "data": {
+            "baselineColorDown": "#DC6965",
+            "baselineColorUp": "#00A04A",
+            "baselineMode": "percentage",
+            "title": {
+              "text": "Quantity ordered",
+              "align": "left",
+              "color": "#434343",
+              "bold": true
+            },
+            "type": "scorecard",
+            "background": "#EFF6FF",
+            "baseline": "Data!E5",
+            "baselineDescr": {
+              "text": "since last period"
+            },
+            "keyValue": "Data!D5",
+            "chartId": "7bd14ede-d636-44cc-ac07-bc3fe6c565c0"
+          },
+          "offset": {
+            "x": 627,
+            "y": 9
+          },
+          "col": 1,
+          "row": 0
+        }
+      ],
+      "tables": [
+        {
+          "range": "B20:G45",
+          "type": "static",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "automaticAutofill": true,
+            "styleId": "None"
+          }
+        },
+        {
+          "range": "B49:G60",
+          "type": "static",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "automaticAutofill": true,
+            "styleId": "None"
+          }
+        },
+        {
+          "range": "I20:K30",
+          "type": "static",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "automaticAutofill": true,
+            "styleId": "None"
+          }
+        },
+        {
+          "range": "I34:K45",
+          "type": "static",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "automaticAutofill": true,
+            "styleId": "None"
+          }
+        },
+        {
+          "range": "I49:K60",
+          "type": "static",
+          "config": {
+            "hasFilters": false,
+            "totalRow": false,
+            "firstColumn": false,
+            "lastColumn": false,
+            "numberOfHeaders": 1,
+            "bandedRows": true,
+            "bandedColumns": false,
+            "automaticAutofill": true,
+            "styleId": "None"
+          }
+        }
+      ],
+      "isVisible": true,
+      "areGridLinesVisible": true,
+      "headerGroups": [],
+      "comments": []
+    },
+    {
+      "id": "e37f2922-708e-4af7-8960-c964384ba95a",
+      "name": "Data",
+      "colNumber": 19,
+      "rowNumber": 97,
+      "cells": {
+        "A1": "=_t(\"KPI\")",
+        "A2": "=_t(\"Untaxed total\")",
+        "A3": "=_t(\"Lines\")",
+        "A4": "=_t(\"Orders\")",
+        "A5": "=_t(\"Qty ordered\")",
+        "A6": "=_t(\"Days to receive\")",
+        "B1": "=_t(\"Current\")",
+        "B2": "=PIVOT.VALUE(4,\"untaxed_total\")",
+        "B3": "=PIVOT.VALUE(4,\"nbr_lines\")",
+        "B4": "=PIVOT.VALUE(4,\"order_id\")",
+        "B5": "=PIVOT.VALUE(4,\"qty_ordered\")",
+        "B6": "=PIVOT.VALUE(4,\"delay_pass\")",
+        "C1": "=_t(\"Previous\")",
+        "C2": "=PIVOT.VALUE(5,\"untaxed_total\")",
+        "C3": "=PIVOT.VALUE(5,\"nbr_lines\")",
+        "C4": "=PIVOT.VALUE(5,\"order_id\")",
+        "C5": "=PIVOT.VALUE(5,\"qty_ordered\")",
+        "C6": "=PIVOT.VALUE(5,\"delay_pass\")",
+        "D1": "=_t(\"Current\")",
+        "D2": "=FORMAT.LARGE.NUMBER(B2)",
+        "D3": "=FORMAT.LARGE.NUMBER(B3)",
+        "D4": "=FORMAT.LARGE.NUMBER(B4)",
+        "D5": "=FORMAT.LARGE.NUMBER(B5)",
+        "D6": "=CONCATENATE(ROUNDUP(B6),_t(\" days\"))",
+        "E1": "=_t(\"Previous\")",
+        "E2": "=FORMAT.LARGE.NUMBER(C2)",
+        "E3": "=FORMAT.LARGE.NUMBER(C3)",
+        "E4": "=FORMAT.LARGE.NUMBER(C4)",
+        "E5": "=FORMAT.LARGE.NUMBER(C5)",
+        "E6": "=ROUNDUP(C6)"
+      },
+      "styles": {
+        "A1": 2,
+        "B1": 2,
+        "C1": 2,
+        "D1": 2,
+        "D2": 8,
+        "D3": 8,
+        "D4": 8,
+        "D5": 8,
+        "D6": 13,
+        "E1": 2,
+        "E2": 8,
+        "E3": 8,
+        "E4": 8,
+        "E5": 8,
+        "E6": 8
+      },
+      "formats": {
+        "E6": 3
+      },
+      "borders": {},
+      "cols": {},
+      "rows": {},
+      "merges": [],
+      "conditionalFormats": [],
+      "dataValidationRules": [],
+      "figures": [],
+      "tables": [],
+      "isVisible": true,
+      "areGridLinesVisible": true,
+      "headerGroups": [],
+      "comments": []
+    }
+  ],
+  "styles": {
+    "1": {
+      "textColor": "#01666b",
+      "bold": true,
+      "fontSize": 16
+    },
+    "2": {
+      "fontSize": 11,
+      "textColor": "#434343",
+      "verticalAlign": "middle",
+      "bold": true
+    },
+    "3": {
+      "textColor": "#01666B",
+      "verticalAlign": "middle"
+    },
+    "4": {
+      "textColor": "#01666B",
+      "verticalAlign": "middle"
+    },
+    "5": {
+      "textColor": "#434343",
+      "verticalAlign": "middle"
+    },
+    "6": {
+      "align": "left",
+      "textColor": "#434343",
+      "verticalAlign": "middle"
+    },
+    "7": {
+      "align": "center",
+      "fontSize": 11,
+      "textColor": "#434343",
+      "verticalAlign": "middle",
+      "bold": true
+    },
+    "8": {
+      "textColor": "#434343",
+      "verticalAlign": "middle"
+    },
+    "9": {
+      "align": "center",
+      "fontSize": 11,
+      "textColor": "#434343",
+      "verticalAlign": "middle",
+      "bold": true
+    },
+    "10": {
+      "textColor": "#01666B",
+      "verticalAlign": "middle"
+    },
+    "11": {
+      "textColor": "#01666B",
+      "verticalAlign": "middle"
+    },
+    "12": {
+      "textColor": "#01666b",
+      "bold": true,
+      "fontSize": 16
+    },
+    "13": {
+      "align": "right",
+      "textColor": "#434343",
+      "verticalAlign": "middle"
+    }
+  },
+  "formats": {
+    "1": "m/d/yyyy",
+    "2": "[$$]#,##0",
+    "3": "#,##0"
+  },
+  "borders": {
+    "1": {
+      "bottom": {
+        "style": "thin",
+        "color": "#CCCCCC"
+      }
+    },
+    "2": {
+      "top": {
+        "style": "thin",
+        "color": "#CCCCCC"
+      }
+    },
+    "3": {
+      "top": {
+        "style": "thin",
+        "color": "#CCCCCC"
+      },
+      "bottom": {
+        "style": "thin",
+        "color": "#FFFFFF"
+      }
+    },
+    "4": {
+      "top": {
+        "style": "thin",
+        "color": "#FFFFFF"
+      },
+      "bottom": {
+        "style": "thick",
+        "color": "#FFFFFF"
+      }
+    },
+    "5": {
+      "top": {
+        "style": "thick",
+        "color": "#FFFFFF"
+      },
+      "bottom": {
+        "style": "thick",
+        "color": "#FFFFFF"
+      }
+    },
+    "6": {
+      "top": {
+        "style": "thick",
+        "color": "#FFFFFF"
+      },
+      "bottom": {
+        "style": "thin",
+        "color": "#FFFFFF"
+      }
+    },
+    "7": {
+      "top": {
+        "style": "thin",
+        "color": "#FFFFFF"
+      }
+    }
+  },
+  "revisionId": "START_REVISION",
+  "uniqueFigureIds": true,
+  "settings": {
+    "locale": {
+      "name": "English (US)",
+      "code": "en_US",
+      "thousandsSeparator": ",",
+      "decimalSeparator": ".",
+      "dateFormat": "mm/dd/yyyy",
+      "timeFormat": "hh:mm:ss",
+      "formulaArgSeparator": ",",
+      "weekStart": 7
+    }
+  },
+  "pivots": {
+    "1": {
+      "type": "ODOO",
+      "fieldMatching": {
+        "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+          "chain": "date_order",
+          "type": "datetime",
+          "offset": 0
+        },
+        "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+          "chain": "country_id",
+          "type": "many2one"
+        },
+        "36330b95-00de-4d79-9ad9-3d67b5685993": {
+          "chain": "partner_id",
+          "type": "many2one"
+        },
+        "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+          "chain": "user_id",
+          "type": "many2one"
+        }
+      },
+      "context": {},
+      "domain": [
+        "&",
+        ["country_id", "!=", false],
+        ["state", "in", ["purchase", "done"]]
+      ],
+      "id": "1",
+      "measures": [
+        {
+          "id": "order_id",
+          "fieldName": "order_id"
+        },
+        {
+          "id": "untaxed_total",
+          "fieldName": "untaxed_total"
+        }
+      ],
+      "model": "purchase.report",
+      "name": "Purchase Analysis by Partner Country",
+      "sortedColumn": {
+        "measure": "untaxed_total",
+        "order": "desc",
+        "domain": []
+      },
+      "formulaId": "1",
+      "columns": [],
+      "rows": [
+        {
+          "fieldName": "country_id"
+        }
+      ]
+    },
+    "2": {
+      "type": "ODOO",
+      "fieldMatching": {
+        "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+          "chain": "date_order",
+          "type": "datetime",
+          "offset": 0
+        },
+        "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+          "chain": "country_id",
+          "type": "many2one"
+        },
+        "36330b95-00de-4d79-9ad9-3d67b5685993": {
+          "chain": "partner_id",
+          "type": "many2one"
+        },
+        "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+          "chain": "user_id",
+          "type": "many2one"
+        }
+      },
+      "context": {},
+      "domain": [["state", "in", ["purchase", "done"]]],
+      "id": "2",
+      "measures": [
+        {
+          "id": "order_id",
+          "fieldName": "order_id"
+        },
+        {
+          "id": "untaxed_total",
+          "fieldName": "untaxed_total"
+        }
+      ],
+      "model": "purchase.report",
+      "name": "Purchase Analysis by Vendor",
+      "sortedColumn": {
+        "measure": "untaxed_total",
+        "order": "desc",
+        "domain": []
+      },
+      "formulaId": "2",
+      "columns": [],
+      "rows": [
+        {
+          "fieldName": "partner_id"
+        }
+      ]
+    },
+    "3": {
+      "type": "ODOO",
+      "fieldMatching": {
+        "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+          "chain": "date_order",
+          "type": "datetime",
+          "offset": 0
+        },
+        "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+          "chain": "country_id",
+          "type": "many2one"
+        },
+        "36330b95-00de-4d79-9ad9-3d67b5685993": {
+          "chain": "partner_id",
+          "type": "many2one"
+        },
+        "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+          "chain": "user_id",
+          "type": "many2one"
+        }
+      },
+      "context": {},
+      "domain": ["&", ["user_id", "!=", false], ["state", "in", ["purchase", "done"]]],
+      "id": "3",
+      "measures": [
+        {
+          "id": "order_id",
+          "fieldName": "order_id"
+        },
+        {
+          "id": "untaxed_total",
+          "fieldName": "untaxed_total"
+        }
+      ],
+      "model": "purchase.report",
+      "name": "Purchase Analysis by Purchase Representative",
+      "sortedColumn": {
+        "measure": "untaxed_total",
+        "order": "desc",
+        "domain": []
+      },
+      "formulaId": "3",
+      "columns": [],
+      "rows": [
+        {
+          "fieldName": "user_id"
+        }
+      ]
+    },
+    "4": {
+      "type": "ODOO",
+      "fieldMatching": {
+        "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+          "chain": "date_order",
+          "type": "datetime",
+          "offset": 0
+        },
+        "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+          "chain": "country_id",
+          "type": "many2one"
+        },
+        "36330b95-00de-4d79-9ad9-3d67b5685993": {
+          "chain": "partner_id",
+          "type": "many2one"
+        },
+        "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+          "chain": "user_id",
+          "type": "many2one"
+        }
+      },
+      "context": {},
+      "domain": [["state", "in", ["purchase", "done"]]],
+      "id": "4",
+      "measures": [
+        {
+          "id": "untaxed_total",
+          "fieldName": "untaxed_total"
+        },
+        {
+          "id": "nbr_lines",
+          "fieldName": "nbr_lines"
+        },
+        {
+          "id": "order_id",
+          "fieldName": "order_id"
+        },
+        {
+          "id": "qty_ordered",
+          "fieldName": "qty_ordered"
+        },
+        {
+          "id": "delay_pass",
+          "fieldName": "delay_pass"
+        }
+      ],
+      "model": "purchase.report",
+      "name": "stats - current",
+      "sortedColumn": {
+        "measure": "untaxed_total",
+        "order": "desc",
+        "domain": []
+      },
+      "formulaId": "4",
+      "columns": [],
+      "rows": []
+    },
+    "5": {
+      "type": "ODOO",
+      "fieldMatching": {
+        "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+          "chain": "date_order",
+          "type": "datetime",
+          "offset": -1
+        },
+        "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+          "chain": "country_id",
+          "type": "many2one"
+        },
+        "36330b95-00de-4d79-9ad9-3d67b5685993": {
+          "chain": "partner_id",
+          "type": "many2one"
+        },
+        "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+          "chain": "user_id",
+          "type": "many2one"
+        }
+      },
+      "context": {},
+      "domain": [["state", "in", ["purchase", "done"]]],
+      "id": "5",
+      "measures": [
+        {
+          "id": "untaxed_total",
+          "fieldName": "untaxed_total"
+        },
+        {
+          "id": "nbr_lines",
+          "fieldName": "nbr_lines"
+        },
+        {
+          "id": "order_id",
+          "fieldName": "order_id"
+        },
+        {
+          "id": "qty_ordered",
+          "fieldName": "qty_ordered"
+        },
+        {
+          "id": "delay_pass",
+          "fieldName": "delay_pass"
+        }
+      ],
+      "model": "purchase.report",
+      "name": "stats - previous",
+      "sortedColumn": {
+        "measure": "untaxed_total",
+        "order": "desc",
+        "domain": []
+      },
+      "formulaId": "5",
+      "columns": [],
+      "rows": []
+    },
+    "6": {
+      "type": "ODOO",
+      "fieldMatching": {
+        "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+          "chain": "date_order",
+          "type": "datetime",
+          "offset": 0
+        },
+        "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+          "chain": "country_id",
+          "type": "many2one"
+        },
+        "36330b95-00de-4d79-9ad9-3d67b5685993": {
+          "chain": "partner_id",
+          "type": "many2one"
+        },
+        "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+          "chain": "user_id",
+          "type": "many2one"
+        }
+      },
+      "context": {},
+      "domain": [
+        "&",
+        ["product_id", "!=", false],
+        ["state", "in", ["purchase", "done"]]
+      ],
+      "id": "6",
+      "measures": [
+        {
+          "id": "order_id",
+          "fieldName": "order_id"
+        },
+        {
+          "id": "qty_ordered",
+          "fieldName": "qty_ordered"
+        },
+        {
+          "id": "untaxed_total",
+          "fieldName": "untaxed_total"
+        }
+      ],
+      "model": "purchase.report",
+      "name": "Purchase Analysis by Product",
+      "sortedColumn": {
+        "measure": "untaxed_total",
+        "order": "desc",
+        "domain": []
+      },
+      "formulaId": "6",
+      "columns": [],
+      "rows": [
+        {
+          "fieldName": "product_id"
+        }
+      ]
+    }
+  },
+  "pivotNextId": 7,
+  "customTableStyles": {},
+  "globalFilters": [
+    {
+      "id": "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9",
+      "type": "date",
+      "label": "Period",
+      "defaultValue": "last_90_days"
+    },
+    {
+      "id": "fbf748f9-596f-42f0-be3d-e0d7c01ef9be",
+      "type": "relation",
+      "label": "Country",
+      "modelName": "res.country",
+      "defaultValueDisplayNames": []
+    },
+    {
+      "id": "36330b95-00de-4d79-9ad9-3d67b5685993",
+      "type": "relation",
+      "label": "Vendor",
+      "modelName": "res.partner",
+      "defaultValueDisplayNames": []
+    },
+    {
+      "id": "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2",
+      "type": "relation",
+      "label": "Buyer",
+      "modelName": "res.users",
+      "defaultValueDisplayNames": []
+    }
+  ],
+  "lists": {
+    "1": {
+      "columns": ["name", "date_approve", "partner_id", "user_id", "amount_untaxed"],
+      "domain": [["state", "in", ["purchase", "done"]]],
+      "model": "purchase.order",
+      "context": {},
+      "orderBy": [
+        {
+          "name": "amount_untaxed",
+          "asc": false
+        }
+      ],
+      "id": "1",
+      "name": "Purchase Orders by Untaxed Amount",
+      "fieldMatching": {
+        "cf8f7a37-d54f-41ee-9fd8-2e5ad98720c9": {
+          "chain": "date_order",
+          "type": "datetime",
+          "offset": 0
+        },
+        "fbf748f9-596f-42f0-be3d-e0d7c01ef9be": {
+          "chain": "partner_id.country_id",
+          "type": "many2one"
+        },
+        "36330b95-00de-4d79-9ad9-3d67b5685993": {
+          "chain": "partner_id",
+          "type": "many2one"
+        },
+        "46501b8a-08a2-4d8c-abb5-7c52f9d1ada2": {
+          "chain": "user_id",
+          "type": "many2one"
+        }
+      }
+    }
+  },
+  "listNextId": 2,
+  "chartOdooMenusReferences": {
+    "8b6dfcc3-d418-4b74-80ea-f6bdcdc3b229": "purchase.menu_purchase_root",
+    "155096a3-ad7f-4e64-bf38-051fcfc90ee0": "purchase.menu_purchase_root",
+    "53bdb059-e5ce-47d9-bb63-d5f2e665c05f": "purchase.purchase_report",
+    "1e548a1e-ef9f-47f8-a9c7-b42709559c74": "purchase.menu_purchase_form_action",
+    "d161aa79-1991-4d86-9b51-df4e66f9ae7e": "purchase.menu_purchase_form_action",
+    "7bd14ede-d636-44cc-ac07-bc3fe6c565c0": "purchase.purchase_report",
+    "3b318ab5-0677-4790-8446-d37a0b4c6ac6": "purchase.purchase_report"
+  }
+}
