@@ -17,9 +17,9 @@ Spreadsheet dashboard for vendors
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
-    :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
-    :alt: License: LGPL-3
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+    :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fspreadsheet-lightgray.png?logo=github
     :target: https://github.com/OCA/spreadsheet/tree/19.0/spreadsheet_dashboard_purchase_oca
     :alt: OCA/spreadsheet
@@ -55,7 +55,6 @@ Credits
 Authors
 -------
 
-* Odoo S.A.
 * Tecnativa
 
 Contributors
@@ -64,13 +63,7 @@ Contributors
 - `Tecnativa <https://www.tecnativa.com>`__:
 
   - Pedro M. Baeza
-
-Other credits
--------------
-
-This module is a forward-port from Odoo SA and as such, it is not
-included in the OCA CLA. That means we do not have a copy of the
-copyright on it like all other OCA modules.
+  - Pilar Vargas
 
 Maintainers
 -----------
