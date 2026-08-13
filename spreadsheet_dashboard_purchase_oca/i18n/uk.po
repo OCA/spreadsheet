@@ -103,8 +103,25 @@ msgstr "Попередній"
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Product"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Purchased"
 msgstr "Придбано"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_group_purchase
+msgid "Purchases"
+msgstr ""
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Qty Ordered"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -141,6 +158,12 @@ msgstr "Топ покупців"
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Orders"
 msgstr "Топ замовлень"
+
+#. module: spreadsheet_dashboard_purchase_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
+msgid "Top Products"
+msgstr ""
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript

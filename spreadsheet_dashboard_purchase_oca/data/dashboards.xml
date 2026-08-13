@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
+    <record
+        id="spreadsheet_dashboard_group_purchase"
+        model="spreadsheet.dashboard.group"
+    >
+        <field name="name">Purchases</field>
+        <field name="sequence">200</field>
+    </record>
     <record id="spreadsheet_dashboard_vendors" model="spreadsheet.dashboard">
         <field name="name">Vendors</field>
         <field
@@ -11,10 +18,7 @@
             name="main_data_model_ids"
             eval="[Command.link(ref('purchase.model_purchase_order'))]"
         />
-        <field
-            name="dashboard_group_id"
-            ref="spreadsheet_dashboard.spreadsheet_dashboard_group_logistics"
-        />
+        <field name="dashboard_group_id" ref="spreadsheet_dashboard_group_purchase" />
         <field
             name="group_ids"
             eval="[Command.link(ref('purchase.group_purchase_manager'))]"
