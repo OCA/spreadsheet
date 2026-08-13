@@ -13,13 +13,13 @@
         />
         <field
             name="dashboard_group_id"
-            ref="spreadsheet_dashboard.spreadsheet_dashboard_group_logistics"
+            ref="spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_group_purchase"
         />
         <field
             name="group_ids"
             eval="[Command.link(ref('stock.group_stock_manager'))]"
         />
-        <field name="sequence">100</field>
+        <field name="sequence">300</field>
         <field name="is_published">True</field>
     </record>
 </odoo>
