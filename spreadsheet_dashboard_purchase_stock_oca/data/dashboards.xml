@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="spreadsheet_dashboard_purchase" model="spreadsheet.dashboard">
+        <field name="name">Purchase Receipts</field>
+        <field
+            name="spreadsheet_binary_data"
+            type="base64"
+            file="spreadsheet_dashboard_purchase_stock_oca/data/files/purchase_dashboard.json"
+        />
+        <field
+            name="main_data_model_ids"
+            eval="[Command.link(ref('stock.model_stock_picking'))]"
+        />
+        <field
+            name="dashboard_group_id"
+            ref="spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_group_purchase"
+        />
+        <field
+            name="group_ids"
+            eval="[Command.link(ref('stock.group_stock_manager'))]"
+        />
+        <field name="sequence">300</field>
+        <field name="is_published">True</field>
+    </record>
+</odoo>
