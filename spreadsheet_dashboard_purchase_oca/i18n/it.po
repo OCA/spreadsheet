@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-26 21:56+0000\n"
-"PO-Revision-Date: 2026-01-11 17:43+0000\n"
+"PO-Revision-Date: 2026-08-17 12:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://app.transifex.com/odoo/teams/41243/it/)\n"
 "Language: it\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=3; plural=(n == 1) ? 0 : ((n != 0 && n % 1000000 == "
 "0) ? 1 : 2);\n"
-"X-Generator: Weblate 5.10.4\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -104,7 +104,7 @@ msgstr "Precedente"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -115,13 +115,13 @@ msgstr "Acquistata"
 #. module: spreadsheet_dashboard_purchase_oca
 #: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_group_purchase
 msgid "Purchases"
-msgstr ""
+msgstr "Acquisti"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Qty Ordered"
-msgstr ""
+msgstr "Q.tà ordinata"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -163,7 +163,7 @@ msgstr "Ordini migliori"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Products"
-msgstr ""
+msgstr "Prodotti principali"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
