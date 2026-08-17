@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="spreadsheet.ShareButton" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_field_widget')][1]" position="after">
+            <button
+                t-if="isDashboard"
+                class="dropdown-item text-primary"
+                t-on-click="onManageShares"
+            >
+                <i class="fa fa-fw fa-gears me-1" />
+                Manage shares
+            </button>
+        </xpath>
+    </t>
+</templates>
