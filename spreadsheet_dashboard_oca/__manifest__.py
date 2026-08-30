@@ -4,8 +4,9 @@
 {
     "name": "Spreadsheet Dashboard Oca",
     "summary": """
-        Use OCA Spreadsheets on dashboards configuration""",
-    "version": "19.0.1.0.0",
+        Use OCA Spreadsheets on dashboards configuration and manage
+        dashboard share links""",
+    "version": "19.0.2.0.0",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
@@ -15,6 +16,7 @@
     ],
     "data": [
         "security/ir.model.access.csv",
+        "security/ir_rule.xml",
         "wizards/spreadsheet_spreadsheet_import.xml",
         "wizards/spreadsheet_to_dashboard.xml",
         "views/spreadsheet_dashboard_group_views.xml",
@@ -26,8 +28,12 @@
             (
                 "after",
                 "spreadsheet/static/src/o_spreadsheet/o_spreadsheet.js",
-                "spreadsheet_dashboard_oca/static/src/bundle/*.js",
+                "spreadsheet_dashboard_oca/static/src/bundle/**/*.js",
             ),
+            "spreadsheet_dashboard_oca/static/src/bundle/**/*.xml",
+        ],
+        "web.assets_unit_tests": [
+            "spreadsheet_dashboard_oca/static/tests/**/*",
         ],
     },
 }

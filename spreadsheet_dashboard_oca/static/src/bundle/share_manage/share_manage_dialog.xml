@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+    <t t-name="spreadsheet_dashboard_oca.ShareManageDialog">
+        <Dialog title="props.title" size="'lg'">
+            <p t-if="!state.shares.length" class="text-muted mb-0">
+                No shares yet.
+            </p>
+            <table t-else="" class="table table-sm mb-0 align-middle">
+                <thead>
+                    <tr>
+                        <th>Dashboard</th>
+                        <th>Share link</th>
+                        <th>Created by</th>
+                        <th>Created on</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr t-foreach="state.shares" t-as="share" t-key="share.id">
+                        <td t-esc="share.name" />
+                        <td
+                            class="o_field_widget o_readonly_modifier o_field_CopyClipboardChar"
+                        >
+                            <div class="d-grid rounded-2 overflow-hidden">
+                                <span t-esc="share.full_url" />
+                                <CopyButton
+                                    content="share.full_url"
+                                    className="'o_btn_char_copy btn-sm'"
+                                    successText="copiedText"
+                                    icon="'fa-clipboard'"
+                                />
+                            </div>
+                        </td>
+                        <td t-esc="share.create_uid" />
+                        <td t-esc="share.create_date" />
+                        <td class="text-end">
+                            <button
+                                class="btn btn-sm btn-danger"
+                                t-att-disabled="state.revoking === share.id"
+                                t-on-click="() => this.onRevoke(share)"
+                            >
+                                    Revoke
+                                </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click="props.close">Close</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>
