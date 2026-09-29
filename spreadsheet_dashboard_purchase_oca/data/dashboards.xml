@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record
         id="spreadsheet_dashboard_group_purchase"
         model="spreadsheet.dashboard.group"
     >
         <field name="name">Purchases</field>
-        <field name="sequence">200</field>
+        <field name="sequence" eval="200" />
     </record>
     <record id="spreadsheet_dashboard_vendors" model="spreadsheet.dashboard">
         <field name="name">Vendors</field>
         <field
             name="spreadsheet_binary_data"
-            type="base64"
+            type="bytes"
             file="spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json"
         />
         <field
@@ -23,7 +23,7 @@
             name="group_ids"
             eval="[Command.link(ref('purchase.group_purchase_manager'))]"
         />
-        <field name="sequence">200</field>
-        <field name="is_published">True</field>
+        <field name="sequence" eval="200" />
+        <field name="is_published" eval="True" />
     </record>
 </odoo>
