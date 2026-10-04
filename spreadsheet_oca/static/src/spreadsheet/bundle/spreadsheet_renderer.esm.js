@@ -1,6 +1,6 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 
-import {Component} from "@odoo/owl";
+import {Component, onWillStart, t, useProps} from "@odoo/owl";
 import {ImageFileStore} from "./image_file_store.esm";
 import {OdooDataProvider} from "@spreadsheet/data_sources/odoo_data_provider";
 import {SpreadsheetComponent} from "@spreadsheet/actions/spreadsheet_component";
@@ -8,14 +8,14 @@ import {_t} from "@web/core/l10n/translation";
 import {loadBundle} from "@web/core/assets";
 import {useService} from "@web/core/utils/hooks";
 import {useSetupAction} from "@web/search/action_hook";
+import {useSubEnv} from "@web/owl2/utils";
 import {user} from "@web/core/user";
 import {waitForDataLoaded} from "@spreadsheet/helpers/model";
 
 const {Model, load} = spreadsheet;
 
-const {useSubEnv, onWillStart} = owl;
 const {useStoreProvider, ModelStore} = spreadsheet.stores;
-const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
+const {UuidGenerator} = spreadsheet.helpers;
 
 class SpreadsheetTransportService {
     constructor(orm, bus_service, model, res_id) {
@@ -78,6 +78,15 @@ class SpreadsheetTransportService {
 }
 
 export class SpreadsheetRenderer extends Component {
+    static template = "spreadsheet_oca.SpreadsheetRenderer";
+    static components = {SpreadsheetComponent};
+    props = useProps({
+        record: t.object(),
+        res_id: t.number(),
+        model: t.string(),
+        importData: t.function(),
+    });
+
     createDefaultCurrency(currency) {
         if (!currency) {
             return undefined;
@@ -146,6 +155,7 @@ export class SpreadsheetRenderer extends Component {
                     loadCurrencies: this.loadCurrencies,
                     loadLocales: this.loadLocales,
                     fileStore: this.fileStore,
+                    geoJsonService: this.env.services.geo_json_service,
                 },
                 transportService: new SpreadsheetTransportService(
                     this.orm,
@@ -154,7 +164,7 @@ export class SpreadsheetRenderer extends Component {
                     this.props.res_id
                 ),
                 client: {
-                    id: uuidGenerator.uuidv4(),
+                    id: UuidGenerator.uuidv4(),
                     name: user.name,
                     userId: user.userId,
                 },
@@ -195,18 +205,9 @@ export class SpreadsheetRenderer extends Component {
             tag: "action_download_spreadsheet",
             params: {
                 name: this.props.record.name,
-                xlsxData: this.spreadsheet_model.exportXLSX(),
+                xlsxData: await this.spreadsheet_model.exportXLSX(),
             },
         });
         this.ui.unblock();
     }
 }
-
-SpreadsheetRenderer.template = "spreadsheet_oca.SpreadsheetRenderer";
-SpreadsheetRenderer.components = {SpreadsheetComponent};
-SpreadsheetRenderer.props = {
-    record: Object,
-    res_id: Number,
-    model: String,
-    importData: Function,
-};

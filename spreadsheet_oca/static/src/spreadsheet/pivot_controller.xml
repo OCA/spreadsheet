@@ -7,11 +7,12 @@
     >
         <xpath expr="//button[hasclass('o_pivot_download')]" position="after">
             <button
-                t-att-data-tooltip="getSpreadsheetInsertionTooltip()"
-                class="btn btn-secondary fa fa-table"
-                t-on-click="onSpreadsheetButtonClicked"
+                t-att-data-tooltip="this.getSpreadsheetInsertionTooltip()"
+                class="btn btn-secondary oi o_pivot_add_spreadsheet"
+                data-icon="table_chart"
+                t-on-click="this.onSpreadsheetButtonClicked"
                 aria-label="Add to spreadsheet"
-                t-att-disabled="disableSpreadsheetInsertion()"
+                t-att-disabled="this.disableSpreadsheetInsertion()"
                 data-hotkey="t"
             />
         </xpath>

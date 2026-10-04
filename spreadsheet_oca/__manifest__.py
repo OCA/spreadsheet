@@ -3,16 +3,15 @@
 
 {
     "name": "Spreadsheet Oca",
-    "summary": """
-        Allow to edit spreadsheets""",
-    "version": "19.0.1.0.2",
+    "summary": "Allow to edit spreadsheets",
+    "version": "20.0.1.0.0",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
     "depends": ["spreadsheet", "base_sparse_field", "bus"],
     "data": [
         "security/security.xml",
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/spreadsheet_spreadsheet.xml",
         "data/spreadsheet_spreadsheet_import_mode.xml",
         "wizards/spreadsheet_select_row_number.xml",
@@ -25,9 +24,9 @@
             "spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml",
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet.scss",
             "spreadsheet_oca/static/src/spreadsheet/spreadsheet_action.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/list_cog_menu.esm.js",
+            "spreadsheet_oca/static/src/spreadsheet/list_cog_menu.xml",
             "spreadsheet_oca/static/src/spreadsheet/list_controller.esm.js",
-            "spreadsheet_oca/static/src/spreadsheet/list_renderer.esm.js",
-            "spreadsheet_oca/static/src/spreadsheet/list_controller.xml",
         ],
         "web.assets_backend_lazy": [
             "spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js",
@@ -45,7 +44,9 @@
             "spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_action.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js",
-            "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panel.esm.js",
+        ],
+        "web.assets_tests": [
+            "spreadsheet_oca/static/tests/tours/*.esm.js",
         ],
     },
 }

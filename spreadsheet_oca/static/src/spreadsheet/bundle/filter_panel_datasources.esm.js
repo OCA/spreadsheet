@@ -1,5 +1,15 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Component, onWillStart, onWillUpdateProps, useRef, useState} from "@odoo/owl";
+import {
+    Component,
+    onWillStart,
+    onWillUpdateProps,
+    proxy,
+    signal,
+    t,
+    usePlugin,
+    useProps,
+} from "@odoo/owl";
+import {DebugModePlugin} from "@web/core/debug_mode_plugin";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
@@ -84,10 +94,21 @@ export class PivotTitleSectionInsertion extends PivotTitleSection {
 }
 
 export class PivotPanelDisplay extends Component {
+    static template = "spreadsheet_oca.PivotPanelDisplay";
+    static components = {
+        DomainSelector,
+        PivotTitleSectionInsertion,
+        PivotLayoutConfiguratorWithAggregators,
+    };
+    props = useProps({
+        pivotId: t.string(),
+    });
+    pivotPanelRef = signal.ref();
+
     setup() {
         this.dialog = useService("dialog");
+        this.debugMode = usePlugin(DebugModePlugin);
         this.store = useLocalStore(PivotSidePanelStore, this.props.pivotId);
-        this.pivotPanelRef = useRef("pivotPanel");
         onWillStart(this.modelData.bind(this));
         onWillUpdateProps(this.modelData.bind(this));
     }
@@ -120,7 +141,7 @@ export class PivotPanelDisplay extends Component {
             resModel: this.store.definition.model,
             domain: this.domain,
             readonly: false,
-            isDebugMode: Boolean(this.env.debug),
+            isDebugMode: this.debugMode.isActive(),
             onConfirm: this.onSelectDomain.bind(this),
         });
     }
@@ -131,7 +152,7 @@ export class PivotPanelDisplay extends Component {
         this.store.update({domain});
     }
     getScrollableContainerEl() {
-        return this.pivotPanelRef.el;
+        return this.pivotPanelRef();
     }
     flipAxis() {
         const dimensions = {
@@ -142,17 +163,11 @@ export class PivotPanelDisplay extends Component {
     }
 }
 
-PivotPanelDisplay.template = "spreadsheet_oca.PivotPanelDisplay";
-PivotPanelDisplay.components = {
-    DomainSelector,
-    PivotTitleSectionInsertion,
-    PivotLayoutConfiguratorWithAggregators,
-};
-PivotPanelDisplay.properties = {
-    pivotId: String,
-};
-
 export class PivotPanel extends Component {
+    static template = "spreadsheet_oca.PivotPanel";
+    static components = {PivotPanelDisplay};
+    props = useProps();
+
     get pivotId() {
         return this.props.pivotId;
     }
@@ -161,19 +176,22 @@ export class PivotPanel extends Component {
     }
 }
 
-PivotPanel.template = "spreadsheet_oca.PivotPanel";
-PivotPanel.components = {
-    PivotPanelDisplay,
-};
-
 pivotSidePanelRegistry.add("ODOO", {
     editor: PivotPanel,
 });
 
 export class ListPanelDisplay extends Component {
+    static template = "spreadsheet_oca.ListPanelDisplay";
+    static components = {DomainSelector};
+    props = useProps({
+        listId: t.string(),
+        listDefinition: t.object(),
+    });
+
     setup() {
-        this.state = useState({listRows: undefined});
+        this.state = proxy({listRows: undefined});
         this.dialog = useService("dialog");
+        this.debugMode = usePlugin(DebugModePlugin);
         onWillStart(this.modelData.bind(this));
         onWillUpdateProps(this.modelData.bind(this));
     }
@@ -198,7 +216,7 @@ export class ListPanelDisplay extends Component {
             resModel: this.props.listDefinition.model,
             domain: this.domain,
             readonly: false,
-            isDebugMode: Boolean(this.env.debug),
+            isDebugMode: this.debugMode.isActive(),
             onConfirm: this.onSelectDomain.bind(this),
         });
     }
@@ -215,17 +233,14 @@ export class ListPanelDisplay extends Component {
         const totalRows = parseInt(this.state.listRows, 10) || dataSource.maxPosition;
         const list = this.env.model.getters.getListDefinition(listId);
         const sheetId = this.env.model.getters.getActiveSheetId();
-        const columns = list.columns.map((name) => ({
-            name,
-            type: dataSource.getField(name).type,
-        }));
         this.env.model.dispatch("RE_INSERT_ODOO_LIST_WITH_TABLE", {
             sheetId: sheetId,
             col: zone.left,
             row: zone.top,
-            id: listId,
+            listId,
             linesNumber: totalRows,
-            columns: columns,
+            columns: list.columns.filter((column) => !column.hidden),
+            mode: "static",
         });
     }
     delete() {
@@ -241,16 +256,11 @@ export class ListPanelDisplay extends Component {
     }
 }
 
-ListPanelDisplay.template = "spreadsheet_oca.ListPanelDisplay";
-ListPanelDisplay.components = {
-    DomainSelector,
-};
-ListPanelDisplay.props = {
-    listId: String,
-    listDefinition: Object,
-};
-
 export class ListPanel extends Component {
+    static template = "spreadsheet_oca.ListPanel";
+    static components = {ListPanelDisplay};
+    props = useProps();
+
     get listId() {
         return this.props.listId;
     }
@@ -258,11 +268,6 @@ export class ListPanel extends Component {
         return this.env.model.getters.getListDefinition(this.listId) || {};
     }
 }
-
-ListPanel.template = "spreadsheet_oca.ListPanel";
-ListPanel.components = {
-    ListPanelDisplay,
-};
 
 sidePanelRegistry.add("ListPanel", {
     title: "List information",

@@ -40,7 +40,7 @@
                     name="open_spreadsheet"
                     type="object"
                     string="Edit"
-                    icon="fa-pencil"
+                    icon="edit"
                 />
             </list>
         </field>
@@ -65,7 +65,7 @@
                             name="open_spreadsheet"
                             type="object"
                             string="Edit"
-                            icon="fa-pencil"
+                            icon="edit"
                         />
                     </div>
                     <field name="badge_image" widget="image" class="oe_avatar" />
