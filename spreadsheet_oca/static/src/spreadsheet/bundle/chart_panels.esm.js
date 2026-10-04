@@ -38,24 +38,27 @@ const menuChartProps = () => ({
         return [["id", "in", menus]];
     },
     get menuId() {
-        const menu = this.env.model.getters.getChartOdooMenu(this.props.chartId);
-        if (menu) {
-            return [menu.id, menu.name];
+        const odooLink = this.env.model.getters.getChartOdooLink(this.props.chartId);
+        if (odooLink && odooLink.type === "odooMenu") {
+            const menu = this.env.model.getters.getIrMenu(odooLink.odooMenuId);
+            if (menu) {
+                return [menu.id, menu.name];
+            }
         }
         return false;
     },
     updateMenu(menuId) {
         if (!menuId) {
-            this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
+            this.env.model.dispatch("UPDATE_ODOO_LINK_TO_CHART", {
                 chartId: this.props.chartId,
-                odooMenuId: false,
+                odooLink: undefined,
             });
             return;
         }
         const menu = this.env.model.getters.getIrMenu(menuId[0].id);
-        this.env.model.dispatch("LINK_ODOO_MENU_TO_CHART", {
+        this.env.model.dispatch("UPDATE_ODOO_LINK_TO_CHART", {
             chartId: this.props.chartId,
-            odooMenuId: menu.xmlid || menu.id,
+            odooLink: {type: "odooMenu", odooMenuId: menu.xmlid || menu.id},
         });
     },
     get record() {
@@ -74,32 +77,23 @@ const menuChartProps = () => ({
     },
 });
 
-patch(GenericChartConfigPanel.prototype, menuChartProps());
-GenericChartConfigPanel.components = {
-    ...GenericChartConfigPanel.components,
-    Many2XAutocomplete,
-};
-
-patch(LineConfigPanel.prototype, menuChartProps());
-LineConfigPanel.components = {
-    ...LineConfigPanel.components,
-    Many2XAutocomplete,
-};
-
-patch(BarConfigPanel.prototype, menuChartProps());
-BarConfigPanel.components = {
-    ...BarConfigPanel.components,
-    Many2XAutocomplete,
-};
-
-patch(ScorecardChartConfigPanel.prototype, menuChartProps());
-ScorecardChartConfigPanel.components = {
-    ...ScorecardChartConfigPanel.components,
-    Many2XAutocomplete,
-};
-
-patch(GaugeChartConfigPanel.prototype, menuChartProps());
-GaugeChartConfigPanel.components = {
-    ...GaugeChartConfigPanel.components,
-    Many2XAutocomplete,
-};
+// LineConfigPanel and BarConfigPanel extend GenericChartConfigPanel
+for (const ConfigPanel of [
+    GenericChartConfigPanel,
+    ScorecardChartConfigPanel,
+    GaugeChartConfigPanel,
+]) {
+    patch(ConfigPanel.prototype, menuChartProps());
+}
+for (const ConfigPanel of [
+    GenericChartConfigPanel,
+    LineConfigPanel,
+    BarConfigPanel,
+    ScorecardChartConfigPanel,
+    GaugeChartConfigPanel,
+]) {
+    ConfigPanel.components = {
+        ...ConfigPanel.components,
+        Many2XAutocomplete,
+    };
+}

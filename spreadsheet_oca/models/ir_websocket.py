@@ -39,9 +39,9 @@ class IrWebsocket(models.AbstractModel):
                         if not self.env.user._is_internal():
                             raise AccessDenied()
 
-                        if not self.env["ir.model.access"].check(
-                            model_name, "read", raise_exception=False
-                        ):
+                        if model_name not in self.env or not self.env[
+                            model_name
+                        ].has_access("read"):
                             continue
                         # If user don't have access to the model, we don't even try to
                         # read

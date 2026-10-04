@@ -1,0 +1,13 @@
+id,name,model_id,group_id/id,operation,domain
+spreadsheet_owner_rule,Spreadsheet Owner,spreadsheet.spreadsheet,spreadsheet_oca.group_user,crud,"[('owner_id','=', user.id)]"
+spreadsheet_contributor_rule,Spreadsheet Contributor,spreadsheet.spreadsheet,spreadsheet_oca.group_user,ru,"['|', ('contributor_ids','=', user.id), ('contributor_group_ids','in', user.all_group_ids.ids)]"
+spreadsheet_reader_rule,Spreadsheet Reader,spreadsheet.spreadsheet,spreadsheet_oca.group_user,r,"['|', ('reader_ids','=', user.id), ('reader_group_ids','in', user.all_group_ids.ids)]"
+spreadsheet_manager_rule,Spreadsheet Manager,spreadsheet.spreadsheet,spreadsheet_oca.group_manager,crud,
+spreadsheet_company_rule,Spreadsheet Company Rule,spreadsheet.spreadsheet,,crud,"[('company_id', 'in', company_ids + [False])]"
+access_spreadsheet_oca_revision,access_spreadsheet_oca_revision,spreadsheet.oca.revision,base.group_user,crud,
+access_spreadsheet_spreadsheet_import,access_spreadsheet_spreadsheet_import,spreadsheet.spreadsheet.import,base.group_user,crud,
+access_spreadsheet_import_mode,access_spreadsheet_oca_revision,spreadsheet.spreadsheet.import.mode,base.group_user,r,
+spreadsheet_import_mode_rule,Spreadsheet Import mode,spreadsheet.spreadsheet.import.mode,,crud,"[('group_ids','in', user.all_group_ids.ids)]"
+access_spreadsheet_select_row_number,access_spreadsheet_select_row_number,spreadsheet.select.row.number,base.group_user,crud,
+access_spreadsheet_spreadsheet_tag,access_spreadsheet_spreadsheet_tag,spreadsheet.spreadsheet.tag,spreadsheet_oca.group_user,r,
+access_spreadsheet_spreadsheet_manager_tag,access_spreadsheet_spreadsheet_manager_tag,spreadsheet.spreadsheet.tag,spreadsheet_oca.group_manager,crud,

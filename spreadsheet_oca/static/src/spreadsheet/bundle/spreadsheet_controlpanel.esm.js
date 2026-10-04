@@ -1,12 +1,17 @@
-import {Component} from "@odoo/owl";
+import {Component, proxy, t, useProps} from "@odoo/owl";
+import {Breadcrumbs} from "@web/search/breadcrumbs/breadcrumbs";
 import {ControlPanel} from "@web/search/control_panel/control_panel";
-import {useService} from "@web/core/utils/hooks";
-
-const {useState} = owl;
 
 export class SpreadsheetName extends Component {
+    static template = "spreadsheet_oca.SpreadsheetName";
+    props = useProps({
+        name: t.string(),
+        isReadonly: t.boolean(),
+        onChanged: t.function().optional(),
+    });
+
     setup() {
-        this.state = useState({
+        this.state = proxy({
             name: this.props.name,
         });
     }
@@ -23,29 +28,28 @@ export class SpreadsheetName extends Component {
         }
     }
 }
-SpreadsheetName.template = "spreadsheet_oca.SpreadsheetName";
-SpreadsheetName.props = {
-    name: String,
-    isReadonly: Boolean,
-    onChanged: {type: Function, optional: true},
-};
+
+export class SpreadsheetBreadcrumbs extends Breadcrumbs {
+    static template = "spreadsheet_oca.Breadcrumbs";
+    static components = {
+        ...Breadcrumbs.components,
+        SpreadsheetName,
+    };
+    props = useProps({
+        breadcrumbs: t.array(),
+        record: t.object(),
+        slots: t.object().optional(),
+    });
+}
 
 export class SpreadsheetControlPanel extends ControlPanel {
-    setup() {
-        super.setup();
-        this.actionService = useService("action");
-    }
-
-    onBreadcrumbClicked(jsId) {
-        this.actionService.restore(jsId);
-    }
+    static template = "spreadsheet_oca.SpreadsheetControlPanel";
+    static components = {
+        ...ControlPanel.components,
+        SpreadsheetBreadcrumbs,
+    };
+    props = useProps({
+        display: t.object().optional({actions: true, buttons: true}),
+        record: t.object(),
+    });
 }
-SpreadsheetControlPanel.template = "spreadsheet_oca.SpreadsheetControlPanel";
-SpreadsheetControlPanel.props = {
-    ...ControlPanel.props,
-    record: Object,
-};
-SpreadsheetControlPanel.components = {
-    ...ControlPanel.components,
-    SpreadsheetName,
-};

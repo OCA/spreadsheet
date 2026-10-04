@@ -11,7 +11,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="mode_id" widget="selection_badge" />
+                        <field name="mode_id" widget="badges_many2one" />
                         <field
                             name="name"
                             invisible="mode != 'new'"

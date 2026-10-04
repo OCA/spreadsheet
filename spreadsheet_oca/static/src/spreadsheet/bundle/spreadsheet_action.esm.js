@@ -1,19 +1,20 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
 
+import {Component, onWillStart, useProps} from "@odoo/owl";
 import {Domain} from "@web/core/domain";
 import {SpreadsheetControlPanel} from "./spreadsheet_controlpanel.esm";
 import {SpreadsheetRenderer} from "./spreadsheet_renderer.esm";
 import {deepCopy} from "@web/core/utils/objects";
 import {helpers} from "@odoo/o-spreadsheet";
 import {registry} from "@web/core/registry";
-import {standardActionServiceProps} from "@web/webclient/actions/action_service";
+import {standardActionServiceProps} from "@web/webclient/actions/action_plugin";
 import {useService} from "@web/core/utils/hooks";
+import {useSubEnv} from "@web/owl2/utils";
 
 const {load} = spreadsheet;
 
-const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
+const {UuidGenerator} = spreadsheet.helpers;
 const actionRegistry = registry.category("actions");
-const {Component, onWillStart, useSubEnv} = owl;
 const {parseDimension, isDateOrDatetimeField} = helpers;
 
 function normalizeGroupBys(dimensions, fields) {
@@ -29,6 +30,13 @@ function normalizeGroupBys(dimensions, fields) {
 }
 
 export class ActionSpreadsheetOca extends Component {
+    static template = "spreadsheet_oca.ActionSpreadsheetOca";
+    static components = {
+        SpreadsheetRenderer,
+        SpreadsheetControlPanel,
+    };
+    props = useProps(standardActionServiceProps);
+
     setup() {
         this.orm = useService("orm");
         this.notification = useService("notification");
@@ -93,7 +101,7 @@ export class ActionSpreadsheetOca extends Component {
     async importDataGraph(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
         if (this.import_data.new === undefined && this.import_data.new_sheet) {
-            sheetId = uuidGenerator.uuidv4();
+            sheetId = UuidGenerator.smallUuid();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
                 position: spreadsheet_model.getters.getSheetIds().length,
@@ -107,37 +115,61 @@ export class ActionSpreadsheetOca extends Component {
         } else if (this.import_data.new === undefined) {
             // TODO: Add a way to detect the last row total height
         }
-        const dataSourceId = uuidGenerator.uuidv4();
-        const chartType = `odoo_${this.import_data.metaData.mode}`;
+        const metaData = this.import_data.metaData;
+        const chartType = metaData.mode;
+        const chartId = UuidGenerator.smallUuid();
         const definition = {
+            dataSource: {
+                type: "odoo",
+                metaData: {
+                    groupBy: JSON.parse(JSON.stringify(metaData.groupBy)),
+                    measure: metaData.measure,
+                    order: metaData.order,
+                    resModel: metaData.resModel,
+                },
+                searchParams: {
+                    ...this.cleanSearchParams(),
+                    domain: new Domain(this.import_data.searchParams.domain).toJson(),
+                },
+                actionXmlId: this.import_data.actionXmlId,
+                cumulatedStart: metaData.cumulatedStart,
+            },
             title: {text: this.import_data.name},
             type: chartType,
-            fillArea: chartType === "odoo_line",
+            fillArea: chartType === "line",
             background: "#FFFFFF",
-            stacked: this.import_data.metaData.stacked,
-            axisType: this.import_data.metaData.axisType,
-            metaData: this.import_data.metaData,
-            searchParams: this.cleanSearchParams(),
-            cumulative: this.import_data.metaData.cumulated,
-            cumulatedStart: this.import_data.metaData.cumulatedStart,
+            stacked: metaData.stacked,
+            axisType: metaData.axisType,
+            cumulative: metaData.cumulated || undefined,
             legendPosition: "top",
             verticalAxisPosition: "left",
-            actionXmlId: this.import_data.actionXmlId,
+            humanize: true,
+            dataSetStyles: {},
+            dataSourceId: UuidGenerator.smallUuid(),
+            id: chartId,
         };
         spreadsheet_model.dispatch("CREATE_CHART", {
             sheetId,
-            figureId: uuidGenerator.uuidv4(),
-            chartId: dataSourceId,
+            figureId: UuidGenerator.smallUuid(),
+            chartId,
             col: 0,
             row: 0,
             offset: {x: 0, y: 0},
             definition,
         });
+        spreadsheet_model.dispatch("UPDATE_ODOO_LINK_TO_CHART", {
+            chartId,
+            odooLink: {
+                type: "dataSource",
+                dataSourceCoreId: chartId,
+                dataSourceType: "chart",
+            },
+        });
     }
     importCreateOrReuseSheet(spreadsheet_model) {
         var sheetId = spreadsheet_model.getters.getActiveSheetId();
         if (this.import_data.new === undefined) {
-            sheetId = uuidGenerator.uuidv4();
+            sheetId = UuidGenerator.smallUuid();
             spreadsheet_model.dispatch("CREATE_SHEET", {
                 sheetId,
                 position: spreadsheet_model.getters.getSheetIds().length,
@@ -155,37 +187,32 @@ export class ActionSpreadsheetOca extends Component {
         var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
         if (!sheetId) {
             const sheetIds = spreadsheet_model.getters.getSheetIds();
-            sheetId = sheetIds.length ? sheetIds[0] : uuidGenerator.uuidv4();
+            sheetId = sheetIds.length ? sheetIds[0] : UuidGenerator.smallUuid();
         }
         const listId = spreadsheet_model.getters.getNextListId();
-        const list_info = {
-            metaData: {
-                resModel: this.import_data.metaData.model,
-                columns: this.import_data.metaData.columns.map((column) => column.name),
-                fields: this.import_data.metaData.fields,
-            },
-            searchParams: {
-                domain: new Domain(this.import_data.metaData.domain).toJson(),
-                context: this.import_data.metaData.context,
-                orderBy: this.import_data.metaData.orderBy,
-            },
+        const metaData = this.import_data.metaData;
+        const columns = metaData.columns.map((c) => ({
+            name: c.name,
+            string: metaData.fields[c.name].string,
+        }));
+        const definition = {
+            model: metaData.model,
+            domain: new Domain(metaData.domain).toJson(),
+            context: metaData.context,
+            orderBy: metaData.orderBy,
+            columns,
             name: this.import_data.name,
             actionXmlId: this.import_data.actionXmlId,
         };
-        const columns = this.import_data.metaData.columns.map((c) => ({
-            name: c.name,
-            type: this.import_data.metaData.fields[c.name].type,
-        }));
-        const definitionWithoutFields = JSON.parse(JSON.stringify(list_info));
-        definitionWithoutFields.metaData.fields = undefined;
+        const linesNumber = this.import_data.dyn_number_of_rows || 80;
         spreadsheet_model.dispatch("INSERT_ODOO_LIST_WITH_TABLE", {
             sheetId,
             col: 0,
             row: 0,
-            id: listId,
-            definition: definitionWithoutFields,
-            linesNumber: this.import_data.dyn_number_of_rows,
-            columns: columns,
+            listId,
+            definition,
+            linesNumber,
+            mode: "static",
         });
         const dataSource = spreadsheet_model.getters.getListDataSource(listId);
         await dataSource.load();
@@ -196,7 +223,7 @@ export class ActionSpreadsheetOca extends Component {
     }
     async importDataPivot(spreadsheet_model) {
         var sheetId = this.importCreateOrReuseSheet(spreadsheet_model);
-        const pivotId = uuidGenerator.uuidv4();
+        const pivotId = UuidGenerator.smallUuid();
         const fields = this.import_data.metaData.fields || {};
         const activeMeasures = this.import_data.metaData.activeMeasures;
         const measures = activeMeasures.map((measure) => ({
@@ -265,12 +292,6 @@ export class ActionSpreadsheetOca extends Component {
         }
     }
 }
-ActionSpreadsheetOca.template = "spreadsheet_oca.ActionSpreadsheetOca";
-ActionSpreadsheetOca.components = {
-    SpreadsheetRenderer,
-    SpreadsheetControlPanel,
-};
-ActionSpreadsheetOca.props = {...standardActionServiceProps};
 actionRegistry.add("action_spreadsheet_oca", ActionSpreadsheetOca, {
     force: true,
 });

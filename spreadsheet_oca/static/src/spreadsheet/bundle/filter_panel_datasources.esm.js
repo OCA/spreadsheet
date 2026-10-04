@@ -3,10 +3,13 @@ import {
     Component,
     onWillStart,
     onWillUpdateProps,
-    useRef,
-    useState,
-    useSubEnv,
+    proxy,
+    signal,
+    t,
+    usePlugin,
+    useProps,
 } from "@odoo/owl";
+import {DebugModePlugin} from "@web/core/debug_mode_plugin";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
 import {DomainSelectorDialog} from "@web/core/domain_selector_dialog/domain_selector_dialog";
@@ -16,10 +19,12 @@ import {ODOO_AGGREGATORS} from "@spreadsheet/pivot/pivot_helpers";
 import {_t} from "@web/core/l10n/translation";
 import {formatDate} from "@web/core/l10n/dates";
 import {useService} from "@web/core/utils/hooks";
+import {useSubEnv} from "@web/owl2/utils";
 
 const {DateTime} = luxon;
 const {AddDimensionButton, PivotTitleSection, PivotLayoutConfigurator} =
     spreadsheet.components;
+const {deepCopy} = spreadsheet.helpers;
 const {useLocalStore, PivotSidePanelStore} = spreadsheet.stores;
 const {sidePanelRegistry, topbarMenuRegistry, pivotSidePanelRegistry, pivotRegistry} =
     spreadsheet.registries;
@@ -65,6 +70,16 @@ class PivotFieldSelectorPopover extends ModelFieldSelectorPopover {
  * picked as dimensions (e.g. "Company > Country").
  */
 export class RelationalAddDimensionButton extends AddDimensionButton {
+    static template = "spreadsheet_oca.RelationalAddDimensionButton";
+    static components = {
+        ...AddDimensionButton.components,
+        PivotFieldSelectorPopover,
+    };
+
+    setup() {
+        super.setup();
+        this.debugMode = usePlugin(DebugModePlugin);
+    }
     get resModel() {
         return this.env.pivotResModel;
     }
@@ -97,13 +112,14 @@ export class RelationalAddDimensionButton extends AddDimensionButton {
         this.popover.isOpen = false;
     }
 }
-RelationalAddDimensionButton.template = "spreadsheet_oca.RelationalAddDimensionButton";
-RelationalAddDimensionButton.components = {
-    ...AddDimensionButton.components,
-    PivotFieldSelectorPopover,
-};
 
 export class PivotLayoutConfiguratorWithAggregators extends PivotLayoutConfigurator {
+    static template = "spreadsheet_oca.PivotLayoutConfigurator";
+    static components = {
+        ...PivotLayoutConfigurator.components,
+        RelationalAddDimensionButton,
+    };
+
     setup() {
         super.setup();
         this.AGGREGATORS = ODOO_AGGREGATORS;
@@ -132,12 +148,6 @@ export class PivotLayoutConfiguratorWithAggregators extends PivotLayoutConfigura
         }
     }
 }
-PivotLayoutConfiguratorWithAggregators.template =
-    "spreadsheet_oca.PivotLayoutConfigurator";
-PivotLayoutConfiguratorWithAggregators.components = {
-    ...PivotLayoutConfigurator.components,
-    RelationalAddDimensionButton,
-};
 
 export class PivotTitleSectionInsertion extends PivotTitleSection {
     get cogWheelMenuItems() {
@@ -177,10 +187,21 @@ export class PivotTitleSectionInsertion extends PivotTitleSection {
 }
 
 export class PivotPanelDisplay extends Component {
+    static template = "spreadsheet_oca.PivotPanelDisplay";
+    static components = {
+        DomainSelector,
+        PivotTitleSectionInsertion,
+        PivotLayoutConfiguratorWithAggregators,
+    };
+    props = useProps({
+        pivotId: t.string(),
+    });
+    pivotPanelRef = signal.ref();
+
     setup() {
         this.dialog = useService("dialog");
+        this.debugMode = usePlugin(DebugModePlugin);
         this.store = useLocalStore(PivotSidePanelStore, this.props.pivotId);
-        this.pivotPanelRef = useRef("pivotPanel");
         onWillStart(this.modelData.bind(this));
         onWillUpdateProps(this.modelData.bind(this));
     }
@@ -213,7 +234,7 @@ export class PivotPanelDisplay extends Component {
             resModel: this.store.definition.model,
             domain: this.domain,
             readonly: false,
-            isDebugMode: Boolean(this.env.debug),
+            isDebugMode: this.debugMode.isActive(),
             onConfirm: this.onSelectDomain.bind(this),
         });
     }
@@ -224,7 +245,7 @@ export class PivotPanelDisplay extends Component {
         this.store.update({domain});
     }
     getScrollableContainerEl() {
-        return this.pivotPanelRef.el;
+        return this.pivotPanelRef();
     }
     flipAxis() {
         const dimensions = {
@@ -235,17 +256,11 @@ export class PivotPanelDisplay extends Component {
     }
 }
 
-PivotPanelDisplay.template = "spreadsheet_oca.PivotPanelDisplay";
-PivotPanelDisplay.components = {
-    DomainSelector,
-    PivotTitleSectionInsertion,
-    PivotLayoutConfiguratorWithAggregators,
-};
-PivotPanelDisplay.props = {
-    pivotId: String,
-};
-
 export class PivotPanel extends Component {
+    static template = "spreadsheet_oca.PivotPanel";
+    static components = {PivotPanelDisplay};
+    props = useProps();
+
     get pivotId() {
         return this.props.pivotId;
     }
@@ -253,15 +268,6 @@ export class PivotPanel extends Component {
         return this.env.model.getters.getPivotCoreDefinition(this.pivotId).type;
     }
 }
-
-PivotPanel.template = "spreadsheet_oca.PivotPanel";
-PivotPanel.props = {
-    pivotId: {type: String, optional: true},
-    "*": true,
-};
-PivotPanel.components = {
-    PivotPanelDisplay,
-};
 
 pivotSidePanelRegistry.add("ODOO", {
     editor: PivotPanel,
@@ -276,10 +282,18 @@ const UNSUPPORTED_LIST_FIELD_TYPES = [
 ];
 
 export class ListPanelDisplay extends Component {
+    static template = "spreadsheet_oca.ListPanelDisplay";
+    static components = {DomainSelector, ModelFieldSelector};
+    props = useProps({
+        listId: t.string(),
+        listDefinition: t.object(),
+    });
+
     setup() {
-        this.state = useState({listRows: undefined, newColumnPath: ""});
+        this.state = proxy({listRows: undefined, newColumnPath: ""});
         this.dialog = useService("dialog");
-        this.fieldService = useService("field");
+        this.fieldService = this.env.services.field;
+        this.debugMode = usePlugin(DebugModePlugin);
         // Labels of the column paths, keyed by "model:path"
         this.columnLabels = {};
         onWillStart(() => this.modelData(this.props));
@@ -297,9 +311,10 @@ export class ListPanelDisplay extends Component {
      * Labels are cached, so only new paths trigger a field lookup.
      */
     async loadColumnLabels({model, columns}) {
-        const missing = (columns || []).filter(
-            (path) => !(`${model}:${path}` in this.columnLabels)
-        );
+        const missing = (columns || [])
+            .filter((column) => !column.computedBy)
+            .map((column) => column.name)
+            .filter((path) => !(`${model}:${path}` in this.columnLabels));
         await Promise.all(
             missing.map(async (path) => {
                 const {isInvalid, displayNames} =
@@ -313,9 +328,11 @@ export class ListPanelDisplay extends Component {
     }
     get columns() {
         const {model, columns} = this.props.listDefinition;
-        return (columns || []).map((path) => ({
-            path,
-            ...(this.columnLabels[`${model}:${path}`] || {label: path}),
+        return (columns || []).map((column) => ({
+            path: column.name,
+            ...(this.columnLabels[`${model}:${column.name}`] || {
+                label: column.string || column.name,
+            }),
         }));
     }
     get domain() {
@@ -333,7 +350,7 @@ export class ListPanelDisplay extends Component {
             resModel: this.props.listDefinition.model,
             domain: this.domain,
             readonly: false,
-            isDebugMode: Boolean(this.env.debug),
+            isDebugMode: this.debugMode.isActive(),
             onConfirm: this.onSelectDomain.bind(this),
         });
     }
@@ -355,10 +372,11 @@ export class ListPanelDisplay extends Component {
     }
     addColumn() {
         const path = this.state.newColumnPath;
-        if (!path || this.props.listDefinition.columns.includes(path)) {
+        const columns = this.props.listDefinition.columns;
+        if (!path || columns.some((column) => column.name === path)) {
             return;
         }
-        this.updateColumns([...this.props.listDefinition.columns, path]);
+        this.updateColumns([...columns, {name: path}]);
         this.state.newColumnPath = "";
     }
     removeColumn(index) {
@@ -376,43 +394,30 @@ export class ListPanelDisplay extends Component {
         this.updateColumns(columns);
     }
     updateColumns(columns) {
-        const list = JSON.parse(
-            JSON.stringify(
-                this.env.model.getters.getListModelDefinition(this.props.listId)
-            )
+        const list = deepCopy(
+            this.env.model.getters.getListDefinition(this.props.listId)
         );
-        list.metaData.columns = columns;
+        list.columns = columns;
         this.env.model.dispatch("UPDATE_ODOO_LIST", {
             listId: this.props.listId,
             list,
         });
     }
     /**
-     * Resolve the type of every column, following relations when the column
-     * is a path like "company_id.name". Related columns get an explicit
-     * header so it is clear which record the value comes from.
+     * Related columns (e.g. "company_id.name") get an explicit header so it
+     * is clear which record the value comes from.
      */
-    async getInsertColumns(list) {
-        return Promise.all(
-            list.columns.map(async (name) => {
-                const {isInvalid, names, modelsInfo} = await this.fieldService.loadPath(
-                    list.model,
-                    name
-                );
-                if (isInvalid) {
-                    return {name, type: "char"};
+    getInsertColumns(list) {
+        return list.columns
+            .filter((column) => !column.hidden)
+            .map((column) => {
+                const label = this.columnLabels[`${list.model}:${column.name}`];
+                if (column.string || !column.name.includes(".") || !label) {
+                    return column;
                 }
-                const field = modelsInfo.at(-1).fieldDefs[names.at(-1)];
-                const column = {name, type: field.type};
-                if (names.length > 1) {
-                    // Escape quotes: the label ends up inside a formula string
-                    column.string = this.columnLabels[
-                        `${list.model}:${name}`
-                    ]?.label.replaceAll('"', '\\"');
-                }
-                return column;
-            })
-        );
+                // Escape quotes: the label ends up inside a formula string
+                return {...column, string: label.label.replaceAll('"', '\\"')};
+            });
     }
     async insertList() {
         const listId = this.props.listId;
@@ -422,14 +427,14 @@ export class ListPanelDisplay extends Component {
         const list = this.env.model.getters.getListDefinition(listId);
         const sheetId = this.env.model.getters.getActiveSheetId();
         await this.loadColumnLabels(list);
-        const columns = await this.getInsertColumns(list);
         this.env.model.dispatch("RE_INSERT_ODOO_LIST_WITH_TABLE", {
             sheetId: sheetId,
             col: zone.left,
             row: zone.top,
-            id: listId,
+            listId,
             linesNumber: totalRows,
-            columns: columns,
+            columns: this.getInsertColumns(list),
+            mode: "static",
         });
     }
     delete() {
@@ -445,17 +450,11 @@ export class ListPanelDisplay extends Component {
     }
 }
 
-ListPanelDisplay.template = "spreadsheet_oca.ListPanelDisplay";
-ListPanelDisplay.components = {
-    DomainSelector,
-    ModelFieldSelector,
-};
-ListPanelDisplay.props = {
-    listId: String,
-    listDefinition: Object,
-};
-
 export class ListPanel extends Component {
+    static template = "spreadsheet_oca.ListPanel";
+    static components = {ListPanelDisplay};
+    props = useProps();
+
     get listId() {
         return this.props.listId;
     }
@@ -463,15 +462,6 @@ export class ListPanel extends Component {
         return this.env.model.getters.getListDefinition(this.listId) || {};
     }
 }
-
-ListPanel.template = "spreadsheet_oca.ListPanel";
-ListPanel.props = {
-    listId: {type: String, optional: true},
-    "*": true,
-};
-ListPanel.components = {
-    ListPanelDisplay,
-};
 
 sidePanelRegistry.add("ListPanel", {
     title: "List information",

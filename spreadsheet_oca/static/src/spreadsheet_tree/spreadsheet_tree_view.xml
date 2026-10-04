@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <templates xml:space="preserve">
-    <t t-name="spreadsheet_oca.SpreadsheetFileUploader" owl="1">
+    <t t-name="spreadsheet_oca.SpreadsheetFileUploader">
         <div
-            t-att-class="props.record and props.record.data ? 'oe_kanban_color_' + props.record.data.color : ''"
+            t-att-class="this.props.record and this.props.record.data ? 'oe_kanban_color_' + this.props.record.data.color : ''"
         >
             <FileUploader
-                acceptedFileExtensions="props.acceptedFileExtensions"
+                acceptedFileExtensions="this.props.acceptedFileExtensions"
                 fileUploadClass="'spreadsheet_file_uploader'"
                 multiUpload="true"
-                onUploaded.bind="onFileUploaded"
-                onUploadComplete.bind="onUploadComplete"
+                onUploaded.bind="this.onFileUploaded"
+                onUploadComplete.bind="this.onUploadComplete"
             >
                 <t t-set-slot="toggler">
                     <t
-                        t-if="props.togglerTemplate"
-                        t-call="{{ props.togglerTemplate }}"
+                        t-if="this.props.togglerTemplate"
+                        t-call="{{ this.props.togglerTemplate }}"
                     />
-                    <t t-else="" t-slot="toggler" />
+                    <t t-else="" t-call-slot="toggler" />
                 </t>
-                <t t-slot="extra" />
+                <t t-call-slot="extra" />
             </FileUploader>
         </div>
     </t>

@@ -1,4 +1,4 @@
-import {Component} from "@odoo/owl";
+import {Component, t, useProps} from "@odoo/owl";
 import {FileUploader} from "@web/views/fields/file_handler";
 import {ListController} from "@web/views/list/list_controller";
 import {_t} from "@web/core/l10n/translation";
@@ -8,8 +8,24 @@ import {standardWidgetProps} from "@web/views/widgets/standard_widget_props";
 import {useService} from "@web/core/utils/hooks";
 
 class SpreadsheetFileUploader extends Component {
+    static template = "spreadsheet_oca.SpreadsheetFileUploader";
+    static components = {FileUploader};
+    props = useProps({
+        ...standardWidgetProps,
+        acceptedFileExtensions: t
+            .string()
+            .optional(
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            ),
+        record: t.object().optional(),
+        togglerTemplate: t.string().optional(),
+        slots: t.object().optional(),
+        linkText: t.any().optional(_t("Upload a Spreadsheet")),
+    });
+
     setup() {
         this.orm = useService("orm");
+        this.notification = useService("notification");
         this.attachmentIdsToProcess = [];
         this.action = useService("action");
     }
@@ -17,7 +33,7 @@ class SpreadsheetFileUploader extends Component {
         const att_data = {
             name: file.name,
             mimetype: file.type,
-            datas: file.data,
+            raw: file.data,
         };
         const att_id = await this.orm.create("ir.attachment", [att_data], {
             context: this.env.searchModel.context,
@@ -50,28 +66,12 @@ class SpreadsheetFileUploader extends Component {
         this.action.doAction(action);
     }
 }
-SpreadsheetFileUploader.components = {
-    FileUploader,
-};
-SpreadsheetFileUploader.template = "spreadsheet_oca.SpreadsheetFileUploader";
-SpreadsheetFileUploader.props = {
-    ...standardWidgetProps,
-    acceptedFileExtensions: {type: String, optional: true},
-    record: {type: Object, optional: true},
-    togglerTemplate: {type: String, optional: true},
-    slots: {type: Object, optional: true},
-    linkText: {type: String, optional: true},
-};
-SpreadsheetFileUploader.defaultProps = {
-    acceptedFileExtensions:
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    linkText: _t("Upload a Spreadsheet"),
-};
-export class SpreadsheetListController extends ListController {}
-SpreadsheetListController.components = {
-    ...ListController.components,
-    SpreadsheetFileUploader,
-};
+export class SpreadsheetListController extends ListController {
+    static components = {
+        ...ListController.components,
+        SpreadsheetFileUploader,
+    };
+}
 export const SpreadsheetListView = {
     ...listView,
     Controller: SpreadsheetListController,

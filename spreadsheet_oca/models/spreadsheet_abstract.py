@@ -1,12 +1,12 @@
 # Copyright 2022 CreuBlanca
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-import base64
 import json
 from typing import Any
 
 from odoo import api, fields, models
 from odoo.exceptions import AccessError
+from odoo.tools import BinaryBytes
 
 CollaborationMessage = dict[str, Any]
 
@@ -14,7 +14,7 @@ CollaborationMessage = dict[str, Any]
 class SpreadsheetAbstract(models.AbstractModel):
     _name = "spreadsheet.abstract"
     _description = "Spreadsheet abstract for inheritance"
-    _inherit = ["bus.listener.mixin"]
+    _inherit = ("bus.listener.mixin",)
 
     name = fields.Char(required=True)
     active = fields.Boolean(default=True)
@@ -36,25 +36,21 @@ class SpreadsheetAbstract(models.AbstractModel):
         for dashboard in self:
             if dashboard.spreadsheet_binary_data:
                 dashboard.spreadsheet_raw = json.loads(
-                    base64.decodebytes(dashboard.spreadsheet_binary_data).decode(
-                        "UTF-8"
-                    )
+                    dashboard.spreadsheet_binary_data.content
                 )
             else:
                 dashboard.spreadsheet_raw = {}
 
     def _inverse_spreadsheet_raw(self):
         for record in self:
-            record.spreadsheet_binary_data = base64.encodebytes(
+            record.spreadsheet_binary_data = BinaryBytes(
                 json.dumps(record.spreadsheet_raw).encode("UTF-8")
             )
 
     def _empty_spreadsheet_data_base64(self):
-        """Create an empty spreadsheet workbook.
-        Encoded as base64
-        """
+        """Create an empty spreadsheet workbook, as a binary value"""
         data = json.dumps(self._empty_spreadsheet_data())
-        return base64.b64encode(data.encode())
+        return BinaryBytes(data.encode())
 
     def _empty_spreadsheet_data(self):
         """Create an empty spreadsheet workbook.
@@ -158,10 +154,7 @@ class SpreadsheetAbstract(models.AbstractModel):
         return False
 
     def _check_access_spreadsheet(self, operation: str):
-        try:
-            self.check_access(operation)
-        except AccessError as e:
-            raise e
+        self.check_access(operation)
         return True
 
     @api.model

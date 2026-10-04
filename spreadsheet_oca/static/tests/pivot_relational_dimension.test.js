@@ -1,32 +1,21 @@
-import {Component, xml} from "@odoo/owl";
-import {contains, mountWithCleanup} from "@web/../tests/web_test_helpers";
 import {describe, expect, test} from "@odoo/hoot";
-import {Spreadsheet} from "@odoo/o-spreadsheet";
 import {animationFrame} from "@odoo/hoot-mock";
+import {contains} from "@web/../tests/web_test_helpers";
 import {createSpreadsheetWithPivot} from "@spreadsheet/../tests/helpers/pivot";
 import {defineSpreadsheetModels} from "@spreadsheet/../tests/helpers/data";
+import {mountSpreadsheet} from "@spreadsheet/../tests/helpers/ui";
 import {waitForDataLoaded} from "@spreadsheet/helpers/model";
 
 describe.current.tags("desktop");
 defineSpreadsheetModels();
 
-class Parent extends Component {
-    static template = xml`<Spreadsheet model="props.model"/>`;
-    static components = {Spreadsheet};
-    static props = {model: Object};
-}
-
 const ITEM = ".o_model_field_selector_popover_item";
 
 async function openPivotPanel() {
-    const {model, env, pivotId} = await createSpreadsheetWithPivot();
-    await mountWithCleanup(Parent, {
-        env,
-        props: {model},
-        noMainContainer: true,
-    });
-    await animationFrame();
+    const {model, pivotId} = await createSpreadsheetWithPivot();
+    await mountSpreadsheet(model);
     await contains(".o-topbar-menu[data-id='data']").click();
+    await contains(".o-menu-item[data-name='pivot_data_sources']").click();
     await contains(".o-menu-item[data-name='item_pivot_1']").click();
     return {model, pivotId};
 }

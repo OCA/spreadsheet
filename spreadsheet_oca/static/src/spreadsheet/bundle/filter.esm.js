@@ -1,5 +1,6 @@
 import * as spreadsheet from "@odoo/o-spreadsheet";
-import {Component, onWillStart, useState} from "@odoo/owl";
+import {Component, onWillStart, proxy, usePlugin, useProps} from "@odoo/owl";
+import {DebugModePlugin} from "@web/core/debug_mode_plugin";
 import {DefaultDateValue} from "@spreadsheet/global_filters/components/default_date_value/default_date_value";
 import {Domain} from "@web/core/domain";
 import {DomainSelector} from "@web/core/domain_selector/domain_selector";
@@ -15,7 +16,7 @@ import {user} from "@web/core/user";
 const {Checkbox} = spreadsheet.components;
 
 const {topbarMenuRegistry} = spreadsheet.registries;
-const uuidGenerator = new spreadsheet.helpers.UuidGenerator();
+const {UuidGenerator} = spreadsheet.helpers;
 
 topbarMenuRegistry.addChild("filters", ["file"], {
     name: _t("Filters"),
@@ -39,6 +40,10 @@ topbarMenuRegistry.addChild("download", ["file"], {
 const {sidePanelRegistry} = spreadsheet.registries;
 
 export class FilterPanel extends Component {
+    static template = "spreadsheet_oca.FilterPanel";
+    static components = {FilterValue};
+    props = useProps();
+
     onEditFilter(filter) {
         this.env.openSidePanel("EditFilterPanel", {filter});
     }
@@ -56,23 +61,30 @@ export class FilterPanel extends Component {
     }
 }
 
-FilterPanel.template = "spreadsheet_oca.FilterPanel";
-FilterPanel.components = {
-    FilterValue,
-};
-
 sidePanelRegistry.add("FilterPanel", {
     title: "Filters",
     Body: FilterPanel,
 });
 
 export class EditFilterPanel extends Component {
+    static template = "spreadsheet_oca.EditFilterPanel";
+    static components = {
+        Checkbox,
+        DomainSelector,
+        ModelSelector,
+        ModelFieldSelector,
+        MultiRecordSelector,
+        DefaultDateValue,
+    };
+    props = useProps();
+
     setup() {
         this.filterId = this.props.filter.id;
         this.orm = useService("orm");
         this.nameService = useService("name");
         this.dialog = useService("dialog");
-        this.state = useState({
+        this.debugMode = usePlugin(DebugModePlugin);
+        this.state = proxy({
             label: this.props.filter.label,
             type: this.props.filter.type,
             defaultValue: this._unwrapDefaultValue(
@@ -188,7 +200,7 @@ export class EditFilterPanel extends Component {
             resModel: this.state.modelData.technical,
             domain: this.getCorrectDomain(),
             readonly: false,
-            isDebugMode: Boolean(this.env.debug),
+            isDebugMode: this.debugMode.isActive(),
             onConfirm: this.onUpdateDomain.bind(this),
         });
     }
@@ -243,7 +255,7 @@ export class EditFilterPanel extends Component {
             : "ADD_GLOBAL_FILTER";
 
         const filter = {
-            id: this.props.filter.id || uuidGenerator.uuidv4(),
+            id: this.props.filter.id || UuidGenerator.smallUuid(),
             type: this.state.type,
             label: this.state.label || "",
             defaultValue: this._wrapDefaultValue(
@@ -324,16 +336,6 @@ export class EditFilterPanel extends Component {
         return ALLOWED_FIELD_TYPES.includes(field.type) || Boolean(field.relation);
     }
 }
-
-EditFilterPanel.template = "spreadsheet_oca.EditFilterPanel";
-EditFilterPanel.components = {
-    Checkbox,
-    DomainSelector,
-    ModelSelector,
-    ModelFieldSelector,
-    MultiRecordSelector,
-    DefaultDateValue,
-};
 
 sidePanelRegistry.add("EditFilterPanel", {
     title: "Edit Filter",

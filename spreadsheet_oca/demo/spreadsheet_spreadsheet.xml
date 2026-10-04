@@ -4,7 +4,7 @@
         <field name="name">Demo spreadsheet</field>
         <field
             name="spreadsheet_binary_data"
-            type="base64"
+            type="bytes"
             file="spreadsheet_oca/demo/demo_spreadsheet.json"
         />
     </record>

@@ -1,4 +1,4 @@
-import {Component, onWillUnmount, xml} from "@odoo/owl";
+import {Component, onWillUnmount, t, useProps, xml} from "@odoo/owl";
 import {contains, mountWithCleanup} from "@web/../tests/web_test_helpers";
 import {describe, expect, test} from "@odoo/hoot";
 import {getCellFormula, getCellValue} from "@spreadsheet/../tests/helpers/getters";
@@ -6,6 +6,7 @@ import {ListPanel} from "@spreadsheet_oca/spreadsheet/bundle/filter_panel_dataso
 import {animationFrame} from "@odoo/hoot-mock";
 import {createSpreadsheetWithList} from "@spreadsheet/../tests/helpers/list";
 import {defineSpreadsheetModels} from "@spreadsheet/../tests/helpers/data";
+import {render} from "@web/owl2/utils";
 import {waitForDataLoaded} from "@spreadsheet/helpers/model";
 
 describe.current.tags("desktop");
@@ -16,18 +17,21 @@ defineSpreadsheetModels();
  * here since the panel is mounted outside of the spreadsheet component.
  */
 class Parent extends Component {
-    static template = xml`<ListPanel listId="props.listId"/>`;
+    static template = xml`<ListPanel listId="this.props.listId"/>`;
     static components = {ListPanel};
-    static props = {listId: String};
+    props = useProps({listId: t.string()});
     setup() {
         const model = this.env.model;
-        model.on("update", this, () => this.render(true));
+        model.on("update", this, () => render(this, true));
         onWillUnmount(() => model.off("update", this));
     }
 }
 
 async function mountListPanel(columns = ["foo", "product_id"]) {
-    const {model, env} = await createSpreadsheetWithList({columns, linesNumber: 2});
+    const {model, env} = await createSpreadsheetWithList({
+        columns: columns.map((name) => ({name})),
+        linesNumber: 2,
+    });
     const listId = model.getters.getListIds()[0];
     await mountWithCleanup(Parent, {
         env,
@@ -42,7 +46,7 @@ async function mountListPanel(columns = ["foo", "product_id"]) {
 }
 
 function getColumns(model, listId) {
-    return model.getters.getListDefinition(listId).columns;
+    return model.getters.getListDefinition(listId).columns.map((col) => col.name);
 }
 
 async function addColumnFromSelector(fieldName, subFieldName) {
@@ -101,7 +105,7 @@ test("re-inserting the list writes the related column", async () => {
     expect(getCellFormula(model, "B1")).toBe(
         '=ODOO.LIST.HEADER(1,"product_id.name","Product > Product Name")'
     );
-    expect(getCellFormula(model, "B2")).toBe('=ODOO.LIST(1,1,"product_id.name")');
+    expect(getCellFormula(model, "B2")).toBe('=ODOO.LIST.VALUE(1,1,"product_id.name")');
     await waitForDataLoaded(model);
     expect(getCellValue(model, "B1")).toBe("Product > Product Name");
     expect(getCellValue(model, "B2")).toBe("xphone");
