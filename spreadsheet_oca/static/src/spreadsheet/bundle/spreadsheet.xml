@@ -56,7 +56,7 @@
                 getScrollableContainerEl.bind="getScrollableContainerEl"
                 pivotId="props.pivotId"
             />
-            <div class="o-section" t-if="definition.sortedColumn">
+            <div t-if="definition.sortedColumn" class="o-section">
                 <div class="o-section-title">Sorting</div>
                 <div t-esc="sortInformation" />
             </div>
@@ -112,10 +112,10 @@
             >
                 <label for="list_rows">Rows:</label>
                 <input
-                    type="number"
-                    class="o_input"
-                    t-model="state.listRows"
                     id="list_rows"
+                    class="o_input"
+                    type="number"
+                    t-model="state.listRows"
                     min="1"
                     title="Total rows used when inserting list"
                 />
@@ -172,7 +172,7 @@
                 <input type="text" t-model="state.label" class="o_input" />
             </div>
         </div>
-        <div class="o_spreadsheet_oca_filter" t-if="state.type === 'date'">
+        <div t-if="state.type === 'date'" class="o_spreadsheet_oca_filter">
             <div class="spreadsheet_oca_filter_label">Default value</div>
             <div class="spreadsheet_oca_filter_value">
                 <DefaultDateValue
@@ -181,7 +181,7 @@
                 />
             </div>
         </div>
-        <div class="o_spreadsheet_oca_filter" t-if="state.type === 'text'">
+        <div t-if="state.type === 'text'" class="o_spreadsheet_oca_filter">
             <div class="spreadsheet_oca_filter_label">Default value</div>
             <input
                 type="text"
@@ -211,8 +211,8 @@
                 <div class="o_spreadsheet_oca_filter">
                     <div class="spreadsheet_oca_filter_label">Default value</div>
                     <div
-                        class="spreadsheet_oca_filter_value"
                         t-if="!(state.modelData.technical === 'res.users' and state.defaultValue === 'current_user')"
+                        class="spreadsheet_oca_filter_value"
                     >
                         <MultiRecordSelector
                             resModel="state.modelData.technical"
@@ -224,8 +224,8 @@
                         />
                     </div>
                     <div
-                        class="spreadsheet_oca_filter_value"
                         t-if="state.modelData.technical === 'res.users'"
+                        class="spreadsheet_oca_filter_value"
                     >
                         <Checkbox
                             className="'mb-1'"
@@ -259,11 +259,11 @@
             </t>
         </t>
         <div
+            t-if="object.model"
             class="o_spreadsheet_oca_filter"
             t-foreach="Object.values(state.objects)"
             t-as="object"
             t-key="object.id"
-            t-if="object.model"
         >
             <div class="spreadsheet_oca_filter_label">
                 <span t-esc="object.name" /> - <span t-esc="object.tag" />
@@ -283,7 +283,7 @@
                 </div>
             </div>
 
-            <div class="spreadsheet_oca_filter_value" t-if="state.type === 'date'">
+            <div t-if="state.type === 'date'" class="spreadsheet_oca_filter_value">
                 <select
                     t-model="object.fieldMatch.offset"
                     t-on-change="(ev) => this.onChangeFieldMatchOffset(object, ev)"
@@ -319,10 +319,10 @@
             t-att-readonly="props.isReadonly"
             t-on-change="_onNameChanged"
         />
-        <i class="fa fa-exclamation-triangle text-danger" t-if="! state.name" />
+        <i t-if="! state.name" class="fa fa-exclamation-triangle text-danger" />
         <span
-            class="text-danger o_spreadsheet_oca_name_warning"
             t-if="! state.name"
+            class="text-danger o_spreadsheet_oca_name_warning"
         > name is required</span>
     </t>
 
@@ -470,9 +470,9 @@
                         >
                             <t t-slot="control-panel-create-button" />
                             <button
+                                class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create"
                                 t-att-class="{invisible: display.disableDropdown}"
                                 type="button"
-                                class="btn btn-primary dropdown-toggle dropdown-toggle-split o_control_panel_collapsed_create"
                                 data-bs-toggle="dropdown"
                                 aria-expanded="false"
                             >
