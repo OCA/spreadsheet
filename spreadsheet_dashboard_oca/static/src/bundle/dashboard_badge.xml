@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates xml:space="preserve">
+  <t
+        t-inherit="spreadsheet_dashboard.DashboardAction.Expanded"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//div[hasclass('o_dashboard_name')]" position="inside">
+            <span
+                t-if="shareCounts[dashboard.data.id]"
+                t-esc="shareCounts[dashboard.data.id]"
+                class="badge text-bg-secondary ms-1"
+                title="Active shares"
+            />
+        </xpath>
+    </t>
+  <t
+        t-inherit="spreadsheet_dashboard.DashboardAction.Collapsed"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//div[hasclass('mx-auto')]" position="inside">
+            <span
+                t-if="shareCounts[loader.getActiveDashboard().data.id]"
+                t-esc="shareCounts[loader.getActiveDashboard().data.id]"
+                class="badge text-bg-secondary ms-1"
+                title="Active shares"
+            />
+        </xpath>
+    </t>
+</templates>

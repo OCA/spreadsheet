@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="spreadsheet_dashboard_share_manager_rule" model="ir.rule">
+        <field name="name">spreadsheet.dashboard.share: manager sees all</field>
+        <field name="model_id" ref="model_spreadsheet_dashboard_share" />
+        <field
+            name="groups"
+            eval="[(4, ref('spreadsheet_dashboard.group_dashboard_manager'))]"
+        />
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+</odoo>

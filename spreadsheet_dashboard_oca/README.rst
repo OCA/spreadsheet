@@ -33,12 +33,33 @@ Spreadsheet Dashboard Oca
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module allows to edit spreadsheet dashboards using OCA Spreadsheet
-editor.
+editor. It also allows to manage the public share links of those
+dashboards: list, copy, and revoke them. Dashboard admins can manage the
+shares created by any user.
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Configuration
+=============
+
+Users can only see and revoke the shares they created. Users in the
+"Dashboards / Admin" group
+(spreadsheet_dashboard.group_dashboard_manager) can see and revoke the
+shares created by any user.
+
+Usage
+=====
+
+- Open the "Dashboards" app (Rapor Panelleri).
+- Open a dashboard and click on the **Share** button.
+- Click on **Manage shares** to list every share link of the dashboard.
+- Use the copy button to copy a link, or click **Revoke** to make a link
+  return a 404 error.
+- A badge next to the dashboard name in the sidebar shows the number of
+  active shares.
 
 Bug Tracker
 ===========
