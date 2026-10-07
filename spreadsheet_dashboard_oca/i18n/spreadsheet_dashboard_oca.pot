@@ -80,22 +80,22 @@ msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #. odoo-javascript
-#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_uid
 #: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #. odoo-javascript
-#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_date
 #: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_date
 msgid "Created on"
 msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #. odoo-javascript
-#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
 #: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
 msgid "Dashboard"
 msgstr ""
 
