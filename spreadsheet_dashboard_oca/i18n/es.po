@@ -18,9 +18,21 @@ msgstr ""
 "X-Generator: Weblate 5.15.2\n"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+msgid "Actions"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__active
 msgid "Active"
 msgstr "Activo"
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/dashboard_badge.xml:0
+msgid "Active shares"
+msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #. odoo-javascript
@@ -39,9 +51,26 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+msgid "Close"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.esm.js:0
+msgid "Copied"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_dashboard_tree_view
 msgid "Copy"
 msgstr "Copiar"
+
+#. module: spreadsheet_dashboard_oca
+#: model:ir.model,name:spreadsheet_dashboard_oca.model_spreadsheet_dashboard_share
+msgid "Copy of a shared dashboard"
+msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_dashboard_oca.spreadsheet_to_dashboard_view_form
@@ -54,16 +83,22 @@ msgid "Create dashboard from spreadsheet"
 msgstr "Crear tablero desde hoja de cálculo"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_uid
 msgid "Created by"
 msgstr "Creado por"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__create_date
 msgid "Created on"
 msgstr "Creado el"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__dashboard_id
 msgid "Dashboard"
 msgstr "Tablero"
@@ -84,6 +119,9 @@ msgid "Dashboard Section"
 msgstr "Sección del tablero"
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__display_name
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard_share__display_name
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__display_name
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__display_name
 msgid "Display Name"
 msgstr "Nombre a mostrar"
@@ -94,6 +132,9 @@ msgid "Edit"
 msgstr "Editar"
 
 #. module: spreadsheet_dashboard_oca
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__id
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard_share__id
+#: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_spreadsheet_import__id
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__id
 msgid "ID"
 msgstr "ID"
@@ -114,6 +155,13 @@ msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_button.xml:0
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_button_patch.esm.js:0
+msgid "Manage shares"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_dashboard__name
 msgid "Name"
 msgstr "Nombre"
@@ -124,10 +172,28 @@ msgid "New dashboard"
 msgstr "Nuevo tablero"
 
 #. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+msgid "No shares yet."
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+msgid "Revoke"
+msgstr ""
+
+#. module: spreadsheet_dashboard_oca
 #. odoo-python
 #: code:addons/spreadsheet_dashboard_oca/models/spreadsheet_dashboard.py:0
 msgid "Search operation not supported"
 msgstr "Operación de búsqueda no soportada"
+
+#. module: spreadsheet_dashboard_oca
+#. odoo-javascript
+#: code:addons/spreadsheet_dashboard_oca/static/src/bundle/share_manage/share_manage_dialog.xml:0
+msgid "Share link"
+msgstr ""
 
 #. module: spreadsheet_dashboard_oca
 #: model:ir.model.fields,field_description:spreadsheet_dashboard_oca.field_spreadsheet_to_dashboard__spreadsheet_id
