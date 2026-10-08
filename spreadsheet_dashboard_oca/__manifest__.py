@@ -6,7 +6,7 @@
     "summary": """
         Use OCA Spreadsheets on dashboards configuration and manage
         dashboard share links""",
-    "version": "19.0.1.1.0",
+    "version": "19.0.1.1.1",
     "license": "AGPL-3",
     "author": "CreuBlanca,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/spreadsheet",
