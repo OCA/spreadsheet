@@ -7,7 +7,7 @@ import {
 import {describe, expect, test} from "@odoo/hoot";
 import {browser} from "@web/core/browser/browser";
 
-import {ShareManageDialog} from "@spreadsheet_dashboard_oca/bundle/share_manage/share_manage_dialog";
+import {ShareManageDialog} from "@spreadsheet_dashboard_oca/bundle/share_manage/share_manage_dialog.esm";
 import {ShareLinkCopyButton} from "@spreadsheet_dashboard_oca/bundle/share_manage/share_link_copy_button.esm";
 
 describe.current.tags("desktop");
