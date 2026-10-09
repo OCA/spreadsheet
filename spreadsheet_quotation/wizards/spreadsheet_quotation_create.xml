@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="spreadsheet_quotation_create_form" model="ir.ui.view">
+        <field name="name">spreadsheet.quotation.create.form</field>
+        <field name="model">spreadsheet.quotation.create</field>
+        <field name="arch" type="xml">
+            <form string="Create Quotation Calculator">
+                <group>
+                    <field name="sale_order_template_id" invisible="1" />
+                    <field name="name" />
+                    <field name="line_count" />
+                </group>
+                <footer>
+                    <button
+                        name="action_create"
+                        string="Create Calculator"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

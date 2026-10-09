@@ -1,0 +1,385 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* spreadsheet_quotation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "%s line(s) created"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "%s line(s) updated"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.sale_order_view_form_inherit
+msgid "<span>Calculator</span>"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.sale_order_template_view_form_inherit
+msgid "<span>Create Calculator</span>"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.sale_order_template_view_form_inherit
+msgid "<span>Open Calculator</span>"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Add"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Add Mapping"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-python
+#: code:addons/spreadsheet_quotation/models/sale_order.py:0
+msgid "Calculator - %s"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.spreadsheet_quotation_create_form
+msgid "Cancel"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#. odoo-python
+#: code:addons/spreadsheet_quotation/models/sale_order.py:0
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Cannot sync a cancelled quotation."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#. odoo-python
+#: code:addons/spreadsheet_quotation/models/sale_order.py:0
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Cannot sync a confirmed sales order."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Column"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Column Mappings"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.spreadsheet_quotation_create_form
+msgid "Create Calculator"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Create New Products"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.spreadsheet_quotation_create_form
+msgid "Create Quotation Calculator"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model,name:spreadsheet_quotation.model_spreadsheet_quotation_create
+msgid "Create Quotation Calculator Spreadsheet"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Create and Sync"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Description"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Discount (%)"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Do you want to create them?"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Error syncing: %s"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Field"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_plugin.esm.js:0
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Field Sync"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_sale_order__has_spreadsheet
+msgid "Has Spreadsheet"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__id
+msgid "ID"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,help:spreadsheet_quotation.field_spreadsheet_quotation_create__line_count
+msgid "Initial number of rows to display in the list."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Linked to Sale Order #"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid ""
+"Map spreadsheet columns to sale order line fields.\n"
+"                    Existing lines will be updated in place; new rows with\n"
+"                    product data will be added as new quotation lines."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__name
+msgid "Name"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-python
+#: code:addons/spreadsheet_quotation/models/sale_order.py:0
+msgid "New"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid ""
+"New rows with a product name will be added as new\n"
+"                        quotation lines. If a product is not found in the\n"
+"                        catalog you will be asked to confirm its creation."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "No field mappings configured"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "No mappings configured yet."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "No sale order line list found"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "No sale order line list found in this spreadsheet."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "No sale order linked. Set the Sale Order filter first."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "No values to sync"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__line_count
+msgid "Number of lines"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Product"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Product sync enabled."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Quantity"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_sale_order__spreadsheet_id
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_sale_order_template__spreadsheet_id
+msgid "Quotation Calculator"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model,name:spreadsheet_quotation.model_sale_order_template
+msgid "Quotation Template"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-python
+#: code:addons/spreadsheet_quotation/wizards/spreadsheet_quotation_create.py:0
+msgid "Sale Order"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-python
+#: code:addons/spreadsheet_quotation/wizards/spreadsheet_quotation_create.py:0
+msgid "Sale Order Lines"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__sale_order_template_id
+msgid "Sale Order Template"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model,name:spreadsheet_quotation.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Select..."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Set the Sale Order filter to link this calculator to an order."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#: model:ir.model.fields,help:spreadsheet_quotation.field_sale_order_template__spreadsheet_id
+msgid ""
+"Spreadsheet used as pricing calculator for quotations created from this "
+"template."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Sync cancelled"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Sync to Sale Order"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
+msgid "Syncing..."
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid ""
+"The following products were not found in the catalog and will be created:"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "This column already has a mapping"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "This field already has a mapping"
+msgstr ""
+
+#. module: spreadsheet_quotation
+#. odoo-javascript
+#: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
+msgid "Unit Price"
+msgstr ""
