@@ -117,6 +117,11 @@ export class SpreadsheetRenderer extends Component {
             });
         };
     }
+    getExtraModelCustom() {
+        // Extension point: patch this to inject extra entries into the Model's
+        // `custom` config, which o-spreadsheet passes to every plugin constructor.
+        return {};
+    }
     setup() {
         this.orm = useService("orm");
         this.http = useService("http");
@@ -140,7 +145,12 @@ export class SpreadsheetRenderer extends Component {
         this.spreadsheet_model = new Model(
             load(this.props.record.spreadsheet_raw),
             {
-                custom: {env: this.env, orm: this.orm, odooDataProvider},
+                custom: {
+                    env: this.env,
+                    orm: this.orm,
+                    odooDataProvider,
+                    ...this.getExtraModelCustom(),
+                },
                 defaultCurrency: this.createDefaultCurrency(defaultCurrency),
                 external: {
                     loadCurrencies: this.loadCurrencies,
