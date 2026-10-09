@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="spreadsheet_field_linking.ManageLinkedRecordPanel">
+        <div class="o_manage_linked_record_panel">
+            <Section title="'Currently linked'">
+                <span t-if="context.isLinkable" class="fw-bold">
+                    <i class="fa fa-link me-1" />
+                    <t t-esc="context.recordName" />
+                    <span class="text-muted ms-1">(<t t-esc="context.model" />)</span>
+                </span>
+                <span t-else="" class="text-muted">Not linked to any record.</span>
+            </Section>
+            <Section title="'Model'">
+                <ModelSelector
+                    models="models"
+                    value="state.modelLabel"
+                    onModelSelected.bind="onModelSelected"
+                />
+            </Section>
+            <Section t-if="state.model" title="'Record'">
+                <RecordSelector
+                    resModel="state.model"
+                    resId="state.resId"
+                    update.bind="onRecordSelected"
+                />
+            </Section>
+            <div class="o-section o-sidePanelButtons">
+                <button
+                    class="btn btn-primary"
+                    t-att-disabled="!canApply"
+                    t-on-click="onApply"
+                >
+                    Link
+                </button>
+                <button
+                    t-if="context.isLinkable"
+                    class="btn btn-secondary"
+                    t-on-click="onUnlink"
+                >
+                    Unlink
+                </button>
+            </div>
+        </div>
+    </t>
+</templates>
