@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-10-10 12:46+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,66 +15,67 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: spreadsheet_oca
 #: model:ir.model.constraint,message:spreadsheet_oca.constraint_spreadsheet_spreadsheet_tag_name_uniq
 msgid "A tag with the same name already exists."
-msgstr ""
+msgstr "Oznaka z istim nazivom že obstaja."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Potrebno je ukrepanje"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__active
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__active
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_ids
 msgid "Activities"
-msgstr ""
+msgstr "Aktivnosti"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr ""
+msgstr "Oznaka izjeme pri aktivnosti"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
 msgid "Activity State"
-msgstr ""
+msgstr "Stanje aktivnosti"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_icon
 msgid "Activity Type Icon"
-msgstr ""
+msgstr "Ikona tipa aktivnosti"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Add date"
-msgstr ""
+msgstr "Dodaj datum"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Add relation"
-msgstr ""
+msgstr "Dodaj povezavo"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Add text"
-msgstr ""
+msgstr "Dodaj besedilo"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/list_controller.xml:0
 msgid "Add to spreadesheet"
-msgstr ""
+msgstr "Dodaj v preglednico"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -83,141 +85,141 @@ msgstr ""
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.xml:0
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_add
 msgid "Add to spreadsheet"
-msgstr ""
+msgstr "Dodaj v preglednico"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "After next"
-msgstr ""
+msgstr "Po naslednjem obdobju"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
 msgid "Archived"
-msgstr ""
+msgstr "Arhivirano"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Are you sure you want to delete this list?"
-msgstr ""
+msgstr "Ali ste prepričani, da želite izbrisati ta seznam?"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Area"
-msgstr ""
+msgstr "Ploščinski grafikon"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Število prilog"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Automatically filter on the current period"
-msgstr ""
+msgstr "Samodejno filtriraj po trenutnem obdobju"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Automatically filter on the current user"
-msgstr ""
+msgstr "Samodejno filtriraj po trenutnem uporabniku"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__badge_image
 msgid "Badge Background"
-msgstr ""
+msgstr "Ozadje značke"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Before Previous"
-msgstr ""
+msgstr "Pred prejšnjim obdobjem"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__can_be_dynamic
 msgid "Can Be Dynamic"
-msgstr ""
+msgstr "Lahko je dinamično"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
 msgid "Cancel"
-msgstr ""
+msgstr "Preklic"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Change name"
-msgstr ""
+msgstr "Spremeni naziv"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__client_id
 msgid "Client"
-msgstr ""
+msgstr "Odjemalec"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__code
 msgid "Code"
-msgstr ""
+msgstr "Koda"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
 msgid "Color"
-msgstr ""
+msgstr "Barva"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Column"
-msgstr ""
+msgstr "Stolpec"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__commands
 msgid "Commands"
-msgstr ""
+msgstr "Ukazi"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 msgid "Comparisons in pivot are not supported"
-msgstr ""
+msgstr "Primerjave v vrtilni tabeli niso podprte"
 
 #. module: spreadsheet_oca
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_configuration_menu
 msgid "Configuration"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Context"
-msgstr ""
+msgstr "Kontekst"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_ids
 msgid "Contributors"
-msgstr ""
+msgstr "Sodelavci"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__contributor_group_ids
 msgid "Contributors Groups"
-msgstr ""
+msgstr "Skupine sodelavcev"
 
 #. module: spreadsheet_oca
 #: model:spreadsheet.spreadsheet.import.mode,name:spreadsheet_oca.spreadsheet_import_mode_new
 msgid "Create spreadsheet"
-msgstr ""
+msgstr "Ustvari preglednico"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_uid
@@ -227,7 +229,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__create_date
@@ -237,31 +239,31 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__create_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet_renderer.esm.js:0
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__datasource_name
 msgid "Datasource Name"
-msgstr ""
+msgstr "Naziv vira podatkov"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Default value"
-msgstr ""
+msgstr "Privzeta vrednost"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 msgid "Delete"
-msgstr ""
+msgstr "Izbriši"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__display_name
@@ -271,92 +273,92 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__display_name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Domain"
-msgstr ""
+msgstr "Domena"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Download XLSX"
-msgstr ""
+msgstr "Prenesi XLSX"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/pivot_controller.esm.js:0
 msgid "Duplicated groupbys in pivot are not supported"
-msgstr ""
+msgstr "Podvojena združevanja v vrtilni tabeli niso podprta"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__dynamic_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
 msgid "Dynamic Rows"
-msgstr ""
+msgstr "Dinamične vrstice"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_tree_view
 msgid "Edit"
-msgstr ""
+msgstr "Uredi"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Edit domain"
-msgstr ""
+msgstr "Uredi domeno"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "File"
-msgstr ""
+msgstr "Datoteka"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__filename
 msgid "Filename"
-msgstr ""
+msgstr "Naziv datoteke"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Filters"
-msgstr ""
+msgstr "Filtri"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Sledilci"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Sledilci (partnerji)"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Ikona Font Awesome, npr. fa-tasks"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "From / To"
-msgstr ""
+msgstr "Od / do"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__group_ids
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Ima sporočilo"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__id
@@ -366,27 +368,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__id
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_icon
 msgid "Icon"
-msgstr ""
+msgstr "Ikona"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Ikona za označevanje izjeme pri aktivnosti."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Če je označeno, nova sporočila zahtevajo vašo pozornost."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Če je označeno, je pri dostavi nekaterih sporočil prišlo do napake."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
@@ -394,54 +396,56 @@ msgid ""
 "If set, the spreadsheet will be available only if this company is in the "
 "current companies."
 msgstr ""
+"Če je določeno, bo preglednica na voljo le, če je ta družba med trenutno "
+"izbranimi družbami."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__import_data
 msgid "Import Data"
-msgstr ""
+msgstr "Uvozi podatke"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_import_mode
 msgid "Import Mode"
-msgstr ""
+msgstr "Način uvoza"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_import_act_window
 msgid "Import Pivot"
-msgstr ""
+msgstr "Uvozi vrtilno tabelo"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_import
 msgid "Import data to spreadsheet"
-msgstr ""
+msgstr "Uvoz podatkov v preglednico"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Include children"
-msgstr ""
+msgstr "Vključi podrejene zapise"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Insert list"
-msgstr ""
+msgstr "Vstavi seznam"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Je sledilec"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__is_tree
 msgid "Is Tree"
-msgstr ""
+msgstr "Je drevesni prikaz"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Label"
-msgstr ""
+msgstr "Oznaka"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_uid
@@ -451,7 +455,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_uid
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__write_date
@@ -461,92 +465,92 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__write_date
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Last updated at"
-msgstr ""
+msgstr "Zadnjič posodobljeno ob"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Line"
-msgstr ""
+msgstr "Črtni grafikon"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Link to Odoo menu"
-msgstr ""
+msgstr "Poveži z menijem Odoo"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "List name"
-msgstr ""
+msgstr "Naziv seznama"
 
 #. module: spreadsheet_oca
 #: model:res.groups,name:spreadsheet_oca.group_manager
 msgid "Manager"
-msgstr ""
+msgstr "Upravitelj"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Menu Items"
-msgstr ""
+msgstr "Menijske postavke"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Napaka pri dostavi sporočila"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Sporočila"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__mode_id
 msgid "Mode"
-msgstr ""
+msgstr "Način"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__model
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_ir_model
 msgid "Models"
-msgstr ""
+msgstr "Modeli"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Month"
-msgstr ""
+msgstr "Mesec"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Month / Quarter"
-msgstr ""
+msgstr "Mesec / četrtletje"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Rok moje aktivnosti"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
 msgid "My Sheets"
-msgstr ""
+msgstr "Moje preglednice"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__name
@@ -555,299 +559,299 @@ msgstr ""
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__name
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__name
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Next"
-msgstr ""
+msgstr "Naprej"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Rok naslednje aktivnosti"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_summary
 msgid "Next Activity Summary"
-msgstr ""
+msgstr "Povzetek naslednje aktivnosti"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Tip naslednje aktivnosti"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
 msgid "Next Revision"
-msgstr ""
+msgstr "Naslednja revizija"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_select_row_number__number_of_rows
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__number_of_rows
 msgid "Number Of Rows"
-msgstr ""
+msgstr "Število vrstic"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Število dejanj"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error_counter
 msgid "Number of errors"
-msgstr ""
+msgstr "Število napak"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Število sporočil, ki zahtevajo ukrepanje"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Število sporočil z napako pri dostavi"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
 msgid "OK"
-msgstr ""
+msgstr "V redu"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__owner_id
 msgid "Owner"
-msgstr ""
+msgstr "Lastnik"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Ownership"
-msgstr ""
+msgstr "Lastništvo"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Pie"
-msgstr ""
+msgstr "Tortni grafikon"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Possible values"
-msgstr ""
+msgstr "Možne vrednosti"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Previous"
-msgstr ""
+msgstr "Nazaj"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Quarter"
-msgstr ""
+msgstr "Četrtletje"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Re-insert Dynamic"
-msgstr ""
+msgstr "Ponovno vstavi dinamično"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Re-insert Static"
-msgstr ""
+msgstr "Ponovno vstavi statično"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Read Access"
-msgstr ""
+msgstr "Pravica do branja"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
 msgid "Readers"
-msgstr ""
+msgstr "Bralci"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_group_ids
 msgid "Readers Groups"
-msgstr ""
+msgstr "Skupine bralcev"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "Refresh all data"
-msgstr ""
+msgstr "Osveži vse podatke"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Related model"
-msgstr ""
+msgstr "Povezani model"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Relative Period"
-msgstr ""
+msgstr "Relativno obdobje"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Remove"
-msgstr ""
+msgstr "Odstrani"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__res_id
 msgid "Res"
-msgstr ""
+msgstr "Vir"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Odgovorni uporabnik"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Restrict values with a domain"
-msgstr ""
+msgstr "Omeji vrednosti z domeno"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Rows:"
-msgstr ""
+msgstr "Vrstice:"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Save"
-msgstr ""
+msgstr "Shrani"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js:0
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Select a menu..."
-msgstr ""
+msgstr "Izberite meni ..."
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_select_row_number
 msgid "Select number of rows to duplicate row"
-msgstr ""
+msgstr "Izberite število vrstic za podvojitev vrstice"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import_mode__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Zaporedje"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__server_revision_id
 msgid "Server Revision"
-msgstr ""
+msgstr "Revizija strežnika"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter.esm.js:0
 msgid "Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_abstract.py:0
 msgid "Sheet1"
-msgstr ""
+msgstr "List1"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Sorting"
-msgstr ""
+msgstr "Razvrščanje"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet_import__spreadsheet_id
 #: model:ir.module.category,name:spreadsheet_oca.module_category_spreedsheet
 msgid "Spreadsheet"
-msgstr ""
+msgstr "Preglednica"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_oca_revision
 msgid "Spreadsheet Oca Revision"
-msgstr ""
+msgstr "Revizija preglednice OCA"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_raw
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_raw
 msgid "Spreadsheet Raw"
-msgstr ""
+msgstr "Neobdelani podatki preglednice"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_revision_ids
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_revision_ids
 msgid "Spreadsheet Revision"
-msgstr ""
+msgstr "Revizija preglednice"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_spreadsheet_tag
 msgid "Spreadsheet Tag"
-msgstr ""
+msgstr "Oznaka preglednice"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_spreadsheet_abstract
 msgid "Spreadsheet abstract for inheritance"
-msgstr ""
+msgstr "Abstraktni model preglednice za dedovanje"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_binary_data
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_binary_data
 msgid "Spreadsheet file"
-msgstr ""
+msgstr "Datoteka preglednice"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_menu
 msgid "Spreadsheets"
-msgstr ""
+msgstr "Preglednice"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_tags_act_window
 #: model:ir.ui.menu,name:spreadsheet_oca.spreadsheet_spreadsheet_tag_menu
 msgid "Spreadsheets Tags"
-msgstr ""
+msgstr "Oznake preglednic"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_kanban_view
 msgid "Spreasheet Image"
-msgstr ""
+msgstr "Slika preglednice"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Stacked"
-msgstr ""
+msgstr "Naloženo"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Area"
-msgstr ""
+msgstr "Naloženi ploščinski grafikon"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Column"
-msgstr ""
+msgstr "Naloženi stolpčni grafikon"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/odoo_panels.esm.js:0
 msgid "Stacked Line"
-msgstr ""
+msgstr "Naloženi črtni grafikon"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
@@ -857,11 +861,15 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Stanje glede na aktivnosti\n"
+"Zamujeno: rok je že potekel\n"
+"Danes: datum aktivnosti je danes\n"
+"Načrtovano: prihodnje aktivnosti."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_tag_ids
 msgid "Tags"
-msgstr ""
+msgstr "Oznake"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_import__dynamic
@@ -869,114 +877,116 @@ msgid ""
 "This field allows you to generate tables that its rows are updated with the "
 "filters set in the spreadsheets."
 msgstr ""
+"To polje omogoča ustvarjanje tabel, katerih vrstice se posodabljajo glede na "
+"filtre, nastavljene v preglednicah."
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Time range"
-msgstr ""
+msgstr "Časovno obdobje"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Odpri/zapri spustni meni"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Total rows used when inserting list"
-msgstr ""
+msgstr "Skupno število vrstic pri vstavljanju seznama"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet_tag__color
 msgid "Transparent tags are not visible in the kanban view"
-msgstr ""
+msgstr "Prosojne oznake niso vidne v prikazu kanban"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__type
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Tip izjeme pri aktivnosti na zapisu."
 
 #. module: spreadsheet_oca
 #. odoo-python
 #: code:addons/spreadsheet_oca/models/spreadsheet_spreadsheet.py:0
 msgid "Unnamed"
-msgstr ""
+msgstr "Brez naziva"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.xml:0
 msgid "Upload"
-msgstr ""
+msgstr "Naloži"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet_tree/spreadsheet_tree_view.esm.js:0
 msgid "Upload a Spreadsheet"
-msgstr ""
+msgstr "Naloži preglednico"
 
 #. module: spreadsheet_oca
 #: model:res.groups,name:spreadsheet_oca.group_user
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
 msgid "Website Messages"
-msgstr ""
+msgstr "Sporočila spletne strani"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
 msgid "Website communication history"
-msgstr ""
+msgstr "Zgodovina komunikacije na spletni strani"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Write Access"
-msgstr ""
+msgstr "Pravica do pisanja"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "Year"
-msgstr ""
+msgstr "Leto"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "ascending"
-msgstr ""
+msgstr "naraščajoče"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "descending"
-msgstr ""
+msgstr "padajoče"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "e.g. Sales KPI"
-msgstr ""
+msgstr "npr. Prodajni KPI"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/spreadsheet.xml:0
 msgid "name is required"
-msgstr ""
+msgstr "naziv je obvezen"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_oca/static/src/spreadsheet/bundle/filter_panel_datasources.esm.js:0
 msgid "not updated"
-msgstr ""
+msgstr "ni posodobljeno"
 
 #. module: spreadsheet_oca
 #: model:ir.model,name:spreadsheet_oca.model_ir_websocket
 msgid "websocket message handling"
-msgstr ""
+msgstr "Obdelava sporočil WebSocket"
