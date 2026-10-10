@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-10-10 12:46+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,56 +15,57 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "%s line(s) created"
-msgstr ""
+msgstr "Ustvarjene postavke: %s"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "%s line(s) updated"
-msgstr ""
+msgstr "Posodobljene postavke: %s"
 
 #. module: spreadsheet_quotation
 #: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.sale_order_view_form_inherit
 msgid "<span>Calculator</span>"
-msgstr ""
+msgstr "<span>Kalkulator</span>"
 
 #. module: spreadsheet_quotation
 #: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.sale_order_template_view_form_inherit
 msgid "<span>Create Calculator</span>"
-msgstr ""
+msgstr "<span>Ustvari kalkulator</span>"
 
 #. module: spreadsheet_quotation
 #: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.sale_order_template_view_form_inherit
 msgid "<span>Open Calculator</span>"
-msgstr ""
+msgstr "<span>Odpri kalkulator</span>"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Add"
-msgstr ""
+msgstr "Dodaj"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Add Mapping"
-msgstr ""
+msgstr "Dodaj preslikavo"
 
 #. module: spreadsheet_quotation
 #. odoo-python
 #: code:addons/spreadsheet_quotation/models/sale_order.py:0
 msgid "Calculator - %s"
-msgstr ""
+msgstr "Kalkulator - %s"
 
 #. module: spreadsheet_quotation
 #: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.spreadsheet_quotation_create_form
 msgid "Cancel"
-msgstr ""
+msgstr "Preklic"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
@@ -71,7 +73,7 @@ msgstr ""
 #: code:addons/spreadsheet_quotation/models/sale_order.py:0
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Cannot sync a cancelled quotation."
-msgstr ""
+msgstr "Preklicanega predračuna ni mogoče sinhronizirati."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
@@ -79,129 +81,129 @@ msgstr ""
 #: code:addons/spreadsheet_quotation/models/sale_order.py:0
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Cannot sync a confirmed sales order."
-msgstr ""
+msgstr "Potrjenega prodajnega naloga ni mogoče sinhronizirati."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Column"
-msgstr ""
+msgstr "Stolpec"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Column Mappings"
-msgstr ""
+msgstr "Preslikave stolpcev"
 
 #. module: spreadsheet_quotation
 #: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.spreadsheet_quotation_create_form
 msgid "Create Calculator"
-msgstr ""
+msgstr "Ustvari kalkulator"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Create New Products"
-msgstr ""
+msgstr "Ustvari nove proizvode"
 
 #. module: spreadsheet_quotation
 #: model_terms:ir.ui.view,arch_db:spreadsheet_quotation.spreadsheet_quotation_create_form
 msgid "Create Quotation Calculator"
-msgstr ""
+msgstr "Ustvari kalkulator predračuna"
 
 #. module: spreadsheet_quotation
 #: model:ir.model,name:spreadsheet_quotation.model_spreadsheet_quotation_create
 msgid "Create Quotation Calculator Spreadsheet"
-msgstr ""
+msgstr "Ustvarjanje preglednice kalkulatorja predračuna"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Create and Sync"
-msgstr ""
+msgstr "Ustvari in sinhroniziraj"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Discount (%)"
-msgstr ""
+msgstr "Popust (%)"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Do you want to create them?"
-msgstr ""
+msgstr "Ali jih želite ustvariti?"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Error syncing: %s"
-msgstr ""
+msgstr "Napaka pri sinhronizaciji: %s"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Field"
-msgstr ""
+msgstr "Polje"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_plugin.esm.js:0
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Field Sync"
-msgstr ""
+msgstr "Sinhronizacija polj"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_sale_order__has_spreadsheet
 msgid "Has Spreadsheet"
-msgstr ""
+msgstr "Ima preglednico"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,help:spreadsheet_quotation.field_spreadsheet_quotation_create__line_count
 msgid "Initial number of rows to display in the list."
-msgstr ""
+msgstr "Začetno število vrstic za prikaz na seznamu."
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Linked to Sale Order #"
-msgstr ""
+msgstr "Povezano s prodajnim nalogom št."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
@@ -211,17 +213,21 @@ msgid ""
 "                    Existing lines will be updated in place; new rows with\n"
 "                    product data will be added as new quotation lines."
 msgstr ""
+"Preslikajte stolpce preglednice v polja postavk prodajnega naloga.\n"
+"                    Obstoječe postavke bodo posodobljene; nove vrstice s\n"
+"                    podatki o proizvodih bodo dodane kot nove postavke "
+"predračuna."
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__name
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: spreadsheet_quotation
 #. odoo-python
 #: code:addons/spreadsheet_quotation/models/sale_order.py:0
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
@@ -231,110 +237,113 @@ msgid ""
 "                        quotation lines. If a product is not found in the\n"
 "                        catalog you will be asked to confirm its creation."
 msgstr ""
+"Nove vrstice z nazivom proizvoda bodo dodane kot nove\n"
+"                        postavke predračuna. Če proizvod ni najden v\n"
+"                        katalogu, boste morali potrditi njegovo ustvarjanje."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "No field mappings configured"
-msgstr ""
+msgstr "Preslikave polj niso nastavljene"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "No mappings configured yet."
-msgstr ""
+msgstr "Preslikave še niso nastavljene."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "No sale order line list found"
-msgstr ""
+msgstr "Seznam postavk prodajnega naloga ni najden"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "No sale order line list found in this spreadsheet."
-msgstr ""
+msgstr "V tej preglednici ni najden seznam postavk prodajnega naloga."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "No sale order linked. Set the Sale Order filter first."
-msgstr ""
+msgstr "Prodajni nalog ni povezan. Najprej nastavite filter Prodajni nalog."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "No values to sync"
-msgstr ""
+msgstr "Ni vrednosti za sinhronizacijo"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__line_count
 msgid "Number of lines"
-msgstr ""
+msgstr "Število postavk"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Product"
-msgstr ""
+msgstr "Proizvod"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Product sync enabled."
-msgstr ""
+msgstr "Sinhronizacija proizvodov je omogočena."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Quantity"
-msgstr ""
+msgstr "Količina"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_sale_order__spreadsheet_id
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_sale_order_template__spreadsheet_id
 msgid "Quotation Calculator"
-msgstr ""
+msgstr "Kalkulator predračuna"
 
 #. module: spreadsheet_quotation
 #: model:ir.model,name:spreadsheet_quotation.model_sale_order_template
 msgid "Quotation Template"
-msgstr ""
+msgstr "Predloga predračuna"
 
 #. module: spreadsheet_quotation
 #. odoo-python
 #: code:addons/spreadsheet_quotation/wizards/spreadsheet_quotation_create.py:0
 msgid "Sale Order"
-msgstr ""
+msgstr "Prodajni nalog"
 
 #. module: spreadsheet_quotation
 #. odoo-python
 #: code:addons/spreadsheet_quotation/wizards/spreadsheet_quotation_create.py:0
 msgid "Sale Order Lines"
-msgstr ""
+msgstr "Postavke prodajnega naloga"
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,field_description:spreadsheet_quotation.field_spreadsheet_quotation_create__sale_order_template_id
 msgid "Sale Order Template"
-msgstr ""
+msgstr "Predloga prodajnega naloga"
 
 #. module: spreadsheet_quotation
 #: model:ir.model,name:spreadsheet_quotation.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Prodajni nalog"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Select..."
-msgstr ""
+msgstr "Izberite ..."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Set the Sale Order filter to link this calculator to an order."
-msgstr ""
+msgstr "Nastavite filter Prodajni nalog, da povežete ta kalkulator z nalogom."
 
 #. module: spreadsheet_quotation
 #: model:ir.model.fields,help:spreadsheet_quotation.field_sale_order_template__spreadsheet_id
@@ -342,46 +351,48 @@ msgid ""
 "Spreadsheet used as pricing calculator for quotations created from this "
 "template."
 msgstr ""
+"Preglednica, ki se uporablja kot kalkulator cen za predračune, ustvarjene iz "
+"te predloge."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Sync cancelled"
-msgstr ""
+msgstr "Sinhronizacija je preklicana"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Sync to Sale Order"
-msgstr ""
+msgstr "Sinhroniziraj s prodajnim nalogom"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.xml:0
 msgid "Syncing..."
-msgstr ""
+msgstr "Sinhroniziranje ..."
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid ""
 "The following products were not found in the catalog and will be created:"
-msgstr ""
+msgstr "Naslednji proizvodi niso bili najdeni v katalogu in bodo ustvarjeni:"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "This column already has a mapping"
-msgstr ""
+msgstr "Ta stolpec že ima preslikavo"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "This field already has a mapping"
-msgstr ""
+msgstr "To polje že ima preslikavo"
 
 #. module: spreadsheet_quotation
 #. odoo-javascript
 #: code:addons/spreadsheet_quotation/static/src/quotation_spreadsheet/field_sync_side_panel.esm.js:0
 msgid "Unit Price"
-msgstr ""
+msgstr "Cena na enoto"
