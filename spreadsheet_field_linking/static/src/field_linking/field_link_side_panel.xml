@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="spreadsheet_field_linking.FieldLinkPanel">
+        <div class="o_field_link_panel">
+            <Section title="'Cell'">
+                <span class="fw-bold" t-esc="cellReference" />
+            </Section>
+            <Section title="'Field to link'">
+                <ModelFieldSelector
+                    resModel="context.model"
+                    readonly="false"
+                    allowEmpty="true"
+                    followRelations="true"
+                    filter.bind="filterField"
+                    path="fieldMapping.chain"
+                    update.bind="updateChain"
+                />
+            </Section>
+            <Section
+                t-foreach="state.selectors"
+                t-as="sel"
+                t-key="sel.segment"
+                title="'Line (position)'"
+            >
+                <div class="d-flex align-items-center gap-2">
+                    <input
+                        class="o_input"
+                        type="number"
+                        min="1"
+                        style="max-width: 5rem;"
+                        t-att-value="fieldMapping.selectors[sel.segment]"
+                        t-on-change="(ev) => this.updatePosition(sel.segment, ev)"
+                    />
+                    <span
+                        t-if="lineLabel(sel.segment)"
+                        class="text-muted text-truncate"
+                    >
+                        <i class="fa fa-cube me-1" />
+                        <t t-esc="lineLabel(sel.segment)" />
+                    </span>
+                </div>
+            </Section>
+            <div class="o-sidePanelButtons">
+                <span t-if="state.saved" class="p-2 text-primary">
+                    <i class="fa fa-check me-1" />Saved
+                </span>
+            </div>
+        </div>
+    </t>
+</templates>

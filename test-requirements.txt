@@ -1,0 +1,1 @@
+odoo-addon-spreadsheet_oca @ git+https://github.com/OCA/spreadsheet.git@refs/pull/127/head#subdirectory=spreadsheet_oca

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="spreadsheet_oca.ActionSpreadsheetOca" t-inherit-mode="extension">
+        <xpath expr="//SpreadsheetControlPanel" position="inside">
+            <t t-set-slot="control-panel-navigation-additional">
+                <button
+                    t-if="linkState.writable"
+                    class="btn btn-primary"
+                    t-on-click="onWriteToRecord"
+                >
+                    <i class="fa fa-floppy-o me-1" />
+                    <t t-esc="writeToRecordLabel" />
+                </button>
+            </t>
+        </xpath>
+    </t>
+</templates>

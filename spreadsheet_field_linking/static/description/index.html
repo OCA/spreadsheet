@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
+<title>README.rst</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
+
+See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: gray; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic, pre.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document">
+
+
+<a class="reference external image-reference" href="https://odoo-community.org/get-involved?utm_source=readme">
+<img alt="Odoo Community Association" src="https://odoo-community.org/readme-banner-image" />
+</a>
+<div class="section" id="spreadsheet-field-linking">
+<h1>Spreadsheet Field Linking</h1>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! This file is generated by oca-gen-addon-readme !!
+!! changes will be overwritten.                   !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! source digest: sha256:db0f2e78d1a2d21ca65301e8be203f65b5fd209f0665491c51d5247f190c7b4e
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/license-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/spreadsheet/tree/19.0/spreadsheet_field_linking"><img alt="OCA/spreadsheet" src="https://img.shields.io/badge/github-OCA%2Fspreadsheet-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/spreadsheet-19-0/spreadsheet-19-0-spreadsheet_field_linking"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/spreadsheet&amp;target_branch=19.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>This module turns an Odoo spreadsheet into a tool that can be used to
+push data to a record.</p>
+<p>You link a spreadsheet to a record (a sale order, a project, a
+partner…), point some of its cells at the fields of that record, and
+then write the values you computed in the spreadsheet back onto the
+record in one click.</p>
+<p>A typical use is building a pricing or estimation sheet: you do the
+maths in the spreadsheet, and the results land on the right fields of
+the order without any copy-paste. Cells can target a field of the linked
+record, a field of a related record, or a field on the lines of the
+record.</p>
+<p>The links are stored inside the spreadsheet itself, so they are kept
+when the file is saved and reopened, and they follow their cells when
+rows are moved.</p>
+<p>This is a foundation module: it adds the linking tools to every Odoo
+spreadsheet but does not, by itself, tie any particular business
+document to a spreadsheet. Other modules build on it could offer
+ready-made spreadsheets for their own models.</p>
+<p><strong>Table of contents</strong></p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#usage" id="toc-entry-1">Usage</a><ul>
+<li><a class="reference internal" href="#link-the-spreadsheet-to-a-record" id="toc-entry-2">Link the spreadsheet to a record</a></li>
+<li><a class="reference internal" href="#link-a-cell-to-a-field" id="toc-entry-3">Link a cell to a field</a><ul>
+<li><a class="reference internal" href="#writing-to-lines-and-creating-new-ones" id="toc-entry-4">Writing to lines, and creating new ones</a></li>
+<li><a class="reference internal" href="#a-couple-of-limitations-and-why-they-are-there" id="toc-entry-5">A couple of limitations, and why they are there</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#remove-a-link-from-a-cell" id="toc-entry-6">Remove a link from a cell</a></li>
+<li><a class="reference internal" href="#write-the-values-back-to-the-record" id="toc-entry-7">Write the values back to the record</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-8">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-9">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-10">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-11">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-12">Maintainers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h2><a class="toc-backref" href="#toc-entry-1">Usage</a></h2>
+<p>Everything happens from inside the spreadsheet editor, through two
+menus: the <strong>File</strong> menu at the top left, and the <strong>cell menu</strong> you get
+by right-clicking a cell.</p>
+<div class="section" id="link-the-spreadsheet-to-a-record">
+<h3><a class="toc-backref" href="#toc-entry-2">Link the spreadsheet to a record</a></h3>
+<p>Open any spreadsheet and go to <strong>File → Manage linked record</strong>. This
+entry is always available.</p>
+<p><img alt="image1" src="https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_field_linking/static/description/file_manage_linked_record.png" /></p>
+<p>A side panel opens on the right:</p>
+<ul class="simple">
+<li><strong>Model</strong> — pick the kind of record you want to link (Sale Order,
+Partner…). Only models you are allowed to edit are offered.</li>
+<li><strong>Record</strong> — pick the specific record.</li>
+<li><strong>Link</strong> — confirms the choice and links the spreadsheet to that
+record.</li>
+<li><strong>Unlink</strong> — removes the link (shown only once a record is linked).</li>
+</ul>
+<p>The top of the panel always shows which record is currently linked, if
+any.</p>
+<p><img alt="image2" src="https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_field_linking/static/description/manage_linked_record_panel.png" /></p>
+</div>
+<div class="section" id="link-a-cell-to-a-field">
+<h3><a class="toc-backref" href="#toc-entry-3">Link a cell to a field</a></h3>
+<p>Once the spreadsheet is linked, you can point cells at the record’s
+fields. Right-click the cell that holds the value you want to send and
+choose <strong>Link to field</strong> (or, on a cell that is already linked, <strong>Edit
+field link</strong>). The same entry is also available under <strong>File → Link to
+field</strong>.</p>
+<p><img alt="image3" src="https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_field_linking/static/description/cell_menu_link_to_field.png" /></p>
+<p>A side panel opens for that cell:</p>
+<ul class="simple">
+<li><strong>Field to link</strong> — choose the field that should receive the cell’s
+value. You can follow relations to reach a field of a related record,
+or a field on the record’s lines.</li>
+<li><strong>Line (position)</strong> — when the field lives on lines, tell the module
+which line to write to by its position (1 for the first line, 2 for
+the second…).</li>
+</ul>
+<p>A short <strong>Saved</strong> confirmation appears each time a change is stored.</p>
+<div class="section" id="writing-to-lines-and-creating-new-ones">
+<h4><a class="toc-backref" href="#toc-entry-4">Writing to lines, and creating new ones</a></h4>
+<p>Many records hold a list of lines — a sale order, for example, has its
+order lines. You can write to those lines by their position, and you can
+also add brand-new ones:</p>
+<ul class="simple">
+<li><strong>To update a line that already exists</strong>, set its position (1, 2,
+3…) to one that is already there.</li>
+<li><strong>To add a new line</strong>, set a position just past the last one.
+Everything you mapped to that same position is gathered together into
+a single new line, so before you write, map every value the new line
+needs (description, quantity, price…) to that same position.</li>
+</ul>
+<p>Positions follow the order the lines appear on the record’s form:
+position 1 is the first line, 2 the second, and so on. Because of this,
+a position points at a <em>slot</em>, not at one particular line — if you
+reorder, add, or remove lines, a position may end up aiming at a
+different line than before, so it is worth a quick check after
+rearranging.</p>
+</div>
+<div class="section" id="a-couple-of-limitations-and-why-they-are-there">
+<h4><a class="toc-backref" href="#toc-entry-5">A couple of limitations, and why they are there</a></h4>
+<p>To avoid making a mess, the module only ever <em>creates</em> new lines that
+belong directly to the record you linked — the record’s own list of
+lines, like the lines of the sale order itself. Two things it will
+deliberately not do, and the reason for each:</p>
+<ul class="simple">
+<li><strong>It won’t invent items that exist on their own.</strong> Some fields don’t
+hold lines that belong to the record; instead they point to things
+that live independently and can be shared by many records at once —
+think of the tags on a contact, or the product picked on a line. If
+one of those is already there, the module is glad to update a value on
+it. But it will not create a new one for you: doing that could quietly
+leave duplicates or half-finished entries scattered in other parts of
+Odoo that the rest of your data relies on. To stay safe, it only
+reuses what already exists in those spots.</li>
+<li><strong>It won’t build a line hidden deep inside another line.</strong> The module
+only adds lines one step down, directly on the record you linked. To
+create something nested further in — a line tucked inside another line
+— it would first have to invent the in-between lines that aren’t there
+yet, filling in details you never entered. Rather than guess, it
+simply leaves those untouched.</li>
+</ul>
+<p>So, in plain terms: the module creates a new line only where it can do
+so safely and without guessing — directly on the record you linked.
+Everywhere else it updates what is already there, but never creates.</p>
+<p><img alt="image4" src="https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_field_linking/static/description/field_link_panel.png" /></p>
+</div>
+</div>
+<div class="section" id="remove-a-link-from-a-cell">
+<h3><a class="toc-backref" href="#toc-entry-6">Remove a link from a cell</a></h3>
+<p>To unlink one or more cells, select them, right-click and choose
+<strong>Remove field link</strong>. This entry appears only when at least one cell in
+the selection is linked.</p>
+</div>
+<div class="section" id="write-the-values-back-to-the-record">
+<h3><a class="toc-backref" href="#toc-entry-7">Write the values back to the record</a></h3>
+<p>When the spreadsheet is linked to a record you can edit, a <strong>Write to
+record</strong> button appears in the top bar (it shows the record’s name once
+one is linked, e.g. <em>Write to SO0042</em>). Click it to send every linked
+cell’s current value to its field on the record at once.</p>
+<p><img alt="image5" src="https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_field_linking/static/description/write_to_record_button.png" /></p>
+</div>
+</div>
+<div class="section" id="bug-tracker">
+<h2><a class="toc-backref" href="#toc-entry-8">Bug Tracker</a></h2>
+<p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/spreadsheet/issues">GitHub Issues</a>.
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us to smash it by providing a detailed and welcomed
+<a class="reference external" href="https://github.com/OCA/spreadsheet/issues/new?body=module:%20spreadsheet_field_linking%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<p>Do not contact contributors directly about support or help with technical issues.</p>
+</div>
+<div class="section" id="credits">
+<h2><a class="toc-backref" href="#toc-entry-9">Credits</a></h2>
+<div class="section" id="authors">
+<h3><a class="toc-backref" href="#toc-entry-10">Authors</a></h3>
+<ul class="simple">
+<li>arielbarreiros96</li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h3><a class="toc-backref" href="#toc-entry-11">Contributors</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://www.github.com/arielbarreiros96">arielbarreiros96</a></li>
+</ul>
+</div>
+<div class="section" id="maintainers">
+<h3><a class="toc-backref" href="#toc-entry-12">Maintainers</a></h3>
+<p>This module is maintained by the OCA.</p>
+<a class="reference external image-reference" href="https://odoo-community.org">
+<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
+</a>
+<p>OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/spreadsheet/tree/19.0/spreadsheet_field_linking">OCA/spreadsheet</a> project on GitHub.</p>
+<p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>
