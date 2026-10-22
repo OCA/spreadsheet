@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_order_form_spreadsheet_calculator" model="ir.ui.view">
+        <field name="name">sale.order.form.spreadsheet.calculator</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_open_quote_calculator"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-table"
+                    string="Quote Calculator"
+                    invisible="not template_calculator_id and not calculator_spreadsheet_id"
+                />
+                <field name="calculator_spreadsheet_id" invisible="1" />
+            </xpath>
+            <field name="sale_order_template_id" position="after">
+                <field name="show_update_calculator" invisible="1" />
+                <label for="template_calculator_id" />
+                <div class="o_row">
+                    <field
+                        name="template_calculator_id"
+                        nolabel="1"
+                        options="{'no_create': True}"
+                        readonly="state in ['cancel', 'sale']"
+                    />
+                    <button
+                        name="action_update_quote_calculator"
+                        type="object"
+                        string="Rebuild Calculator"
+                        help="Discard the current calculator and rebuild it from the selected template"
+                        class="btn-link mb-1 px-0"
+                        icon="fa-refresh"
+                        confirm="This will discard the current quote calculator and rebuild it from the selected template. Any changes made in it will be lost."
+                        invisible="not show_update_calculator or state in ['sale', 'cancel']"
+                    />
+                </div>
+            </field>
+        </field>
+    </record>
+</odoo>

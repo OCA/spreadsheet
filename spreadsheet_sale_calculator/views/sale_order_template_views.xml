@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sale_order_template_view_form_spreadsheet" model="ir.ui.view">
+        <field name="name">sale.order.template.form.spreadsheet</field>
+        <field name="model">sale.order.template</field>
+        <field name="inherit_id" ref="sale_management.sale_order_template_view_form" />
+        <field name="arch" type="xml">
+            <field name="journal_id" position="after">
+                <field name="quote_calculator_id" />
+            </field>
+        </field>
+    </record>
+</odoo>
