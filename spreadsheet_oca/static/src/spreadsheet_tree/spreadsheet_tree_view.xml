@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="spreadsheet_oca.SpreadsheetFileUploader">
+        <div
+            t-att-class="this.props.record and this.props.record.data ? 'oe_kanban_color_' + this.props.record.data.color : ''"
+        >
+            <FileUploader
+                acceptedFileExtensions="this.props.acceptedFileExtensions"
+                fileUploadClass="'spreadsheet_file_uploader'"
+                multiUpload="true"
+                onUploaded.bind="this.onFileUploaded"
+                onUploadComplete.bind="this.onUploadComplete"
+            >
+                <t t-set-slot="toggler">
+                    <t
+                        t-if="this.props.togglerTemplate"
+                        t-call="{{ this.props.togglerTemplate }}"
+                    />
+                    <t t-else="" t-call-slot="toggler" />
+                </t>
+                <t t-call-slot="extra" />
+            </FileUploader>
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.SpreadsheetTreeView.Buttons">
+        <SpreadsheetFileUploader>
+            <t t-set-slot="toggler">
+                <button
+                    type="button"
+                    class="btn btn-secondary o_button_upload_spreadsheet"
+                >
+                    Upload
+                </button>
+            </t>
+        </SpreadsheetFileUploader>
+    </t>
+</templates>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-name="spreadsheet_oca.SpreadsheetInsertListCogMenu">
+        <DropdownItem
+            class="'o_spreadsheet_oca_insert_list'"
+            onSelected.bind="this.onSelected"
+        >
+            <i class="oi oi-fw me-1" data-icon="table_chart" />Add to spreadsheet
+        </DropdownItem>
+    </t>
+</templates>
