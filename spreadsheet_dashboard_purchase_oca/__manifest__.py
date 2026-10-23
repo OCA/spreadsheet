@@ -2,7 +2,7 @@
     "name": "Spreadsheet dashboard for vendors",
     "category": "Hidden",
     "depends": ["spreadsheet_dashboard", "purchase"],
-    "version": "20.0.1.0.0",
+    "version": "20.0.1.0.1",
     "website": "https://github.com/OCA/spreadsheet",
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "data": ["data/dashboards.xml"],

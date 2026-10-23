@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-spreadsheet"
+version = "20.0.20261023.0"
+dependencies = [
+    "odoo-addon-spreadsheet_dashboard_purchase_oca==20.0.*",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 20.0",
+]
