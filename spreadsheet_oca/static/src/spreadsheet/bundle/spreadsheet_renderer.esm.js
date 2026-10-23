@@ -26,7 +26,7 @@ class SpreadsheetTransportService {
         this.channel = "spreadsheet_oca;" + this.model + ";" + this.res_id;
         this.bus_service.addChannel(this.channel);
         this.dialog = useService("dialog");
-        this.bus_service.subscribe("notification", (payload) => {
+        this.bus_service.subscribe("spreadsheet_oca", (payload) => {
             if (payload.id === this.res_id) {
                 this._handleNotification(payload);
             }
