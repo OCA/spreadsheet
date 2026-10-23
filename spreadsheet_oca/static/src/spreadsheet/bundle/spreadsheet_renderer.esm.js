@@ -19,7 +19,7 @@ const {UuidGenerator} = spreadsheet.helpers;
 
 class SpreadsheetTransportService {
     constructor(orm, bus_service, model, res_id) {
-        this.orm = orm;
+        this.orm = orm.silent;
         this.bus_service = bus_service;
         this.model = model;
         this.res_id = res_id;
