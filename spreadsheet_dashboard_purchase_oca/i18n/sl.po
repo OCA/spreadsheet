@@ -16,15 +16,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-10-26 21:56+0000\n"
-"PO-Revision-Date: 2023-10-26 23:09+0000\n"
-"Last-Translator: Katja Deržič, 2024\n"
+"PO-Revision-Date: 2026-10-24 14:46+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://app.transifex.com/odoo/teams/41243/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -60,13 +61,13 @@ msgstr "Trenutno"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Days to receive"
-msgstr ""
+msgstr "Število dni do prejema"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "KPI"
-msgstr ""
+msgstr "KPI"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -108,7 +109,7 @@ msgstr "Nazaj"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Product"
-msgstr ""
+msgstr "Proizvod"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -119,19 +120,19 @@ msgstr "Kupljeno"
 #. module: spreadsheet_dashboard_purchase_oca
 #: model:spreadsheet.dashboard.group,name:spreadsheet_dashboard_purchase_oca.spreadsheet_dashboard_group_purchase
 msgid "Purchases"
-msgstr ""
+msgstr "Nabave"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Qty Ordered"
-msgstr ""
+msgstr "Kol naročena"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Qty ordered"
-msgstr ""
+msgstr "Kol naročena"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -149,25 +150,25 @@ msgstr "Vir"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Sourcing by Country"
-msgstr ""
+msgstr "Nabava po državah"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Buyers"
-msgstr ""
+msgstr "Vodilni nabavniki"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Orders"
-msgstr ""
+msgstr "Največja naročila"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Products"
-msgstr ""
+msgstr "Najboljši izdelek"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -179,13 +180,13 @@ msgstr "Najboljši dobavitelj"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Top Vendors by Amount"
-msgstr ""
+msgstr "Vodilni dobavitelji po znesku"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "Untaxed total"
-msgstr ""
+msgstr "Skupaj brez davka"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
@@ -202,7 +203,7 @@ msgstr "Dobavitelji"
 #. odoo-javascript
 #: code:addons/spreadsheet_dashboard_purchase_oca/data/files/vendors_dashboard.json:0
 msgid "last period"
-msgstr ""
+msgstr "zadnje obdobje"
 
 #. module: spreadsheet_dashboard_purchase_oca
 #. odoo-javascript
