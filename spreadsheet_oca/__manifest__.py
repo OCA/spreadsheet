@@ -47,5 +47,8 @@
             "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panels.esm.js",
             "spreadsheet_oca/static/src/spreadsheet/bundle/chart_panel.esm.js",
         ],
+        "web.assets_unit_tests": [
+            "spreadsheet_oca/static/tests/**/*",
+        ],
     },
 }

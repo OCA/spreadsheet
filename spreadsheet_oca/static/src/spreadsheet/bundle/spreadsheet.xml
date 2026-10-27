@@ -66,6 +66,57 @@
         </div>
     </t>
 
+    <!-- Only rows and columns use the relational field selector: measures
+         keep the o-spreadsheet list (and its "Add calculated measure"). -->
+    <t
+        t-name="spreadsheet_oca.PivotLayoutConfigurator"
+        t-inherit="o-spreadsheet-PivotLayoutConfigurator"
+        t-inherit-mode="primary"
+    >
+        <xpath
+            expr="//AddDimensionButton[@onFieldPicked.bind='addColumnDimension']"
+            position="replace"
+        >
+            <RelationalAddDimensionButton
+                onFieldPicked.bind="addColumnDimension"
+                fields="props.unusedGroupableFields"
+            />
+        </xpath>
+        <xpath
+            expr="//AddDimensionButton[@onFieldPicked.bind='addRowDimension']"
+            position="replace"
+        >
+            <RelationalAddDimensionButton
+                onFieldPicked.bind="addRowDimension"
+                fields="props.unusedGroupableFields"
+            />
+        </xpath>
+    </t>
+
+    <t t-name="spreadsheet_oca.RelationalAddDimensionButton" owl="1">
+        <button
+            class="add-dimension o-button"
+            t-on-click="togglePopover"
+            t-ref="button"
+        >Add</button>
+        <Popover
+            t-if="popover.isOpen"
+            t-props="popoverProps"
+            class="'o_spreadsheet_oca_add_dimension_popover'"
+        >
+            <PivotFieldSelectorPopover
+                resModel="resModel"
+                path="''"
+                showSearchInput="true"
+                isDebugMode="!!env.debug"
+                filter.bind="filterField"
+                update.bind="onPathSelected"
+                close.bind="closePopover"
+            />
+            <t t-slot="default" />
+        </Popover>
+    </t>
+
     <t t-name="spreadsheet_oca.ListPanel" owl="1">
         <t t-if="listId">
             <ListPanelDisplay listId="listId" listDefinition="listDefinition" />
@@ -95,6 +146,71 @@
                 />
                 <div class="btn btn-link" t-on-click="editDomain">
                     Edit domain
+                </div>
+            </div>
+            <div
+                class="o_spreadsheet_oca_datasource_panel_field o_spreadsheet_oca_list_columns"
+            >
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >Columns</div>
+                <div
+                    t-foreach="columns"
+                    t-as="column"
+                    t-key="column.path"
+                    class="o_spreadsheet_oca_list_column d-flex align-items-center gap-1"
+                >
+                    <span
+                        class="flex-grow-1 text-truncate"
+                        t-att-class="{'text-danger': column.isInvalid}"
+                        t-att-title="column.path"
+                        t-esc="column.label"
+                    />
+                    <button
+                        class="btn btn-link btn-sm p-0 o_spreadsheet_oca_list_column_up"
+                        title="Move up"
+                        t-att-disabled="column_first"
+                        t-on-click="() => this.moveColumn(column_index, -1)"
+                    >
+                        <i class="fa fa-arrow-up" />
+                    </button>
+                    <button
+                        class="btn btn-link btn-sm p-0 o_spreadsheet_oca_list_column_down"
+                        title="Move down"
+                        t-att-disabled="column_last"
+                        t-on-click="() => this.moveColumn(column_index, 1)"
+                    >
+                        <i class="fa fa-arrow-down" />
+                    </button>
+                    <button
+                        class="btn btn-link btn-sm p-0 text-danger o_spreadsheet_oca_list_column_remove"
+                        title="Remove column"
+                        t-on-click="() => this.removeColumn(column_index)"
+                    >
+                        <i class="fa fa-trash" />
+                    </button>
+                </div>
+                <div class="d-flex align-items-center gap-1 mt-2">
+                    <div class="flex-grow-1 o_spreadsheet_oca_list_column_selector">
+                        <ModelFieldSelector
+                            path="state.newColumnPath"
+                            resModel="props.listDefinition.model"
+                            readonly="false"
+                            allowEmpty="true"
+                            followRelations="true"
+                            isDebugMode="!!env.debug"
+                            update="(path) => this.onNewColumnPathUpdate(path)"
+                            filter.bind="filterColumnField"
+                        />
+                    </div>
+                    <button
+                        class="btn btn-secondary btn-sm o_spreadsheet_oca_list_column_add"
+                        t-att-disabled="!state.newColumnPath"
+                        t-on-click="addColumn"
+                    >Add</button>
+                </div>
+                <div class="o_spreadsheet_oca_pivot_panel_info mt-1">
+                    Re-insert the list to apply column changes to the sheet.
                 </div>
             </div>
             <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
