@@ -88,6 +88,26 @@ Usage
        of ``account.account`` model. (``income``, ``asset_receivable``,
        etc.)
 
+**Edit the columns of a list**
+------------------------------
+
+- Open the list side panel (``Data`` menu, then the list name).
+- In the ``Columns`` section you can remove or reorder the columns, and
+  add new ones with the field selector. Relational fields can be
+  followed to add related values, e.g. ``Company > Name``
+  (``company_id.name``).
+- Click on ``Insert list`` to write the updated columns in the sheet.
+
+**Group a pivot by related fields**
+-----------------------------------
+
+- Open the pivot side panel and click on ``Add`` in the ``Columns`` or
+  ``Rows`` section.
+- Click on the arrow next to a many2one field to see the fields of the
+  related model, then pick one, e.g. ``Company > Fiscal Country``.
+- Only stored fields can be used, as the grouping is done in the
+  database.
+
 .. |image1| image:: https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_oca/static/description/spreadsheet_create.png
 .. |image2| image:: https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_oca/static/description/spreadsheet_edit.png
 .. |image3| image:: https://raw.githubusercontent.com/OCA/spreadsheet/19.0/spreadsheet_oca/static/description/o-spreadsheet.png
