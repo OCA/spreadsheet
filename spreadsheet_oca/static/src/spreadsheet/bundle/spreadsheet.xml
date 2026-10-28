@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="spreadsheet_oca.ActionSpreadsheetOca">
+        <div class="o_spreadsheet_oca_container">
+            <SpreadsheetControlPanel record="this.record" />
+            <SpreadsheetRenderer
+                record="this.record"
+                res_id="this.spreadsheetId"
+                model="this.model"
+                importData.bind="this.importData"
+            />
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.PivotPanel">
+        <t t-if="this.pivotId">
+            <PivotPanelDisplay pivotId="this.pivotId" />
+        </t>
+    </t>
+    <t t-name="spreadsheet_oca.PivotPanelDisplay">
+        <div
+            class="h-100 position-relative overflow-x-hidden overflow-y-auto"
+            t-ref="this.pivotPanelRef"
+        >
+            <PivotTitleSectionInsertion
+                pivotId="this.props.pivotId"
+                flipAxis.bind="this.flipAxis"
+            />
+            <t t-set="definition" t-value="this.store.definition" />
+            <div class="o-section">
+                <div class="o-section-title">Model</div>
+                <div class="o_model_name"><t t-out="this.modelLabel" /> (<t
+                    t-out="definition.model"
+                />)</div>
+            </div>
+            <div class="o-section">
+                <div class="o-section-title">Domain</div>
+                <DomainSelector
+                    resModel="definition.model"
+                    domain="this.domain"
+                    t-key="'pivot_' + this.props.pivotId"
+                />
+                <div class="btn btn-link" t-on-click="this.editDomain">
+                    Edit domain
+                </div>
+            </div>
+            <PivotLayoutConfiguratorWithAggregators
+                unusedGroupableFields="this.store.unusedGroupableFields"
+                measureFields="this.store.measureFields"
+                unusedGranularities="this.store.unusedGranularities"
+                dateGranularities="this.store.dateGranularities"
+                datetimeGranularities="this.store.datetimeGranularities"
+                definition="definition"
+                onDimensionsUpdated.bind="this.updateDimensions"
+                onFiltersUpdated.bind="this.updateDimensions"
+                getScrollableContainerEl.bind="this.getScrollableContainerEl"
+                pivotId="this.props.pivotId"
+            />
+            <div t-if="definition.sortedColumn" class="o-section">
+                <div class="o-section-title">Sorting</div>
+                <div t-out="this.sortInformation" />
+            </div>
+            <div class="o-section o_spreadsheet_oca_pivot_panel_info">
+                Last updated at <t t-out="this.lastUpdate" />
+            </div>
+        </div>
+    </t>
+
+    <!-- Only rows and columns use the relational field selector: measures
+         keep the o-spreadsheet list (and its "Add calculated measure"). -->
+    <t
+        t-name="spreadsheet_oca.PivotLayoutConfigurator"
+        t-inherit="o-spreadsheet-PivotLayoutConfigurator"
+        t-inherit-mode="primary"
+    >
+        <xpath
+            expr="//AddDimensionButton[@onFieldPicked.bind='this.addColumnDimension']"
+            position="replace"
+        >
+            <RelationalAddDimensionButton
+                onFieldPicked.bind="this.addColumnDimension"
+                fields="this.props.unusedGroupableFields"
+            />
+        </xpath>
+        <xpath
+            expr="//AddDimensionButton[@onFieldPicked.bind='this.addRowDimension']"
+            position="replace"
+        >
+            <RelationalAddDimensionButton
+                onFieldPicked.bind="this.addRowDimension"
+                fields="this.props.unusedGroupableFields"
+            />
+        </xpath>
+    </t>
+
+    <t t-name="spreadsheet_oca.RelationalAddDimensionButton">
+        <button
+            class="add-dimension o-button"
+            t-on-click="this.togglePopover"
+            t-ref="this.buttonRef"
+        >Add</button>
+        <Popover
+            t-if="this.popover.isOpen"
+            class="'o_spreadsheet_oca_add_dimension_popover'"
+            t-props="this.popoverProps"
+        >
+            <PivotFieldSelectorPopover
+                resModel="this.resModel"
+                path="''"
+                showSearchInput="true"
+                isDebugMode="this.debugMode.isActive()"
+                filter.bind="this.filterField"
+                update.bind="this.onPathSelected"
+                close.bind="this.closePopover"
+            />
+            <t t-call-slot="default" />
+        </Popover>
+    </t>
+
+    <t t-name="spreadsheet_oca.ListPanel">
+        <t t-if="this.listId">
+            <ListPanelDisplay
+                listId="this.listId"
+                listDefinition="this.listDefinition"
+            />
+        </t>
+    </t>
+    <t t-name="spreadsheet_oca.ListPanelDisplay">
+        <div class="o_spreadsheet_oca_datasource_panel">
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >List name</div>
+                <span
+                    t-out="this.env.model.getters.getListDisplayName(this.props.listId)"
+                />
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div class="o_spreadsheet_oca_datasource_panel_field_title">Model</div>
+                <div><t t-out="this.modelLabel" /> (<t
+                    t-out="this.props.listDefinition.model"
+                />)</div>
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field">
+                <div class="o_spreadsheet_oca_datasource_panel_field_title">Domain</div>
+                <DomainSelector
+                    resModel="this.props.listDefinition.model"
+                    domain="this.domain"
+                    t-key="'list_' + this.props.listId"
+                />
+                <div class="btn btn-link" t-on-click="this.editDomain">
+                    Edit domain
+                </div>
+            </div>
+            <div
+                class="o_spreadsheet_oca_datasource_panel_field o_spreadsheet_oca_list_columns"
+            >
+                <div
+                    class="o_spreadsheet_oca_datasource_panel_field_title"
+                >Columns</div>
+                <div
+                    t-foreach="this.columns"
+                    t-as="column"
+                    t-key="column.path"
+                    class="o_spreadsheet_oca_list_column d-flex align-items-center gap-1"
+                >
+                    <span
+                        class="flex-grow-1 text-truncate"
+                        t-att-class="{'text-danger': column.isInvalid}"
+                        t-att-title="column.path"
+                        t-out="column.label"
+                    />
+                    <button
+                        class="btn btn-link btn-sm p-0 o_spreadsheet_oca_list_column_up"
+                        title="Move up"
+                        t-att-disabled="column_first"
+                        t-on-click="() => this.moveColumn(column_index, -1)"
+                    >
+                        <i class="fa fa-arrow-up" />
+                    </button>
+                    <button
+                        class="btn btn-link btn-sm p-0 o_spreadsheet_oca_list_column_down"
+                        title="Move down"
+                        t-att-disabled="column_last"
+                        t-on-click="() => this.moveColumn(column_index, 1)"
+                    >
+                        <i class="fa fa-arrow-down" />
+                    </button>
+                    <button
+                        class="btn btn-link btn-sm p-0 text-danger o_spreadsheet_oca_list_column_remove"
+                        title="Remove column"
+                        t-on-click="() => this.removeColumn(column_index)"
+                    >
+                        <i class="fa fa-trash" />
+                    </button>
+                </div>
+                <div class="d-flex align-items-center gap-1 mt-2">
+                    <div class="flex-grow-1 o_spreadsheet_oca_list_column_selector">
+                        <ModelFieldSelector
+                            path="this.state.newColumnPath"
+                            resModel="this.props.listDefinition.model"
+                            readonly="false"
+                            allowEmpty="true"
+                            isDebugMode="this.debugMode.isActive()"
+                            update="(path) => this.onNewColumnPathUpdate(path)"
+                            filter.bind="this.filterColumnField"
+                        />
+                    </div>
+                    <button
+                        class="btn btn-secondary btn-sm o_spreadsheet_oca_list_column_add"
+                        t-att-disabled="!this.state.newColumnPath"
+                        t-on-click="this.addColumn"
+                    >Add</button>
+                </div>
+                <div class="o_spreadsheet_oca_pivot_panel_info mt-1">
+                    Re-insert the list to apply column changes to the sheet.
+                </div>
+            </div>
+            <div class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons">
+                <button
+                    t-on-click="this.insertList"
+                    class="btn btn-success"
+                >Insert list</button>
+                <button
+                    t-on-click="() => this.delete()"
+                    class="btn btn-danger"
+                >Delete</button>
+            </div>
+            <div
+                class="o_spreadsheet_oca_datasource_panel_field o-sidePanelButtons mt-2 mb-2"
+            >
+                <label for="list_rows">Rows:</label>
+                <input
+                    id="list_rows"
+                    class="o_input"
+                    type="number"
+                    t-att-value="this.state.listRows"
+                    t-on-change="(ev) => this.state.listRows = ev.target.value"
+                    min="1"
+                    title="Total rows used when inserting list"
+                />
+            </div>
+            <div class="o_spreadsheet_oca_pivot_panel_info">
+                Last updated at <t t-out="this.lastUpdate" />
+            </div>
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.FilterPanel">
+        <div
+            t-foreach="this.env.model.getters.getGlobalFilters()"
+            t-as="filter"
+            t-key="filter.id"
+            class="o_spreadsheet_oca_filter"
+        >
+            <div class="spreadsheet_oca_filter_label">
+                <span t-out="filter.label" />
+            </div>
+            <div class="spreadsheet_oca_filter_value">
+                <FilterValue
+                    filter="filter"
+                    model="this.env.model"
+                    globalFilterValue="this.getGlobalFilterValue(filter.id)"
+                    setGlobalFilterValue="(id, value) => this.setGlobalFilterValue(filter.id, value)"
+                />
+                <i
+                    class="oi btn btn-link text-muted spreadsheet_oca_filter_value_edit"
+                    data-icon="settings"
+                    t-on-click="() => this.onEditFilter(filter)"
+                />
+            </div>
+        </div>
+        <div class="o-sidePanelButtons">
+            <button
+                t-on-click="() => this.onAddFilter('date')"
+                class="btn"
+            >Add date</button>
+            <button
+                t-on-click="() => this.onAddFilter('relation')"
+                class="btn"
+            >Add relation</button>
+            <button
+                t-on-click="() => this.onAddFilter('text')"
+                class="btn"
+            >Add text</button>
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.EditFilterPanel">
+        <div class="o_spreadsheet_oca_filter">
+            <div class="spreadsheet_oca_filter_label">
+                <span>Label</span>
+            </div>
+            <div class="spreadsheet_oca_filter_value">
+                <input
+                    type="text"
+                    class="o_input o_spreadsheet_oca_filter_label_input"
+                    t-att-value="this.state.label"
+                    t-on-input="(ev) => this.state.label = ev.target.value"
+                />
+            </div>
+        </div>
+        <div t-if="this.state.type === 'date'" class="o_spreadsheet_oca_filter">
+            <div class="spreadsheet_oca_filter_label">Default value</div>
+            <div class="spreadsheet_oca_filter_value">
+                <DefaultDateValue
+                    value="this.state.defaultValue"
+                    update="(value) => this.onDefaultValueChanged(value)"
+                />
+            </div>
+        </div>
+        <div t-if="this.state.type === 'text'" class="o_spreadsheet_oca_filter">
+            <div class="spreadsheet_oca_filter_label">Default value</div>
+            <input
+                type="text"
+                class="o_input o_global_filter_default_value"
+                t-att-value="this.state.defaultValue"
+                t-on-input="(ev) => this.state.defaultValue = ev.target.value"
+            />
+        </div>
+        <t t-if="this.state.type === 'relation'">
+            <div class="o_spreadsheet_oca_filter">
+                <div class="spreadsheet_oca_filter_label">Related model</div>
+                <div class="spreadsheet_oca_filter_value">
+                    <ModelSelector
+                        value="this.state.modelData.label or ''"
+                        models="this.models"
+                        onModelSelected.bind="this.onModelSelected"
+                    />
+                </div>
+                <Checkbox
+                    t-if="this.state.modelData.hasParentRelation"
+                    name="'includeChildren'"
+                    label.translate="Include children"
+                    value="this.state.includeChildren"
+                    onChange="(value) => this.state.includeChildren = value"
+                />
+            </div>
+            <t t-if="this.state.modelData.technical">
+                <div class="o_spreadsheet_oca_filter">
+                    <div class="spreadsheet_oca_filter_label">Default value</div>
+                    <div
+                        t-if="!(this.state.modelData.technical === 'res.users' and this.state.defaultValue === 'current_user')"
+                        class="spreadsheet_oca_filter_value"
+                    >
+                        <MultiRecordSelector
+                            resModel="this.state.modelData.technical"
+                            resIds="this.state.defaultValue || []"
+                            t-key="this.state.modelData.technical"
+                            placeholder="''"
+                            domain="this.getCorrectDomain()"
+                            update.bind="this.onRecordsSelected"
+                        />
+                    </div>
+                    <div
+                        t-if="this.state.modelData.technical === 'res.users'"
+                        class="spreadsheet_oca_filter_value"
+                    >
+                        <Checkbox
+                            className="'mb-1'"
+                            label.translate="Automatically filter on the current user"
+                            onChange="(value) => this.state.defaultValue = value ? 'current_user' : []"
+                            value="this.state.defaultValue === 'current_user'"
+                        />
+                    </div>
+                </div>
+                <div class="o_spreadsheet_oca_filter">
+                    <div class="spreadsheet_oca_filter_label">Possible values</div>
+                    <div class="spreadsheet_oca_filter_value">
+                        <Checkbox
+                            className="'mb-1'"
+                            label.translate="Restrict values with a domain"
+                            onChange.bind="this.changeDomainRestriction"
+                            value="this.state.valuesRestricted"
+                        />
+                    </div>
+                    <t t-if="this.state.valuesRestricted">
+                        <DomainSelector
+                            resModel="this.state.modelData.technical"
+                            domain="this.getCorrectDomain()"
+                            t-key="'filter_' + this.filterId"
+                        />
+                        <div class="btn btn-link" t-on-click="this.editDomain">
+                            Edit domain
+                        </div>
+                    </t>
+                </div>
+            </t>
+        </t>
+        <div
+            t-if="object.model"
+            class="o_spreadsheet_oca_filter"
+            t-foreach="Object.values(this.state.objects)"
+            t-as="object"
+            t-key="object.id"
+        >
+            <div class="spreadsheet_oca_filter_label">
+                <span t-out="object.name" /> - <span t-out="object.tag" />
+            </div>
+            <div class="d-flex justify-content-between">
+                <div class="spreadsheet_oca_filter_value flex-column flex-grow-1">
+                    <ModelFieldSelector
+                        path="this.getModelField(object.fieldMatch)"
+                        resModel="object.model"
+                        readonly="false"
+                        allowEmpty="true"
+                        isDebugMode="this.debugMode.isActive()"
+                        update="(path, fieldInfo) => this.onFieldMatchUpdate(object, path, fieldInfo)"
+                        filter.bind="this.filterModelFieldSelectorField"
+                        t-key="object_index"
+                    />
+                </div>
+            </div>
+
+            <div t-if="this.state.type === 'date'" class="spreadsheet_oca_filter_value">
+                <select
+                    t-on-change="(ev) => this.onChangeFieldMatchOffset(object, ev)"
+                    class="o_input"
+                >
+                    <t t-foreach="this.dateOffset" t-as="offset" t-key="offset.value">
+                        <option
+                            t-att-selected="offset.value === object.fieldMatch.offset"
+                            t-att-value="offset.value"
+                        >
+                            <t t-out="offset.name" />
+                        </option>
+                    </t>
+                </select>
+            </div>
+        </div>
+        <div class="o-sidePanelButtons justify-content-center">
+            <button t-on-click="this.onRemove" class="btn btn-danger">Remove</button>
+            <button t-on-click="this.onCancel" class="btn btn-warning">Cancel</button>
+            <button
+                t-on-click="this.onSave"
+                class="btn btn-primary o_spreadsheet_oca_filter_save"
+            >Save</button>
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.SpreadsheetRenderer">
+        <SpreadsheetComponent model="this.spreadsheet_model" />
+    </t>
+    <t t-name="spreadsheet_oca.SpreadsheetName">
+        <input
+            type="text"
+            class="o_spreadsheet_oca_name"
+            title="Change name"
+            t-att-value="this.state.name"
+            t-att-readonly="this.props.isReadonly"
+            t-on-change="this._onNameChanged"
+        />
+        <i t-if="! this.state.name" class="oi text-danger" data-icon="warning" />
+        <span
+            t-if="! this.state.name"
+            class="text-danger o_spreadsheet_oca_name_warning"
+        > name is required</span>
+    </t>
+    <t
+        t-name="spreadsheet_oca.Breadcrumbs"
+        t-inherit="web.Breadcrumbs"
+        t-inherit-mode="primary"
+    >
+        <xpath expr="//div[hasclass('o_last_breadcrumb_item')]/span" position="replace">
+            <SpreadsheetName name="this.props.record.name" isReadonly="false" />
+        </xpath>
+    </t>
+    <t t-name="spreadsheet_oca.PivotIcon">
+        <i class="oi" data-icon="table_chart" />
+    </t>
+    <t t-name="spreadsheet_oca.ListIcon">
+        <i class="oi" data-icon="list" />
+    </t>
+    <t
+        t-name="spreadsheet_oca.SpreadsheetControlPanel"
+        t-inherit="web.ControlPanel"
+        t-inherit-mode="primary"
+    >
+        <xpath expr="//Breadcrumbs[t]" position="replace">
+            <SpreadsheetBreadcrumbs
+                breadcrumbs="this.breadcrumbs"
+                record="this.props.record"
+            >
+                <t t-set-slot="breadcrumb-status-indicator">
+                    <t t-call-slot="control-panel-status-indicator" />
+                </t>
+                <t t-set-slot="breadcrumb-additional-actions">
+                    <t t-call-slot="control-panel-additional-actions" />
+                </t>
+            </SpreadsheetBreadcrumbs>
+        </xpath>
+    </t>
+    <t t-name="spreadsheet_oca.OdooChartDataSourcePanel">
+        <div class="o-section o_spreadsheet_oca_chart_datasource">
+            <div class="o-section-title">Model</div>
+            <div class="o_model_name">
+                <t t-out="this.modelLabel" /> (<t t-out="this.resModel" />)
+            </div>
+        </div>
+        <div class="o-section">
+            <div class="o-section-title">Domain</div>
+            <DomainSelector
+                resModel="this.resModel"
+                domain="this.domain"
+                t-key="'chart_' + this.props.chartId"
+            />
+        </div>
+    </t>
+    <t t-name="spreadsheet_oca.OdooMenuSection">
+        <div class="o-section o_spreadsheet_oca_odoo_menu">
+            <div class="o-section-title">Link to Odoo menu</div>
+            <div class="o-section-value">
+                <Many2XAutocomplete t-props="this.menuProps" />
+            </div>
+        </div>
+    </t>
+    <t t-inherit="o-spreadsheet-GenericChartConfigPanel" t-inherit-mode="extension">
+        <xpath expr="//div" position="inside">
+            <t t-call="spreadsheet_oca.OdooMenuSection" />
+        </xpath>
+    </t>
+    <t t-inherit="o-spreadsheet-BarConfigPanel" t-inherit-mode="extension">
+        <xpath expr="//div" position="inside">
+            <t t-call="spreadsheet_oca.OdooMenuSection" />
+        </xpath>
+    </t>
+    <t t-inherit="o-spreadsheet-LineConfigPanel" t-inherit-mode="extension">
+        <xpath expr="//div" position="inside">
+            <t t-call="spreadsheet_oca.OdooMenuSection" />
+        </xpath>
+    </t>
+    <t t-inherit="o-spreadsheet-GaugeChartConfigPanel" t-inherit-mode="extension">
+        <xpath expr="//div" position="inside">
+            <t t-call="spreadsheet_oca.OdooMenuSection" />
+        </xpath>
+    </t>
+    <t t-inherit="o-spreadsheet-ScorecardChartConfigPanel" t-inherit-mode="extension">
+        <xpath expr="//div" position="inside">
+            <t t-call="spreadsheet_oca.OdooMenuSection" />
+        </xpath>
+    </t>
+
+</templates>

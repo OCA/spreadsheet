@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t
+        t-name="spreadsheet_oca.GraphView.Buttons"
+        t-inherit="web.GraphView.Buttons"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//button[@data-mode='pie']" position="after">
+            <button
+                class="btn btn-secondary oi o_graph_add_spreadsheet"
+                data-icon="table_chart"
+                t-on-click="this.onSpreadsheetButtonClicked"
+                data-tooltip="Add to spreadsheet"
+                aria-label="Add to spreadsheet"
+                data-hotkey="t"
+            />
+        </xpath>
+    </t>
+</templates>

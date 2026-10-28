@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t
+        t-name="spreadsheet_oca.PivotView.buttons"
+        t-inherit="web.PivotView.Buttons"
+        t-inherit-mode="extension"
+    >
+        <xpath expr="//button[hasclass('o_pivot_download')]" position="after">
+            <button
+                t-att-data-tooltip="this.getSpreadsheetInsertionTooltip()"
+                class="btn btn-secondary oi o_pivot_add_spreadsheet"
+                data-icon="table_chart"
+                t-on-click="this.onSpreadsheetButtonClicked"
+                aria-label="Add to spreadsheet"
+                t-att-disabled="this.disableSpreadsheetInsertion()"
+                data-hotkey="t"
+            />
+        </xpath>
+    </t>
+</templates>
