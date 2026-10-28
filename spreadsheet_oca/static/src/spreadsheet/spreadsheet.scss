@@ -63,3 +63,9 @@
         }
     }
 }
+
+// o-spreadsheet's .o-popover has no background: give the field selector
+// the same one it gets inside Odoo's own popovers.
+.o_spreadsheet_oca_add_dimension_popover {
+    background-color: $popover-bg;
+}
