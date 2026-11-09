@@ -11,7 +11,7 @@ DEFAULT_COLUMNS = [
     "qty_delivered",
     "qty_invoiced",
     "qty_to_invoice",
-    "product_uom_id",
+    "product_uom",
     "price_unit",
     "price_tax",
     "price_subtotal",
