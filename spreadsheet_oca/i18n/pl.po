@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-11-11 10:46+0000\n"
+"PO-Revision-Date: 2026-11-11 13:46+0000\n"
 "Last-Translator: leszekszczepkowski <leszekszczepkowski@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pl\n"
@@ -25,7 +25,7 @@ msgstr "Tag o tej nazwie już istnieje."
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
 msgid "Action Needed"
-msgstr "Wymagana akcja"
+msgstr "Wymagane działanie"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__active
@@ -41,17 +41,17 @@ msgstr "Czynności"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Dekoracja wyjątku czynności"
+msgstr "Dekoracja wyjątku aktywności"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_state
 msgid "Activity State"
-msgstr "Stan czynności"
+msgstr "Stan aktywności"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_icon
 msgid "Activity Type Icon"
-msgstr "Ikona typu czynności"
+msgstr "Ikona typu aktywności"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
@@ -366,7 +366,7 @@ msgstr "Ikona"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr "Ikona wskazująca wyjątek czynności."
+msgstr "Ikona wskazująca na wyjątek aktywności."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_needaction
@@ -376,7 +376,8 @@ msgstr "Jeśli zaznaczone, nowe wiadomości wymagają twojej uwagi."
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr "Jeśli zaznaczone, część wiadomości ma błąd doręczenia."
+msgstr ""
+"Jeśli zaznaczone, niektóre wiadomości napotkały błędy podczas doręczenia."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__company_id
@@ -527,7 +528,7 @@ msgstr "Przenieś w górę"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr "Termin mojej czynności"
+msgstr "Ostateczny termin moich aktywności"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_search_view
@@ -552,17 +553,17 @@ msgstr "Następny"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr "Termin następnej czynności"
+msgstr "Termin kolejnej aktywności"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_summary
 msgid "Next Activity Summary"
-msgstr "Podsumowanie następnej czynności"
+msgstr "Podsumowanie kolejnej aktywności"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_type_id
 msgid "Next Activity Type"
-msgstr "Typ następnej czynności"
+msgstr "Typ następnej aktywności"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_oca_revision__next_revision_id
@@ -593,7 +594,7 @@ msgstr "Liczba wiadomości wymagających akcji"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Liczba wiadomości z błędem doręczenia"
+msgstr "Liczba wiadomości z błędami przy doręczeniu"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_import_form_view
@@ -643,7 +644,7 @@ msgstr "Wstaw listę ponownie, aby zastosować zmiany kolumn w arkuszu."
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Read Access"
-msgstr "Dostęp do odczytu"
+msgstr "Prawo odczytu"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__reader_ids
@@ -781,7 +782,7 @@ msgstr "Abstrakcyjny arkusz do dziedziczenia"
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_abstract__spreadsheet_binary_data
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_binary_data
 msgid "Spreadsheet file"
-msgstr "Plik arkusza"
+msgstr "Plik arkusza kalkulacyjnego"
 
 #. module: spreadsheet_oca
 #: model:ir.actions.act_window,name:spreadsheet_oca.spreadsheet_spreadsheet_act_window
@@ -815,9 +816,9 @@ msgid ""
 "Planned: Future activities."
 msgstr ""
 "Status na podstawie czynności\n"
-"Zaległe: termin już minął\n"
-"Dzisiaj: czynność zaplanowana na dziś\n"
-"Zaplanowane: przyszłe czynności."
+"Zaległe: Termin już minął\n"
+"Dzisiaj: Data czynności przypada na dzisiaj\n"
+"Zaplanowane: Przyszłe czynności."
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__spreadsheet_tag_ids
@@ -858,7 +859,7 @@ msgstr "Typ"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr "Typ wyjątku czynności w rekordzie."
+msgstr "Typ wyjątku aktywności na rekordzie."
 
 #. module: spreadsheet_oca
 #. odoo-python
@@ -886,17 +887,17 @@ msgstr "Użytkownik"
 #. module: spreadsheet_oca
 #: model:ir.model.fields,field_description:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
 msgid "Website Messages"
-msgstr "Wiadomości ze strony"
+msgstr "Wiadomości"
 
 #. module: spreadsheet_oca
 #: model:ir.model.fields,help:spreadsheet_oca.field_spreadsheet_spreadsheet__website_message_ids
 msgid "Website communication history"
-msgstr "Historia komunikacji ze strony"
+msgstr "Historia komunikacji"
 
 #. module: spreadsheet_oca
 #: model_terms:ir.ui.view,arch_db:spreadsheet_oca.spreadsheet_spreadsheet_form_view
 msgid "Write Access"
-msgstr "Dostęp do zapisu"
+msgstr "Prawo zapisu"
 
 #. module: spreadsheet_oca
 #. odoo-javascript
