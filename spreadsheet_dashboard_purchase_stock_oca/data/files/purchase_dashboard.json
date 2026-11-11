@@ -7,7 +7,6 @@
       "colNumber": 9,
       "rowNumber": 34,
       "cells": {
-        "A22": "[Late Receipts](odoo://view/{\"viewType\":\"list\",\"action\":{\"domain\":\"['&',['picking_type_code','=','incoming'],'&',['state','in',['assigned','waiting','confirmed']],'|','|',['has_deadline_issue','=',true],['date_deadline','<',context_today().strftime('%Y-%m-%d')],['scheduled_date','<',context_today().strftime('%Y-%m-%d')]]\",\"context\":{\"group_by\":[]},\"modelName\":\"stock.picking\",\"views\":[[false,\"list\"],[false,\"kanban\"],[false,\"form\"],[false,\"calendar\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"Late Receipts\"})",
         "A23": "=_t(\"Transfer\")",
         "C23": "=_t(\"Ordered\")",
         "E23": "=_t(\"Scheduled on\")",
@@ -62,31 +61,25 @@
         "C33": "=ODOO.LIST(2,10,\"create_date\")",
         "E33": "=ODOO.LIST(2,10,\"scheduled_date\")",
         "G33": "=ODOO.LIST(2,10,\"user_id\")",
-        "H33": "=ODOO.LIST(2,10,\"partner_id\")",
-        "A7": "[% On time deliveries by vendor](odoo://view/{\"viewType\":\"graph\",\"action\":{\"domain\":[],\"context\":{\"group_by\":[\"partner_id\"],\"graph_measure\":\"on_time_rate\",\"graph_mode\":\"bar\",\"graph_groupbys\":[\"partner_id\"]},\"modelName\":\"vendor.delay.report\",\"views\":[[false,\"graph\"],[false,\"search\"]]},\"threshold\":0,\"name\":\"% On time deliveries by vendor\"})"
+        "H33": "=ODOO.LIST(2,10,\"partner_id\")"
       },
       "styles": {
-        "A22": 1,
         "A23:B23": 2,
         "C23:F23": 7,
         "G23:I23": 2,
         "A24:B33": 3,
         "C24:F33": 9,
-        "G24:I33": 5,
-        "A7": 1
+        "G24:I33": 5
       },
       "formats": {
         "C24:F33": 1
       },
       "borders": {
-        "A22:I22": 1,
         "A23:I23": 3,
         "A24:I24": 4,
         "A25:I32": 5,
         "A33:I33": 6,
-        "A34:I34": 7,
-        "A7:I7": 1,
-        "A8:I8": 2
+        "A34:I34": 7
       },
       "cols": {
         "0": {
@@ -193,7 +186,7 @@
               "bold": true
             },
             "type": "scorecard",
-            "background": "#F0FDF4",
+            "background": "",
             "baseline": "Data!E2",
             "baselineDescr": {
               "text": "since last period"
@@ -224,7 +217,7 @@
               "bold": true
             },
             "type": "scorecard",
-            "background": "#F0FDF4",
+            "background": "",
             "baseline": "Data!E3",
             "baselineDescr": {
               "text": "since last period"
@@ -241,64 +234,111 @@
         },
         {
           "id": "9dcdb8e2-bb52-4d5d-9a39-7fda18f9964b",
+          "col": 0,
+          "row": 0,
+          "offset": {"x": 0, "y": 178},
           "width": 1035,
           "height": 250,
-          "tag": "chart",
+          "tag": "carousel",
           "data": {
-            "title": {
-              "text": ""
-            },
-            "background": "#FFFFFF",
-            "legendPosition": "none",
-            "metaData": {
-              "groupBy": ["partner_id"],
-              "measure": "on_time_rate",
-              "order": "DESC",
-              "resModel": "vendor.delay.report",
-              "cumulatedStart": false
-            },
-            "searchParams": {
-              "comparison": null,
-              "context": {},
-              "domain": [],
-              "groupBy": ["partner_id"],
-              "orderBy": []
-            },
-            "type": "odoo_bar",
-            "verticalAxisPosition": "left",
-            "stacked": true,
-            "fieldMatching": {
-              "278fac59-026d-4df7-a95a-30fcb70b42e6": {
-                "chain": "date",
-                "type": "datetime",
-                "offset": 0
-              },
-              "fd02bc43-9279-4d9c-8759-2d11adf3b78a": {
-                "chain": "partner_id.country_id",
-                "type": "many2one"
-              },
-              "36ee564f-40e6-4b70-9762-107f6cddd678": {
-                "chain": "partner_id",
-                "type": "many2one"
-              },
-              "1d2602f3-50bd-416f-8288-b37b6a3e5245": {
-                "chain": "category_id",
-                "type": "many2one"
-              },
-              "e3491fd0-0a96-45b7-8d3e-1fe423ee11f7": {
-                "chain": "product_id",
-                "type": "many2one"
+            "chartDefinitions": {
+              "9dcdb8e2-bb52-4d5d-9a39-7fda18f9964b": {
+                "title": {},
+                "legendPosition": "none",
+                "type": "bar",
+                "stacked": true,
+                "humanize": false,
+                "dataSource": {
+                  "type": "odoo",
+                  "metaData": {
+                    "groupBy": ["partner_id"],
+                    "measure": "on_time_rate",
+                    "order": "DESC",
+                    "resModel": "vendor.delay.report",
+                    "cumulatedStart": false
+                  },
+                  "searchParams": {
+                    "comparison": null,
+                    "context": {},
+                    "domain": [],
+                    "groupBy": ["partner_id"],
+                    "orderBy": []
+                  }
+                },
+                "dataSetStyles": {}
               }
             },
-            "cumulatedStart": false,
-            "chartId": "9dcdb8e2-bb52-4d5d-9a39-7fda18f9964b"
-          },
-          "offset": {
-            "x": 0,
-            "y": 178
-          },
+            "title": {
+              "text": "% On time deliveries by vendor",
+              "fontSize": 21,
+              "bold": true,
+              "color": "#01666B"
+            },
+            "items": [
+              {
+                "type": "chart",
+                "chartId": "9dcdb8e2-bb52-4d5d-9a39-7fda18f9964b"
+              }
+            ],
+            "fieldMatching": {
+              "9dcdb8e2-bb52-4d5d-9a39-7fda18f9964b": {
+                "278fac59-026d-4df7-a95a-30fcb70b42e6": {
+                  "chain": "date",
+                  "type": "datetime",
+                  "offset": 0
+                },
+                "fd02bc43-9279-4d9c-8759-2d11adf3b78a": {
+                  "chain": "partner_id.country_id",
+                  "type": "many2one"
+                },
+                "36ee564f-40e6-4b70-9762-107f6cddd678": {
+                  "chain": "partner_id",
+                  "type": "many2one"
+                },
+                "1d2602f3-50bd-416f-8288-b37b6a3e5245": {
+                  "chain": "category_id",
+                  "type": "many2one"
+                },
+                "e3491fd0-0a96-45b7-8d3e-1fe423ee11f7": {
+                  "chain": "product_id",
+                  "type": "many2one"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": "late-receipts-carousel",
           "col": 0,
-          "row": 0
+          "row": 0,
+          "offset": {"x": 0, "y": 530},
+          "width": 1035,
+          "height": 425,
+          "tag": "carousel",
+          "data": {
+            "chartDefinitions": {},
+            "title": {
+              "text": "Late Receipts",
+              "fontSize": 21,
+              "bold": true,
+              "color": "#01666B"
+            },
+            "items": [
+              {
+                "type": "carouselDataView",
+                "rangeData": {
+                  "_sheetId": "sheet1",
+                  "_zone": {
+                    "top": 22,
+                    "left": 0,
+                    "bottom": 32,
+                    "right": 8
+                  }
+                }
+              }
+            ],
+            "fieldMatching": {}
+          }
         }
       ],
       "tables": [
@@ -320,6 +360,7 @@
       ],
       "isVisible": true,
       "areGridLinesVisible": true,
+      "backgroundColor": "#F9FAFB",
       "headerGroups": [],
       "comments": []
     },
