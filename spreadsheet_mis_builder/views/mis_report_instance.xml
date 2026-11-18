@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 KMEE
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="mis_report_instance_view_form" model="ir.ui.view">
+        <field name="model">mis.report.instance</field>
+        <field name="inherit_id" ref="mis_builder.mis_report_instance_view_form" />
+        <field name="arch" type="xml">
+            <button name="export_xls" position="after">
+                <button
+                    type="object"
+                    name="action_export_spreadsheet"
+                    string="Spreadsheet"
+                    icon="fa-table"
+                    class="btn"
+                    groups="spreadsheet_oca.group_user"
+                />
+            </button>
+        </field>
+    </record>
+</odoo>

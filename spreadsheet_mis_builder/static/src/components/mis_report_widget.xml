@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+    <t t-inherit="mis_builder.MisReportWidget" t-inherit-mode="extension">
+        <xpath expr="//button[@t-on-click='exportXls']" position="after">
+            <button t-on-click="exportSpreadsheet" class="btn">
+                <span class="fa fa-table" /> Spreadsheet </button>
+        </xpath>
+    </t>
+</templates>
