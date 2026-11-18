@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 KMEE
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record id="account_demo_receivable" model="account.account">
+        <field name="code">SMB400</field>
+        <field name="name">Demo receivables</field>
+        <field name="account_type">asset_receivable</field>
+        <field name="reconcile" eval="True" />
+        <field name="company_ids" eval="[Command.link(ref('base.main_company'))]" />
+    </record>
+    <record id="account_demo_bank" model="account.account">
+        <field name="code">SMB500</field>
+        <field name="name">Demo bank</field>
+        <field name="account_type">asset_current</field>
+        <field name="company_ids" eval="[Command.link(ref('base.main_company'))]" />
+    </record>
+    <record id="account_demo_cost" model="account.account">
+        <field name="code">SMB600</field>
+        <field name="name">Demo cost of revenue</field>
+        <field name="account_type">expense_direct_cost</field>
+        <field name="company_ids" eval="[Command.link(ref('base.main_company'))]" />
+    </record>
+    <record id="account_demo_expenses" model="account.account">
+        <field name="code">SMB610</field>
+        <field name="name">Demo operating expenses</field>
+        <field name="account_type">expense</field>
+        <field name="company_ids" eval="[Command.link(ref('base.main_company'))]" />
+    </record>
+    <record id="account_demo_income" model="account.account">
+        <field name="code">SMB700</field>
+        <field name="name">Demo revenue</field>
+        <field name="account_type">income</field>
+        <field name="company_ids" eval="[Command.link(ref('base.main_company'))]" />
+    </record>
+    <record id="account_journal_demo" model="account.journal">
+        <field name="name">Spreadsheet MIS demo</field>
+        <field name="code">SMBD</field>
+        <field name="type">general</field>
+        <field name="company_id" ref="base.main_company" />
+    </record>
+    <record id="account_move_demo_sales_m2" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=2)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_receivable'), 'debit': 42000}),
+                Command.create({'account_id': ref('account_demo_income'), 'credit': 42000}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_cost_m2" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=2)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_cost'), 'debit': 18000}),
+                Command.create({'account_id': ref('account_demo_bank'), 'credit': 18000}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_expenses_m2" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=2)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_expenses'), 'debit': 9000}),
+                Command.create({'account_id': ref('account_demo_bank'), 'credit': 9000}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_sales_m1" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=1)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_receivable'), 'debit': 48000}),
+                Command.create({'account_id': ref('account_demo_income'), 'credit': 48000}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_cost_m1" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=1)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_cost'), 'debit': 21000}),
+                Command.create({'account_id': ref('account_demo_bank'), 'credit': 21000}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_expenses_m1" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=1)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_expenses'), 'debit': 9500}),
+                Command.create({'account_id': ref('account_demo_bank'), 'credit': 9500}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_sales_m0" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=0)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_receivable'), 'debit': 53000}),
+                Command.create({'account_id': ref('account_demo_income'), 'credit': 53000}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_cost_m0" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=0)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_cost'), 'debit': 22000}),
+                Command.create({'account_id': ref('account_demo_bank'), 'credit': 22000}),
+            ]"
+        />
+    </record>
+    <record id="account_move_demo_expenses_m0" model="account.move">
+        <field name="journal_id" ref="account_journal_demo" />
+        <field
+            name="date"
+            eval="(DateTime.today() - relativedelta(months=0)).strftime('%Y-%m-01')"
+        />
+        <field
+            name="line_ids"
+            eval="[
+                Command.create({'account_id': ref('account_demo_expenses'), 'debit': 11000}),
+                Command.create({'account_id': ref('account_demo_bank'), 'credit': 11000}),
+            ]"
+        />
+    </record>
+    <function model="account.move" name="action_post">
+        <value
+            eval="[
+                ref('account_move_demo_sales_m2'),
+                ref('account_move_demo_cost_m2'),
+                ref('account_move_demo_expenses_m2'),
+                ref('account_move_demo_sales_m1'),
+                ref('account_move_demo_cost_m1'),
+                ref('account_move_demo_expenses_m1'),
+                ref('account_move_demo_sales_m0'),
+                ref('account_move_demo_cost_m0'),
+                ref('account_move_demo_expenses_m0'),
+            ]"
+        />
+    </function>
+</odoo>
