@@ -5,3 +5,4 @@
   - Chris Mann
 - [Mind And Go](https://mind-and-go.com)
   - Florent THOMAS
+- Nimarosa \<<https://github.com/nimarosa>\>

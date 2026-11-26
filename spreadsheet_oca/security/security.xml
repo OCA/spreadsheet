@@ -62,4 +62,10 @@
         <field name="model_id" ref="model_spreadsheet_spreadsheet_import_mode" />
         <field name="domain_force">[('group_ids','in', user.groups_id.ids)]</field>
     </record>
+    <!-- Transient records are not private to their creator in Odoo 18. -->
+    <record model="ir.rule" id="spreadsheet_import_own_rule">
+        <field name="name">Spreadsheet import wizard: own records</field>
+        <field name="model_id" ref="model_spreadsheet_spreadsheet_import" />
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+    </record>
 </odoo>
