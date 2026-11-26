@@ -5,3 +5,5 @@
   - Chris Mann
 - [Mind And Go](https://mind-and-go.com)
   - Florent THOMAS
+- [Cloud Lotus](https://cloudlotus.net):
+  - Roberto Cifuentes
