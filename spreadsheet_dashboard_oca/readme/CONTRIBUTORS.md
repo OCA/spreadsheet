@@ -3,3 +3,4 @@
   - Carlos Roca
 - [Open User Systems](https://www.openusersystems.com):
   - Chris Mann
+- Nimarosa \<<https://github.com/nimarosa>\>
