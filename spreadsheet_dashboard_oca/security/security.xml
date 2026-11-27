@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Transient records are not private to their creator in Odoo 18. -->
+    <record model="ir.rule" id="spreadsheet_to_dashboard_own_rule">
+        <field name="name">Spreadsheet to dashboard wizard: own records</field>
+        <field name="model_id" ref="model_spreadsheet_to_dashboard" />
+        <field name="domain_force">[('create_uid', '=', user.id)]</field>
+    </record>
+</odoo>
